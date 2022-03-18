@@ -4,9 +4,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
+}
+.reporte{
+  text-align: center;
+}
+.reporte h2{
+  font-size: 3rem;
 }
 
+.reporte span{
+  color: #ffdb01;
+  font-weight: bold;
+}
+.reporte ul{
+  list-style: none;
+  line-height: 2rem;
+  text-align: left;
+  padding: 2rem 4rem;
+}
+
+.reporte h3 , .reporte h4{
+  text-align: center;
+}
 .main {
   padding: 2rem 0;
   flex: 1;
