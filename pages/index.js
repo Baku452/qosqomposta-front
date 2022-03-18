@@ -15,18 +15,21 @@ export default function Home() {
         <h1 className={styles.title}>
           Bienvenido a Qosqomposta !
         </h1>
-        <Image alt="Logo Qosqomposta" src="/images/logoQosqomposta.jpg" width={250} height={250} />
+        {/* <Image alt="Logo Qosqomposta" src="/images/logoQosqomposta.jpg" width={250} height={250} /> */}
         {/* <p className={styles.description}>
           Estamos trabajando para lanzar nuestro sitio web
         </p> */}
         {/* <p className={styles.subdescription}>
           Estaremos en vivo muy pronto...
         </p> */}
+        <video width="700px" controls autoPlay loop>
+            <source src="/video/reporteQ.mp4" type="video/mp4" />
+        </video>
         <div className={styles.reporte}>
           <h2>
-            Reporte 2021 <span>Qompostero !</span>
+            {/* Reporte 2021 <span>Qompostero !</span> */}
           </h2>
-          <p>
+          {/* <p>
               <span>35 838kg </span>
               de residuos orgánicos netos para compostar
           </p>
@@ -39,8 +42,9 @@ export default function Home() {
             <li><span>82</span> Carros sacados de circulación</li>
             <li><span>170</span> Litros de gasolina ahorrados por el uso de bicicletas</li>
           </ul>
-          <h3>!Por un 2022 lleno de compost !</h3>
+          <h3>!Por un 2022 lleno de compost !</h3> */}
           <h4>Todo esto no sería posible sin tu compromiso</h4>
+    
         </div>
         <a className={styles.button} href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform">Únete al Movimiento Qompostero</a>
 

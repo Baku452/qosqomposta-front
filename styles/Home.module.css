@@ -26,17 +26,18 @@
 
 .reporte h3 , .reporte h4{
   text-align: center;
+  margin: 0;
 }
 .main {
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 .title{
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .footer {
