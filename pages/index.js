@@ -22,7 +22,7 @@ export default function Home() {
         {/* <p className={styles.subdescription}>
           Estaremos en vivo muy pronto...
         </p> */}
-        <video width="700px" controls autoPlay loop>
+        <video width="700px" controls muted autoPlay loop>
             <source src="/video/reporteQ.mp4" type="video/mp4" />
         </video>
         <div className={styles.reporte}>
