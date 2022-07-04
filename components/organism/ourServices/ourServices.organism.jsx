@@ -71,8 +71,8 @@ const OurServices = () => {
             Servicios
           </h3>
           {ServicesQB2B.map(item => (
-            <div className="text-lg  flex justify-end items-center " key={item.title}>
-              <AiOutlineCheck color="#1c7e39" />
+            <div className="text-lg flex justify-end items-center" key={item.title}>
+              <AiOutlineCheck key={item.title} color="#1c7e39" />
               <p className="w-max ml-3">{item.title}</p>
             </div>
           ))}
