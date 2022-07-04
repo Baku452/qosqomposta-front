@@ -28,7 +28,7 @@ const BannerLanding = () => {
         height={1000}
         layout="responsive"
         alt="bannerQosqomposta"
-        src="/images/banner.jpg"
+        src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1656951925/web-home/banner_cwrtkf.jpg"
       />
     </div>
   );
