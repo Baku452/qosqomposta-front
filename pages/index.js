@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Qosqomposta | Compostaje de la ciudad del Cusco</title>
+        <title>Qosqomposta | Servicio de compostaje de la ciudad del Cusco</title>
         <link href="https://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
         <link href="https://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
       </Head>
