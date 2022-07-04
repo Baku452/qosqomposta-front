@@ -7,8 +7,8 @@ export default function Home() {
     <>
       <Head>
         <title>Qosqomposta | Compostaje de la ciudad del Cusco</title>
-        <link href="http://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
-        <link href="http://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
       </Head>
       <BannerLanding />
       <OurServices />

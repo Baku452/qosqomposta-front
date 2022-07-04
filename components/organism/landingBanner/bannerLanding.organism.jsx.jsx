@@ -20,7 +20,16 @@ const BannerLanding = () => {
           </p>
         </div>
 
-        <div className="btn btn-primary my-12 transition ease-in-out">Qomposta Ya !</div>
+        <div className="btn btn-primary my-12 transition ease-in-out hover:text-black">
+          <a
+            // className="hover:text-black"
+            target="_blank"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
+            rel="noreferrer"
+          >
+            Qomposta Ya !
+          </a>
+        </div>
       </div>
       <Image
         className="-z-50 backdrop-opacity-70"
