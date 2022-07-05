@@ -3,23 +3,18 @@ import Image from 'next/image';
 const BannerLanding = () => {
   return (
     <div className="relative">
-      <div className="absolute h-full w-2/6 bg-gradient-to-r from-black" />
+      <div className="relative lg:absolute h-full w-2/6 bg-gradient-to-r from-black" />
       <div className="animate-slideIn font-bold z-30 px-20 py-5 xl:py-24 mx-auto inset-x-0 absolute text-white">
-        <div className="w-100 py-10 lg:py-5 xl:max-w-2xl text-center xl:text-left ">
-          <h1 className="uppercase text-5xl  xl:text-7xl py-5 lg:py-14">
-            <span className="text-yellowQ">Qosqomposta</span> <br /> Por un Cusco
-            sostenible
+        <div className="w-100 xl:max-w-2xl text-center xl:text-left ">
+          <h1 className="uppercase text-base xl:text-7xl py-5 lg:py-14">
+            <span className="text-yellowQ">Composta</span> <br /> Por un Cusco sostenible
           </h1>
-          <h2 className="text-lg lg:text-3xl font-normal leading-normal">
-            Junta los residuos orgánicos <br />
-            Nosotros lo <span className="text-yellowQ">compostamos</span>
-          </h2>
           <p className="text-2xl font-normal leading-normal">
             Suscríbete desde S/10 soles al Mes
           </p>
         </div>
 
-        <div className="btn btn-primary my-12 transition ease-in-out shadow-2xl hover:text-black text-center !w-96 md:!w-64 xl:!w-fit m-auto xl:m-0">
+        <div className="btn btn-primary my-12 transition ease-in-out shadow-2xl hover:text-black text-center md:!w-64 xl:!w-fit m-auto xl:m-0">
           <a
             target="_blank"
             href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
