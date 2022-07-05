@@ -80,13 +80,13 @@ const OurServices = () => {
             Comienza ahora
           </button>
         </div>
-        <div className="basis-auto">
+        <div className="basis-auto w-full xl:block hidden ">
           <Image
             alt="heroQ"
             width={705}
             height={940}
-            layout="fixed"
-            src="/images/landingBalde.jpg"
+            layout="responsive"
+            src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1656951925/web-home/landingBalde_mc3mgn.jpg"
           />
         </div>
       </section>

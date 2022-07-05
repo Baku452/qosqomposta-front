@@ -4,14 +4,13 @@ const BannerLanding = () => {
   return (
     <div className="relative">
       <div className="absolute h-full w-2/6 bg-gradient-to-r from-black" />
-      <div className="animate-slideIn font-bold z-30 px-20 py-24 mx-auto inset-x-0 absolute text-white">
-        {/* <div className="text-4xl ">Únete al movimiento Qosmpostero</div> */}
-        <div className="max-w-2xl ">
-          <h1 className="uppercase text-xl lg:text-7xl 2xl:text-7xl py-14">
+      <div className="animate-slideIn font-bold z-30 px-20 py-5 xl:py-24 mx-auto inset-x-0 absolute text-white">
+        <div className="w-100 py-10 lg:py-5 xl:max-w-2xl text-center xl:text-left ">
+          <h1 className="uppercase text-5xl  xl:text-7xl py-5 lg:py-14">
             <span className="text-yellowQ">Qosqomposta</span> <br /> Por un Cusco
             sostenible
           </h1>
-          <h2 className="text-3xl font-normal leading-normal">
+          <h2 className="text-lg lg:text-3xl font-normal leading-normal">
             Junta los residuos orgánicos <br />
             Nosotros lo <span className="text-yellowQ">compostamos</span>
           </h2>
@@ -20,9 +19,8 @@ const BannerLanding = () => {
           </p>
         </div>
 
-        <div className="btn btn-primary my-12 transition ease-in-out hover:text-black">
+        <div className="btn btn-primary my-12 transition ease-in-out shadow-2xl hover:text-black text-center !w-96 md:!w-64 xl:!w-fit m-auto xl:m-0">
           <a
-            // className="hover:text-black"
             target="_blank"
             href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
             rel="noreferrer"
@@ -31,14 +29,18 @@ const BannerLanding = () => {
           </a>
         </div>
       </div>
-      <Image
-        className="-z-50 backdrop-opacity-70"
-        width={1900}
-        height={1000}
-        layout="responsive"
-        alt="bannerQosqomposta"
-        src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1656951925/web-home/banner_cwrtkf.jpg"
-      />
+      <div className="h-screen">
+        <Image
+          className="-z-50 backdrop-opacity-70 object-cover w-auto h-full"
+          // width={1900}
+          // height={1000}
+          layout="fill"
+          alt="bannerQosqomposta"
+          src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1656998916/web-home/bannerQ2_akpo4g.jpg"
+
+          // src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1656951925/web-home/banner_cwrtkf.jpg"
+        />
+      </div>
     </div>
   );
 };
