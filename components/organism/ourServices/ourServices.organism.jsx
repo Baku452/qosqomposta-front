@@ -7,7 +7,7 @@ const OurServices = () => {
     <>
       <section className="bg-gray-200 py-24 px-6">
         <div className="container mx-auto ">
-          <h2 className="text-center text-4xl title">Planes Individuales</h2>
+          <h2 className="text-center text-4xl title">Listo para Compostar ?</h2>
           <div className="h-1 mx-auto bg-yellowQ w-24  mt-4 rounded"></div>
           <div className="max-w-full md:max-w-6xl mx-auto my-3 md:px-8">
             <div className="flex flex-col md:flex-row justify-center items-center max-w-full md:max-w-6xl my-3 md:px-8">

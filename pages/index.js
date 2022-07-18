@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
-import { BannerLanding, OurServices } from '../components';
+import { BannerLanding, OurServices, DescriptionWeb } from '../components';
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
         <link href="https://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
       </Head>
       <BannerLanding />
+      <DescriptionWeb />
       <OurServices />
     </>
   );
