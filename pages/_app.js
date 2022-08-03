@@ -1,23 +1,30 @@
 import '../styles/globals.css';
 import LayoutWeb from '../layouts/web.layout';
 import Script from 'next/script';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <LayoutWeb>
-      <Script
-        id="tag-manager"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-53HXJRR');`,
-        }}
-      ></Script>
-      <Component {...pageProps} />
-    </LayoutWeb>
+    <Auth0Provider
+      domain="dev--0spn975.us.auth0.com"
+      clientId="vUP2cS9Idi0mZO1rRxJjuhRJL0M0443u"
+      redirectUri={window.location.origin}
+    >
+      <LayoutWeb>
+        <Script
+          id="tag-manager"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-53HXJRR');`,
+          }}
+        ></Script>
+        <Component {...pageProps} />
+      </LayoutWeb>
+    </Auth0Provider>
   );
 }
 
