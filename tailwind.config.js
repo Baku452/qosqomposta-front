@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -37,7 +39,10 @@ module.exports = {
           '0%': { transform: 'scale(1.2)' },
           '100%': { transform: 'scale(1.5)' },
         },
-      }
+      },
+      fontFamily: {
+        'sans': ['eveleth', ...defaultTheme.fontFamily.sans],
+      },
     }
   },
   plugins: [

@@ -1,34 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { useState } from 'react';
 import { BsWhatsapp } from 'react-icons/bs';
 import { GiHamburgerMenu } from 'react-icons/gi';
+import { memo } from 'react';
 
-const HeaderWeb = React.memo(() => {
-  const [displayMenu, setDisplayMenu] = useState(false);
+const memoHeaderAuth = () => {
   return (
-    <nav className="bg-black bg-opacity-70 backdrop-blur-lg fixed w-full px-0 md:px-20 top-0 z-50 from-black">
+    <nav className="shadow-md w-full px-0 md:px-20 top-0 z-50">
       <div className="flex text-white justify-between w-full md:max-w-7xl m-auto p-3 items-center">
         <div className="flex items-center justify-between space-x-5">
           <Link href="/">
             <a>
               <Image
-                width={180}
-                height={70}
+                width={300}
+                height={100}
                 alt="Logo Qosqomposta"
-                src="/icons/whiteLogo.svg"
+                src="/icons/blackLogo.svg"
               />
             </a>
-          </Link>
-          <Link href="/">
-            <a>Precios</a>
-          </Link>
-          <Link href="/">
-            <a>Compañia</a>
-          </Link>
-          <Link href="/">
-            <a>Blog</a>
           </Link>
         </div>
         <div className="block md:hidden">
@@ -38,22 +28,23 @@ const HeaderWeb = React.memo(() => {
           <Link href="/">
             <a>Login</a>
           </Link>
-          <button className="btn btn-outline-primary text-white px-10">
+          <button className="btn btn-outline-primary px-10 text-black">
             <a target="blank" href="https://wa.link/yagfmk">
               <BsWhatsapp className="inline mr-2" />
               Hablar con un asesor
             </a>
           </button>
           <button className="btn btn-primary">
-            <Link target="blank" href="/auth/register">
-              <a>Unirme ahora</a>
+            <Link href="/auth/login">
+              <a target="blank">Login</a>
             </Link>
           </button>
         </div>
       </div>
     </nav>
   );
-});
+};
 
-HeaderWeb.displayName = HeaderWeb;
-export { HeaderWeb };
+// HeaderAuth.displayName = HeaderAuth;
+const HeaderAuth = memo(memoHeaderAuth);
+export default HeaderAuth;

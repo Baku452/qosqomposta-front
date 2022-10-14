@@ -1,9 +1,11 @@
+import { useAuthUser, withAuthUser } from 'next-firebase-auth';
 import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
 import { BannerLanding, OurServices, DescriptionWeb } from '../components';
 
-export default function Home() {
+function Home() {
+  const user = useAuthUser();
   return (
     <>
       <Head>
@@ -21,3 +23,5 @@ export default function Home() {
     </>
   );
 }
+
+export default withAuthUser()(Home);
