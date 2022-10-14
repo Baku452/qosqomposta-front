@@ -26,7 +26,17 @@ h3 {
 }
 .btn-primary {
   @apply bg-yellowQ text-black hover:bg-white hover:text-black;
+  width: fit-content;
+  padding: 10px;
+  font-weight: bolder;
+  border-radius: 10px;
 }
+.btn-primary:hover {
+  transition: 0.2s ease;
+  transform: scale(1.05);
+  border: 1px solid black;
+}
+
 .btn-secondary {
   @apply bg-black text-white hover:bg-white hover:text-black;
 }

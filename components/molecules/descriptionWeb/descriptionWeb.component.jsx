@@ -3,7 +3,7 @@ const DescriptionWeb = () => {
     <>
       <section className="bg-gray-200 py-24 px-6">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="text-6xl">
+          <h2 className="text-xl lg:text-6xl">
             Junta los residuos orgánicos y nosotros lo{' '}
             <span className="text-yellowQ">compostamos</span>
           </h2>
