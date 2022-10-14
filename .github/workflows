@@ -2,16 +2,27 @@ name: GitHub Actions Qosqomposta
 
 on: [push]
 jobs:
-  DEV:
-    runs-on: ubuntu-latest
-    environment: development
+    DEV:
+        runs-on: ubuntu-latest
+        environment: development
+        steps:
+            - uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: Install Dependencies
+              run: yarn Install
+            - name: Lint
+              run: npm run eslint
 
-  QA:
-    runs-on: ubuntu-latest
-    environment: QA
-    needs: DEV
+    QA:
+        runs-on: ubuntu-latest
+        environment: QA
+        needs: DEV
 
-  PROD:
-    runs-on: ubuntu-latest
-    environment: Production
-    needs: development
+    PROD:
+        runs-on: ubuntu-latest
+        environment: Production
+        needs: development
