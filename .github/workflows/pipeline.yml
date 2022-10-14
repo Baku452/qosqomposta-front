@@ -36,7 +36,7 @@ jobs:
   PROD:
     runs-on: ubuntu-latest
     environment: Production
-    needs: development
+    needs: DEV
     steps:
       - uses: actions/checkout@v3
         with:
