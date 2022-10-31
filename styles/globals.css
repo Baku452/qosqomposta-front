@@ -19,6 +19,10 @@ h3 {
   font-family: 'eveleth', sans-serif;
 }
 
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
 /* Global styles fot the site ! */
 
 .btn {

@@ -4,7 +4,10 @@ import { Html, Head, Main, NextScript } from 'next/document';
 export default function Document() {
   return (
     <Html lang="es">
-      <Head />
+      <Head>
+        <link href="https://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
+        <link href="https://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
+      </Head>
       <body>
         <noscript
           dangerouslySetInnerHTML={{

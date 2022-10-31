@@ -6,7 +6,7 @@ const AuthLayout = ({ children }) => {
     <>
       <div className="flex flex-col justify-between h-screen">
         <AuthHeader />
-        <main className="p-5 min-h-screen">{children}</main>
+        <main className="p-5">{children}</main>
         <FooterWeb />
       </div>
     </>
