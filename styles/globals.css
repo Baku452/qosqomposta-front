@@ -8,9 +8,14 @@ body {
   font-family: 'isidora', sans-serif;
 }
 
+/* Global HTML elements styles */
+
 a {
-  /* color: #fff; */
+  @apply border-b-transparent border-b-2 hover:border-b-yellowQ;
   text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.2s ease;
 }
 
 h1,
@@ -23,7 +28,16 @@ h1 {
   font-size: 3rem;
   font-weight: bold;
 }
-/* Global styles fot the site ! */
+
+input {
+  padding: 0.5rem;
+  outline-color: #f2be12;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  display: block;
+}
+
+/* Global classname styles fot the site ! */
 
 .btn {
   width: fit-content;
@@ -64,8 +78,4 @@ h1 {
 }
 .title {
   @apply font-bold;
-}
-
-.yellowText {
-  @apply text-yellowQ;
 }

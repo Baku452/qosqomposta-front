@@ -1,8 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import styles from './LoginForm.module.scss';
 
-const LoginForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -11,11 +10,10 @@ const LoginForm: React.FC = () => {
   } = useForm();
   const onSubmit = data => console.log(data);
   console.log(watch('example'));
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className={`rounded-xl shadow-lg m-auto w-3/6 flex p-5 ${styles.formLogin}`}
+      className="rounded-xl shadow-xl m-auto w-3/6 flex p-5"
     >
       <input defaultValue="test" {...register('example')} />
       <input {...register('exampleRequired', { required: true })} />
@@ -26,4 +24,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
