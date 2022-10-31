@@ -1,8 +1,16 @@
 import '../styles/globals.css';
-import LayoutWeb from '../layouts/web.layout';
 import Script from 'next/script';
+import AuthLayout from '../layouts/auth.layout';
+import LayoutWeb from '../layouts/web.layout';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, router }) {
+  if (router.pathname.startsWith('/auth/')) {
+    return (
+      <AuthLayout>
+        <Component {...pageProps} />
+      </AuthLayout>
+    );
+  }
   return (
     <LayoutWeb>
       <Script

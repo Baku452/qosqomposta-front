@@ -35,7 +35,7 @@ const HeaderWeb = React.memo(() => {
               target="blank"
               href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
             >
-              Únete Ya !
+              Ingresar
             </a>
           </button>
         </div>
