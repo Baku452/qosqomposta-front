@@ -23,21 +23,25 @@ const HeaderWeb = React.memo(() => {
         <div className="block md:hidden">
           <GiHamburgerMenu size={30} color="white" />
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:flex">
           <button className="text-white px-10">
             <a target="blank" href="https://wa.link/yagfmk">
               <BsWhatsapp className="inline mr-2" />
               Comúnicate con nosotros !
             </a>
           </button>
-          <button className="btn-primary">
-            <a
-              target="blank"
-              href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
-            >
-              Ingresar
-            </a>
-          </button>
+          <div className="">
+            <button className="nav-links mr-4">
+              <Link href="/auth/login">
+                <a>Ingresar</a>
+              </Link>
+            </button>
+            <button className="btn-primary">
+              <Link href="auth/register">
+                <a>Registrate</a>
+              </Link>
+            </button>
+          </div>
         </div>
       </div>
     </nav>

@@ -22,28 +22,42 @@ h3 {
 /* Global styles fot the site ! */
 
 .btn {
-  @apply w-fit rounded-full py-3 px-5 uppercase  text-lg font-bold cursor-pointer tracking-wider;
-}
-.btn-primary {
-  @apply bg-yellowQ text-black hover:bg-white hover:text-black;
   width: fit-content;
-  padding: 10px;
-  font-weight: bolder;
+  padding: 14px 25px;
+  font-weight: bold;
   border-radius: 10px;
-}
-.btn-primary:hover {
   transition: 0.2s ease;
-  transform: scale(1.05);
-  border: 1px solid black;
+  font-size: 18px;
+}
+
+.btn-primary {
+  @apply btn bg-yellowQ text-black;
+}
+
+.btn-primary:hover {
+  transform: translatey(-2px);
+}
+
+.btn-outline {
+  @apply btn border-yellowQ border-2 text-white bg-transparent;
+}
+
+.btn-outline:hover {
+  @apply bg-yellowQ text-black;
 }
 
 .btn-secondary {
-  @apply bg-black text-white hover:bg-white hover:text-black;
+  @apply btn bg-transparent text-white hover:bg-white hover:text-black;
 }
 .btn-dark {
   @apply bg-black text-white hover:bg-white hover:text-black;
 }
 
+.nav-links {
+  @apply border-b-transparent border-b-4 hover:border-b-yellowQ text-white;
+  padding: 10px;
+  transition: border 0.3s ease;
+}
 .title {
   @apply font-bold;
 }
