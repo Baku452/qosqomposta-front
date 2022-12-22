@@ -25,7 +25,11 @@ const HeaderWeb = React.memo(() => {
         </div>
         <div className="hidden md:flex">
           <button className="text-white px-10">
-            <a target="blank" href="https://wa.link/yagfmk">
+            <a
+              className="border-none hover:border-none"
+              target="blank"
+              href="https://wa.link/yagfmk"
+            >
               <BsWhatsapp className="inline mr-2" />
               Comúnicate con nosotros !
             </a>
@@ -33,7 +37,7 @@ const HeaderWeb = React.memo(() => {
           <div className="">
             <button className="nav-links mr-4">
               <Link href="/auth/login">
-                <a>Ingresar</a>
+                <a className="border-none hover:border-none">Ingresar</a>
               </Link>
             </button>
             <button className="btn-primary">

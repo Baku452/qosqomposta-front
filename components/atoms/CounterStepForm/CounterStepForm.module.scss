@@ -1,0 +1,71 @@
+.containerDots {
+  display: flex;
+  width: 25rem;
+  justify-content: space-between;
+  // overflow: hidden;
+  margin: auto;
+  .containerSingleDot {
+    text-align: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    p {
+      font-size: 13px;
+      font-weight: bold;
+    }
+    &:first-of-type {
+      .dotActive,
+      .dotUnactive :first-child {
+        &::after {
+          display: none !important;
+        }
+      }
+    }
+  }
+  .dotActive,
+  .dotUnactive {
+    box-sizing: content-box;
+    padding: 10px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    @apply border-yellowQ border-2;
+    &::after {
+      content: '';
+      @apply bg-gray-300;
+      width: 150px;
+      height: 3px;
+      position: absolute;
+      right: 5px;
+      top: 20px;
+      z-index: -1;
+    }
+    // &:first-of-type {
+    //   &::after {
+    //     display: none;
+    //   }
+    // }
+  }
+
+  .dotActive {
+    @apply bg-yellowQ text-white;
+
+    &::after {
+      @apply bg-yellowQ;
+    }
+  }
+  .dotUnactive {
+    @apply text-black bg-white;
+  }
+}

@@ -30,11 +30,14 @@ h1 {
 }
 
 input {
-  padding: 0.5rem;
+  padding: 0.7rem;
   outline-color: #f2be12;
   border-radius: 10px;
   transition: 0.2s ease;
   display: block;
+  border: 2px solid #868686;
+  max-width: 900px;
+  min-width: 400px;
 }
 
 /* Global classname styles fot the site ! */
