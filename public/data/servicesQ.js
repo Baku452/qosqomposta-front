@@ -23,7 +23,7 @@ export const ServicesQB2C = [
     id: 3,
     title: 'Reciclables y Ecoladrillos',
     price: 0,
-    description: '*Pago único de 50 en caso se requiera recojo',
+    description: '*Pago único de S/.50 en caso se requiera recojo',
     included: ['*Sólo para recojo', '*Saquillos Q', '*Parante Q'],
   },
 ];

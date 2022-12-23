@@ -49,11 +49,14 @@ const OurServices = () => {
                           </ul>
                         ) : null}
                       </div>
-                      <button
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
-                        className="w-full block self-center btn btn-primary mx-auto text-center"
-                      >
-                        Inscribete
+                      <button className="w-full block self-center btn btn-primary mx-auto text-center">
+                        <a
+                          target="_blank"
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
+                          rel="noreferrer"
+                        >
+                          Inscribete
+                        </a>
                       </button>
                     </div>
                   </div>
