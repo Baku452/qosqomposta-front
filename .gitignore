@@ -37,3 +37,6 @@ yarn-error.log*
 
 .vscode
 .vercel
+
+# Yarn
+.yarn.lock
