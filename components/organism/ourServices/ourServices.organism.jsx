@@ -2,6 +2,7 @@ import { ServicesQB2C, ServicesQB2B } from 'public/data/servicesQ';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { MdOutlineAddBusiness } from 'react-icons/md';
 import Image from 'next/image';
+import styles from './ourServices.styles.module.scss';
 
 const OurServices = () => {
   return (
@@ -13,7 +14,9 @@ const OurServices = () => {
           </h2>
           <div className="h-1 mx-auto bg-yellowQ w-24 mb-10 mt-4 rounded"></div>
           <div className="max-w-full md:max-w-6xl mx-auto my-3 md:px-8">
-            <div className="flex flex-col lg:flex-row justify-center items-center max-w-full md:max-w-6xl my-3 md:px-8">
+            <div
+              className={`${styles.serviceQosqomposta} flex flex-col lg:flex-row justify-center items-center max-w-full md:max-w-6xl my-3 md:px-8`}
+            >
               {ServicesQB2C &&
                 ServicesQB2C.map(item => (
                   <div
@@ -29,11 +32,12 @@ const OurServices = () => {
                       <div className="text-center pb-5">
                         <h3 className="font-bold uppercase text-lg mb-4">{item.title}</h3>
                         <p className={`${item.featured ? 'text-2xl' : ''} text-gray-500`}>
-                          {item.price !== 0 ? `Desde S/." ${item.price}` : 'Gratis'}
+                          {item.price !== 0 ? `S/. ${item.price}` : 'Gratis'}
                         </p>
                       </div>
                       <div className="pb-10">
                         <p>{item.description}</p>
+                        <h4 className="font-bold pt-4 pb-3">Incluye</h4>
                         {item.included ? (
                           <ul>
                             {item.included.map(object => (
@@ -45,11 +49,14 @@ const OurServices = () => {
                           </ul>
                         ) : null}
                       </div>
-                      <button
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
-                        className="w-full block self-center btn btn-primary mx-auto text-center"
-                      >
-                        Inscribete
+                      <button className="w-full block self-center btn btn-primary mx-auto text-center">
+                        <a
+                          target="_blank"
+                          href="https://docs.google.com/forms/d/e/1FAIpQLSdqooaViePpe84wgvXvs2zYubLUz5MaAoQWldChauBwvs9RHg/viewform"
+                          rel="noreferrer"
+                        >
+                          Inscribete
+                        </a>
                       </button>
                     </div>
                   </div>
