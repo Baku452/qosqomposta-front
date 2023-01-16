@@ -1,7 +1,9 @@
+import { DescriptionWeb } from '@/components/molecules/descriptionWeb/descriptionWeb';
+import BannerLanding from '@/components/organism/landingBanner/bannerLanding';
+import { OurServices } from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
-import { BannerLanding, OurServices, DescriptionWeb } from '../components';
 
 export default function Home() {
   return (

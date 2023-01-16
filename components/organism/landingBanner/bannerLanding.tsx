@@ -23,4 +23,4 @@ const BannerLanding = () => {
   );
 };
 
-export { BannerLanding };
+export default BannerLanding;

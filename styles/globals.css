@@ -11,6 +11,13 @@ body {
 a {
   /* color: #fff; */
   text-decoration: none;
+  border-bottom: 2px solid;
+  @apply border-transparent;
+  transition: 0.3s ease;
+}
+
+a:hover {
+  @apply border-yellowQ;
 }
 
 h1,
@@ -22,19 +29,18 @@ h3 {
 /* Global styles fot the site ! */
 
 .btn {
-  @apply w-fit rounded-full py-3 px-5 uppercase  text-lg font-bold cursor-pointer tracking-wider;
+  @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
 }
 .btn-primary {
   @apply bg-yellowQ text-black hover:bg-white hover:text-black;
   width: fit-content;
-  padding: 10px;
   font-weight: bolder;
   border-radius: 10px;
+  border: 1px solid transparent;
+  transition: 0.2s ease;
 }
 .btn-primary:hover {
-  transition: 0.2s ease;
-  transform: scale(1.05);
-  border: 1px solid black;
+  border-color: black;
 }
 
 .btn-secondary {

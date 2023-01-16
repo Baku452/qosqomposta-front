@@ -52,4 +52,4 @@ const FooterWeb = () => {
   );
 };
 
-export { FooterWeb };
+export default FooterWeb;
