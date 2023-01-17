@@ -1,6 +1,6 @@
 import DescriptionWeb from '@/components/molecules/DescriptionWeb/DescriptionWeb';
 import BannerLanding from '@/components/organism/landingBanner/bannerLanding';
-import { OurServices } from '@/components/organism/ourServices/OurServices';
+import OurServices from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';

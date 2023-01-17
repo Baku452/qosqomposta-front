@@ -5,8 +5,8 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const PlanComercial: React.FC = () => {
   return (
-    <section className="flex items-center m-auto justify-between rounded-3xl bg-gray-100 overflow-auto mb-14">
-      <div className="p-5">
+    <section className="flex items-center m-auto rounded-3xl bg-gray-100 overflow-auto mb-14">
+      <div className="p-5 px-16 basis-1/2">
         <h3 className="text-xl mb-7">{PLAN_COMERCIAL.title}</h3>
         <ul>
           {PLAN_COMERCIAL.itemsIncludes.map(item => (

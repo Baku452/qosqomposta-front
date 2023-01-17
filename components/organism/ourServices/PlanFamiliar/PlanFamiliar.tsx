@@ -5,14 +5,14 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 const PlanFamiliar: React.FC = () => {
   return (
-    <section className="flex items-center m-auto justify-between rounded-3xl bg-gray-100 overflow-auto mb-14">
+    <section className="flex items-center m-auto rounded-3xl bg-gray-100 overflow-auto mb-14">
       <Image
         width={643}
         height={425}
         src={PLAN_FAMILIAR_IMAGE}
         alt={PLAN_FAMILIAR.title}
       />
-      <div className="p-5">
+      <div className="p-5 px-16 basis-1/2">
         <h3 className="text-xl mb-7">{PLAN_FAMILIAR.title}</h3>
         <ul>
           {PLAN_FAMILIAR.itemsIncludes.map(item => (

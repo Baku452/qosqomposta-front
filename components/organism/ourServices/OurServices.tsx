@@ -18,4 +18,4 @@ const OurServices = () => {
   );
 };
 
-export { OurServices };
+export default OurServices;

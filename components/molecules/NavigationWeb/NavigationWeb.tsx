@@ -33,7 +33,9 @@ const NavigationWeb: React.FC<NavigationWebProps> = ({ items }) => {
           </li>
         ))}
         <li>
-          <button className="btn btn-primary">Únete Ya</button>
+          <button className="btn btn-primary">
+            <Link href={'/'}>Únete Ya</Link>
+          </button>
         </li>
       </ul>
     </nav>

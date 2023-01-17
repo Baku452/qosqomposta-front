@@ -14,10 +14,10 @@ const DescriptionWeb: React.FC = () => {
           el compostaje y nuestro más moderno servicio de taller de compostaje
         </p>
       </section>
-      <section className=" bg-gray-200 container py-2">
+      <section className=" bg-gray-200 w-full py-2">
         <div className="container max-w-6xl mx-auto">
           <h2 className="text-4xl py-10">
-            Por un 2022 lleno de
+            Por un {new Date().getFullYear()} lleno de
             <span className="text-yellowQ"> compost !</span>
           </h2>
           <div className="flex flex-col lg:flex-row justify-between">
