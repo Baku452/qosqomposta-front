@@ -1,3 +1,4 @@
+import { WEB_BANNER_URL } from 'main.config';
 import Image from 'next/image';
 
 const BannerLanding = () => {
@@ -16,7 +17,7 @@ const BannerLanding = () => {
           className="-z-50 backdrop-opacity-70 object-cover w-auto h-full"
           layout="fill"
           alt="bannerQosqomposta"
-          src="https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1658122032/web-home/bannerQ_qtis30.jpg"
+          src={WEB_BANNER_URL}
         />
       </div>
     </div>
