@@ -1,0 +1,17 @@
+name: GitHub Actions Qosqomposta
+
+on: [push]
+jobs:
+  DEV:
+    runs-on: ubuntu-latest
+    environment: development
+
+  QA:
+    runs-on: ubuntu-latest
+    environment: QA
+    needs: DEV
+
+  PROD:
+    runs-on: ubuntu-latest
+    environment: Production
+    needs: development
