@@ -1,4 +1,74 @@
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
+
 const DescriptionWeb: React.FC = () => {
+  interface Counter {
+    id: string;
+    count: number;
+    interval: number;
+    visible: boolean;
+    maxValue: number;
+  }
+  const [counters, setCounters] = useState<Counter[]>([
+    { id: 'counterHouse', count: 0, interval: 100, visible: false, maxValue: 190 },
+  ]);
+
+  const intervalIdsRef = useRef<NodeJS.Timeout[]>([]);
+  const refs = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setCounters(counters =>
+            counters.map(counter => {
+              if (counter.id === entry.target.id) {
+                return { ...counter, visible: true };
+              }
+              return counter;
+            }),
+          );
+        } else {
+          setCounters(counters =>
+            counters.map(counter => {
+              if (counter.id === entry.target.id) {
+                return { ...counter, visible: false };
+              }
+              return counter;
+            }),
+          );
+        }
+      });
+    });
+
+    refs.current.forEach(ref => observer.observe(ref));
+
+    return () => {
+      refs.current.forEach(ref => observer.unobserve(ref));
+    };
+  }, []);
+
+  useEffect(() => {
+    counters
+      .filter(counter => counter.visible)
+      .forEach(counter => {
+        const intervalId = setInterval(() => {
+          if (counter.count < counter.maxValue) {
+            setCounters(counters =>
+              counters.map(c => {
+                if (c.id === counter.id && c.count < c.maxValue) {
+                  return { ...c, count: c.count + 1 };
+                }
+                return c;
+              }),
+            );
+          } else {
+            clearInterval(intervalId);
+          }
+        }, counter.interval);
+        intervalIdsRef.current.push(intervalId);
+      });
+  }, [counters]);
   return (
     <>
       <section className="container max-w-6xl mx-auto py-20">
@@ -22,20 +92,50 @@ const DescriptionWeb: React.FC = () => {
           </h2>
           <div className="flex flex-col lg:flex-row justify-between">
             <div className="text-center pb-5">
-              <h3 className="font-['eveleth'] text-2xl lg:text-6xl text-brownQ">
-                35 838 KG{' '}
+              <Image
+                width={56}
+                height={58}
+                alt="Logo Qosqomposta"
+                src="/icons/plant-fill.svg"
+              />
+              <h3
+                id="counterKG"
+                className="font-['eveleth'] text-2xl lg:text-4xl text-brownQ"
+              >
+                35838 KG{' '}
               </h3>
               <h4 className="text-lg lg:text-2xl pt-2 lg:pt-5">
                 De residuos orgánicos netos para compostar
               </h4>
             </div>
             <div className="text-center pb-5">
-              <h3 className="font-['eveleth'] text-2xl lg:text-6xl text-brownQ">+190</h3>
+              <Image
+                width={56}
+                height={58}
+                alt="Logo Qosqomposta"
+                src="/icons/house-account.svg"
+              />
+              <h3
+                id="counterHouse"
+                className="font-['eveleth'] text-2xl lg:text-4xl text-brownQ"
+                ref={el => (refs.current[0] = el)}
+              >
+                +{counters[0].count}
+              </h3>
               <h4 className="text-lg lg:text-2xl pt-2 lg:pt-5">Familias composteras</h4>
             </div>
             <div className="text-center pb-5">
-              <h3 className="font-['eveleth'] text-2xl lg:text-6xl text-brownQ">
-                +2 años
+              <Image
+                width={56}
+                height={58}
+                alt="Logo Qosqomposta"
+                src="/icons/mountain.svg"
+              />
+              <h3
+                id="counterYears"
+                className="font-['eveleth'] text-2xl lg:text-4xl text-brownQ"
+              >
+                +{new Date().getFullYear() - 2020} años
               </h3>
               <h4 className="text-lg lg:text-2xl pt-2 lg:pt-5">
                 haciendo un Cusco sostenible

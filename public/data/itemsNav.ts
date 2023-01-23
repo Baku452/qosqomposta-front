@@ -9,7 +9,7 @@ export const ITEMS_NAV: ItemsNav[] = [
     link: '/servicios',
     options: [
       {
-        label: 'Personal',
+        label: 'Personal o Familiar',
         link: '/servicios/personal',
       },
       {
