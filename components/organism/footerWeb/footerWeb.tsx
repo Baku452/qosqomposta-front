@@ -46,10 +46,10 @@ const FooterWeb = () => {
         </div>
       </div>
       <p className="flex-end text-center">
-        © 2022 Qosqomposta. Todos los derechos reservados
+        © {new Date().getFullYear()} Qosqomposta. Todos los derechos reservados
       </p>
     </footer>
   );
 };
 
-export { FooterWeb };
+export default FooterWeb;

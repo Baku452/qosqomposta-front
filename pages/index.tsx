@@ -1,11 +1,11 @@
-import { useAuthUser, withAuthUser } from 'next-firebase-auth';
+import DescriptionWeb from '@/components/molecules/DescriptionWeb/DescriptionWeb';
+import BannerLanding from '@/components/organism/landingBanner/bannerLanding';
+import OurServices from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
-import { BannerLanding, OurServices, DescriptionWeb } from '../components';
 
 function Home() {
-  const user = useAuthUser();
   return (
     <>
       <Head>
@@ -24,4 +24,4 @@ function Home() {
   );
 }
 
-export default withAuthUser()(Home);
+export default (Home);
