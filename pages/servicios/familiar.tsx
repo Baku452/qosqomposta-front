@@ -7,11 +7,11 @@ import TalleresSectionHome from '@/components/organism/TalleresSectionHome/Talle
 import Image from 'next/image';
 import { BANNER_PLAN_FAMILIAR } from 'main.config';
 
-const Home = () => {
+const Familiar = () => {
     return (
         <>
             <Head>
-                <title>Planes Personales o Familiares | Qosqomposta</title>
+                <title>Planes Familiares | Qosqomposta</title>
                 <meta name="description" content="Planes Individuales de Qosqomposta" />
             </Head>
             <div className="flex w-full justify-between">
@@ -27,8 +27,17 @@ const Home = () => {
                     src={BANNER_PLAN_FAMILIAR}
                 />
             </div>
+            <section className="container m-auto py-20 text'">
+                <p>
+                    Gracias por unirte al{' '}
+                    <span className="text-yellowQ">MOVIMIENTO QOMPOSTERO</span>
+                    por un Cusco sostenible. ¡Nuestro equipo convierte lo que antes
+                    botabas, en un alimento para la tierra! Lee todas las opciones que
+                    tenemos para ti y tu familia.
+                </p>
+            </section>
         </>
     );
 };
 
-export default Home;
+export default Familiar;

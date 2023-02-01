@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 
 import { NavigationWeb } from '@/components/molecules/NavigationWeb/NavigationWeb';
 import { ITEMS_NAV } from 'public/data/itemsNav';
@@ -11,7 +11,7 @@ const HeaderWeb = () => {
         <nav className="bg-white sticky w-full px-0 md:px-20 top-0 z-50 shadow-md">
             <div className="flex justify-between w-full md:max-w-7xl m-auto items-center">
                 <Link href="/">
-                    <a>
+                    <a className="border-none">
                         <Image
                             width={345}
                             height={80}

@@ -6,15 +6,15 @@ export interface ItemsNav {
 export const ITEMS_NAV: ItemsNav[] = [
     {
         label: 'Servicios',
-        link: '/planes',
+        link: '/servicios',
         options: [
             {
                 label: 'Familiar',
-                link: '/planes/familiar',
+                link: '/servicios/familiar',
             },
             {
                 label: 'Barrio o Comercial',
-                link: '/planes/comercial',
+                link: '/servicios/comercial',
             },
         ],
     },
