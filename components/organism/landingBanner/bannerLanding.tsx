@@ -6,9 +6,9 @@ const BannerLanding = () => {
     return (
         <div className="relative">
             <div className="h-[calc(100vh_-_19rem)]">
-                <div className="font-bold z-30 px-5 md:px-20 py-20 xl:py-24 mx-auto inset-x-0 absolute text-white">
+                <div className="font-bold z-30 px-5 md:px-20 mx-auto inset-x-0 absolute text-white h-full flex items-center flex-row justify-center">
                     <div className="w-100 text-center">
-                        <h1 className="uppercase text-4xl lg:text-5xl xl:text-7xl py-5 lg:py-8">
+                        <h1 className="uppercase text-4xl lg:text-5xl xl:text-7xl">
                             <span className="text-yellowQ">Qosqomposta</span> <br />
                             <span className="text-2xl">Por un Cusco sostenible</span>
                         </h1>
