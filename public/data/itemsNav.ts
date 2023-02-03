@@ -1,3 +1,12 @@
+import {
+    ABOUT_US_PATH,
+    BLOG_PATH,
+    SERVICES_PATH,
+    SERVICE_COMERCIAL_PATH,
+    SERVICE_FAMILIAR_PATH,
+    TALLERES_PATH,
+} from 'routes.config';
+
 export interface ItemsNav {
     label: string;
     link: string;
@@ -6,28 +15,28 @@ export interface ItemsNav {
 export const ITEMS_NAV: ItemsNav[] = [
     {
         label: 'Servicios',
-        link: '/servicios',
+        link: SERVICES_PATH,
         options: [
             {
                 label: 'Familiar',
-                link: '/servicios/familiar',
+                link: SERVICE_FAMILIAR_PATH,
             },
             {
                 label: 'Barrio o Comercial',
-                link: '/servicios/comercial',
+                link: SERVICE_COMERCIAL_PATH,
             },
         ],
     },
     {
         label: 'Talleres',
-        link: '/talleres',
+        link: TALLERES_PATH,
     },
     {
         label: 'Blog',
-        link: '/blog',
+        link: BLOG_PATH,
     },
     {
         label: 'Sobre Nosotros',
-        link: '/sobre-nosotros',
+        link: ABOUT_US_PATH,
     },
 ];

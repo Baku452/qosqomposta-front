@@ -13,11 +13,12 @@ const DescriptionWeb: React.FC = () => {
         { id: 'counterHouse', count: 0, interval: 100, visible: false, maxValue: 190 },
     ]);
 
+    const observerRef = useRef(null);
     const intervalIdsRef = useRef<NodeJS.Timeout[]>([]);
     const refs = useRef([]);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(entries => {
+        observerRef.current = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     setCounters(counters =>
@@ -41,10 +42,10 @@ const DescriptionWeb: React.FC = () => {
             });
         });
 
-        refs.current.forEach(ref => observer.observe(ref));
-
+        refs.current.forEach(ref => observerRef.current.observe(ref));
+        const currentRefs = refs.current;
         return () => {
-            refs.current.forEach(ref => observer.unobserve(ref));
+            observerRef.current.disconnect();
         };
     }, []);
 

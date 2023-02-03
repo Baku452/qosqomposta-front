@@ -22,10 +22,12 @@ const Familiar = () => {
                     src={BANNER_PLAN_FAMILIAR}
                 />
             </div>
-            <section className="container m-auto py-20 text'">
-                <p>
+            <section className="container m-auto py-20 text-xl">
+                <p className="px-5 text-center">
                     Gracias por unirte al{' '}
-                    <span className="text-yellowQ">MOVIMIENTO QOMPOSTERO</span>
+                    <span className="text-yellowQ font-semibold">
+                        MOVIMIENTO QOMPOSTERO
+                    </span>{' '}
                     por un Cusco sostenible. ¡Nuestro equipo convierte lo que antes
                     botabas, en un alimento para la tierra! Lee todas las opciones que
                     tenemos para ti y tu familia.
