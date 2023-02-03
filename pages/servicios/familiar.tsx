@@ -1,9 +1,4 @@
-import DescriptionWeb from '@/components/molecules/DescriptionWeb/DescriptionWeb';
-import BannerLanding from '@/components/organism/landingBanner/bannerLanding';
-import OurServices from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
-import 'normalize.css/normalize.css';
-import TalleresSectionHome from '@/components/organism/TalleresSectionHome/TalleresSectionHome';
 import Image from 'next/image';
 import { BANNER_PLAN_FAMILIAR } from 'main.config';
 

@@ -51,3 +51,6 @@ export const PLAN_COMERCIAL: PLANS_HOME = {
 export const TITLE_BLOG_HOME = 'Conoce Nuestros Talleres Q';
 export const BANNER_PLAN_FAMILIAR =
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1674527487/web-home/banner_plan_familiar_lwxxkp.jpg';
+
+export const BANNER_TALLER_HOME =
+    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1675386717/web-home/Collage_foto_taller_qppwhg.jpg';
