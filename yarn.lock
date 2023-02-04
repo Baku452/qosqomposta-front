@@ -989,7 +989,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.12.5", "@babel/runtime@^7.18.9", "@babel/runtime@^7.9.2":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.9.2":
   version "7.18.9"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.18.9.tgz#b4fcfce55db3d2e5e080d2490f608a3b9f407f4a"
   integrity sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==
@@ -3980,12 +3980,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-firebase-auth@^1.0.0-canary.13:
-  version "1.0.0-canary.13"
-  resolved "https://registry.yarnpkg.com/next-firebase-auth/-/next-firebase-auth-1.0.0-canary.13.tgz#b1f42fa3d9142f65bb06d5686ca199b33edf0930"
-  integrity sha512-R9Uboci5cCoe1UdaiZ3X3lwdBKNwKdfLaxyGKcWi74S8yUWiDihX0l8JkqufXgMJ4qMF5gkYPzlSskaqPRWfyA==
+next-firebase-auth@^0.15.0:
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/next-firebase-auth/-/next-firebase-auth-0.15.0.tgz#ab71e4f19586f92f90898385f11d00c23e363181"
+  integrity sha512-N7/HLXCgu2D8vOI5RzQ0qsGoA+0aiX73pBr05srBphapPzlxW6+B9FZrtqSce51XrB5YAE+iLBNugI+T5aNN3w==
   dependencies:
-    "@babel/runtime" "^7.18.9"
     cookies "^0.8.0"
     hoist-non-react-statics "^3.3.2"
 
