@@ -54,3 +54,7 @@ export const BANNER_PLAN_FAMILIAR =
 
 export const BANNER_TALLER_HOME =
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1675386717/web-home/Collage_foto_taller_qppwhg.jpg';
+
+export const QOSQOMPOSTA_FACEBOOK_URL = 'https://www.facebook.com/Qosqomposta';
+export const QOSQOMPOSTA_INSTAGRAM_URL = 'https://www.instagram.com/qosqomposta/';
+export const QOSQOMPOSTA_WHATSAPP_URL = 'wa.link/0pqt7s';
