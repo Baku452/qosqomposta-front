@@ -30,7 +30,7 @@ const Familiar = () => {
                     </span>{' '}
                     por un Cusco sostenible. ¡Nuestro equipo convierte lo que antes
                     botabas, en un alimento para la tierra! Lee todas las opciones que
-                    tenemos para ti y tu familia.
+                    tenemos para ti y tu familia
                 </p>
             </section>
             <section></section>
