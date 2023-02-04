@@ -1,0 +1,12 @@
+.counter {
+  animation: counting 2s linear infinite;
+}
+
+@keyframes counting {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
