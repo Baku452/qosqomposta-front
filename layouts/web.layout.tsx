@@ -1,4 +1,4 @@
-import FooterWeb from '@/organism/footerWeb/FooterWeb';
+import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import HeaderWeb from '@/components/organism/headerWeb/HeaderWeb';
 
 const LayoutWeb = ({ children }) => {

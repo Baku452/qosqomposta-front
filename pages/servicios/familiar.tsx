@@ -33,6 +33,7 @@ const Familiar = () => {
                     tenemos para ti y tu familia.
                 </p>
             </section>
+            <section></section>
         </>
     );
 };
