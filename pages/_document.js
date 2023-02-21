@@ -6,7 +6,7 @@ export default function Document() {
         <Html lang="es">
             <Head>
                 <link href="https://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
-                <link href="https://fonts.cdnfonts.com/css/isidora" rel="stylesheet" />
+                <link href="https://fonts.cdnfonts.com/css/c" rel="stylesheet" />
             </Head>
             <body>
                 <noscript

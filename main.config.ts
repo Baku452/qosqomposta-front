@@ -58,3 +58,8 @@ export const BANNER_TALLER_HOME =
 export const QOSQOMPOSTA_FACEBOOK_URL = 'https://www.facebook.com/Qosqomposta';
 export const QOSQOMPOSTA_INSTAGRAM_URL = 'https://www.instagram.com/qosqomposta/';
 export const QOSQOMPOSTA_WHATSAPP_URL = 'wa.link/0pqt7s';
+
+// Services CTA
+export const RECOLECCION_RESIDUOS_ORGANICOS_CTA = '/';
+
+export const COSTO_RECOJO_RECICLABLES_ECOLADRILLOS = 50;

@@ -4,17 +4,20 @@ import { MdArrowForwardIos } from 'react-icons/md';
 import styles from './Accordion.module.scss';
 
 interface Props {
+    defaultOpen?: boolean;
     title: string;
     children: React.ReactNode;
 }
 
-const Accordion: React.FC<Props> = ({ title, children }) => {
-    const [show, setShow] = useState(false);
+const Accordion: React.FC<Props> = ({ defaultOpen = false, title, children }) => {
+    const [show, setShow] = useState(defaultOpen);
     const contentEl = useRef<HTMLDivElement>();
     return (
         <div className={styles.accordion}>
             <button
-                className="bg-white text-gray-800 font-medium py-2 px-4 rounded-t"
+                className={`font-medium py-2 px-4 rounded-t transition-all duration-150 ${
+                    show ? 'bg-greenQ text-white' : 'bg-white text-greenQ'
+                }`}
                 onClick={() => setShow(!show)}
             >
                 <MdArrowForwardIos

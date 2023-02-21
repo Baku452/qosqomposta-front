@@ -1,20 +1,20 @@
 // Accordion.module.scss
 .accordion {
     overflow: hidden;
-    @apply shadow-2xl;
+    @apply shadow-lg;
     button {
-        @apply text-greenQ;
         font-weight: 600;
         padding: 0.5rem 1rem;
         border-radius: 0.25rem 0.25rem 0 0;
         display: flex;
+        width: 100%;
         h4 {
             margin-left: 1rem;
         }
-        transition: transform 0.5 ease;
+        transition: all 0.5 ease;
 
         svg {
-            transition: rotate 0.2s ease;
+            transition: all 0.2s ease;
         }
     }
     .arrowClosed {
@@ -36,5 +36,6 @@
     }
     .content {
         padding: 1rem;
+        background-color: #fff;
     }
 }

@@ -8,6 +8,20 @@
     font-weight: bold;
     font-style: bold;
 }
+@font-face {
+    font-family: 'Isidora';
+    src: url('/fonts/Isidora-Medium.otf') format('opentype');
+    font-weight: medium;
+    font-style: medium;
+}
+
+@font-face {
+    font-family: 'Isidora';
+    src: url('/fonts/Isidora-Semi-Bold.otf') format('opentype');
+    font-weight: 600;
+    font-style: 600;
+}
+
 a {
     text-decoration: none;
 }
@@ -20,6 +34,9 @@ a {
     h2,
     h3 {
         font-family: 'eveleth', sans-serif;
+    }
+    * {
+        line-height: 1.5;
     }
 }
 
