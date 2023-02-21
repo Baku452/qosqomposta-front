@@ -94,3 +94,8 @@ export const RECOJO_RECICLABLES_ACCORDION: AccordionItems[] = [
 
 export const RECOJO_RECICLABLES_ADVERTISE =
     '*Luego de tu inscripción, te enviaremos los residuos reciclables que aceptamos. Si no cumples con las instrucciones, lamentamos que no podremos aceptar tus residuos.';
+
+export const MICROQOMPOSTEROS_IMG =
+    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1676952379/servicios/microqompostero_ud20i2.png';
+
+export const LINK_TERMS_CONDITIONS = '/';

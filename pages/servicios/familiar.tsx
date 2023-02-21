@@ -7,6 +7,8 @@ import {
     ACOPIO_DE_RESIDUOS_CONTENT,
     ACOPIO_DE_RESIDUOS_IMG,
     ACOPIO_DE_RESIDUOS_TITLE,
+    LINK_TERMS_CONDITIONS,
+    MICROQOMPOSTEROS_IMG,
     RECOJO_RECICLABLES_ACCORDION,
     RECOJO_RECICLABLES_ADVERTISE,
     RECOJO_RECICLABLES_CONTENT,
@@ -20,6 +22,7 @@ import {
 import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
 import { ServiceSectionItem } from '@/types';
+import Link from 'next/link';
 
 const Familiar = () => {
     const sectionsToAppear: ServiceSectionItem[] = useMemo(
@@ -130,123 +133,36 @@ const Familiar = () => {
                     />
                 );
             })}
-            {/* <section
-                style={{
-                    opacity: elementVisibility[0] ? 1 : 0,
-                    transition: 'opacity 0.5s',
-                }}
-                ref={elementsRefs[0]}
-                className="container m-auto"
+            <section
+                id="Microqomposteros"
+                className="bg-greenQ mt-40 h-80 overflow-visible rounded-3xl flex max-w-7xl m-auto text-white relative"
             >
-                <div className="flex bg-gray-100 rounded-3xl p-5">
-                    <div className="basis-1/3 justify-start p-10">
-                        <Image
-                            width={420}
-                            height={501}
-                            alt="recoleccion residuos organicos"
-                            src={RECOLECCION_RESIDUOS_ORGANICOS_IMG}
-                        />
-                    </div>
-                    <div className="basis-2/3">
-                        <h2 className="text-greenQ text-3xl">
-                            Recolección de Residuos Orgánicos
-                        </h2>
-                        <p className="my-5">
-                            El servicio comienza cuando te entregamos el balde
-                            Qosqomposta. Tú juntas tus residuos orgánicos en este balde y
-                            nosotros lo recogemos de tu domicilio y te entregamos un nuevo
-                            balde limpio y listo para ser usado otra vez.
-                        </p>
-                        <div className="my-2">
-                            <Accordion title={HOURS_DATES_ACCORDION}>
-                                <span className="text-greenQ font-semibold">
-                                    Horarios: 7am - 1pm
-                                </span>
-                                <span className="text-greenQ font-semibold">
-                                    Días de recojo:
-                                </span>
-                                <br />
-                                JUEVES: San Blas, Centro Histórico VIERNES: Cercado,
-                                Santiago, Wanchaq Norte SABADO: San Sebastian, San
-                                Jeronimo, Wanchaq Sur
-                            </Accordion>
-                            <Accordion title={MONTHLY_COST_ACCORDION}>
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: MONTHLY_COST_ACCORDION_CONTENT,
-                                    }}
-                                />
-                            </Accordion>
-                            <Accordion title={ZERO_RESIDUE_ACCORDION}>
-                                {ZERO_RESIDUE_ACCORDION_CONTENT}
-                            </Accordion>
-                        </div>
-                        <button className="btn btn-primary block m-auto mt-8">
-                            <Link href={RECOLECCION_RESIDUOS_ORGANICOS_CTA}>
-                                <a>Inscribirse</a>
-                            </Link>
-                        </button>
-                    </div>
+                <div className="basis-2/3 p-14">
+                    <h2 className="text-4xl">MicroQomposteros</h2> <br />
+                    <p className="text-lg">
+                        Para todas las personas que escogen recojo o acopio individual,
+                        ¡Les tenemos novedades! Desde ahora, podrás juntar tus residuos y
+                        empezar el proceso de compostaje en el balde, gracias a los
+                        microQomposteros: bacterias y hongos que aceleran el proceso de
+                        descomposición.
+                    </p>
+                </div>
+                <div className="h-[430px] absolute bottom-0 right-0">
+                    <Image
+                        alt="microqomposteros"
+                        width={420}
+                        height={430}
+                        src={MICROQOMPOSTEROS_IMG}
+                    />
                 </div>
             </section>
-            <section
-                style={{
-                    opacity: elementVisibility[1] ? 1 : 0,
-                    transition: 'opacity 0.5s',
-                }}
-                ref={elementsRefs[1]}
-                className="container m-auto"
-            >
-                <div className="flex bg-gray-100 rounded-3xl p-5">
-                    <div className="basis-1/3 justify-start p-10">
-                        <Image
-                            width={420}
-                            height={501}
-                            alt="recoleccion residuos organicos"
-                            src={RECOLECCION_RESIDUOS_ORGANICOS_IMG}
-                        />
-                    </div>
-                    <div className="basis-2/3">
-                        <h2 className="text-greenQ text-3xl">
-                            Recolección de Residuos Orgánicos
-                        </h2>
-                        <p className="my-5">
-                            El servicio comienza cuando te entregamos el balde
-                            Qosqomposta. Tú juntas tus residuos orgánicos en este balde y
-                            nosotros lo recogemos de tu domicilio y te entregamos un nuevo
-                            balde limpio y listo para ser usado otra vez.
-                        </p>
-                        <div className="my-2">
-                            <Accordion title={HOURS_DATES_ACCORDION}>
-                                <span className="text-greenQ font-semibold">
-                                    Horarios: 7am - 1pm
-                                </span>
-                                <span className="text-greenQ font-semibold">
-                                    Días de recojo:
-                                </span>
-                                JUEVES: San Blas, Centro Histórico VIERNES: Cercado,
-                                Santiago, Wanchaq Norte SABADO: San Sebastian, San
-                                Jeronimo, Wanchaq Sur
-                            </Accordion>
-                            <Accordion title={MONTHLY_COST_ACCORDION}>
-                                <p
-                                    dangerouslySetInnerHTML={{
-                                        __html: MONTHLY_COST_ACCORDION_CONTENT,
-                                    }}
-                                />
-                            </Accordion>
-                            <Accordion title={ZERO_RESIDUE_ACCORDION}>
-                                {ZERO_RESIDUE_ACCORDION_CONTENT}
-                            </Accordion>
-                        </div>
-                        <button className="btn btn-primary block m-auto mt-8">
-                            <Link href={RECOLECCION_RESIDUOS_ORGANICOS_CTA}>
-                                <a>Inscribirse</a>
-                            </Link>
-                        </button>
-                    </div>
-                </div>
-            </section> */}
+            <section className="m-auto my-12 text-center">
+                <Link href={LINK_TERMS_CONDITIONS}>
+                    <a className="underline text-greenQ  ">
+                        Condiciones del Servicio Qosqomposta
+                    </a>
+                </Link>
+            </section>
         </>
     );
 };
