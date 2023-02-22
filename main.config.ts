@@ -52,6 +52,8 @@ export const TITLE_BLOG_HOME = 'Conoce Nuestros Talleres Q';
 export const BANNER_PLAN_FAMILIAR =
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1674527487/web-home/banner_plan_familiar_lwxxkp.jpg';
 
+export const BANNER_PLAN_COMERCIAL =
+    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677035178/web-home/banner_plan_comercial_jbcu9k.png';
 export const BANNER_TALLER_HOME =
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1675386717/web-home/Collage_foto_taller_qppwhg.jpg';
 
@@ -61,5 +63,3 @@ export const QOSQOMPOSTA_WHATSAPP_URL = 'wa.link/0pqt7s';
 
 // Services CTA
 export const RECOLECCION_RESIDUOS_ORGANICOS_CTA = '/';
-
-export const COSTO_RECOJO_RECICLABLES_ECOLADRILLOS = 50;
