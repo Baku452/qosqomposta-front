@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Accordion from '@/components/atoms/Accordion';
 import { RECOLECCION_RESIDUOS_ORGANICOS_CTA } from '@/main.config';
 import { AccordionItems } from '@/types';
@@ -15,6 +16,10 @@ export interface ServiceSectionProps {
     accordionItems?: AccordionItems[];
     advertise?: string;
     imgLeft?: boolean;
+    buttonCTA?: {
+        link: string;
+        label: string;
+    };
 }
 
 const ServiceSection: React.FC<ServiceSectionProps> = ({
@@ -27,6 +32,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
     accordionItems,
     advertise,
     imgLeft,
+    buttonCTA,
 }) => {
     return (
         <section
@@ -43,13 +49,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
                     imgLeft ? 'flex-row' : 'flex-row-reverse'
                 }`}
             >
-                <div className="basis-1/3 justify-start p-10 ">
-                    <Image
-                        width={420}
-                        height={501}
-                        alt="recoleccion residuos organicos"
-                        src={imageSection}
-                    />
+                <div className="basis-1/3 justify-start p-10 relative max-h">
+                    <img alt="recoleccion residuos organicos" src={imageSection} />
                 </div>
                 <div className="basis-2/3 max-w-3xl mx-auto">
                     <h2 className="text-greenQ text-3xl">{title}</h2>
@@ -74,8 +75,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
                         </>
                     </div>
                     <button className="btn btn-primary block m-auto mt-8">
-                        <Link href={RECOLECCION_RESIDUOS_ORGANICOS_CTA}>
-                            <a>Inscribirse</a>
+                        <Link href={buttonCTA.link}>
+                            <a>{buttonCTA.label}</a>
                         </Link>
                     </button>
                 </div>

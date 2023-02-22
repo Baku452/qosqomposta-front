@@ -1,13 +1,16 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { BANNER_PLAN_FAMILIAR, RECOLECCION_RESIDUOS_ORGANICOS_CTA } from 'main.config';
-import Accordion from '@/components/atoms/Accordion';
+import { BANNER_PLAN_FAMILIAR } from 'main.config';
+import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
+import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
+import { ServiceSectionItem } from '@/types';
+import Link from 'next/link';
 import {
+    LINK_CTA_SERVICIO_FAMILIAR,
     ACOPIO_DE_RESIDUOS_ACCORDION,
     ACOPIO_DE_RESIDUOS_CONTENT,
     ACOPIO_DE_RESIDUOS_IMG,
     ACOPIO_DE_RESIDUOS_TITLE,
-    LINK_TERMS_CONDITIONS,
     MICROQOMPOSTEROS_IMG,
     RECOJO_RECICLABLES_ACCORDION,
     RECOJO_RECICLABLES_ADVERTISE,
@@ -16,13 +19,10 @@ import {
     RECOJO_RECICLABLES_TITLE,
     RECOLECCION_RESIDUOS_ORGANICOS_ACCORDION,
     RECOLECCION_RESIDUOS_ORGANICOS_CONTENT,
-    RECOLECCION_RESIDUOS_ORGANICOS_IMG,
     RECOLECCION_RESIDUOS_ORGANICOS_TITLE,
-} from '@/pagesConfig';
-import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
-import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
-import { ServiceSectionItem } from '@/types';
-import Link from 'next/link';
+    RECOLECCION_RESIDUOS_ORGANICOS_IMG,
+} from '@/public/data/planFamiliar';
+import { LINK_TERMS_CONDITIONS } from '@/pagesConfig';
 
 const Familiar = () => {
     const sectionsToAppear: ServiceSectionItem[] = useMemo(
@@ -33,6 +33,10 @@ const Familiar = () => {
                 content: RECOLECCION_RESIDUOS_ORGANICOS_CONTENT,
                 imageSection: RECOLECCION_RESIDUOS_ORGANICOS_IMG,
                 accordionItems: RECOLECCION_RESIDUOS_ORGANICOS_ACCORDION,
+                buttonCTA: {
+                    link: LINK_CTA_SERVICIO_FAMILIAR,
+                    label: 'Inscribirme',
+                },
             },
             {
                 id: 'recojo_residuos',
@@ -40,6 +44,10 @@ const Familiar = () => {
                 content: ACOPIO_DE_RESIDUOS_CONTENT,
                 imageSection: ACOPIO_DE_RESIDUOS_IMG,
                 accordionItems: ACOPIO_DE_RESIDUOS_ACCORDION,
+                buttonCTA: {
+                    link: LINK_CTA_SERVICIO_FAMILIAR,
+                    label: 'Inscribirme',
+                },
             },
             {
                 id: 'recojo_reciclables',
@@ -48,6 +56,10 @@ const Familiar = () => {
                 content: RECOJO_RECICLABLES_CONTENT,
                 accordionItems: RECOJO_RECICLABLES_ACCORDION,
                 advertise: RECOJO_RECICLABLES_ADVERTISE,
+                buttonCTA: {
+                    link: LINK_CTA_SERVICIO_FAMILIAR,
+                    label: 'Inscribirme',
+                },
             },
         ],
         [],
@@ -104,7 +116,7 @@ const Familiar = () => {
                     src={BANNER_PLAN_FAMILIAR}
                 />
             </div>
-            <section className="container m-auto py-20 text-xl">
+            <section className="container m-auto py-20 text-3xl max-w-5xl">
                 <p className="px-5 text-center">
                     Gracias por unirte al{' '}
                     <span className="text-yellowQ font-semibold">
@@ -116,8 +128,15 @@ const Familiar = () => {
                 </p>
             </section>
             {sectionsToAppear.map((sectionService, index) => {
-                const { id, title, content, accordionItems, imageSection, advertise } =
-                    sectionService;
+                const {
+                    id,
+                    title,
+                    content,
+                    accordionItems,
+                    imageSection,
+                    advertise,
+                    buttonCTA,
+                } = sectionService;
                 return (
                     <ServiceSection
                         key={id}
@@ -130,6 +149,7 @@ const Familiar = () => {
                         imageSection={imageSection}
                         advertise={advertise}
                         imgLeft={Boolean(index % 2 === 0)}
+                        buttonCTA={buttonCTA}
                     />
                 );
             })}

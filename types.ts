@@ -10,4 +10,8 @@ export interface ServiceSectionItem {
     imageSection?: string;
     accordionItems?: AccordionItems[];
     advertise?: string;
+    buttonCTA?: {
+        link: string;
+        label: string;
+    };
 }
