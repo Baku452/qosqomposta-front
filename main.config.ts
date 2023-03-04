@@ -1,5 +1,5 @@
 export const WEB_BANNER_URL =
-    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1675311230/web-home/Banner_kdm99t.jpg';
+    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677945318/Banner/banner_home_no_text_rzysi7.png';
 
 export const PLAN_FAMILIAR_IMAGE =
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1673919886/Planes_Familiares_lrgqbv.jpg';

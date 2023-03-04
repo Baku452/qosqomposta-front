@@ -8,7 +8,7 @@ import MobileNav from '@/components/molecules/MobileNav/MobileNav';
 
 const HeaderWeb = () => {
     return (
-        <nav className="bg-white sticky w-full px-0 md:px-20 top-0 z-50 shadow-md">
+        <nav className="bg-yellowQ sticky w-full px-0 md:px-20 top-0 z-50 shadow-md">
             <div className="flex justify-between w-full md:max-w-7xl m-auto items-center">
                 <Link href="/">
                     <a className="border-none">
