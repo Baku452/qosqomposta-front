@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import ImageSlider from '@/components/atoms/ImageSlider/ImageSlider';
+import { IMAGES_SLIDER } from '@/public/data/homeImages';
 
 const DescriptionWeb: React.FC = () => {
     interface Counter {
@@ -86,6 +88,7 @@ const DescriptionWeb: React.FC = () => {
                     más moderno servicio de taller de compostaje
                 </p>
             </section>
+            <ImageSlider images={IMAGES_SLIDER} width={1200} height={600} />
             <section className=" bg-gray-200 w-full py-2">
                 <div className="container max-w-6xl mx-auto">
                     <h2 className="text-xl lg:text-4xl text-center lg:text-left py-10 px-5 lg:px-0">

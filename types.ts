@@ -15,3 +15,9 @@ export interface ServiceSectionItem {
         label: string;
     };
 }
+
+export interface ImageWeb {
+    altTitle: string;
+    urlImage: string;
+    customClassName?: string;
+}
