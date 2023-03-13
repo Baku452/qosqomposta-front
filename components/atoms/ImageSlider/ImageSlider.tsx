@@ -3,6 +3,7 @@ import { ImageWeb } from '@/types';
 import { useEffect, useRef, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import styles from './ImageSlider.module.scss';
+import { MdOutlineArrowBackIos } from 'react-icons/md';
 
 // StoryBookComponent
 export interface ImageSilderProps {
@@ -10,6 +11,8 @@ export interface ImageSilderProps {
     width: number;
     height: number;
     arrowColor?: string;
+    arrowSize?: number;
+    borderRadius?: boolean;
 }
 
 const ImageSlider: React.FC<ImageSilderProps> = ({
@@ -17,12 +20,15 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
     width,
     height,
     arrowColor,
+    arrowSize,
+    borderRadius,
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const sliderContainerRef = useRef(null);
     const sliderRef = useRef(null);
+    const boxContainer = useRef(null);
 
     const handlePrevClick = () => {
         setCurrentIndex(prevIndex =>
@@ -92,10 +98,14 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
         e.preventDefault();
         const x = e.touches[0].clientX - sliderRef.current.offsetLeft;
 
-        const translateX = x - startX;
+        let translateX = x - startX;
 
-        sliderContainerRef.current.style.transform = `translateX(${translateX}px)`;
-
+        if (currentIndex === 0 && translateX > 0) {
+            translateX = 0;
+        }
+        sliderContainerRef.current.style.transform = `translateX(-${
+            currentIndex * 100
+        }%) translateX(${translateX}px)`;
         sliderContainerRef.current.style.cursor = `grabbing`;
     };
 
@@ -103,14 +113,14 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
         setIsDragging(false);
         sliderContainerRef.current.style.cursor = `grab`;
         const sliderWidth = sliderRef.current.offsetWidth;
-        const dragThreshold = sliderWidth * 0.5;
+        const dragThreshold = sliderWidth * 0.05;
 
         const dragDirection =
             startX - (e.changedTouches[0].clientX - sliderRef.current.offsetLeft);
 
-        if (dragDirection > dragThreshold) {
+        if (dragDirection > dragThreshold && currentIndex < images.length - 1) {
             setCurrentIndex(currentIndex + 1);
-        } else if (dragDirection < -dragThreshold && currentIndex < images.length - 1) {
+        } else if (dragDirection < dragThreshold && currentIndex > 0) {
             setCurrentIndex(currentIndex - 1);
         } else {
             sliderContainerRef.current.style.transform = `translateX(-${
@@ -120,8 +130,9 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
     };
 
     useEffect(() => {
-        sliderRef.current.style.maxWidth = `${width}px`;
-        sliderRef.current.style.Height = `${height}px`;
+        sliderRef.current.style.maxWidth = `${width - arrowSize * 3}px`;
+        boxContainer.current.style.maxWidth = `${width}px`;
+        sliderRef.current.style.height = `${height}px`;
     }, [width, height]);
 
     useEffect(() => {
@@ -131,32 +142,49 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
     }, [currentIndex]);
 
     return (
-        <div ref={sliderRef} className={styles.imageSlider}>
+        <div ref={boxContainer} className="m-auto relative">
             <div
-                className={styles.sliderContainer}
-                ref={sliderContainerRef}
-                onMouseDown={e => handleMouseDown(e)}
-                onMouseMove={e => handleMove(e)}
-                onMouseUp={e => handleMouseUp(e)}
-                onMouseLeave={e => handleMouseLeave(e)}
-                onTouchMove={e => handleTouchMove(e)}
-                onTouchStart={e => handleTouchStart(e)}
-                onTouchEnd={e => handleTouchEnd(e)}
+                ref={sliderRef}
+                className={`${styles.imageSlider} ${borderRadius ? 'rounded-3xl' : ''}`}
             >
-                {images.map(image => {
-                    return (
-                        <img
-                            key={image.urlImage}
-                            src={image.urlImage}
-                            alt={`Image ${currentIndex}`}
-                        />
-                    );
-                })}
+                <div
+                    className={styles.sliderContainer}
+                    ref={sliderContainerRef}
+                    onMouseDown={e => handleMouseDown(e)}
+                    onMouseMove={e => handleMove(e)}
+                    onMouseUp={e => handleMouseUp(e)}
+                    onMouseLeave={e => handleMouseLeave(e)}
+                    onTouchMove={e => handleTouchMove(e)}
+                    onTouchStart={e => handleTouchStart(e)}
+                    onTouchEnd={e => handleTouchEnd(e)}
+                >
+                    {images.map(image => {
+                        return (
+                            <img
+                                key={image.urlImage}
+                                src={image.urlImage}
+                                alt={`Image ${currentIndex}`}
+                            />
+                        );
+                    })}
+                </div>
             </div>
-            {/* <div className={styles.controls}>
-                <button onClick={handlePrevClick}>Prev</button>
-                <button onClick={handleNextClick}>Next</button>
-            </div> */}
+            <div className={styles.controls}>
+                <button onClick={handlePrevClick}>
+                    <MdOutlineArrowBackIos
+                        size={`${arrowSize ? arrowSize : ''}`}
+                        color={`${arrowColor ? arrowColor : ''}`}
+                    />
+                </button>
+
+                <button onClick={handleNextClick}>
+                    <MdOutlineArrowBackIos
+                        size={`${arrowSize ? arrowSize : ''}`}
+                        color={`${arrowColor ? arrowColor : ''} `}
+                        className="rotate-180"
+                    />
+                </button>
+            </div>
         </div>
     );
 };

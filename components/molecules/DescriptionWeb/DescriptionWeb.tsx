@@ -74,7 +74,7 @@ const DescriptionWeb: React.FC = () => {
     }, [counters]);
     return (
         <>
-            <section className="container max-w-sm lg:max-w-6xl mx-auto py-20 px-5 lg:px-0">
+            <section className="container max-w-sm lg:max-w-6xl mx-auto pt-20 lg:pt-80 px-5 lg:px-0">
                 <h2 className="text-xl lg:text-4xl text-center">
                     Junta los residuos orgánicos y nosotros lo{' '}
                     <span className="text-yellowQ">qompostamos</span>
@@ -88,7 +88,16 @@ const DescriptionWeb: React.FC = () => {
                     más moderno servicio de taller de compostaje
                 </p>
             </section>
-            <ImageSlider images={IMAGES_SLIDER} width={1200} height={600} />
+            <section className="pt-10">
+                <ImageSlider
+                    images={IMAGES_SLIDER}
+                    arrowColor={'#F2BE12'}
+                    arrowSize={50}
+                    width={1200}
+                    height={600}
+                    borderRadius={true}
+                />
+            </section>
             <section className=" bg-gray-200 w-full py-2">
                 <div className="container max-w-6xl mx-auto">
                     <h2 className="text-xl lg:text-4xl text-center lg:text-left py-10 px-5 lg:px-0">
