@@ -13,7 +13,7 @@ const BannerLanding = () => {
                 </h1>
                 <h2 className="text-2xl block lg:hidden">Juntos!</h2>
                 <div className="hidden lg:flex flex-col lg:flex-row  items-start lg:items-center justify-center">
-                    <div className="order-2 w-24">
+                    <div className="order-2 w-24 ml-4">
                         <Image
                             width={141}
                             height={141}
@@ -21,12 +21,8 @@ const BannerLanding = () => {
                             alt="Logo Qosqomposta"
                         />
                     </div>
-                    <h2 className="lg:text-5xl -order-1 lg:order-1 hidden lg:block">
+                    <h2 className="lg:text-5xl -order-1 lg:order-1 hidden lg:block font-paragraph">
                         Juntos!
-                    </h2>
-                    <h2 className="!font-normal !font-paragraph text-xl">
-                        Juntos hacia un futuro sostenible. ¡Fomentamos la reducción de
-                        residuos! Haz tu pedido hoy mismo.
                     </h2>
                 </div>
             </div>
