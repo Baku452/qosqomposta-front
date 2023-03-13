@@ -44,6 +44,7 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['eveleth', ...defaultTheme.fontFamily.sans],
+        paragraph: ['Isidora', 'sans'],
       },
     }
   },
