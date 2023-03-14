@@ -1,3 +1,4 @@
+import { LOGIN_PATH } from '@/routes.config';
 import Link from 'next/link';
 import { ItemsNav } from 'public/data/itemsNav';
 import React, { useState } from 'react';
@@ -31,7 +32,7 @@ const NavigationWeb: React.FC<NavigationWebProps> = ({ items }) => {
                 ))}
                 <li>
                     <button className="btn btn-primary !bg-greenQ !text-white">
-                        <Link href={'/'}>Únete Ya</Link>
+                        <Link href={LOGIN_PATH}>Únete Ya</Link>
                     </button>
                 </li>
             </ul>

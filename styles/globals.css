@@ -88,3 +88,12 @@ a {
 .yellowText {
     @apply text-yellowQ;
 }
+
+/* Forms Styles */
+
+input {
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+    border: 1px solid #b2b2b2;
+    @apply outline-yellowQ;
+}

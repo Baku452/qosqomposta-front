@@ -8,3 +8,5 @@ export const SERVICE_FAMILIAR_PATH = '/servicios/familiar';
 export const SERVICE_COMERCIAL_PATH = '/servicios/comercial';
 
 export const ABOUT_US_PATH = '/sobre-nosotros';
+
+export const LOGIN_PATH = '/auth/login';
