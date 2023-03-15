@@ -5,6 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from '@/utils/firebase';
 import { useRouter } from 'next/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { FORGOT_PASSWORD, REGISTER_PATH } from '@/routes.config';
+import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 type LoginFormFields = {
     email: string;
@@ -12,7 +15,8 @@ type LoginFormFields = {
 };
 
 function LoginForm() {
-    const [error, setError] = useState('');
+    const [errorAuth, setErrorAuth] = useState<string>('');
+
     const {
         register,
         handleSubmit,
@@ -23,11 +27,11 @@ function LoginForm() {
             yup.object().shape({
                 email: yup
                     .string()
-                    .required('Email es necesario')
-                    .email('Email inválido'),
+                    .required('El correo electrónico es necesario')
+                    .email('Correo electrónico inválido'),
                 password: yup
                     .string()
-                    .required('La contraseña es requerida')
+                    .required('La contraseña es necesaria')
                     .min(6, 'La contraseña tiene que tener mínimo 6 caracácteres'),
             }),
         ),
@@ -41,37 +45,67 @@ function LoginForm() {
 
     const handleLogin = async (data: LoginFormFields) => {
         try {
-            await signInWithEmailAndPassword(auth, data.email, data.password);
-            router.push('/dashboard'); // Redirect the user to the dashboard page on successful login
+            const userCredentials = await signInWithEmailAndPassword(
+                auth,
+                data.email,
+                data.password,
+            );
+            const token = await userCredentials.user.getIdToken();
+            Cookies.set('token', token);
+            router.push('/dashboard');
         } catch (error) {
-            setError(error.message);
+            setErrorAuth(error.message);
         }
     };
     return (
-        <div className="p-10 rounded-3xl shadow-xl">
-            <form className="mb-5 w-3/4" onSubmit={handleSubmit(handleLogin)}>
+        <div className="p-10 rounded-3xl shadow-xl min-w-[500px] mb-20">
+            <form
+                className="mb-5 w-3/4 m-auto relative block"
+                onSubmit={handleSubmit(handleLogin)}
+            >
+                <h2 className="text-center py-5 font-paragraph text-2xl">
+                    Ingrese sus datos
+                </h2>
                 <div className="mb-5">
+                    {errors.email && (
+                        <span className="text-error">{errors.email.message}</span>
+                    )}
                     <input
                         placeholder="Correo Electrónico"
                         type="email"
                         {...register('email')}
                     />
-                    {errors.email && <div>{errors.email.message}</div>}
                 </div>
-                <div className="mb-5">
+                <div className="mb-5 text-right">
+                    {errors.password && (
+                        <div className="text-left">
+                            <span className="text-error">{errors.password.message}</span>
+                        </div>
+                    )}
                     <input
+                        className="!block !relative"
                         placeholder="Contraseña"
-                        className="border"
                         type="password"
                         {...register('password')}
                     />
-                    {errors.password && <div>{errors.password.message}</div>}
+                    <a
+                        className="text-yellowQ-500 pt-3 relative block"
+                        href={FORGOT_PASSWORD}
+                    >
+                        Olvide mi contraseña
+                    </a>
                 </div>
-                <button className="btn btn-primary" type="submit">
-                    Login
+                <button className="btn btn-primary !w-full block" type="submit">
+                    Ingresar
                 </button>
             </form>
-            {error && <span className="text-red-500">{error}</span>}
+            {errorAuth && <span className="text-error">{errorAuth}</span>}
+            <div className="text-center">
+                <p>¿No tiene una cuenta?</p>
+                <Link href={REGISTER_PATH}>
+                    <a className="text-yellowQ-500 font-bold">Crearse una cuenta Q</a>
+                </Link>
+            </div>
         </div>
     );
 }

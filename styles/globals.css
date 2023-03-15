@@ -40,6 +40,11 @@ a {
     }
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
 /* Global styles for the site ! */
 .link {
     text-decoration: none;
@@ -56,12 +61,13 @@ a {
     @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
 }
 .btn-primary {
-    @apply bg-yellowQ text-black hover:bg-yellow-300 hover:text-black;
+    @apply bg-yellowQ text-black;
     width: fit-content;
     font-weight: bolder;
     border-radius: 10px;
     border: 1px solid transparent;
     transition: 0.2s ease;
+    box-sizing: border-box;
 }
 .btn-primary:hover {
     border-color: black;
@@ -92,6 +98,7 @@ a {
 /* Forms Styles */
 
 input {
+    width: 100%;
     padding: 0.7rem;
     border-radius: 0.7rem;
     border: 1px solid #b2b2b2;
