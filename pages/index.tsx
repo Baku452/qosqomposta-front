@@ -5,10 +5,12 @@ import Head from 'next/head';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
 import TalleresSectionHome from '@/components/organism/TalleresSectionHome/TalleresSectionHome';
+import { Provider } from 'react-redux';
+import { appStore } from '@/store';
 
 function Home() {
     return (
-        <>
+        <Provider store={appStore}>
             <Head>
                 <title>Qosqomposta | Servicio de compostaje en ciudad del Cusco</title>
                 <meta
@@ -20,7 +22,7 @@ function Home() {
             <DescriptionWeb />
             <OurServices />
             <TalleresSectionHome />
-        </>
+        </Provider>
     );
 }
 
