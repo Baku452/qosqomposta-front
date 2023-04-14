@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { BANNER_PLAN_FAMILIAR } from 'main.config';
 import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
-import { ServiceSectionItem } from '@/types';
+import { ServiceSectionItem } from '@/types/mainTypes';
 import Link from 'next/link';
 import {
     LINK_CTA_SERVICIO_FAMILIAR,

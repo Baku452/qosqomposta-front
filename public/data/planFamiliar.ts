@@ -1,4 +1,4 @@
-import { AccordionItems } from '@/types';
+import { AccordionItems } from '@/types/mainTypes';
 import { COSTO_RECOJO_RECICLABLES_ECOLADRILLOS } from './prices';
 
 export const LINK_CTA_SERVICIO_FAMILIAR = '/';
