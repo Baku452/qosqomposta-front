@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageWeb } from '@/types';
+import { ImageWeb } from '@/types/mainTypes';
 import { useEffect, useRef, useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import styles from './ImageSlider.module.scss';

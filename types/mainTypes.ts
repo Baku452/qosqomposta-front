@@ -21,3 +21,9 @@ export interface ImageWeb {
     urlImage: string;
     customClassName?: string;
 }
+
+export interface PathPage {
+    name: string;
+    path: string;
+    key: string;
+}

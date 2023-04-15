@@ -4,7 +4,7 @@ import { BANNER_PLAN_COMERCIAL } from 'main.config';
 import { LINK_TERMS_CONDITIONS } from '@/pagesConfig';
 import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
-import { ServiceSectionItem } from '@/types';
+import { ServiceSectionItem } from '@/types/mainTypes';
 import Link from 'next/link';
 import {
     BARRIO_QOMPOSTERO_SECTION_TITLE,

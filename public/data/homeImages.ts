@@ -1,4 +1,4 @@
-import { ImageWeb } from '@/types';
+import { ImageWeb } from '@/types/mainTypes';
 
 export const IMAGES_SLIDER: ImageWeb[] = [
     {

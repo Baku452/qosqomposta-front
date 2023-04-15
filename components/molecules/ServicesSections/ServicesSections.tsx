@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Accordion from '@/components/atoms/Accordion/Accordion';
 import { RECOLECCION_RESIDUOS_ORGANICOS_CTA } from '@/main.config';
-import { AccordionItems } from '@/types';
+import { AccordionItems } from '@/types/mainTypes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { RefObject } from 'react';
