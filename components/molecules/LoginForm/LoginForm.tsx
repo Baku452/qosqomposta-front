@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from '@/utils/firebase';
@@ -8,13 +8,17 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FORGOT_PASSWORD, REGISTER_PATH } from '@/routes.config';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
+import {
+    DEFAULT_ERROR_MESSAGE,
+    firebaseAuthErrorCodes,
+} from '@/contants/firebaseAuthErrorConst';
 
 type LoginFormFields = {
     email: string;
     password: string;
 };
 
-function LoginForm() {
+const LoginForm: React.FC = () => {
     const [errorAuth, setErrorAuth] = useState<string>('');
 
     const {
@@ -54,7 +58,10 @@ function LoginForm() {
             Cookies.set('token', token);
             router.push('/dashboard');
         } catch (error) {
-            setErrorAuth(error.message);
+            const firebaseError = firebaseAuthErrorCodes.find(
+                errorFirebase => errorFirebase.code == error.code,
+            );
+            setErrorAuth(firebaseError ? firebaseError.message : DEFAULT_ERROR_MESSAGE);
         }
     };
     return (
@@ -108,6 +115,6 @@ function LoginForm() {
             </div>
         </div>
     );
-}
+};
 
-export { LoginForm };
+export default LoginForm;
