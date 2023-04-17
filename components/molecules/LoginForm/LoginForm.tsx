@@ -11,7 +11,9 @@ import Cookies from 'js-cookie';
 import {
     DEFAULT_ERROR_MESSAGE,
     firebaseAuthErrorCodes,
-} from '@/contants/firebaseAuthErrorConst';
+} from '@/constants/firebaseAuthErrorConst';
+import { useDispatch } from 'react-redux';
+import { setUserApp } from '@/actions/user.app.actions';
 
 type LoginFormFields = {
     email: string;
@@ -46,6 +48,7 @@ const LoginForm: React.FC = () => {
     });
 
     const router = useRouter();
+    const dispatch = useDispatch();
 
     const handleLogin = async (data: LoginFormFields) => {
         try {
@@ -55,7 +58,8 @@ const LoginForm: React.FC = () => {
                 data.password,
             );
             const token = await userCredentials.user.getIdToken();
-            Cookies.set('token', token);
+            dispatch(setUserApp(userCredentials.user));
+            Cookies.set('user_token', token);
             router.push('/dashboard');
         } catch (error) {
             const firebaseError = firebaseAuthErrorCodes.find(

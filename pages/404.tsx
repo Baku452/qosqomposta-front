@@ -3,7 +3,7 @@ import {
     IMAGE_404_ERROR,
     NAV_LINKS_ERROR_PAGE,
 } from '@/components/molecules/ErrorPage/utilsErrorPage';
-import { NOT_FOUND_STATUS } from '@/contants/statusCodes';
+import { NOT_FOUND_STATUS } from '@/constants/statusCodes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MdNavigateNext } from 'react-icons/md';

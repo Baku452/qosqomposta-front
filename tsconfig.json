@@ -23,7 +23,8 @@
         "strictNullChecks": true,
         "noImplicitAny": true,
         "pretty": true,
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "useUnknownInCatchVariables": false
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
     "exclude": ["node_modules"]

@@ -55,20 +55,22 @@ export const ToastContent: React.FC<ToastContentProps> = ({
 };
 
 export interface CreateToastProps {
-    idToast: string;
-    toastType: ToastType;
-    toastPosition: ToastPosition;
-    content: ToastContentProps;
+    toastId: string;
+    toastType?: ToastType;
+    toastPosition?: ToastPosition;
+    message: string;
+    primaryButton?: ButtonProps;
+    secondaryButton?: ButtonProps;
 }
 export const createToast = ({
-    idToast,
-    content,
+    toastId,
+    message,
     toastType,
     toastPosition,
 }: CreateToastProps) => {
-    return toast(<ToastContent message={content.message} />, {
+    return toast(<ToastContent message={message} />, {
         ...options,
-        toastId: idToast,
+        toastId: toastId,
         type: toastType,
         position: toastPosition,
     });

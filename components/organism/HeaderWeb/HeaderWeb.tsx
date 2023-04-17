@@ -6,7 +6,7 @@ import { NavigationWeb } from '@/components/molecules/NavigationWeb/NavigationWe
 import { ITEMS_NAV } from 'public/data/itemsNav';
 import MobileNav from '@/components/molecules/MobileNav/MobileNav';
 
-const HeaderWeb = () => {
+const HeaderWeb: React.FC = () => {
     return (
         <nav className="bg-yellowQ sticky w-full px-0 md:px-20 top-0 z-50 shadow-md">
             <div className="flex justify-between w-full md:max-w-7xl m-auto items-center">

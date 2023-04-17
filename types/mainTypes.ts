@@ -27,3 +27,9 @@ export interface PathPage {
     path: string;
     key: string;
 }
+
+export interface AsyncActionType {
+    request: string;
+    success: string;
+    error: string;
+}
