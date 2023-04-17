@@ -108,7 +108,7 @@ const Comercial = () => {
                         key={id}
                         id={id}
                         title={title}
-                        content={content}
+                        content={content ?? ''}
                         visibility={elementVisibility[index]}
                         elementRefId={elementsRefs[index]}
                         accordionItems={accordionItems}

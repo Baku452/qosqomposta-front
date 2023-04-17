@@ -75,8 +75,8 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
                         </>
                     </div>
                     <button className="btn btn-primary block m-auto mt-8">
-                        <Link href={buttonCTA.link}>
-                            <a>{buttonCTA.label}</a>
+                        <Link href={buttonCTA?.link || ''}>
+                            <a>{buttonCTA?.label}</a>
                         </Link>
                     </button>
                 </div>

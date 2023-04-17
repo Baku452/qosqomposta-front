@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageWeb } from '@/types/mainTypes';
 import { useEffect, useRef, useState } from 'react';
-import LazyLoad from 'react-lazyload';
 import styles from './ImageSlider.module.scss';
 import { MdOutlineArrowBackIos } from 'react-icons/md';
 
@@ -20,15 +19,15 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
     width,
     height,
     arrowColor,
-    arrowSize,
+    arrowSize = 10,
     borderRadius,
 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
-    const sliderContainerRef = useRef(null);
-    const sliderRef = useRef(null);
-    const boxContainer = useRef(null);
+    const sliderContainerRef = useRef<HTMLDivElement>(null);
+    const sliderRef = useRef<HTMLDivElement>(null);
+    const boxContainer = useRef<HTMLDivElement>(null);
 
     const handlePrevClick = () => {
         setCurrentIndex(prevIndex =>
@@ -41,104 +40,123 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
             prevIndex === images.length - 1 ? 0 : prevIndex + 1,
         );
     };
-    const handleMouseDown = e => {
-        setIsDragging(true);
-        setStartX(e.clientX - sliderRef.current.offsetLeft);
+    const handleMouseDown = (e: React.MouseEvent) => {
+        if (sliderRef.current) {
+            setIsDragging(true);
+            setStartX(e.clientX - sliderRef.current.offsetLeft);
+        }
     };
 
-    const handleMove = e => {
+    const handleMove = (e: React.MouseEvent) => {
         if (!isDragging) return;
         e.preventDefault();
-        const x = e.clientX - sliderRef.current.offsetLeft;
 
-        let translateX = x - startX;
+        if (sliderRef.current && sliderContainerRef.current) {
+            const x = e.clientX - sliderRef.current.offsetLeft;
 
-        if (currentIndex === 0 && translateX > 0) {
-            translateX = 0;
+            let translateX = x - startX;
+
+            if (currentIndex === 0 && translateX > 0) {
+                translateX = 0;
+            }
+            sliderContainerRef.current.style.transform = `translateX(-${
+                currentIndex * 100
+            }%) translateX(${translateX}px)`;
+
+            sliderContainerRef.current.style.cursor = `grabbing`;
         }
-        sliderContainerRef.current.style.transform = `translateX(-${
-            currentIndex * 100
-        }%) translateX(${translateX}px)`;
-
-        sliderContainerRef.current.style.cursor = `grabbing`;
     };
 
-    const handleMouseUp = e => {
+    const handleMouseUp = (e: React.MouseEvent) => {
         setIsDragging(false);
-        sliderContainerRef.current.style.cursor = `grab`;
-        const sliderWidth = sliderRef.current.offsetWidth;
-        const dragThreshold = sliderWidth * 0.05;
-        const dragDirection = startX - (e.clientX - sliderRef.current.offsetLeft);
+        if (sliderContainerRef.current && sliderRef.current) {
+            sliderContainerRef.current.style.cursor = `grab`;
+            const sliderWidth = sliderRef.current.offsetWidth;
+            const dragThreshold = sliderWidth * 0.05;
+            const dragDirection = startX - (e.clientX - sliderRef.current.offsetLeft);
 
-        if (dragDirection > dragThreshold && currentIndex < images.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        } else if (dragDirection < dragThreshold && currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        } else {
+            if (dragDirection > dragThreshold && currentIndex < images.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+            } else if (dragDirection < dragThreshold && currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+            } else {
+                sliderContainerRef.current.style.transform = `translateX(-${
+                    currentIndex * 100
+                }%)`;
+            }
+        }
+    };
+
+    const handleMouseLeave = (e: React.MouseEvent) => {
+        if (sliderContainerRef.current) {
+            setIsDragging(false);
             sliderContainerRef.current.style.transform = `translateX(-${
                 currentIndex * 100
             }%)`;
         }
     };
 
-    const handleMouseLeave = e => {
-        setIsDragging(false);
-        sliderContainerRef.current.style.transform = `translateX(-${
-            currentIndex * 100
-        }%)`;
-    };
-
-    const handleTouchStart = e => {
-        setIsDragging(true);
-        setStartX(e.touches[0].clientX - sliderRef.current.offsetLeft);
-    };
-
-    const handleTouchMove = e => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.touches[0].clientX - sliderRef.current.offsetLeft;
-
-        let translateX = x - startX;
-
-        if (currentIndex === 0 && translateX > 0) {
-            translateX = 0;
+    const handleTouchStart = (e: React.TouchEvent) => {
+        if (sliderRef.current) {
+            setIsDragging(true);
+            setStartX(e.touches[0].clientX - sliderRef.current.offsetLeft);
         }
-        sliderContainerRef.current.style.transform = `translateX(-${
-            currentIndex * 100
-        }%) translateX(${translateX}px)`;
-        sliderContainerRef.current.style.cursor = `grabbing`;
     };
 
-    const handleTouchEnd = e => {
-        setIsDragging(false);
-        sliderContainerRef.current.style.cursor = `grab`;
-        const sliderWidth = sliderRef.current.offsetWidth;
-        const dragThreshold = sliderWidth * 0.05;
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if (!isDragging) return;
+        if (sliderContainerRef.current && sliderRef.current) {
+            e.preventDefault();
+            const x = e.touches[0].clientX - sliderRef.current.offsetLeft;
 
-        const dragDirection =
-            startX - (e.changedTouches[0].clientX - sliderRef.current.offsetLeft);
+            let translateX = x - startX;
 
-        if (dragDirection > dragThreshold && currentIndex < images.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-        } else if (dragDirection < dragThreshold && currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-        } else {
+            if (currentIndex === 0 && translateX > 0) {
+                translateX = 0;
+            }
             sliderContainerRef.current.style.transform = `translateX(-${
                 currentIndex * 100
-            }%)`;
+            }%) translateX(${translateX}px)`;
+            sliderContainerRef.current.style.cursor = `grabbing`;
+        }
+    };
+
+    const handleTouchEnd = (e: React.TouchEvent) => {
+        setIsDragging(false);
+        if (sliderContainerRef.current && sliderRef.current) {
+            sliderContainerRef.current.style.cursor = `grab`;
+            const sliderWidth = sliderRef.current.offsetWidth;
+            const dragThreshold = sliderWidth * 0.05;
+
+            const dragDirection =
+                startX - (e.changedTouches[0].clientX - sliderRef.current.offsetLeft);
+
+            if (dragDirection > dragThreshold && currentIndex < images.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+            } else if (dragDirection < dragThreshold && currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+            } else {
+                sliderContainerRef.current.style.transform = `translateX(-${
+                    currentIndex * 100
+                }%)`;
+            }
         }
     };
 
     useEffect(() => {
-        sliderRef.current.style.maxWidth = `${width - arrowSize * 3}px`;
-        boxContainer.current.style.maxWidth = `${width}px`;
-        sliderRef.current.style.height = `${height}px`;
+        if (sliderRef.current && boxContainer.current && sliderRef.current) {
+            sliderRef.current.style.maxWidth = `${width - arrowSize * 3}px`;
+            boxContainer.current.style.maxWidth = `${width}px`;
+            sliderRef.current.style.height = `${height}px`;
+        }
     }, [width, height]);
 
     useEffect(() => {
-        sliderContainerRef.current.style.transform = `translateX(-${
-            currentIndex * 100
-        }%)`;
+        if (sliderContainerRef.current) {
+            sliderContainerRef.current.style.transform = `translateX(-${
+                currentIndex * 100
+            }%)`;
+        }
     }, [currentIndex]);
 
     return (
@@ -150,13 +168,13 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
                 <div
                     className={styles.sliderContainer}
                     ref={sliderContainerRef}
-                    onMouseDown={e => handleMouseDown(e)}
-                    onMouseMove={e => handleMove(e)}
+                    onMouseDown={(e: React.MouseEvent) => handleMouseDown(e)}
+                    onMouseMove={(e: React.MouseEvent) => handleMove(e)}
                     onMouseUp={e => handleMouseUp(e)}
                     onMouseLeave={e => handleMouseLeave(e)}
-                    onTouchMove={e => handleTouchMove(e)}
-                    onTouchStart={e => handleTouchStart(e)}
-                    onTouchEnd={e => handleTouchEnd(e)}
+                    onTouchMove={(e: React.TouchEvent) => handleTouchMove(e)}
+                    onTouchStart={(e: React.TouchEvent) => handleTouchStart(e)}
+                    onTouchEnd={(e: React.TouchEvent) => handleTouchEnd(e)}
                 >
                     {images.map(image => {
                         return (
