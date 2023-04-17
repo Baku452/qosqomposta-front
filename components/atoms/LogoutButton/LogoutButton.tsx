@@ -16,7 +16,11 @@ const LogoutButton: React.FC = () => {
         }
     };
 
-    return <button onClick={handleLogoutButton}>Cerrar Sesión</button>;
+    return (
+        <button className="hover:text-yellow-500" onClick={handleLogoutButton}>
+            Cerrar Sesión
+        </button>
+    );
 };
 
 export default LogoutButton;

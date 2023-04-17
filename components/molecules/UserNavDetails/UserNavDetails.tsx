@@ -7,16 +7,16 @@ export interface UserNavDetailsProps {
 }
 const UserNavDetails: React.FC<UserNavDetailsProps> = ({ user }) => {
     return (
-        <>
+        <div className="flex gap-4">
             <div>
                 <p>Bienvenido {user.displayName}</p>
                 {user.photoURL && <Image width={50} height={50} src={user.photoURL} />}
             </div>
+            <span>|</span>
             <div>
-                <span>|</span>
                 <LogoutButton />
             </div>
-        </>
+        </div>
     );
 };
 
