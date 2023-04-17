@@ -11,7 +11,9 @@
         "prepare": "husky install",
         "pre-commit": "lint-staged",
         "pre-push": "yarn type-check",
-        "type-check": "tsc --noEmit -skipLibCheck && echo '✅ PASSED Types'"
+        "type-check": "tsc --noEmit -skipLibCheck && echo '✅ PASSED Types'",
+        "stylelint": "stylelint '**/*.scss' && echo '✅ PASSED Stylelint' || (echo '\nPlease fix style formatting by running:\nnpm run stylelint:fix\n'; exit 1)",
+        "stylelint:fix": "stylelint '**/*.scss' --fix"
     },
     "dependencies": {
         "@hookform/resolvers": "^2.9.11",
@@ -44,6 +46,11 @@
         "redux-devtools-extension": "^2.13.9",
         "redux-thunk": "^2.4.2",
         "sass": "^1.57.1",
+        "stylelint": "^15.5.0",
+        "stylelint-config-prettier": "^9.0.5",
+        "stylelint-config-sass-guidelines": "^10.0.0",
+        "stylelint-config-standard-scss": "^8.0.0",
+        "stylelint-scss": "^4.6.0",
         "yup": "^1.0.2"
     },
     "devDependencies": {

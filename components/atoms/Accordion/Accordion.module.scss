@@ -1,25 +1,29 @@
-// Accordion.module.scss
 .accordion {
     overflow: hidden;
     @apply shadow-lg;
+
     button {
         font-weight: 600;
         padding: 0.5rem 1rem;
         border-radius: 0.25rem 0.25rem 0 0;
         display: flex;
         width: 100%;
+
         h4 {
             margin-left: 1rem;
         }
+
         transition: all 0.5 ease;
 
         svg {
             transition: all 0.2s ease;
         }
     }
+
     .arrowClosed {
         rotate: initial;
     }
+
     .arrowOpen {
         rotate: (90deg);
     }
@@ -30,10 +34,12 @@
         overflow: hidden;
         transition: height 0.35s ease;
     }
+
     .contentShow {
         transition: height 0.35s ease;
         height: auto;
     }
+
     .content {
         padding: 1rem;
         background-color: #fff;
