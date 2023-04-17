@@ -12,7 +12,7 @@ interface Props {
 
 const Accordion: React.FC<Props> = ({ defaultOpen = false, title, children }) => {
     const [show, setShow] = useState(defaultOpen);
-    const contentEl = useRef<HTMLDivElement>();
+    const contentEl = useRef<HTMLDivElement>(null);
     return (
         <div className={styles.accordion}>
             <button
@@ -30,7 +30,7 @@ const Accordion: React.FC<Props> = ({ defaultOpen = false, title, children }) =>
                 className={`${styles.notShow} ${show && styles.contentShow}`}
                 ref={contentEl}
                 style={
-                    show
+                    show && contentEl.current
                         ? { height: contentEl.current && contentEl.current.scrollHeight }
                         : { height: '0px' }
                 }
