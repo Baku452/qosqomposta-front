@@ -1,20 +1,8 @@
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
 import ImageSlider from '@/components/atoms/ImageSlider/ImageSlider';
 import { IMAGES_SLIDER, LOGO_COLOR } from '@/public/data/homeImages';
 
 const DescriptionWeb: React.FC = () => {
-    interface Counter {
-        id: string;
-        count: number;
-        interval: number;
-        visible: boolean;
-        maxValue: number;
-    }
-    const [counters, setCounters] = useState<Counter[]>([
-        { id: 'counterHouse', count: 0, interval: 100, visible: false, maxValue: 190 },
-    ]);
-
     return (
         <>
             <section className="container max-w-sm lg:max-w-6xl mx-auto pt-20 lg:pt-80 px-5 lg:px-0">
