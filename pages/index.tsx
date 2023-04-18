@@ -18,7 +18,7 @@ function Home() {
             <BannerLanding />
             <DescriptionWeb />
             <OurServices />
-            <TalleresSectionHome />
+            {/* <TalleresSectionHome /> */}
         </>
     );
 }

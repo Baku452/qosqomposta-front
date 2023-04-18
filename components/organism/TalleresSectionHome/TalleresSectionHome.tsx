@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { BANNER_TALLER_HOME, TITLE_BLOG_HOME } from 'main.config';
-import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { TALLERES_PATH } from 'routes.config';
