@@ -1,0 +1,19 @@
+.circleStep {
+    position: relative;
+    margin-right: 5rem;
+
+    div &:not(:last-child)::after{
+        content: '';
+        position: absolute;
+        top: 78%;
+        right: -103px;
+        transform: translateY(-50%);
+        height: 2px;
+        width: 130px;
+        background-color: #b4b4b4;
+    }
+
+    &:last-child {
+        margin: 0;
+    }
+}

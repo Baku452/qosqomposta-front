@@ -1,7 +1,6 @@
 import LogoApp from '@/components/atoms/LogoApp/LogoApp';
 import UserNavDetails from '@/components/molecules/UserNavDetails/UserNavDetails';
 import { LogoAppColors } from '@/main.config';
-import { LOGO_COLOR } from '@/public/data/homeImages';
 import { State } from '@/reducers/rootReducer';
 import React from 'react';
 import { useSelector } from 'react-redux';
