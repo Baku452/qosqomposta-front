@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '../styles/globals.scss';
 import LayoutWeb from '../layouts/web.layout';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
@@ -8,7 +8,7 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import DashboardLayout from '@/layouts/dashboard.layout';
 
-const MyApp: NextPage<AppProps> = ({ Component, pageProps, router }) => {
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
     const isDashboard = Component.name.startsWith('Dashboard');
     if (isDashboard) {
         return (
