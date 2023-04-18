@@ -12,7 +12,7 @@ const OurServices = () => {
         >
             <div className={`py-10 max-w-6xl m-auto`}>
                 <div className="container mx-auto ">
-                    <div className="mb-5">
+                    <div className="mb-10 px-10">
                         <h2 className="text-center text-xl text-greenQ lg:text-4xl title mb-5">
                             Sé parte del cambio{' '}
                         </h2>
@@ -22,7 +22,7 @@ const OurServices = () => {
                             ¡Elige el más adecuado para tu hogar o tu empresa!
                         </h3>
                     </div>
-                    <div className="flex">
+                    <div className="flex flex-col md:flex-row">
                         <PlanFamiliar />
                         <PlanComercial />
                     </div>
