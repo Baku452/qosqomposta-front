@@ -1,12 +1,12 @@
+import Card from '@/components/atoms/Card/Card';
 import { PLAN_COMERCIAL, PLAN_COMERCIAL_IMAGE } from 'main.config';
-import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
-const PlanComercial: React.FC = () => {
+export const PlanComercialItems: React.FC = () => {
     return (
-        <section className="flex items-center m-auto rounded-3xl bg-gray-100 overflow-auto mb-5 lg:mb-14">
-            <div className="p-5 px-16 basis-full lg:basis-1/2">
+        <div className="flex h-full flex-col justify-between min-h">
+            <div>
                 <h3 className="text-xl mb-7">{PLAN_COMERCIAL.title}</h3>
                 <ul>
                     {PLAN_COMERCIAL.itemsIncludes.map(item => (
@@ -19,19 +19,25 @@ const PlanComercial: React.FC = () => {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div>
                 <button className="btn btn-primary m-auto block mt-5">
                     <Link href={'/servicios/personal'}>Leer Más</Link>
                 </button>
             </div>
-            <div className="hidden lg:block">
-                <Image
-                    width={643}
-                    height={425}
-                    src={PLAN_COMERCIAL_IMAGE}
-                    alt={PLAN_COMERCIAL.title}
-                />
-            </div>
-        </section>
+        </div>
+    );
+};
+
+const PlanComercial: React.FC = () => {
+    return (
+        <Card
+            content={<PlanComercialItems />}
+            altImage={PLAN_COMERCIAL.title}
+            imageHeight={425}
+            imageWidth={643}
+            image={PLAN_COMERCIAL_IMAGE}
+        />
     );
 };
 
