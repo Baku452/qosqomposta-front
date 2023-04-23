@@ -14,4 +14,4 @@ export const IMAGES_SLIDER: ImageWeb[] = [
 ];
 
 export const LOGO_COLOR =
-    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677705346/logos%20solo%20condor/logo%20condor%20color.svg';
+    'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1682218820/logo_only_condor_color_nfcqcu.svg';
