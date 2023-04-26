@@ -5,7 +5,7 @@ import {
     SERVICE_COMERCIAL_PATH,
     SERVICE_FAMILIAR_PATH,
     TALLERES_PATH,
-} from 'routes.config';
+} from '@/routes/routes.config';
 
 export interface ItemsNav {
     label: string;

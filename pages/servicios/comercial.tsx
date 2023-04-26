@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { BANNER_PLAN_COMERCIAL } from 'main.config';
-import { LINK_TERMS_CONDITIONS } from '@/pagesConfig';
 import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';
 import { ServiceSectionItem } from '@/types/mainTypes';
@@ -14,6 +13,7 @@ import {
     COMPOSTAJE_COMERCIAL_SECTION_TITLE,
     LINK_CTA_SERVICIO_COMERCIAL,
 } from '@/public/data/planComercial';
+import { LINK_TERMS_CONDITIONS } from '@/routes/routes.config';
 
 const Comercial = () => {
     const sectionsToAppear: ServiceSectionItem[] = useMemo(

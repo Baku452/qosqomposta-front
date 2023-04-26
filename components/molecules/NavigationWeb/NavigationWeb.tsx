@@ -1,4 +1,4 @@
-import { LOGIN_PATH } from '@/routes.config';
+import { LOGIN_PATH } from '@/routes/routes.config';
 import Link from 'next/link';
 import { ItemsNav } from 'public/data/itemsNav';
 import React, { useState } from 'react';

@@ -22,7 +22,7 @@ import {
     RECOLECCION_RESIDUOS_ORGANICOS_TITLE,
     RECOLECCION_RESIDUOS_ORGANICOS_IMG,
 } from '@/public/data/planFamiliar';
-import { LINK_TERMS_CONDITIONS } from '@/pagesConfig';
+import { LINK_TERMS_CONDITIONS } from '@/routes/routes.config';
 
 const Familiar = () => {
     const sectionsToAppear: ServiceSectionItem[] = useMemo(

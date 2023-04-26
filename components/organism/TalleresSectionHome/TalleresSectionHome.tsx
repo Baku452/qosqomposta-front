@@ -2,7 +2,7 @@
 import { BANNER_TALLER_HOME, TITLE_BLOG_HOME } from 'main.config';
 import Link from 'next/link';
 import React from 'react';
-import { TALLERES_PATH } from 'routes.config';
+import { TALLERES_PATH } from '@/routes/routes.config';
 
 const TalleresSectionHome: React.FC = () => {
     return (

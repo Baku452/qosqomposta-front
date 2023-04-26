@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from '@/utils/firebase';
 import { useRouter } from 'next/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { FORGOT_PASSWORD, REGISTER_PATH } from '@/routes.config';
+import { FORGOT_PASSWORD, REGISTER_PATH } from '@/routes/routes.config';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import {

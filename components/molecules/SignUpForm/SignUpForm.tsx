@@ -171,4 +171,4 @@ const SignUpForm: React.FC = () => {
     );
 };
 
-export { SignUpForm };
+export default SignUpForm;

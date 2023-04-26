@@ -1,3 +1,7 @@
+import {
+    QosqompostaServicesContext,
+    initialStateServices,
+} from '@/context/ServicesContext';
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import HeaderWeb from '@/organism/HeaderWeb/HeaderWeb';
 
@@ -7,9 +11,11 @@ export type LayoutWebProps = {
 const LayoutWeb: React.FC<LayoutWebProps> = ({ children }) => {
     return (
         <>
-            <HeaderWeb />
-            <main>{children}</main>
-            <FooterWeb />
+            <QosqompostaServicesContext.Provider value={initialStateServices}>
+                <HeaderWeb />
+                <main>{children}</main>
+                <FooterWeb />
+            </QosqompostaServicesContext.Provider>
         </>
     );
 };

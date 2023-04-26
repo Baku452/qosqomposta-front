@@ -1,8 +1,8 @@
 import { FETCH_USER_APP } from '@/actions/actionsTypes';
-import { AppUser } from '@/stateTypes';
+import { AppUser } from '@/types/stateTypes';
 import { AnyAction } from 'redux';
 
-const initialUserState: AppUser = {
+export const initialUserState: AppUser = {
     displayName: '',
     uid: '',
     email: '',
@@ -17,7 +17,6 @@ export const appUserReducer = (
 ): AppUser => {
     switch (action.type) {
         case FETCH_USER_APP:
-            console.log(action);
             return {
                 ...action.payload.user,
             };
