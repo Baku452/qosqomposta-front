@@ -1,7 +1,7 @@
 import React from 'react';
-import { SignUpForm } from '@/components/molecules/SignUpForm/SignUpForm';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import { LOGO_COLOR } from '@/public/data/homeImages';
+import SignUpForm from '@/components/molecules/SignUpForm/SignUpForm';
 
 const RegisterPage: React.FC = () => {
     return (

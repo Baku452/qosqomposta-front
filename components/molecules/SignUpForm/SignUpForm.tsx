@@ -5,6 +5,7 @@ import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 //Styles
 import styles from './signUp.module.scss';
+import QosqompostaServiceForm from './QosqompostaService/QosqompostaService';
 
 type Inputs = {
     name: string;
@@ -115,11 +116,7 @@ const SignUpForm: React.FC = () => {
                     )}
                     {stepsForm === 1 && (
                         <section>
-                            <input
-                                defaultValue="Dirección"
-                                {...(register('address'), { required: true })}
-                            />
-
+                            <QosqompostaServiceForm />
                             {errors.address && <span>This field is required</span>}
                             <button
                                 className="btn btn-primary"

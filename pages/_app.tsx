@@ -3,14 +3,13 @@ import LayoutWeb from '../layouts/web.layout';
 import Script from 'next/script';
 import 'normalize.css/normalize.css';
 import { Provider } from 'react-redux';
-import { appStore, wrapper } from '@/store/appStore';
+import { appStore } from '@/store/appStore';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import DashboardLayout from '@/layouts/dashboard.layout';
 
 const MyApp: NextPage<AppProps> = ({ Component, ...rest }) => {
     const isDashboard = Component.name.startsWith('Dashboard');
-    const { store, props } = wrapper.useWrappedStore(rest);
 
     if (isDashboard) {
         return (

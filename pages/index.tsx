@@ -6,15 +6,23 @@ import 'normalize.css/normalize.css';
 import TalleresSectionHome from '@/components/organism/TalleresSectionHome/TalleresSectionHome';
 import { GetStaticProps, NextPage } from 'next';
 import { QosqompostaService } from '@/types/serviceQosqomposta';
-import { useContext, useEffect, useState } from 'react';
-import { QosqompostaServicesContext } from '@/context/ServicesContext';
+import { useContext, useEffect } from 'react';
+import QosqompostaServicesContext, { ContextState } from '@/context/ServicesContext';
 
 export interface Props {
     data: QosqompostaService[];
 }
 const Home: NextPage<Props> = ({ data }) => {
-    const [context, setContext] = useContext(QosqompostaServicesContext);
+    const { setServicesContext } = useContext(QosqompostaServicesContext) as ContextState;
 
+    useEffect(() => {
+        console.log(data);
+        console.log(setServicesContext);
+
+        if (data && setServicesContext) {
+            setServicesContext(data);
+        }
+    }, [data, setServicesContext]);
     return (
         <>
             <Head>
