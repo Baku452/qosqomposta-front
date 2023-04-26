@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { LOGO_ONLY_CONDOR_WHITE } from '@/public/icons/iconsConfig';
 import { WEB_BANNER_URL } from 'main.config';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 
 const BannerLanding = () => {
     return (

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import { BANNER_PLAN_COMERCIAL } from 'main.config';
 import { createRef, RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 import ServiceSection from '@/components/molecules/ServicesSections/ServicesSections';

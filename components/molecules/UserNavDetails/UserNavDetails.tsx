@@ -1,6 +1,6 @@
 import LogoutButton from '@/components/atoms/LogoutButton/LogoutButton';
 import { AppUser } from '@/types/stateTypes';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import React from 'react';
 export interface UserNavDetailsProps {
     user: AppUser;

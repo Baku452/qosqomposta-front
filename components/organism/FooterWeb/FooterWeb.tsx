@@ -3,7 +3,7 @@ import {
     QOSQOMPOSTA_INSTAGRAM_URL,
     QOSQOMPOSTA_WHATSAPP_URL,
 } from 'main.config';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import {
     AiFillPhone,

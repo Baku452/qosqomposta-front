@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import ImageSlider from '@/components/atoms/ImageSlider/ImageSlider';
 import { IMAGES_SLIDER, LOGO_COLOR } from '@/public/data/homeImages';
 

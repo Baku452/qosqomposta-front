@@ -2,7 +2,7 @@
 import Accordion from '@/components/atoms/Accordion/Accordion';
 import { RECOLECCION_RESIDUOS_ORGANICOS_CTA } from '@/main.config';
 import { AccordionItems } from '@/types/mainTypes';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import { RefObject } from 'react';
 

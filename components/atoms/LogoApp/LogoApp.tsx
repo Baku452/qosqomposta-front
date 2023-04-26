@@ -1,5 +1,5 @@
 import { DEFAULT_HEIGHT_LOGO_NAV, DEFAULT_WITH_LOGO_NAV } from '@/main.config';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import React from 'react';
 

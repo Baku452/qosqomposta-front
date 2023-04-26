@@ -4,7 +4,7 @@ import {
     NAV_LINKS_ERROR_PAGE,
 } from '@/components/molecules/ErrorPage/utilsErrorPage';
 import { NOT_FOUND_STATUS } from '@/constants/statusCodes';
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import Link from 'next/link';
 import { MdNavigateNext } from 'react-icons/md';
 
