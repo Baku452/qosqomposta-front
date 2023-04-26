@@ -19,16 +19,16 @@ const LogoApp: React.FC<LogoAppProps> = ({
 }) => {
     if (hasLink) {
         return (
-            <Link href={link}>
-                <a className="border-none">
-                    <Image
-                        width={width}
-                        height={height}
-                        alt="Logo Qosqomposta"
-                        src={logoType}
-                    />
-                </a>
-            </Link>
+            (<Link href={link} className="border-none">
+
+                <Image
+                    width={width}
+                    height={height}
+                    alt="Logo Qosqomposta"
+                    src={logoType}
+                />
+
+            </Link>)
         );
     } else {
         return (

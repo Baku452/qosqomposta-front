@@ -16,10 +16,12 @@ const TalleresSectionHome: React.FC = () => {
             <div className="relative">
                 <div className="absolute w-full h-full flex items-center justify-center">
                     <button className="shadow-2xl">
-                        <Link href={TALLERES_PATH}>
-                            <a className="btn btn-primary shadow-2xl !font-black !p-5 !text-2xl">
+                        <Link
+                            href={TALLERES_PATH}
+                            className="btn btn-primary shadow-2xl !font-black !p-5 !text-2xl">
+                            
                                 Conocer Más
-                            </a>
+                            
                         </Link>
                     </button>
                 </div>

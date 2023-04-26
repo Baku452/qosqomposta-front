@@ -28,12 +28,15 @@ export default function Custom404() {
                     <h3 className="text-3xl font-normal">Página no encontrada</h3>
                     <nav className="flex flex-col text-2xl mt-10">
                         {NAV_LINKS_ERROR_PAGE.map(navlink => (
-                            <Link key={navlink.key} href={navlink.path}>
-                                <a className="w-fit transition-colors flex items-center hover:text-yellowQ">
-                                    <MdNavigateNext className="" />
-                                    {navlink.name}
-                                </a>
-                            </Link>
+                            (<Link
+                                key={navlink.key}
+                                href={navlink.path}
+                                className="w-fit transition-colors flex items-center hover:text-yellowQ">
+
+                                <MdNavigateNext className="" />
+                                {navlink.name}
+
+                            </Link>)
                         ))}
                     </nav>
                 </div>

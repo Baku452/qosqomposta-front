@@ -113,8 +113,8 @@ const LoginForm: React.FC = () => {
             {errorAuth && <span className="text-error">{errorAuth}</span>}
             <div className="text-center">
                 <p>¿No tiene una cuenta?</p>
-                <Link href={REGISTER_PATH}>
-                    <a className="text-yellowQ-500 font-bold">Crearse una cuenta Q</a>
+                <Link href={REGISTER_PATH} className="text-yellowQ-500 font-bold">
+                    Crearse una cuenta Q
                 </Link>
             </div>
         </div>
