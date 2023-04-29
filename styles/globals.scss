@@ -66,6 +66,11 @@ a {
 
 .btn {
     @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
+
+    &:disabled {
+        @apply cursor-not-allowed;
+        @apply opacity-50;
+    }
 }
 
 .btn-primary {
@@ -79,7 +84,7 @@ a {
     box-sizing: border-box;
 }
 
-.btn-primary:hover {
+.btn-primary:not(:disabled):hover {
     border-color: #000;
 }
 
