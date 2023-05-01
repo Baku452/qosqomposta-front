@@ -1,12 +1,13 @@
-import { QosqompostaService } from '@/types/serviceQosqomposta';
-import React, { createContext, useState } from 'react';
+import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
+import { mergeServicesByType } from '@/utils/services.utils';
+import React, { createContext, useEffect, useState } from 'react';
 
 export const initialStateServices: QosqompostaService[] = [
     {
         _id: '',
         name: '',
-        price: [],
-        type: [],
+        price: 0,
+        type: '',
         pick_up_days: [],
         place_of_pickup: [],
         clientType: [],
@@ -14,6 +15,7 @@ export const initialStateServices: QosqompostaService[] = [
 ];
 
 export interface ContextState {
+    mergedServicesContext?: QosqompostaServiceMerged[];
     servicesContext: QosqompostaService[];
     setServicesContext?: React.Dispatch<React.SetStateAction<QosqompostaService[]>>;
 }
@@ -26,11 +28,20 @@ interface Props {
 
 export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }) => {
     const [initialState, setState] = useState(initialStateServices);
+    const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
 
     const contextValue: ContextState = {
+        mergedServicesContext: mergedServices,
         servicesContext: initialState,
         setServicesContext: setState,
     };
+
+    useEffect(() => {
+        if (initialState) {
+            const mergedServices = mergeServicesByType(initialState);
+            setMergedServices(mergedServices);
+        }
+    }, [initialState]);
     return (
         <QosqompostaServicesContext.Provider value={contextValue}>
             {children}

@@ -16,9 +16,6 @@ const Home: NextPage<Props> = ({ data }) => {
     const { setServicesContext } = useContext(QosqompostaServicesContext) as ContextState;
 
     useEffect(() => {
-        console.log(data);
-        console.log(setServicesContext);
-
         if (data && setServicesContext) {
             setServicesContext(data);
         }
@@ -46,9 +43,6 @@ export const getStaticProps: GetStaticProps = async () => {
     );
     const data = await response.json();
 
-    console.log(data);
-
-    // Return the data as props
     return {
         props: {
             data,
