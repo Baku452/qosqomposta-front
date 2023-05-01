@@ -5,6 +5,7 @@ import React, { createContext, useEffect, useState } from 'react';
 export const initialStateServices: QosqompostaService[] = [
     {
         _id: '',
+        description: '',
         name: '',
         price: 0,
         type: '',
@@ -15,6 +16,7 @@ export const initialStateServices: QosqompostaService[] = [
 ];
 
 export interface ContextState {
+    defaultSelectedService?: string;
     mergedServicesContext?: QosqompostaServiceMerged[];
     servicesContext: QosqompostaService[];
     setServicesContext?: React.Dispatch<React.SetStateAction<QosqompostaService[]>>;
@@ -29,8 +31,10 @@ interface Props {
 export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }) => {
     const [initialState, setState] = useState(initialStateServices);
     const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
+    const [defaultSelectedService, setDefaultSelectedService] = useState<string>('');
 
     const contextValue: ContextState = {
+        defaultSelectedService: defaultSelectedService,
         mergedServicesContext: mergedServices,
         servicesContext: initialState,
         setServicesContext: setState,
@@ -40,6 +44,7 @@ export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }
         if (initialState) {
             const mergedServices = mergeServicesByType(initialState);
             setMergedServices(mergedServices);
+            setDefaultSelectedService('644ca19d0126870ffc92c565');
         }
     }, [initialState]);
     return (

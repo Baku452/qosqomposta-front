@@ -1,6 +1,10 @@
 export interface QosqompostaService {
     _id: string;
     name: string;
+    description: string;
+    summary?: string;
+    includes?: string[];
+    notIncludes?: string[];
     price: number;
     type: string;
     modality?: string;
@@ -10,8 +14,15 @@ export interface QosqompostaService {
     createdAt?: string;
     updatedAt?: string;
     icon?: string;
+    delivery?: boolean;
+    bucket?: boolean;
 }
 
-export interface QosqompostaServiceMerged extends Omit<QosqompostaService, 'price'> {
-    prices: number[];
+export interface ModalityService {
+    price: number;
+    name?: string;
+    id: string;
+}
+export interface QosqompostaServiceMerged extends Omit<QosqompostaService, 'modality'> {
+    modality: ModalityService[];
 }
