@@ -12,8 +12,8 @@ export const mergeServicesByType = (
                     ...service,
                     modality: [
                         {
+                            ...service,
                             id: service._id,
-                            name: service.modality,
                             price: service.price,
                         },
                     ],
@@ -26,8 +26,8 @@ export const mergeServicesByType = (
 
             if (existingService) {
                 existingService.modality.push({
+                    ...service,
                     id: service._id,
-                    name: service.modality,
                     price: service.price,
                 });
             } else {
@@ -35,8 +35,8 @@ export const mergeServicesByType = (
                     ...service,
                     modality: [
                         {
+                            ...service,
                             id: service._id,
-                            name: service.modality,
                             price: service.price,
                         },
                     ],

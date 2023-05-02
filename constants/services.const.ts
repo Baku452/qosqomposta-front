@@ -1,31 +1,28 @@
-import { QosqompostaService } from '@/types/serviceQosqomposta';
+import { QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
 
 export interface HEADERS_SELECT {
     name: string;
-    key: keyof QosqompostaService;
+    key: keyof QosqompostaServiceMerged;
 }
 
 export const TABLE_HEADERS_SELECT: HEADERS_SELECT[] = [
     {
-        name: 'Servicio',
-        key: 'name',
+        name: '',
+        key: '_id',
+    },
+    {
+        name: 'Modalidad',
+        key: 'modality',
     },
     {
         name: 'Precio',
         key: 'price',
     },
     {
-        name: 'Descripcion',
-        key: 'summary',
-    },
-    {
         name: 'Delivery',
         key: 'delivery',
     },
-    {
-        name: 'Modalidad',
-        key: 'modality',
-    },
+
     {
         name: 'Balde Qompostero',
         key: 'bucket',

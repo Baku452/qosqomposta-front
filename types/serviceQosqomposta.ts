@@ -18,9 +18,8 @@ export interface QosqompostaService {
     bucket?: boolean;
 }
 
-export interface ModalityService {
+export interface ModalityService extends QosqompostaService {
     price: number;
-    name?: string;
     id: string;
 }
 export interface QosqompostaServiceMerged extends Omit<QosqompostaService, 'modality'> {
