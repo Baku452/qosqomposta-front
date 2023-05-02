@@ -15,3 +15,6 @@ export const REGISTER_PATH = '/auth/register';
 export const FORGOT_PASSWORD = '';
 
 export const LINK_TERMS_CONDITIONS = '/';
+
+//Services Routes
+export const SELECT_SERVICE_PATH = '/servicios/seleccionar';

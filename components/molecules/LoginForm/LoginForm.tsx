@@ -5,7 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { auth } from '@/utils/firebase';
 import { useRouter } from 'next/router';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { FORGOT_PASSWORD, REGISTER_PATH } from '@/routes/routes.config';
+import {
+    FORGOT_PASSWORD,
+    REGISTER_PATH,
+    SELECT_SERVICE_PATH,
+} from '@/routes/routes.config';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import {
@@ -113,8 +117,8 @@ const LoginForm: React.FC = () => {
             {errorAuth && <span className="text-error">{errorAuth}</span>}
             <div className="text-center">
                 <p>¿No tiene una cuenta?</p>
-                <Link href={REGISTER_PATH} className="text-yellowQ-500 font-bold">
-                    Crearse una cuenta Q
+                <Link href={SELECT_SERVICE_PATH} className="text-yellowQ-500 font-bold">
+                    Elija un Servicio Q
                 </Link>
             </div>
         </div>

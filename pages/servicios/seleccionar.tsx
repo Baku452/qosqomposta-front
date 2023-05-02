@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { LINK_TERMS_CONDITIONS } from '@/routes/routes.config';
+import { LINK_TERMS_CONDITIONS, REGISTER_PATH } from '@/routes/routes.config';
 import { GetStaticProps, NextPage } from 'next';
 import QosqompostaServicesContext, { ContextState } from '@/context/ServicesContext';
 import { useContext, useEffect, useState } from 'react';
@@ -11,6 +11,10 @@ import { FaCheck, FaTimes } from 'react-icons/fa';
 
 //Styles
 import styles from './seleccionar.module.scss';
+import { useDispatch } from 'react-redux';
+import { setSelectedRegisterService } from '@/actions/services.actions';
+import { useRouter } from 'next/router';
+import LoadingOverlay from '@/components/molecules/LoaderOverlay/LoaderOverlay';
 export interface SeleccionarServicioProps {
     data: QosqompostaService[];
 }
@@ -21,6 +25,19 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
     const [activeService, setActiveService] = useState<
         QosqompostaServiceMerged | undefined
     >(defaultSelectedService);
+
+    const [loading, setLoading] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const router = useRouter();
+
+    const handleSelectService = (serviceId: string): void => {
+        setLoading(true);
+        serviceId && dispatch(setSelectedRegisterService(serviceId));
+        setTimeout(() => {
+            setLoading(false);
+        }, 4000);
+        router.push(REGISTER_PATH);
+    };
     useEffect(() => {
         if (data && setServicesContext) {
             setServicesContext(data);
@@ -39,6 +56,7 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
                 <title>Seleccione su Plan | Qosqomposta</title>
                 <meta name="description" content="Planes Comnerciales de Qosqomposta" />
             </Head>
+            {loading && <LoadingOverlay />}
             <div className={`p-5 ${styles.backgroundPage}`}>
                 <h2 className="text-4xl text-center pt-10">Elige tu Plan</h2>
                 <p className="text-center py-5">Puedes cancelar en cualquier momento.</p>
@@ -73,7 +91,14 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
                                         if (header.key === '_id') {
                                             return (
                                                 <td key={service._id}>
-                                                    <button className="bg-yellowQ rounded-lg py-3 px-4">
+                                                    <button
+                                                        onClick={() =>
+                                                            handleSelectService(
+                                                                service._id,
+                                                            )
+                                                        }
+                                                        className="bg-yellowQ rounded-lg py-3 px-4"
+                                                    >
                                                         Inscribirse
                                                     </button>
                                                 </td>

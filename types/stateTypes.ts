@@ -1,5 +1,4 @@
 import { UserInfo } from 'firebase-admin/lib/auth/user-record';
-import { QosqompostaService } from './serviceQosqomposta';
 
 export interface AppState {
     user: AppUser;
@@ -17,5 +16,5 @@ export interface AppUser extends Omit<UserInfo, 'toJSON'> {
 }
 
 export interface QosqompostaServices {
-    data: QosqompostaService[];
+    selectedService?: string;
 }
