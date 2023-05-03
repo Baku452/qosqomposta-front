@@ -1,4 +1,4 @@
-import { StepsForms } from '@/constants/authForms.const';
+import { stepsForms } from '@/constants/authForms.const';
 import React from 'react';
 
 //Styles
@@ -13,7 +13,7 @@ const StepsForm: React.FC<StepsFormProps> = ({ stepActive, setStep }) => {
         <>
             <section className="m-auto max-w-3xl pb-10">
                 <div className="flex justify-center">
-                    {StepsForms.map(step => (
+                    {stepsForms.map(step => (
                         <div
                             className={`flex flex-col items-center  ${styles.circleStep}`}
                             key={step.key}

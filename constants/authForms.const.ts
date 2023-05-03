@@ -1,4 +1,4 @@
-export const StepsForms = [
+export const stepsForms = [
     {
         key: 'datos_personales',
         title: 'Información de la cuenta',
@@ -7,16 +7,9 @@ export const StepsForms = [
         active: false,
     },
     {
-        key: 'tipo_servicio',
-        title: 'Tipo de Servicio',
-        value: 1,
-        complete: false,
-        active: false,
-    },
-    {
         key: 'datos_recojo',
         title: 'Datos de Recojo',
-        value: 2,
+        value: 1,
         complete: false,
         active: false,
     },
@@ -24,7 +17,7 @@ export const StepsForms = [
     {
         key: 'modalidad_pago',
         title: 'Modalidad de Pago',
-        value: 3,
+        value: 2,
         complete: false,
         active: false,
     },

@@ -1,3 +1,5 @@
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+
 export interface StepsButtonProps {
     steps: number;
     maxSteps: number;
@@ -12,19 +14,11 @@ const StepsButton: React.FC<StepsButtonProps> = ({
 }) => {
     return (
         <div className="w-full text-center mt-16 flex gap-1 justify-center">
-            <button
-                disabled={steps === 0}
-                className="!w-40 btn btn-primary m-0"
-                onClick={decreaseStep}
-            >
-                Atras
+            <button disabled={steps === 0} className=" m-0" onClick={decreaseStep}>
+                <FaAngleLeft size={30} />
             </button>
-            <button
-                disabled={steps === maxSteps}
-                className="!w-40 btn btn-primary m-0"
-                onClick={increaseStep}
-            >
-                Siguiente
+            <button disabled={steps === maxSteps} className=" m-0" onClick={increaseStep}>
+                <FaAngleRight size={30} />
             </button>
         </div>
     );

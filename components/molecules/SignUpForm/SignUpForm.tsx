@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import StepsForm from './StepsForm/StepsForm';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 //Styles
 import styles from './signUp.module.scss';
-import QosqompostaServiceForm from './QosqompostaService/QosqompostaService';
 import StepAccountInformation from './StepAccountInformation/StepAccountInformation';
 import StepsButton from './StepsButtons/StepsButtons';
-import { StepsForms } from '@/constants/authForms.const';
-import StepMembership from './StepMembership/StepMembership';
+import { stepsForms } from '@/constants/authForms.const';
 import StepPaymentMethod from './StepPaymentMethod/StepPaymentMethod';
+import StepPickupPlace from './StepPickUpPlace/StepMembership';
+import MapContainer from '@/components/atoms/MapPicker/MapPicker';
 
 export type Inputs = {
     name: string;
@@ -50,16 +49,16 @@ const SignUpForm: React.FC = () => {
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     {stepsForm === 0 && <StepAccountInformation />}
-                    {stepsForm === 1 && <QosqompostaServiceForm />}
-                    {stepsForm === 2 && <StepMembership />}
-                    {stepsForm === 3 && <StepPaymentMethod />}
+                    {stepsForm === 1 && <StepPickupPlace />}
+                    {stepsForm === 2 && <StepPaymentMethod />}
 
                     <StepsButton
                         steps={stepsForm}
-                        maxSteps={StepsForms.length}
+                        maxSteps={stepsForms.length}
                         decreaseStep={handleDecreaseStepsForms}
                         increaseStep={handleIncreaseStepsForms}
                     />
+                    <MapContainer />
                 </form>
             </div>
         </div>
