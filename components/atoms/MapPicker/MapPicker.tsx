@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { memo, useMemo, useState } from 'react';
 import { GoogleMap, useLoadScript, Marker, MarkerF } from '@react-google-maps/api';
 import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
 import {
@@ -38,7 +38,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({ setSelected }) 
                 onChange={e => setValue(e.target.value)}
                 disabled={!ready}
                 className="combobox-input"
-                placeholder="Search an address"
+                placeholder="Ingrese su ubicación"
             />
             <ComboboxPopover>
                 <ComboboxList>
@@ -53,7 +53,7 @@ const PlacesAutocomplete: React.FC<PlacesAutocompleteProps> = ({ setSelected }) 
 };
 
 const MapContainer: React.FC = () => {
-    const center = useMemo(() => ({ lat: 44, lng: -80 }), []);
+    const center = useMemo(() => ({ lat: -13.5319533, lng: -71.9591915 }), []);
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? '',
         libraries: ['places'],
@@ -62,12 +62,12 @@ const MapContainer: React.FC = () => {
 
     if (isLoaded) {
         return (
-            <div className="h-72">
-                <div className="places-container">
+            <div>
+                <div className="places-container py-5">
                     <PlacesAutocomplete setSelected={setSelected} />
                 </div>
                 <GoogleMap
-                    zoom={10}
+                    zoom={15}
                     center={center}
                     mapContainerClassName="map-container"
                 >
@@ -80,4 +80,4 @@ const MapContainer: React.FC = () => {
     }
 };
 
-export default MapContainer;
+export default memo(MapContainer);

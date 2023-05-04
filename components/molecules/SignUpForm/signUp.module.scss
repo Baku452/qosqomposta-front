@@ -3,5 +3,12 @@
         border: none;
         border-radius: 0%;
         border-bottom: 1px solid #b9b9b9;
+        padding: 0;
+        padding-bottom: 5px;
+        margin-bottom: 1rem;
+
+        &:focus{
+            outline: none;
+        }
     }
 }

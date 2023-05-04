@@ -9,34 +9,40 @@ const StepAccountInformation: React.FC = () => {
 
     return (
         <section>
-            <h3 className="mb-5">Cuéntanos sobre ti</h3>
+            <h3 className="mb-5 text-center">Cuéntanos sobre ti</h3>
             <div className="mb-5">
                 <label>Nombre *</label>
                 <input {...(register('name'), { required: true })} />
                 {errors.name && <span>This field is required</span>}
             </div>
             <div className="mb-5 flex gap-5">
-                <div>
+                <div className="basis-1/2">
                     <label>Apellido Paterno *</label>
                     <input {...(register('lastname'), { required: true })} />
                     {errors.lastname && <span>This field is required</span>}
                 </div>
-                <div>
+                <div className="basis-1/2">
                     <label>Apellido Materno *</label>
                     <input {...(register('mother_last_name'), { required: true })} />
                     {errors.mother_last_name && <span>This field is required</span>}
                 </div>
             </div>
             <div className="mb-5 flex gap-5">
-                <div>
+                <div className="basis-1/2">
                     <label>Contraseña*</label>
-                    <input {...(register('password'), { required: true })} />
+                    <input
+                        type="password"
+                        {...(register('password'), { required: true })}
+                    />
                     {errors.password && <span>This field is required</span>}
                 </div>
-                <div>
+                <div className="basis-1/2">
                     <label>Confirmar Contraseña*</label>
 
-                    <input {...(register('confirmPassword'), { required: true })} />
+                    <input
+                        type="password"
+                        {...(register('confirmPassword'), { required: true })}
+                    />
                     {errors.confirmPassword && <span>This field is required</span>}
                 </div>
             </div>

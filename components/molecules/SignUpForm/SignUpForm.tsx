@@ -22,6 +22,7 @@ export type Inputs = {
     dateBirth: Date;
     membership: string;
     phoneNumber: string;
+    referencePlace: string;
 };
 
 const SignUpForm: React.FC = () => {
@@ -43,23 +44,21 @@ const SignUpForm: React.FC = () => {
     return (
         <div>
             <StepsForm stepActive={stepsForm} setStep={setSetpsForm} />
-            <div className="shadow-xl rounded-xl p-10 max-w-3xl m-auto bg-white text-left text-gray-400">
+            <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 max-w-3xl m-auto bg-white text-left text-gray-400 ">
                 <form
-                    className={`m-auto w-11/12 ${styles.formSignUp}`}
+                    className={`m-0 px-10 ${styles.formSignUp}`}
                     onSubmit={handleSubmit(onSubmit)}
                 >
                     {stepsForm === 0 && <StepAccountInformation />}
                     {stepsForm === 1 && <StepPickupPlace />}
                     {stepsForm === 2 && <StepPaymentMethod />}
-
-                    <StepsButton
-                        steps={stepsForm}
-                        maxSteps={stepsForms.length}
-                        decreaseStep={handleDecreaseStepsForms}
-                        increaseStep={handleIncreaseStepsForms}
-                    />
-                    <MapContainer />
                 </form>
+                <StepsButton
+                    steps={stepsForm}
+                    maxSteps={stepsForms.length}
+                    decreaseStep={handleDecreaseStepsForms}
+                    increaseStep={handleIncreaseStepsForms}
+                />
             </div>
         </div>
     );
