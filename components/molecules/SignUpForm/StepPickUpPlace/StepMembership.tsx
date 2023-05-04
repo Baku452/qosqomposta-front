@@ -1,12 +1,12 @@
 import MapContainer from '@/components/atoms/MapPicker/MapPicker';
-import { Inputs } from '../SignUpForm';
 import { useForm } from 'react-hook-form';
+import { InputsSignUpForm } from '@/types/mainTypes';
 
 const StepPickupPlace: React.FC = () => {
     const {
         register,
         formState: { errors },
-    } = useForm<Inputs>();
+    } = useForm<InputsSignUpForm>();
 
     return (
         <section>

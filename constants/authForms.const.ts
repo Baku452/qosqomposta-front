@@ -13,11 +13,17 @@ export const stepsForms = [
         complete: false,
         active: false,
     },
-
     {
         key: 'modalidad_pago',
         title: 'Modalidad de Pago',
         value: 2,
+        complete: false,
+        active: false,
+    },
+    {
+        key: 'summary',
+        title: 'Resumen Registro',
+        value: 3,
         complete: false,
         active: false,
     },

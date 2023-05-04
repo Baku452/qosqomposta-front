@@ -33,3 +33,18 @@ export interface AsyncActionType {
     success: string;
     error: string;
 }
+
+export type InputsSignUpForm = {
+    name: string;
+    lastname: string;
+    mother_last_name: string;
+    password: string;
+    confirmPassword: string;
+    email: string;
+    address: string;
+    dateBirth: Date;
+    membership: string;
+    phoneNumber: string;
+    referencePlace: string;
+    paymentMethod: string;
+};

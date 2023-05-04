@@ -2,6 +2,10 @@ import Image from 'next/image';
 import { AiFillCreditCard, AiTwotoneBank } from 'react-icons/ai';
 import { FaRegMoneyBillAlt } from 'react-icons/fa';
 
+//Styles
+import styles from './paymentMethod.module.scss';
+import { useContext, useEffect } from 'react';
+import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 export interface PaymentMethods {
     name: string;
     image?: string;
@@ -28,15 +32,37 @@ export const PAYMENT_METHODS: PaymentMethods[] = [
     },
 ];
 
-const StepPaymentMethod: React.FC = () => {
+export interface StepPaymentMethodProps {
+    paymentMethodSelected: string | undefined;
+    setPaymentMethodSelected: (value: string) => void;
+}
+
+const StepPaymentMethod: React.FC<StepPaymentMethodProps> = ({
+    paymentMethodSelected,
+    setPaymentMethodSelected,
+}) => {
+    const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
+
+    useEffect(() => {
+        if (paymentMethodSelected && formState) {
+            setFormState({
+                ...formState,
+                paymentMethod: paymentMethodSelected,
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [paymentMethodSelected]);
     return (
         <section>
             <h2 className="mb-10">Seleccione su método de pago</h2>
             <div className="flex justify-evenly flex-wrap">
                 {PAYMENT_METHODS.map(method => (
                     <div
+                        onClick={() => setPaymentMethodSelected(method.name)}
                         key={method.name}
-                        className="hover:bg-yellowQ hover:text-white cursor-pointer transition-colors rounded-lg flex flex-col justify-between items-center shadow-md mb-8 basis-5/12 p-5"
+                        className={`${
+                            paymentMethodSelected === method.name ? styles.activeCard : ''
+                        } hover:bg-yellowQ hover:text-white cursor-pointer transition-colors rounded-lg flex flex-col justify-between items-center shadow-md mb-8 basis-5/12 p-5`}
                     >
                         {method.image && (
                             <Image
