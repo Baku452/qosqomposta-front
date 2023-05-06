@@ -2,7 +2,7 @@ import { InputsSignUpForm } from '@/types/mainTypes';
 import React, { createContext, useState } from 'react';
 
 export interface SignUpContextType {
-    formState: InputsSignUpForm;
+    formState: InputsSignUpForm | undefined;
     setFormState: (value: InputsSignUpForm) => void;
 }
 
@@ -13,20 +13,7 @@ interface Props {
 }
 
 export const SignUpContextProvider: React.FC<Props> = ({ children }) => {
-    const [initialState, setState] = useState<InputsSignUpForm>({
-        name: '',
-        lastname: '',
-        mother_last_name: '',
-        password: '',
-        confirmPassword: '',
-        email: '',
-        address: '',
-        dateBirth: new Date(),
-        membership: '',
-        phoneNumber: '',
-        referencePlace: '',
-        paymentMethod: '',
-    });
+    const [initialState, setState] = useState<InputsSignUpForm | undefined>(undefined);
 
     const contextValue: SignUpContextType = {
         formState: initialState,

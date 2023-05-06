@@ -2,19 +2,19 @@ import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQos
 import { mergeServicesByType } from '@/utils/services.utils';
 import React, { createContext, useEffect, useState } from 'react';
 
-export interface ContextState {
-    defaultSelectedService?: QosqompostaServiceMerged;
+export interface ServiceContextType {
+    selectedService?: QosqompostaServiceMerged;
     mergedServicesContext?: QosqompostaServiceMerged[];
     servicesContext: QosqompostaService[] | undefined;
     setServicesContext?: React.Dispatch<
         React.SetStateAction<QosqompostaService[] | undefined>
     >;
-    setDefaultSelectedService: React.Dispatch<
+    setSelectedService: React.Dispatch<
         React.SetStateAction<QosqompostaServiceMerged | undefined>
     >;
 }
 
-const QosqompostaServicesContext = createContext<ContextState | null>(null);
+const QosqompostaServicesContext = createContext<ServiceContextType | null>(null);
 
 interface Props {
     children: React.ReactNode;
@@ -23,16 +23,16 @@ interface Props {
 export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }) => {
     const [initialState, setState] = useState<QosqompostaService[] | undefined>();
     const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
-    const [defaultSelectedService, setDefaultSelectedService] = useState<
+    const [selectedService, setSelectedService] = useState<
         QosqompostaServiceMerged | undefined
     >();
 
-    const contextValue: ContextState = {
-        defaultSelectedService: defaultSelectedService,
+    const contextValue: ServiceContextType = {
+        selectedService: selectedService,
         mergedServicesContext: mergedServices,
         servicesContext: initialState,
         setServicesContext: setState,
-        setDefaultSelectedService: setDefaultSelectedService,
+        setSelectedService: setSelectedService,
     };
 
     useEffect(() => {
@@ -43,7 +43,7 @@ export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }
             const defaultService = mergedServices.find(
                 service => service._id === '644ca2bd0126870ffc92c56c',
             );
-            setDefaultSelectedService(defaultService);
+            setSelectedService(defaultService);
         }
     }, [initialState]);
 

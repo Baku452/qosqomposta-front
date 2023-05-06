@@ -5,10 +5,25 @@
         border-bottom: 1px solid #b9b9b9;
         padding: 0;
         padding-bottom: 5px;
-        margin-bottom: 1rem;
+        padding-top: 0.5rem;
+        color: #000;
 
         &:focus{
             outline: none;
         }
+    }
+
+    label{
+        // color: #000;
+    }
+
+    h2{
+        @apply font-paragraph text-lg;
+        font-weight: bold;
+        color: #000 !important;
+    }
+
+    .errorLabel{
+        @apply text-red-500 text-sm
     }
 }

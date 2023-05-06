@@ -7,13 +7,17 @@ import TalleresSectionHome from '@/components/organism/TalleresSectionHome/Talle
 import { GetStaticProps, NextPage } from 'next';
 import { QosqompostaService } from '@/types/serviceQosqomposta';
 import { useContext, useEffect } from 'react';
-import QosqompostaServicesContext, { ContextState } from '@/context/ServicesContext';
+import QosqompostaServicesContext, {
+    ServiceContextType,
+} from '@/context/ServicesContext';
 
 export interface Props {
     data: QosqompostaService[];
 }
 const Home: NextPage<Props> = ({ data }) => {
-    const { setServicesContext } = useContext(QosqompostaServicesContext) as ContextState;
+    const { setServicesContext } = useContext(
+        QosqompostaServicesContext,
+    ) as ServiceContextType;
 
     useEffect(() => {
         if (data && setServicesContext) {

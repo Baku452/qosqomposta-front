@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 import { LINK_TERMS_CONDITIONS, REGISTER_PATH } from '@/routes/routes.config';
 import { GetStaticProps, NextPage } from 'next';
-import QosqompostaServicesContext, { ContextState } from '@/context/ServicesContext';
+import QosqompostaServicesContext, {
+    ServiceContextType,
+} from '@/context/ServicesContext';
 import { useContext, useEffect, useState } from 'react';
 import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
 import { TABLE_HEADERS_SELECT } from '@/constants/services.const';
@@ -19,12 +21,16 @@ export interface SeleccionarServicioProps {
     data: QosqompostaService[];
 }
 const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
-    const { defaultSelectedService, mergedServicesContext, setServicesContext } =
-        useContext(QosqompostaServicesContext) as ContextState;
+    const {
+        selectedService,
+        mergedServicesContext,
+        setServicesContext,
+        setSelectedService,
+    } = useContext(QosqompostaServicesContext) as ServiceContextType;
 
     const [activeService, setActiveService] = useState<
         QosqompostaServiceMerged | undefined
-    >(defaultSelectedService);
+    >(selectedService);
 
     const [loading, setLoading] = useState<boolean>(false);
     const dispatch = useDispatch();
@@ -45,10 +51,10 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
     }, [data, setServicesContext]);
 
     useEffect(() => {
-        if (defaultSelectedService) {
-            setActiveService(defaultSelectedService);
+        if (selectedService) {
+            setActiveService(selectedService);
         }
-    }, [defaultSelectedService]);
+    }, [selectedService]);
 
     return (
         <>
@@ -63,7 +69,10 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
                 <div className="flex m-auto w-full justify-center gap-4 py-10">
                     {mergedServicesContext?.map(service => (
                         <button
-                            onClick={() => setActiveService(service)}
+                            onClick={() => {
+                                setActiveService(service);
+                                setSelectedService(service);
+                            }}
                             className={`${
                                 activeService?._id == service._id ? '!bg-yellowQ' : ''
                             } bg-white rounded-lg px-5 py-2 border-2 w-60`}

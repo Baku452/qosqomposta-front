@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 export const stepsForms = [
     {
         key: 'datos_personales',
@@ -28,3 +29,9 @@ export const stepsForms = [
         active: false,
     },
 ];
+
+export const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i;
+export const PHONE_REGEX_PATTERN_SIGN =
+    /^[+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{2,4}[-\s\.]?[0-9]{4,6}$/im;
+export const PHONE_REGEX_PATTERN = /^\+?[0-9]{7,}$/i;
+export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
