@@ -1,5 +1,7 @@
+import { StepsFormRegister } from '@/types/mainTypes';
+
 /* eslint-disable no-useless-escape */
-export const stepsForms = [
+export const stepsFormsData: StepsFormRegister[] = [
     {
         key: 'datos_personales',
         title: 'Información de la cuenta',

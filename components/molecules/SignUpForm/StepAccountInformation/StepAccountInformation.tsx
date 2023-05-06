@@ -1,4 +1,4 @@
-import { Controller, useForm, useFormContext } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { InputsSignUpForm } from '@/types/mainTypes';
 import { useContext, useState } from 'react';
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
@@ -15,18 +15,15 @@ import {
 import * as yup from 'yup';
 
 export interface StepAccountInformationProps {
+    currentStep: number;
+    handleStepStepForm: (valueStep: number, isValid: boolean) => void;
     increaseStep: () => void;
 }
 const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     increaseStep,
+    handleStepStepForm,
+    currentStep,
 }) => {
-    // const {
-    //     control,
-    //     register,
-    //     formState: { errors },
-    //     handleSubmit,
-    // } = useFormContext<InputsSignUpForm>();
-
     const validationSchema = yup.object().shape({
         name: yup.string().trim().required('Este campo es requerido').nullable(),
         lastname: yup.string().trim().required('Este campo es requerido'),
@@ -54,7 +51,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     const {
         control,
         register,
-        formState: { errors },
+        formState: { errors, isValid },
         handleSubmit,
     } = useForm<InputsSignUpForm>({
         resolver: yupResolver(validationSchema),
@@ -85,6 +82,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     };
 
     const onSubmit = () => {
+        handleStepStepForm(currentStep, isValid);
         increaseStep();
     };
 
@@ -225,7 +223,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                                     <input
                                         className="inline w-4 mr-1"
                                         type="checkbox"
-                                        checked={showPassword}
+                                        defaultChecked={showPassword}
                                         onClick={() => setShowPassword(!showPassword)}
                                     />
                                     <p className="text-sm text-gre">Mostrar contraseña</p>

@@ -48,3 +48,11 @@ export type InputsSignUpForm = {
     referencePlace?: string;
     paymentMethod?: string;
 };
+
+export type StepsFormRegister = {
+    key: string;
+    title: string;
+    value: number;
+    complete: boolean;
+    active: boolean;
+};

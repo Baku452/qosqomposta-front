@@ -6,33 +6,43 @@ import StepsForm from './StepsForm/StepsForm';
 import styles from './signUp.module.scss';
 import StepAccountInformation from './StepAccountInformation/StepAccountInformation';
 import StepsButton from './StepsButtons/StepsButtons';
-import {
-    EMAIL_REGEX,
-    PASSWORD_REGEX,
-    PHONE_REGEX_PATTERN,
-    stepsForms,
-} from '@/constants/authForms.const';
+
 import StepPaymentMethod from './StepPaymentMethod/StepPaymentMethod';
 import StepPickupPlace from './StepPickUpPlace/StepMembership';
 import SummarySignUpForm from './SummarySignUpForm/SummarySignUpForm';
 import { SignUpContextProvider } from '@/context/SignUpContext';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
 import Image from 'next/image';
 import { LOGO_COLOR } from '@/public/data/homeImages';
+import { stepsFormsData } from '@/constants/authForms.const';
+import { StepsFormRegister } from '@/types/mainTypes';
 
 const SignUpForm: React.FC = () => {
-    const [stepsForm, setSetpsForm] = useState(0);
+    const [currentStep, setCurrentStep] = useState(0);
+    const [stepsForm, setStepsForm] = useState<StepsFormRegister[]>([...stepsFormsData]);
     const [paymentMethodSelected, setPaymentMethodSelected] = useState<
         string | undefined
     >();
 
+    const handleStepStepForm = (valueStep: number, isValid: boolean) => {
+        const updatedStepForms = stepsForm.map(step => {
+            if (step.value === valueStep) {
+                return {
+                    ...step,
+                    complete: isValid,
+                };
+            } else {
+                return step;
+            }
+        });
+        setStepsForm(updatedStepForms);
+    };
+
     const handleIncreaseStepsForms = () => {
-        setSetpsForm(stepsForm => ++stepsForm);
+        setCurrentStep(stepsForm => ++stepsForm);
     };
 
     const handleDecreaseStepsForms = () => {
-        setSetpsForm(stepsForm => --stepsForm);
+        setCurrentStep(stepsForm => --stepsForm);
     };
     const methods = useForm({
         // resolver: yupResolver(validationSchema),
@@ -45,31 +55,32 @@ const SignUpForm: React.FC = () => {
                 <FormProvider {...methods}>
                     <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 w-[48rem] h-[719px] m-auto bg-white text-left text-gray-400">
                         <div className={`m-0 px-10 ${styles.formSignUp}`}>
-                            {stepsForm === 0 && (
+                            {currentStep === 0 && (
                                 <StepAccountInformation
+                                    currentStep={currentStep}
+                                    handleStepStepForm={handleStepStepForm}
                                     increaseStep={handleIncreaseStepsForms}
                                 />
                             )}
-                            {stepsForm === 1 && <StepPickupPlace />}
-                            {stepsForm === 2 && (
+                            {currentStep === 1 && <StepPickupPlace />}
+                            {currentStep === 2 && (
                                 <StepPaymentMethod
+                                    increaseStep={handleIncreaseStepsForms}
                                     paymentMethodSelected={paymentMethodSelected}
                                     setPaymentMethodSelected={setPaymentMethodSelected}
                                 />
                             )}
-                            {stepsForm === 3 && <SummarySignUpForm />}
+                            {currentStep === 3 && <SummarySignUpForm />}
                         </div>
-                        {/* <StepsButton
-                            steps={stepsForm}
-                            maxSteps={stepsForms.length}
-                            decreaseStep={handleDecreaseStepsForms}
-                            increaseStep={handleIncreaseStepsForms}
-                        /> */}
                     </div>
                 </FormProvider>
                 <div className="flex flex-col items-center basis-1/2">
                     <h1 className="mt-10">Registro de Nuevo Usuario</h1>
-                    <StepsForm stepActive={stepsForm} setStep={setSetpsForm} />
+                    <StepsForm
+                        stepsFormsData={stepsForm}
+                        stepActive={currentStep}
+                        setStep={setCurrentStep}
+                    />
                     <div className="py-10">
                         <Image
                             src={LOGO_COLOR}
