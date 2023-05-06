@@ -66,7 +66,7 @@ const SignUpForm: React.FC = () => {
             <StepsForm stepActive={stepsForm} setStep={setSetpsForm} />
             <SignUpContextProvider>
                 <FormProvider {...methods}>
-                    <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 max-w-3xl m-auto bg-white text-left text-gray-400 ">
+                    <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 max-w-3xl m-auto bg-white text-left text-gray-400">
                         <div className={`m-0 px-10 ${styles.formSignUp}`}>
                             {stepsForm === 0 && (
                                 <StepAccountInformation

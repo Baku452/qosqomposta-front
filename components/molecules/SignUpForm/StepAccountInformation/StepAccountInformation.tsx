@@ -1,4 +1,4 @@
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller, useForm, useFormContext } from 'react-hook-form';
 import { InputsSignUpForm } from '@/types/mainTypes';
 import { useContext, useState } from 'react';
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
@@ -6,20 +6,60 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 //Styles
 import styles from '../signUp.module.scss';
-import { FaEye } from 'react-icons/fa';
+import { yupResolver } from '@hookform/resolvers/yup';
+import {
+    EMAIL_REGEX,
+    PASSWORD_REGEX,
+    PHONE_REGEX_PATTERN,
+} from '@/constants/authForms.const';
+import * as yup from 'yup';
+
 export interface StepAccountInformationProps {
     increaseStep: () => void;
 }
 const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     increaseStep,
 }) => {
+    // const {
+    //     control,
+    //     register,
+    //     formState: { errors },
+    //     handleSubmit,
+    // } = useFormContext<InputsSignUpForm>();
+
+    const validationSchema = yup.object().shape({
+        name: yup.string().trim().required('Este campo es requerido').nullable(),
+        lastname: yup.string().trim().required('Este campo es requerido'),
+        mother_last_name: yup.string().trim().required('Este campo es requerido'),
+        email: yup
+            .string()
+            .matches(EMAIL_REGEX, 'Correo Inválido')
+            .required('Este campo es requerido'),
+
+        phoneNumber: yup
+            .string()
+            .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
+            .required('Este campo es requerido'),
+        password: yup
+            .string()
+            .min(6, 'La contraseña debe tener al menos 6 caracteres')
+            .max(20, 'La contraseña no debe tener más de 20 caracteres')
+            .matches(
+                PASSWORD_REGEX,
+                'La contraseña debe tener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial',
+            )
+            .required('Este campo es requerido'),
+    });
+
     const {
         control,
         register,
         formState: { errors },
         handleSubmit,
-    } = useFormContext<InputsSignUpForm>();
-
+    } = useForm<InputsSignUpForm>({
+        resolver: yupResolver(validationSchema),
+        mode: 'onChange',
+    });
     const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
     const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -44,16 +84,14 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
         });
     };
 
-    const onSubmit = (data: any) => {
-        console.log(data);
-        console.log(errors);
+    const onSubmit = () => {
         increaseStep();
     };
 
     return (
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
-            <div className="mb-5">
+            <div className="mb-5 h-[80.39px]">
                 <Controller
                     control={control}
                     name="name"
@@ -75,7 +113,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                     )}
                 />
             </div>
-            <div className="mb-5 flex gap-5">
+            <div className="mb-10 flex gap-10 h-[80.39px]">
                 <div className="basis-1/2">
                     <Controller
                         control={control}
@@ -121,7 +159,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                     />
                 </div>
             </div>
-            <div className="mb-5 flex gap-5">
+            <div className="mb-10 flex gap-10 h-[80.39px]">
                 <div className="basis-1/2">
                     <Controller
                         control={control}
@@ -168,7 +206,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                     />
                 </div>
             </div>
-            <div className="mb-5 flex gap-5">
+            <div className="mb-10 flex gap-10 h-[164.39px]">
                 <div className="basis-1/2">
                     <Controller
                         control={control}
