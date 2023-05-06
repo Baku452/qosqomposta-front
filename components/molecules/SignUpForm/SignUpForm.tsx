@@ -18,30 +18,8 @@ import SummarySignUpForm from './SummarySignUpForm/SummarySignUpForm';
 import { SignUpContextProvider } from '@/context/SignUpContext';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-
-const validationSchema = yup.object().shape({
-    name: yup.string().trim().required('Este campo es requerido').nullable(),
-    lastname: yup.string().trim().required('Este campo es requerido'),
-    mother_last_name: yup.string().trim().required('Este campo es requerido'),
-    email: yup
-        .string()
-        .matches(EMAIL_REGEX, 'Correo Inválido')
-        .required('Este campo es requerido'),
-
-    phoneNumber: yup
-        .string()
-        .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
-        .required('Este campo es requerido'),
-    password: yup
-        .string()
-        .min(6, 'La contraseña debe tener al menos 6 caracteres')
-        .max(20, 'La contraseña no debe tener más de 20 caracteres')
-        .matches(
-            PASSWORD_REGEX,
-            'La contraseña debe tener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial',
-        )
-        .required('Este campo es requerido'),
-});
+import Image from 'next/image';
+import { LOGO_COLOR } from '@/public/data/homeImages';
 
 const SignUpForm: React.FC = () => {
     const [stepsForm, setSetpsForm] = useState(0);
@@ -57,16 +35,15 @@ const SignUpForm: React.FC = () => {
         setSetpsForm(stepsForm => --stepsForm);
     };
     const methods = useForm({
-        resolver: yupResolver(validationSchema),
+        // resolver: yupResolver(validationSchema),
         mode: 'onChange',
     });
 
     return (
-        <div>
-            <StepsForm stepActive={stepsForm} setStep={setSetpsForm} />
+        <div className="flex">
             <SignUpContextProvider>
                 <FormProvider {...methods}>
-                    <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 max-w-3xl m-auto bg-white text-left text-gray-400">
+                    <div className="flex flex-col justify-between shadow-xl rounded-xl p-10 w-[48rem] h-[719px] m-auto bg-white text-left text-gray-400">
                         <div className={`m-0 px-10 ${styles.formSignUp}`}>
                             {stepsForm === 0 && (
                                 <StepAccountInformation
@@ -90,6 +67,18 @@ const SignUpForm: React.FC = () => {
                         /> */}
                     </div>
                 </FormProvider>
+                <div className="flex flex-col items-center basis-1/2">
+                    <h1 className="mt-10">Registro de Nuevo Usuario</h1>
+                    <StepsForm stepActive={stepsForm} setStep={setSetpsForm} />
+                    <div className="py-10">
+                        <Image
+                            src={LOGO_COLOR}
+                            width={300}
+                            height={300}
+                            alt="logo Color"
+                        />
+                    </div>
+                </div>
             </SignUpContextProvider>
         </div>
     );
