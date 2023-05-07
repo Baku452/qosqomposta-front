@@ -81,7 +81,7 @@ const SummarySignUpForm: React.FC = () => {
                         </div>
                         <div>
                             <p>
-                                {formValues.address ?? (
+                                {formValues.location?.address ?? (
                                     <span className={registerStyles.errorLabel}>
                                         {NOT_FILLED_FIELD}
                                     </span>
@@ -90,7 +90,7 @@ const SummarySignUpForm: React.FC = () => {
                         </div>
                         <div>
                             <p>
-                                {formValues.referencePlace ?? (
+                                {formValues.location?.reference ?? (
                                     <span className={registerStyles.errorLabel}>
                                         {NOT_FILLED_FIELD}
                                     </span>

@@ -34,6 +34,13 @@ export interface AsyncActionType {
     error: string;
 }
 
+export interface LocationClient {
+    address?: string;
+    reference?: string;
+    latitude?: number;
+    longitude?: number;
+}
+
 export type InputsSignUpForm = {
     name?: string;
     lastname?: string;
@@ -41,11 +48,10 @@ export type InputsSignUpForm = {
     password?: string;
     confirmPassword?: string;
     email?: string;
-    address?: string;
+    location?: LocationClient;
     dateBirth?: Date;
     membership?: string;
     phoneNumber?: string;
-    referencePlace?: string;
     paymentMethod?: string;
 };
 
