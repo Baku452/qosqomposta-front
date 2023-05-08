@@ -3,55 +3,55 @@ import { mergeServicesByType } from '@/utils/services.utils';
 import React, { createContext, useEffect, useState } from 'react';
 
 export interface ServiceContextType {
-    selectedService?: QosqompostaServiceMerged;
-    mergedServicesContext?: QosqompostaServiceMerged[];
-    servicesContext: QosqompostaService[] | undefined;
-    setServicesContext?: React.Dispatch<
-        React.SetStateAction<QosqompostaService[] | undefined>
-    >;
-    setSelectedService: React.Dispatch<
-        React.SetStateAction<QosqompostaServiceMerged | undefined>
-    >;
+  selectedService?: QosqompostaServiceMerged;
+  mergedServicesContext?: QosqompostaServiceMerged[];
+  servicesContext: QosqompostaService[] | undefined;
+  setServicesContext?: React.Dispatch<
+    React.SetStateAction<QosqompostaService[] | undefined>
+  >;
+  setSelectedService: React.Dispatch<
+    React.SetStateAction<QosqompostaServiceMerged | undefined>
+  >;
 }
 
 const QosqompostaServicesContext = createContext<ServiceContextType | null>(null);
 
 interface Props {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }) => {
-    const [initialState, setState] = useState<QosqompostaService[] | undefined>();
-    const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
-    const [selectedService, setSelectedService] = useState<
-        QosqompostaServiceMerged | undefined
-    >();
+  const [initialState, setState] = useState<QosqompostaService[] | undefined>();
+  const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
+  const [selectedService, setSelectedService] = useState<
+    QosqompostaServiceMerged | undefined
+  >();
 
-    const contextValue: ServiceContextType = {
-        selectedService: selectedService,
-        mergedServicesContext: mergedServices,
-        servicesContext: initialState,
-        setServicesContext: setState,
-        setSelectedService: setSelectedService,
-    };
+  const contextValue: ServiceContextType = {
+    selectedService: selectedService,
+    mergedServicesContext: mergedServices,
+    servicesContext: initialState,
+    setServicesContext: setState,
+    setSelectedService: setSelectedService,
+  };
 
-    useEffect(() => {
-        if (initialState) {
-            const mergedServices = mergeServicesByType(initialState);
-            setMergedServices(mergedServices);
+  useEffect(() => {
+    if (initialState) {
+      const mergedServices = mergeServicesByType(initialState);
+      setMergedServices(mergedServices);
 
-            const defaultService = mergedServices.find(
-                service => service._id === '644ca2bd0126870ffc92c56c',
-            );
-            setSelectedService(defaultService);
-        }
-    }, [initialState]);
+      const defaultService = mergedServices.find(
+        service => service._id === '644ca2bd0126870ffc92c56c',
+      );
+      setSelectedService(defaultService);
+    }
+  }, [initialState]);
 
-    return (
-        <QosqompostaServicesContext.Provider value={contextValue}>
-            {children}
-        </QosqompostaServicesContext.Provider>
-    );
+  return (
+    <QosqompostaServicesContext.Provider value={contextValue}>
+      {children}
+    </QosqompostaServicesContext.Provider>
+  );
 };
 
 export default QosqompostaServicesContext;

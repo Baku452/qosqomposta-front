@@ -4,23 +4,23 @@ import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
 
 const LogoutButton: React.FC = () => {
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleLogoutButton = async () => {
-        try {
-            await signOut(auth);
-            Cookies.remove('user_token');
-            router.push('/');
-        } catch (error) {
-            console.log(error);
-        }
-    };
+  const handleLogoutButton = async () => {
+    try {
+      await signOut(auth);
+      Cookies.remove('user_token');
+      router.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    return (
-        <button className="hover:text-yellow-500" onClick={handleLogoutButton}>
-            Cerrar Sesión
-        </button>
-    );
+  return (
+    <button className="hover:text-yellow-500" onClick={handleLogoutButton}>
+      Cerrar Sesión
+    </button>
+  );
 };
 
 export default LogoutButton;
