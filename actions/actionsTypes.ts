@@ -1,8 +1,8 @@
 export const FETCH_USER_APP = 'FETCH_USER_APP';
 export const REGISTER_USER = {
-    request: 'REGISTER_USER_REQUEST',
-    success: 'REGISTER_USER_SUCCESS',
-    error: 'REGISTER_USER_ERROR',
+  request: 'REGISTER_USER_REQUEST',
+  success: 'REGISTER_USER_SUCCESS',
+  error: 'REGISTER_USER_ERROR',
 };
 
 export const SET_SELECTED_SERVICE = 'SET_SELECTED_SERVICE';

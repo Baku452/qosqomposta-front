@@ -8,263 +8,253 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../signUp.module.scss';
 import { yupResolver } from '@hookform/resolvers/yup';
 import {
-    EMAIL_REGEX,
-    PASSWORD_REGEX,
-    PHONE_REGEX_PATTERN,
+  EMAIL_REGEX,
+  PASSWORD_REGEX,
+  PHONE_REGEX_PATTERN,
 } from '@/constants/authForms.const';
 import * as yup from 'yup';
 
 export interface StepAccountInformationProps {
-    currentStep: number;
-    handleStepStepForm: (valueStep: number, isValid: boolean) => void;
-    increaseStep: () => void;
+  currentStep: number;
+  handleStepStepForm: (valueStep: number, isValid: boolean) => void;
+  increaseStep: () => void;
 }
 const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
-    increaseStep,
-    handleStepStepForm,
-    currentStep,
+  increaseStep,
+  handleStepStepForm,
+  currentStep,
 }) => {
-    const validationSchema = yup.object().shape({
-        name: yup.string().trim().required('Este campo es requerido').nullable(),
-        lastname: yup.string().trim().required('Este campo es requerido'),
-        mother_last_name: yup.string().trim().required('Este campo es requerido'),
-        email: yup
-            .string()
-            .matches(EMAIL_REGEX, 'Correo Inválido')
-            .required('Este campo es requerido'),
+  const validationSchema = yup.object().shape({
+    name: yup.string().trim().required('Este campo es requerido').nullable(),
+    lastname: yup.string().trim().required('Este campo es requerido'),
+    mother_last_name: yup.string().trim().required('Este campo es requerido'),
+    email: yup
+      .string()
+      .matches(EMAIL_REGEX, 'Correo Inválido')
+      .required('Este campo es requerido'),
 
-        phoneNumber: yup
-            .string()
-            .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
-            .required('Este campo es requerido'),
-        password: yup
-            .string()
-            .min(6, 'La contraseña debe tener al menos 6 caracteres')
-            .max(20, 'La contraseña no debe tener más de 20 caracteres')
-            .matches(
-                PASSWORD_REGEX,
-                'La contraseña debe tener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial',
-            )
-            .required('Este campo es requerido'),
+    phoneNumber: yup
+      .string()
+      .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
+      .required('Este campo es requerido'),
+    password: yup
+      .string()
+      .min(6, 'La contraseña debe tener al menos 6 caracteres')
+      .max(20, 'La contraseña no debe tener más de 20 caracteres')
+      .matches(
+        PASSWORD_REGEX,
+        'La contraseña debe tener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial',
+      )
+      .required('Este campo es requerido'),
+  });
+
+  const {
+    control,
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+  } = useForm<InputsSignUpForm>({
+    resolver: yupResolver(validationSchema),
+    mode: 'onChange',
+  });
+  const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    if (formState) {
+      setFormState({
+        ...formState,
+        [name]: value ?? '',
+      });
+    } else {
+      setFormState({
+        [name]: value,
+      });
+    }
+  };
+
+  const handleDateChange = (date: Date) => {
+    setFormState({
+      ...formState,
+      dateBirth: date,
     });
+  };
 
-    const {
-        control,
-        register,
-        formState: { errors, isValid },
-        handleSubmit,
-    } = useForm<InputsSignUpForm>({
-        resolver: yupResolver(validationSchema),
-        mode: 'onChange',
-    });
-    const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
-    const [showPassword, setShowPassword] = useState<boolean>(false);
+  const onSubmit = () => {
+    handleStepStepForm(currentStep, isValid);
+    increaseStep();
+  };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        if (formState) {
-            setFormState({
-                ...formState,
-                [name]: value ?? '',
-            });
-        } else {
-            setFormState({
-                [name]: value,
-            });
-        }
-    };
-
-    const handleDateChange = (date: Date) => {
-        setFormState({
-            ...formState,
-            dateBirth: date,
-        });
-    };
-
-    const onSubmit = () => {
-        handleStepStepForm(currentStep, isValid);
-        increaseStep();
-    };
-
-    return (
-        <form noValidate onSubmit={handleSubmit(onSubmit)}>
-            <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
-            <div className="mb-5 h-[80.39px]">
-                <Controller
-                    control={control}
-                    name="name"
-                    render={() => (
-                        <>
-                            <label>Nombre *</label>
-                            <input
-                                value={formState?.name}
-                                {...register('name', {
-                                    onChange: handleInputChange,
-                                })}
-                            />
-                            {errors.name && (
-                                <span className={styles.errorLabel}>
-                                    {errors.name.message}
-                                </span>
-                            )}
-                        </>
-                    )}
+  return (
+    <form noValidate onSubmit={handleSubmit(onSubmit)}>
+      <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
+      <div className="mb-5 h-[80.39px]">
+        <Controller
+          control={control}
+          name="name"
+          render={() => (
+            <>
+              <label>Nombre *</label>
+              <input
+                value={formState?.name}
+                {...register('name', {
+                  onChange: handleInputChange,
+                })}
+              />
+              {errors.name && (
+                <span className={styles.errorLabel}>{errors.name.message}</span>
+              )}
+            </>
+          )}
+        />
+      </div>
+      <div className="mb-10 flex gap-10 h-[80.39px]">
+        <div className="basis-1/2">
+          <Controller
+            control={control}
+            name="lastname"
+            render={() => (
+              <>
+                <label>Apellido Paterno *</label>
+                <input
+                  value={formState?.lastname}
+                  {...register('lastname', {
+                    onChange: handleInputChange,
+                  })}
                 />
-            </div>
-            <div className="mb-10 flex gap-10 h-[80.39px]">
-                <div className="basis-1/2">
-                    <Controller
-                        control={control}
-                        name="lastname"
-                        render={() => (
-                            <>
-                                <label>Apellido Paterno *</label>
-                                <input
-                                    value={formState?.lastname}
-                                    {...register('lastname', {
-                                        onChange: handleInputChange,
-                                    })}
-                                />
-                                {errors.lastname && (
-                                    <span className={styles.errorLabel}>
-                                        {errors.lastname.message}
-                                    </span>
-                                )}
-                            </>
-                        )}
-                    ></Controller>
+                {errors.lastname && (
+                  <span className={styles.errorLabel}>{errors.lastname.message}</span>
+                )}
+              </>
+            )}
+          ></Controller>
+        </div>
+        <div className="basis-1/2">
+          <Controller
+            control={control}
+            name="mother_last_name"
+            render={() => (
+              <>
+                <label>Apellido Materno *</label>
+                <input
+                  value={formState?.mother_last_name}
+                  {...register('mother_last_name', {
+                    onChange: handleInputChange,
+                  })}
+                />
+                {errors.mother_last_name && (
+                  <span className={styles.errorLabel}>
+                    {errors.mother_last_name.message}
+                  </span>
+                )}
+              </>
+            )}
+          />
+        </div>
+      </div>
+      <div className="mb-10 flex gap-10 h-[80.39px]">
+        <div className="basis-1/2">
+          <Controller
+            control={control}
+            name="email"
+            render={() => (
+              <>
+                <label>Correo Electrónico *</label>
+                <input
+                  type="email"
+                  value={formState?.email}
+                  {...register('email', {
+                    onChange: handleInputChange,
+                  })}
+                />
+                {errors.email && (
+                  <span className={styles.errorLabel}>{errors.email.message}</span>
+                )}
+              </>
+            )}
+          />
+        </div>
+        <div className="basis-1/2">
+          <Controller
+            control={control}
+            name="phoneNumber"
+            render={() => (
+              <>
+                <label>Número de teléfono * </label>
+                <input
+                  value={formState?.phoneNumber}
+                  {...register('phoneNumber', {
+                    onChange: handleInputChange,
+                  })}
+                />
+                {errors.phoneNumber && (
+                  <span className={styles.errorLabel}>{errors.phoneNumber.message}</span>
+                )}
+              </>
+            )}
+          />
+        </div>
+      </div>
+      <div className="mb-10 flex gap-10 h-[164.39px]">
+        <div className="basis-1/2">
+          <Controller
+            control={control}
+            name="password"
+            render={() => (
+              <>
+                <label>Contraseña*</label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={formState?.password}
+                  {...register('password', {
+                    onChange: handleInputChange,
+                  })}
+                />
+                <div className="flex justify-start py-2">
+                  <input
+                    className="inline w-4 mr-1"
+                    type="checkbox"
+                    defaultChecked={showPassword}
+                    onClick={() => setShowPassword(!showPassword)}
+                  />
+                  <p className="text-sm text-gre">Mostrar contraseña</p>
                 </div>
-                <div className="basis-1/2">
-                    <Controller
-                        control={control}
-                        name="mother_last_name"
-                        render={() => (
-                            <>
-                                <label>Apellido Materno *</label>
-                                <input
-                                    value={formState?.mother_last_name}
-                                    {...register('mother_last_name', {
-                                        onChange: handleInputChange,
-                                    })}
-                                />
-                                {errors.mother_last_name && (
-                                    <span className={styles.errorLabel}>
-                                        {errors.mother_last_name.message}
-                                    </span>
-                                )}
-                            </>
-                        )}
-                    />
-                </div>
-            </div>
-            <div className="mb-10 flex gap-10 h-[80.39px]">
-                <div className="basis-1/2">
-                    <Controller
-                        control={control}
-                        name="email"
-                        render={() => (
-                            <>
-                                <label>Correo Electrónico *</label>
-                                <input
-                                    type="email"
-                                    value={formState?.email}
-                                    {...register('email', {
-                                        onChange: handleInputChange,
-                                    })}
-                                />
-                                {errors.email && (
-                                    <span className={styles.errorLabel}>
-                                        {errors.email.message}
-                                    </span>
-                                )}
-                            </>
-                        )}
-                    />
-                </div>
-                <div className="basis-1/2">
-                    <Controller
-                        control={control}
-                        name="phoneNumber"
-                        render={() => (
-                            <>
-                                <label>Número de teléfono * </label>
-                                <input
-                                    value={formState?.phoneNumber}
-                                    {...register('phoneNumber', {
-                                        onChange: handleInputChange,
-                                    })}
-                                />
-                                {errors.phoneNumber && (
-                                    <span className={styles.errorLabel}>
-                                        {errors.phoneNumber.message}
-                                    </span>
-                                )}
-                            </>
-                        )}
-                    />
-                </div>
-            </div>
-            <div className="mb-10 flex gap-10 h-[164.39px]">
-                <div className="basis-1/2">
-                    <Controller
-                        control={control}
-                        name="password"
-                        render={() => (
-                            <>
-                                <label>Contraseña*</label>
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={formState?.password}
-                                    {...register('password', {
-                                        onChange: handleInputChange,
-                                    })}
-                                />
-                                <div className="flex justify-start py-2">
-                                    <input
-                                        className="inline w-4 mr-1"
-                                        type="checkbox"
-                                        defaultChecked={showPassword}
-                                        onClick={() => setShowPassword(!showPassword)}
-                                    />
-                                    <p className="text-sm text-gre">Mostrar contraseña</p>
-                                </div>
-                                {errors.password && (
-                                    <span className={styles.errorLabel}>
-                                        {errors.password.message}
-                                    </span>
-                                )}
-                            </>
-                        )}
-                    />
-                </div>
-                <div className="basis-1/2">
-                    <label>Fecha de nacimiento*</label>
-                    <Controller
-                        control={control}
-                        name="dateBirth"
-                        rules={{ required: true }}
-                        render={({ field }) => (
-                            <DatePicker
-                                selected={formState?.dateBirth}
-                                onChange={date => {
-                                    date && handleDateChange(date);
-                                    field.onChange(date);
-                                }}
-                                dateFormat="yyyy/MM/dd"
-                            />
-                        )}
-                    />
+                {errors.password && (
+                  <span className={styles.errorLabel}>{errors.password.message}</span>
+                )}
+              </>
+            )}
+          />
+        </div>
+        <div className="basis-1/2">
+          <label>Fecha de nacimiento*</label>
+          <Controller
+            control={control}
+            name="dateBirth"
+            rules={{ required: true }}
+            render={({ field }) => (
+              <DatePicker
+                selected={formState?.dateBirth}
+                onChange={date => {
+                  date && handleDateChange(date);
+                  field.onChange(date);
+                }}
+                dateFormat="yyyy/MM/dd"
+              />
+            )}
+          />
 
-                    {errors.dateBirth && (
-                        <span className={styles.errorLabel}>Este campo es requerido</span>
-                    )}
-                </div>
-            </div>
-            <button type="submit" className="btn btn-primary m-auto text-center block">
-                Siguiente
-            </button>
-        </form>
-    );
+          {errors.dateBirth && (
+            <span className={styles.errorLabel}>Este campo es requerido</span>
+          )}
+        </div>
+      </div>
+      <button type="submit" className="btn btn-primary m-auto text-center block">
+        Siguiente
+      </button>
+    </form>
+  );
 };
 
 export default StepAccountInformation;

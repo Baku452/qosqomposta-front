@@ -5,22 +5,22 @@ import HeaderWeb from '@/organism/HeaderWeb/HeaderWeb';
 import { ToastContainer } from 'react-toastify';
 
 export type DashboardLayoutProps = {
-    children?: React.ReactNode;
+  children?: React.ReactNode;
 };
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-    return (
+  return (
+    <>
+      <HeaderDashboard />
+      <main>
         <>
-            <HeaderDashboard />
-            <main>
-                <>
-                    <DashboardAside />
-                    {children}
-                </>
-            </main>
-            <ToastContainer />
-            <FooterWeb />
+          <DashboardAside />
+          {children}
         </>
-    );
+      </main>
+      <ToastContainer />
+      <FooterWeb />
+    </>
+  );
 };
 
 export default DashboardLayout;

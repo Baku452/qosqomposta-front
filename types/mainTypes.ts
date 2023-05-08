@@ -1,64 +1,64 @@
 export interface AccordionItems {
-    title: string;
-    content: string;
+  title: string;
+  content: string;
 }
 
 export interface ServiceSectionItem {
-    id: string;
-    title: string;
-    content?: string;
-    imageSection?: string;
-    accordionItems?: AccordionItems[];
-    advertise?: string;
-    buttonCTA?: {
-        link: string;
-        label: string;
-    };
+  id: string;
+  title: string;
+  content?: string;
+  imageSection?: string;
+  accordionItems?: AccordionItems[];
+  advertise?: string;
+  buttonCTA?: {
+    link: string;
+    label: string;
+  };
 }
 
 export interface ImageWeb {
-    altTitle: string;
-    urlImage: string;
-    customClassName?: string;
+  altTitle: string;
+  urlImage: string;
+  customClassName?: string;
 }
 
 export interface PathPage {
-    name: string;
-    path: string;
-    key: string;
+  name: string;
+  path: string;
+  key: string;
 }
 
 export interface AsyncActionType {
-    request: string;
-    success: string;
-    error: string;
+  request: string;
+  success: string;
+  error: string;
 }
 
 export interface LocationClient {
-    address?: string;
-    reference?: string;
-    latitude?: number;
-    longitude?: number;
+  address?: string;
+  reference?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export type InputsSignUpForm = {
-    name?: string;
-    lastname?: string;
-    mother_last_name?: string;
-    password?: string;
-    confirmPassword?: string;
-    email?: string;
-    location?: LocationClient;
-    dateBirth?: Date;
-    membership?: string;
-    phoneNumber?: string;
-    paymentMethod?: string;
+  name?: string;
+  lastname?: string;
+  mother_last_name?: string;
+  password?: string;
+  confirmPassword?: string;
+  email?: string;
+  location?: LocationClient;
+  dateBirth?: Date;
+  membership?: string;
+  phoneNumber?: string;
+  paymentMethod?: string;
 };
 
 export type StepsFormRegister = {
-    key: string;
-    title: string;
-    value: number;
-    complete: boolean;
-    active: boolean;
+  key: string;
+  title: string;
+  value: number;
+  complete: boolean;
+  active: boolean;
 };

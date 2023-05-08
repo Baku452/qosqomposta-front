@@ -1,37 +1,37 @@
 {
-    "extends": [
-        "stylelint-config-sass-guidelines",
-        "stylelint-config-standard-scss",
-        "stylelint-config-prettier"
+  "extends": [
+    "stylelint-config-sass-guidelines",
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier"
+  ],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
+      }
     ],
-    "rules": {
-        "at-rule-no-unknown": null,
-        "scss/at-rule-no-unknown": [
-            true,
-            {
-                "ignoreAtRules": ["tailwind", "apply", "variants", "responsive", "screen"]
-            }
-        ],
-        "declaration-block-trailing-semicolon": null,
-        "no-descending-specificity": null,
-        "selector-class-pattern": null,
-        "declaration-property-value-disallowed-list": {
-            "/^border/": []
-        },
-        "declaration-empty-line-before": null,
-        "property-no-vendor-prefix": [
-            true,
-            {
-                "ignoreProperties": ["/./"]
-            }
-        ],
-        "selector-max-compound-selectors": 4,
-        "selector-no-qualifying-type": [
-            true,
-            {
-                "ignore": ["class"]
-            }
-        ],
-        "max-nesting-depth": 3
-    }
+    "declaration-block-trailing-semicolon": null,
+    "no-descending-specificity": null,
+    "selector-class-pattern": null,
+    "declaration-property-value-disallowed-list": {
+      "/^border/": []
+    },
+    "declaration-empty-line-before": null,
+    "property-no-vendor-prefix": [
+      true,
+      {
+        "ignoreProperties": ["/./"]
+      }
+    ],
+    "selector-max-compound-selectors": 4,
+    "selector-no-qualifying-type": [
+      true,
+      {
+        "ignore": ["class"]
+      }
+    ],
+    "max-nesting-depth": 3
+  }
 }
