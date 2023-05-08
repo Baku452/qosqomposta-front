@@ -70,13 +70,6 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     });
   };
 
-  const handleDateChange = (date: Date) => {
-    setFormState({
-      ...formState,
-      dateBirth: date,
-    });
-  };
-
   const onSubmit = () => {
     handleStepForm(currentStep, isValid);
     increaseStep();
@@ -232,7 +225,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <DatePicker
                 selected={formState?.dateBirth}
-                onChange={(date, event) => {
+                onChange={date => {
                   date && handleInputChange('dateBirth', date.getTime());
                   field.onChange(date);
                 }}
