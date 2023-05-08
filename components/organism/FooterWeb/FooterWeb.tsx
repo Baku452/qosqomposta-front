@@ -1,9 +1,10 @@
 import {
+    LogoAppColors,
     QOSQOMPOSTA_FACEBOOK_URL,
     QOSQOMPOSTA_INSTAGRAM_URL,
     QOSQOMPOSTA_WHATSAPP_URL,
 } from 'main.config';
-import Image from "next/legacy/image";
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import {
     AiFillPhone,
@@ -21,16 +22,14 @@ const FooterWeb = () => {
                 <div className="basis-full flex flex-col lg:flex-row justify-between items-center lg:items-start pb-20">
                     <div className="text-center lg:text-left pb-10">
                         <Link href="/">
-
                             <Image
                                 className="mb-10"
                                 width={300}
                                 height={80}
                                 alt="Logo Qosqomposta"
-                                src="/icons/whiteLogo.svg"
+                                src={LogoAppColors.white}
                             />
                             <h5>Haciendo un Cusco sostenible</h5>
-
                         </Link>
                     </div>
                     <div className="mb-10 lg:mb-0">

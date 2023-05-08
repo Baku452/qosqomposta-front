@@ -68,7 +68,7 @@ a {
     @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
 
     &:disabled {
-        @apply cursor-not-allowed;
+        @apply cursor-not-allowed bg-gray-300;
         @apply opacity-50;
     }
 }

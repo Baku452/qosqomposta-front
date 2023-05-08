@@ -4,7 +4,6 @@ import StepsForm from './StepsForm/StepsForm';
 //Styles
 import styles from './signUp.module.scss';
 import StepAccountInformation from './StepAccountInformation/StepAccountInformation';
-import StepsButton from './StepsButtons/StepsButtons';
 
 import StepPaymentMethod from './StepPaymentMethod/StepPaymentMethod';
 import StepPickupPlace from './StepPickUpPlace/StepPickupPlaceForm';
@@ -22,7 +21,7 @@ const SignUpForm: React.FC = () => {
         string | undefined
     >();
 
-    const handleStepStepForm = (valueStep: number, isValid: boolean) => {
+    const handleStepsForm = (valueStep: number, isValid: boolean) => {
         const updatedStepForms = stepsForm.map(step => {
             if (step.value === valueStep) {
                 return {
@@ -40,10 +39,6 @@ const SignUpForm: React.FC = () => {
         setCurrentStep(stepsForm => ++stepsForm);
     };
 
-    const handleDecreaseStepsForms = () => {
-        setCurrentStep(stepsForm => --stepsForm);
-    };
-
     return (
         <div className="flex">
             <SignUpContextProvider>
@@ -52,14 +47,14 @@ const SignUpForm: React.FC = () => {
                         {currentStep === 0 && (
                             <StepAccountInformation
                                 currentStep={currentStep}
-                                handleStepStepForm={handleStepStepForm}
+                                handleStepStepForm={handleStepsForm}
                                 increaseStep={handleIncreaseStepsForms}
                             />
                         )}
                         {currentStep === 1 && (
                             <StepPickupPlace
                                 currentStep={currentStep}
-                                handleStepStepForm={handleStepStepForm}
+                                handleStepStepForm={handleStepsForm}
                                 increaseStep={handleIncreaseStepsForms}
                             />
                         )}
@@ -70,7 +65,7 @@ const SignUpForm: React.FC = () => {
                                 setPaymentMethodSelected={setPaymentMethodSelected}
                             />
                         )}
-                        {currentStep === 3 && <SummarySignUpForm />}
+                        {currentStep === 3 && <SummarySignUpForm stepsForm={stepsForm} />}
                     </div>
                 </div>
                 <div className="flex flex-col items-center basis-1/2">
