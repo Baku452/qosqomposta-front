@@ -36,12 +36,16 @@ export const PAYMENT_METHODS: PaymentMethods[] = [
 ];
 
 export interface StepPaymentMethodProps {
+  currentStep: number;
   paymentMethodSelected: string | undefined;
+  handleStepForm: (valueStep: number, isValid: boolean) => void;
   setPaymentMethodSelected: (value: string) => void;
   increaseStep: () => void;
 }
 
 const StepPaymentMethod: React.FC<StepPaymentMethodProps> = ({
+  currentStep,
+  handleStepForm,
   paymentMethodSelected,
   setPaymentMethodSelected,
   increaseStep,
@@ -62,6 +66,10 @@ const StepPaymentMethod: React.FC<StepPaymentMethodProps> = ({
         ...formState,
         paymentMethod: paymentMethodSelected,
       });
+    }
+
+    if (paymentMethodSelected) {
+      handleStepForm(currentStep, true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paymentMethodSelected]);

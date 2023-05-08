@@ -83,8 +83,11 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                 )}
               </p>
             </div>
-            <div>
-              <p>
+            <div className="w-52 overflow-hidden whitespace-nowrap">
+              <p
+                title={formValues.location?.address || ''}
+                className="text-ellipsis overflow-hidden"
+              >
                 {formValues.location?.address || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}

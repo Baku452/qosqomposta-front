@@ -60,6 +60,8 @@ const SignUpForm: React.FC = () => {
             )}
             {currentStep === 2 && (
               <StepPaymentMethod
+                handleStepForm={handleStepsForm}
+                currentStep={currentStep}
                 increaseStep={handleIncreaseStepsForms}
                 paymentMethodSelected={paymentMethodSelected}
                 setPaymentMethodSelected={setPaymentMethodSelected}
