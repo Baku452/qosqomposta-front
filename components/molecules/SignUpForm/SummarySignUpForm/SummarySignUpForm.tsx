@@ -53,7 +53,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
           <div className={`${styles.answersContainer} text-black`}>
             <div>
               <p>
-                {formValues.name ?? (
+                {formValues.name || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
@@ -71,35 +71,39 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
             </div>
             <div>
               <p>
-                {formValues.email ?? (
+                {formValues.email || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
             </div>
             <div>
               <p>
-                {formValues.phoneNumber ?? (
+                {formValues.phoneNumber || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
             </div>
             <div>
               <p>
-                {formValues.location?.address ?? (
+                {formValues.location?.address || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
             </div>
             <div>
               <p>
-                {formValues.location?.reference ?? (
+                {formValues.location?.reference || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
             </div>
             <div>
               <p>
-                {formValues?.dateBirth?.toDateString() ?? (
+                {formValues?.dateBirth?.toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                }) ?? (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
@@ -116,7 +120,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
             </div>
             <div>
               <p>
-                {formValues.paymentMethod ?? (
+                {formValues.paymentMethod || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>

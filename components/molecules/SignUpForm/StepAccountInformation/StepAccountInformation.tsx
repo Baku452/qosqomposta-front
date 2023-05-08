@@ -60,18 +60,14 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    if (formState) {
-      setFormState({
-        ...formState,
-        [name]: value ?? '',
-      });
-    } else {
-      setFormState({
-        [name]: value,
-      });
-    }
+  const handleInputChange = (fieldName: string, value: string | number) => {
+    setFormState((prevState: InputsSignUpForm) => {
+      const updatedForm = {
+        ...prevState,
+        [fieldName]: value ?? '',
+      };
+      return updatedForm;
+    });
   };
 
   const handleDateChange = (date: Date) => {
@@ -99,7 +95,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
               <input
                 value={formState?.name}
                 {...register('name', {
-                  onChange: handleInputChange,
+                  onChange: e => handleInputChange(e.target.name, e.target.value),
                 })}
               />
               {errors.name && (
@@ -120,7 +116,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                 <input
                   value={formState?.lastname}
                   {...register('lastname', {
-                    onChange: handleInputChange,
+                    onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
                 />
                 {errors.lastname && (
@@ -140,7 +136,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                 <input
                   value={formState?.mother_last_name}
                   {...register('mother_last_name', {
-                    onChange: handleInputChange,
+                    onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
                 />
                 {errors.mother_last_name && (
@@ -165,7 +161,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                   type="email"
                   value={formState?.email}
                   {...register('email', {
-                    onChange: handleInputChange,
+                    onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
                 />
                 {errors.email && (
@@ -185,7 +181,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                 <input
                   value={formState?.phoneNumber}
                   {...register('phoneNumber', {
-                    onChange: handleInputChange,
+                    onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
                 />
                 {errors.phoneNumber && (
@@ -208,7 +204,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                   type={showPassword ? 'text' : 'password'}
                   value={formState?.password}
                   {...register('password', {
-                    onChange: handleInputChange,
+                    onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
                 />
                 <div className="flex justify-start py-2">
@@ -236,8 +232,8 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <DatePicker
                 selected={formState?.dateBirth}
-                onChange={date => {
-                  date && handleDateChange(date);
+                onChange={(date, event) => {
+                  date && handleInputChange('dateBirth', date.getTime());
                   field.onChange(date);
                 }}
                 dateFormat="yyyy/MM/dd"
