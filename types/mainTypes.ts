@@ -35,24 +35,29 @@ export interface AsyncActionType {
 }
 
 export interface LocationClient {
-  address?: string;
-  reference?: string;
-  latitude?: number;
-  longitude?: number;
+  address: string;
+  reference: string;
+  latitude: number;
+  longitude: number;
 }
 
 export type InputsSignUpForm = {
-  name?: string;
-  lastname?: string;
-  mother_last_name?: string;
-  password?: string;
-  confirmPassword?: string;
-  email?: string;
-  location?: LocationClient;
-  dateBirth?: Date;
-  membership?: string;
-  phoneNumber?: string;
-  paymentMethod?: string;
+  name: string;
+  lastname: string;
+  mother_last_name: string;
+  password: string;
+  confirmPassword: string;
+  email: string;
+  location: LocationClient;
+  dateBirth: Date;
+  membership: string;
+  phoneNumber: string;
+  paymentMethod: string;
+};
+
+export type FormLocation = {
+  address?: string;
+  reference?: string;
 };
 
 export type StepsFormRegister = {

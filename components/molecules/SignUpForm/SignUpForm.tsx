@@ -47,14 +47,14 @@ const SignUpForm: React.FC = () => {
             {currentStep === 0 && (
               <StepAccountInformation
                 currentStep={currentStep}
-                handleStepStepForm={handleStepsForm}
+                handleStepForm={handleStepsForm}
                 increaseStep={handleIncreaseStepsForms}
               />
             )}
             {currentStep === 1 && (
               <StepPickupPlace
                 currentStep={currentStep}
-                handleStepStepForm={handleStepsForm}
+                handleStepForm={handleStepsForm}
                 increaseStep={handleIncreaseStepsForms}
               />
             )}

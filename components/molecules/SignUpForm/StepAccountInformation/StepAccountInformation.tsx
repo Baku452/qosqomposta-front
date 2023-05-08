@@ -16,12 +16,12 @@ import * as yup from 'yup';
 
 export interface StepAccountInformationProps {
   currentStep: number;
-  handleStepStepForm: (valueStep: number, isValid: boolean) => void;
+  handleStepForm: (valueStep: number, isValid: boolean) => void;
   increaseStep: () => void;
 }
 const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   increaseStep,
-  handleStepStepForm,
+  handleStepForm,
   currentStep,
 }) => {
   const validationSchema = yup.object().shape({
@@ -82,7 +82,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   };
 
   const onSubmit = () => {
-    handleStepStepForm(currentStep, isValid);
+    handleStepForm(currentStep, isValid);
     increaseStep();
   };
 
