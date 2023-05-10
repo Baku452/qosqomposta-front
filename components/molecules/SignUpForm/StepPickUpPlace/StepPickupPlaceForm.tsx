@@ -5,7 +5,7 @@ import * as yup from 'yup';
 
 //Styles
 import formStyles from '../signUp.module.scss';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 import { FormLocation, InputsSignUpForm } from '@/types/mainTypes';
 import {
@@ -39,6 +39,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
     lng: DEFAULT_LONGITUTED_MAP,
   });
 
+  const [inputDisabled, setInputDisabled] = useState<boolean>(false);
   const validationSchema = yup.object().shape({
     address: yup.string().trim().required('Este campo es requerido'),
     reference: yup.string().trim().required('Este campo es requerido').nullable(),
@@ -108,10 +109,14 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
     handleLocationChange(address, lat, lng);
   };
 
+  useEffect(() => {
+    setInputDisabled(!ready);
+  }, [ready]);
+
   return (
     <>
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
-        <h2>Ingrese datos para el recojo</h2>
+        <h2>Ingrese sus datos para el recojo</h2>
         <p>Actualmente solo hacemos recojo en la ciudad de Cusco*</p>
         <div className="places-container py-5">
           <Controller
@@ -124,7 +129,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
                     {...register('address')}
                     value={value}
                     onChange={e => setValue(e.target.value)}
-                    disabled={!ready}
+                    disabled={inputDisabled}
                     className="combobox-input"
                     placeholder="Ingrese su ubicación"
                   />
