@@ -8,6 +8,7 @@ import { Dispatch } from 'react';
 import { AnyAction } from 'redux';
 
 const TOAST_ERROR_STATUS = [400, 401, 403, 409, 406, 504, 500];
+const QOSQOMPOSTA_BACKEND_URL = process.env.QOSQOMPOSTA_BACKEND_URL ?? '';
 
 export type AnyData = {} | { example: string };
 
@@ -36,10 +37,10 @@ const doAsync = async <
     mapError = (e: unknown) => e,
   } = options || {};
   dispatch({ type: action.request, payload: mapRequest(payload) });
-
   try {
+    const urlFormat = QOSQOMPOSTA_BACKEND_URL + url;
     const { data } = await Axios({
-      url,
+      url: urlFormat,
       ...axiosConfig,
     });
     dispatch({

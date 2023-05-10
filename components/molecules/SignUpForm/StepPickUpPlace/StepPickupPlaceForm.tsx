@@ -55,7 +55,6 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
     mode: 'onChange',
   });
   const onSubmit = () => {
-    console.log(isValid);
     handleStepForm(currentStep, isValid);
     increaseStep();
   };
@@ -128,6 +127,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
                   <ComboboxInput
                     {...register('address')}
                     value={value}
+                    autoComplete={'off'}
                     onChange={e => setValue(e.target.value)}
                     disabled={inputDisabled}
                     className="combobox-input"

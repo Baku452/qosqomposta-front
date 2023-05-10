@@ -13,6 +13,8 @@ import styles from './summaryform.module.scss';
 import { StepsFormRegister } from '@/types/mainTypes';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
+import Link from 'next/link';
+import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 
 export interface SummarySignUpFormProps {
   stepsForm: StepsFormRegister[];
@@ -115,10 +117,14 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
               {selectedService?.name ? (
                 <>
                   <p className="block h-fit">{selectedService?.name}</p>
-                  <BsPencilSquare title="Cambiar" className="text-greenQ" size={20} />
+                  <Link href={SELECT_SERVICE_PATH}>
+                    <BsPencilSquare title="Cambiar" className="text-greenQ" size={20} />
+                  </Link>
                 </>
               ) : (
-                <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
+                <Link href={SELECT_SERVICE_PATH}>
+                  <span>{'Seleccione un servicio Q'}</span>
+                </Link>
               )}
             </div>
             <div>

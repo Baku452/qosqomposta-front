@@ -67,7 +67,7 @@ const SignUpForm: React.FC = () => {
                 setPaymentMethodSelected={setPaymentMethodSelected}
               />
             )}
-            {currentStep === 3 && <SummarySignUpForm stepsForm={stepsForm} />}
+            {currentStep === 3 && <SummarySignUpForm stepsForm={stepsForm.slice(0, 2)} />}
           </div>
         </div>
         <div className="flex flex-col items-center basis-1/2">
