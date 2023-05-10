@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <script
           defer
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=YOUR_CALLBACK_NAME`}
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
         ></script>
         <link href="https://fonts.cdnfonts.com/css/eveleth" rel="stylesheet" />
         <link href="https://fonts.cdnfonts.com/css/c" rel="stylesheet" />
