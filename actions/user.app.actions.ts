@@ -14,7 +14,7 @@ export const registerUser =
     return doAsync(
       dispatch,
       REGISTER_USER,
-      'user',
+      '/user',
       { method: 'POST' },
       undefined,
       user,

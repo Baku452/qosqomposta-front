@@ -1,7 +1,6 @@
 import DashboardAside from '@/components/organism/DashboardAside/DashboardAside';
 import HeaderDashboard from '@/components/organism/HeaderAuth/HeaderAuth';
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
-import HeaderWeb from '@/organism/HeaderWeb/HeaderWeb';
 import { ToastContainer } from 'react-toastify';
 
 export type DashboardLayoutProps = {

@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
 import Link from 'next/link';
 import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
+import axios from 'axios';
 
 export interface SummarySignUpFormProps {
   stepsForm: StepsFormRegister[];
