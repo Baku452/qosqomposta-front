@@ -3,21 +3,23 @@ import { FETCH_USER_APP, REGISTER_USER } from './actionsTypes';
 import { AnyAction } from 'redux';
 import { Dispatch } from 'react';
 import { doAsync } from '@/clientApi/clientApi';
-import { InputsSignUpForm } from '@/types/mainTypes';
+import { RegisterUsertDTO } from '@/types/mainTypes';
 
 export const setUserApp = (user: UserInfo | unknown): AnyAction => ({
   type: FETCH_USER_APP,
   payload: { user },
 });
 export const registerUser =
-  (user: InputsSignUpForm) => async (dispatch: Dispatch<AnyAction>) => {
+  (user: RegisterUsertDTO) => async (dispatch: Dispatch<AnyAction>) => {
     return doAsync(
       dispatch,
       REGISTER_USER,
       '/user',
-      { method: 'POST' },
+      { method: 'POST', data: user },
       undefined,
-      user,
+      {
+        user,
+      },
     ).then(data => {
       return data;
     });

@@ -39,7 +39,6 @@ const doAsync = async <
   dispatch({ type: action.request, payload: mapRequest(payload) });
   try {
     const urlFormat = QOSQOMPOSTA_BACKEND_URL + url;
-    console.log(urlFormat);
     const { data } = await Axios({
       url: urlFormat,
       ...axiosConfig,

@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
 import Link from 'next/link';
 import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
-import axios from 'axios';
+import { makeRegisterUserSchema } from '@/utils/auth.utils';
 
 export interface SummarySignUpFormProps {
   stepsForm: StepsFormRegister[];
@@ -33,7 +33,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
 
   const handleSubmit = async () => {
     if (formState) {
-      registerUser(formState)(dispatch);
+      registerUser(makeRegisterUserSchema(formValues, selectedService?._id))(dispatch);
     }
   };
   const notValidForm = stepsForm.some(step => step.complete === false);
@@ -124,7 +124,9 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                 </>
               ) : (
                 <Link href={SELECT_SERVICE_PATH}>
-                  <span>{'Seleccione un servicio Q'}</span>
+                  <span className={registerStyles.errorLabel}>
+                    {'Seleccione un servicio Q'}
+                  </span>
                 </Link>
               )}
             </div>

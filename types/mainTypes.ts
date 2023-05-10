@@ -55,6 +55,16 @@ export type InputsSignUpForm = {
   paymentMethod: string;
 };
 
+export type RegisterUsertDTO = {
+  name: string;
+  last_name: string;
+  mother_last_name: string;
+  email: string;
+  password: string;
+  serviceSelected: string;
+  phoneNumber: string;
+};
+
 export type FormLocation = {
   address?: string;
   reference?: string;

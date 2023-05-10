@@ -13,6 +13,7 @@ import {
   PHONE_REGEX_PATTERN,
 } from '@/constants/authForms.const';
 import * as yup from 'yup';
+import PhoneInput from 'react-phone-number-input';
 
 export interface StepAccountInformationProps {
   currentStep: number;
@@ -24,6 +25,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   handleStepForm,
   currentStep,
 }) => {
+  const [phoneNumber, setPhoneNumber] = useState('');
   const validationSchema = yup.object().shape({
     name: yup.string().trim().required('Este campo es requerido').nullable(),
     lastname: yup.string().trim().required('Este campo es requerido'),
@@ -33,10 +35,10 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
       .matches(EMAIL_REGEX, 'Correo Inválido')
       .required('Este campo es requerido'),
 
-    phoneNumber: yup
-      .string()
-      .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
-      .required('Este campo es requerido'),
+    // phoneNumber: yup
+    //   .string()
+    //   .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
+    //   .required('Este campo es requerido'),
     password: yup
       .string()
       .min(6, 'La contraseña debe tener al menos 6 caracteres')
@@ -75,6 +77,13 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     increaseStep();
   };
 
+  const handleChange = (value: string) => {
+    setPhoneNumber(value);
+    setFormState(prevFormData => ({
+      ...prevFormData,
+      phoneNumber: value,
+    }));
+  };
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
@@ -171,12 +180,22 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={() => (
               <>
                 <label>Número de teléfono * </label>
-                <input
+                <PhoneInput
+                  defaultCountry="PE"
+                  value={phoneNumber}
+                  {...register('phoneNumber', {
+                    // onChange: e => handleInputChange(e.target.name, e.target.value),
+                  })}
+                  international={false}
+                  onChange={handleChange}
+                  countries={['PE', 'US']} // You can specify which countries to include
+                />
+                {/* <input
                   value={formState?.phoneNumber}
                   {...register('phoneNumber', {
                     onChange: e => handleInputChange(e.target.name, e.target.value),
                   })}
-                />
+                /> */}
                 {errors.phoneNumber && (
                   <span className={styles.errorLabel}>{errors.phoneNumber.message}</span>
                 )}
