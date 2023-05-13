@@ -5,7 +5,7 @@ import QosqompostaServicesContext, {
   ServiceContextType,
 } from '@/context/ServicesContext';
 import { BsPencilSquare } from 'react-icons/bs';
-import { NOT_FILLED_FIELD } from '@/constants/authForms.const';
+import { NOT_FILLED_FIELD, SUMMARY_SIGNUP_FORM } from '@/constants/authForms.const';
 
 //Styles
 import registerStyles from '../signUp.module.scss';
@@ -43,15 +43,9 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
         <h2 className="mb-5">Resumen de respuestas</h2>
         <div className={`flex justify-start gap-24`}>
           <div className={`${styles.headersContainer}`}>
-            <h5>Nombre</h5>
-            <h5>Apellidos</h5>
-            <h5>Correo Electrónico</h5>
-            <h5>Número de teléfono</h5>
-            <h5>Dirección</h5>
-            <h5>Referencia de Dirección</h5>
-            <h5>Fecha de Nacimiento</h5>
-            <h5>Servicio Seleccionado</h5>
-            <h5>Método de pago</h5>
+            {SUMMARY_SIGNUP_FORM.map(title => (
+              <h5 key={title.name}>{title.name}</h5>
+            ))}
           </div>
           <div className={`${styles.answersContainer} text-black`}>
             <div>

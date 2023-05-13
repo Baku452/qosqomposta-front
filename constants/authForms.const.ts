@@ -40,3 +40,36 @@ export const PHONE_REGEX_PATTERN = /^\+?[0-9]{7,}$/i;
 export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
 
 export const NOT_FILLED_FIELD = 'Este campo no ha sido ingresado';
+
+//Headers
+
+export const SUMMARY_SIGNUP_FORM = [
+  {
+    name: 'Nombre',
+  },
+  {
+    name: 'Apellidos',
+  },
+  {
+    name: 'Correo Electrónico',
+  },
+  {
+    name: 'Número de teléfono',
+  },
+  {
+    name: 'Dirección',
+  },
+  {
+    name: 'Fecha de Nacimiento',
+  },
+  {
+    name: 'Referencia de Dirección',
+  },
+
+  {
+    name: 'Servicio Seleccionado',
+  },
+  {
+    name: 'Método de Pago',
+  },
+];

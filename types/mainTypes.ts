@@ -41,18 +41,19 @@ export interface LocationClient {
 }
 
 export type InputsSignUpForm = {
+  membership: string;
   name: string;
   lastname: string;
   mother_last_name: string;
   password: string;
-  confirmPassword: string;
   email: string;
-  location: LocationClient;
   dateBirth: Date;
-  membership: string;
   phoneNumber: string;
   paymentMethod: string;
+  location: LocationClient;
 };
+
+export type AccountInformation = Omit<InputsSignUpForm, 'membership' | 'paymentMethod'>;
 
 export type RegisterUsertDTO = {
   name: string;

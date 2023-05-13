@@ -17,7 +17,6 @@ const defaultState: InputsSignUpForm = {
   lastname: '',
   mother_last_name: '',
   password: '',
-  confirmPassword: '',
   email: '',
   location: {
     address: '',

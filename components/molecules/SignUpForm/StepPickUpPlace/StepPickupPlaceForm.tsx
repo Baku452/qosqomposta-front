@@ -33,7 +33,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
   const validationSchema = yup.object().shape({
     address: yup.string().trim().required('Este campo es requerido'),
     district: yup.string().trim().required('Este campo es requerido'),
-    reference: yup.string().trim().required('Este campo es requerido').nullable(),
+    reference: yup.string().trim().required('Este campo es requerido'),
   });
 
   const {
@@ -72,8 +72,12 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
           <Controller
             control={control}
             name="district"
-            render={() => (
-              <Select placeholder="Selecciones su distrito" options={cities} />
+            render={({ field }) => (
+              <Select
+                placeholder="Selecciones su distrito"
+                options={cities}
+                onChange={val => field.onChange(val?.value)}
+              />
             )}
           />
         </div>
@@ -85,9 +89,9 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
             render={({ field }) => (
               <>
                 <input {...field} />
-                {errors.reference && (
+                {errors.address && (
                   <span className={formStyles.errorLabel}>
-                    {errors.reference.message?.toString()}
+                    {errors.address.message?.toString()}
                   </span>
                 )}
               </>
