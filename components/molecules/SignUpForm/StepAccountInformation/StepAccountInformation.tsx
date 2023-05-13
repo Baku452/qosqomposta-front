@@ -10,6 +10,7 @@ import PhoneInput from 'react-phone-number-input';
 //Styles
 import 'react-datepicker/dist/react-datepicker.css';
 import styles from '../signUp.module.scss';
+import { es } from 'date-fns/locale';
 
 export interface StepAccountInformationProps {
   currentStep: number;
@@ -71,6 +72,9 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
     setFormState(getValues());
     increaseStep();
   };
+
+  const minDate = new Date();
+  minDate.setFullYear(minDate.getFullYear() - 80); // 100 years ago
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
@@ -186,7 +190,6 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           <Controller
             control={control}
             name="dateBirth"
-            rules={{ required: true }}
             render={({ field }) => (
               <DatePicker
                 selected={formState?.dateBirth}
@@ -194,7 +197,12 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                   date && handleInputChange('dateBirth', date.getTime());
                   field.onChange(date);
                 }}
-                dateFormat="yyyy/MM/dd"
+                dateFormatCalendar={'MMM yyyy'}
+                showYearDropdown
+                minDate={minDate}
+                maxDate={new Date()}
+                dropdownMode="select"
+                locale={es}
               />
             )}
           />
