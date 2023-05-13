@@ -18,6 +18,7 @@ import QosqompostaServicesContext, {
 } from '@/context/ServicesContext';
 import Link from 'next/link';
 import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
+import { TiEdit } from 'react-icons/ti';
 
 const SignUpForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -48,63 +49,66 @@ const SignUpForm: React.FC = () => {
     setCurrentStep(stepsForm => ++stepsForm);
   };
 
+  const handleSetStepForm = (value: number) => {
+    setCurrentStep(value);
+  };
+
   return (
-    <div className="flex">
+    <div className="flex flex-col max-w-lg m-auto">
       <SignUpContextProvider>
-        <div className="justify-between shadow-xl rounded-xl p-10 basis-1/2 h-[719px] m-auto bg-white text-left text-gray-400">
-          <div className={`m-0 px-10 ${styles.formSignUp} h-full`}>
-            {currentStep === 0 && (
-              <StepAccountInformation
-                currentStep={currentStep}
-                handleStepForm={handleStepsForm}
-                increaseStep={handleIncreaseStepsForms}
-              />
+        <div className="rounded-lg flex justify-between bg-greenQ text-white p-3 text-lg">
+          <div>
+            {selectedService?.name ? (
+              <>
+                <p>{selectedService.name}</p>
+              </>
+            ) : (
+              <p className="text-red-600">No ha seleccionado un servicio</p>
             )}
-            {currentStep === 1 && (
-              <StepPickupPlace
-                currentStep={currentStep}
-                handleStepForm={handleStepsForm}
-                increaseStep={handleIncreaseStepsForms}
-              />
-            )}
-            {currentStep === 2 && (
-              <StepPaymentMethod
-                handleStepForm={handleStepsForm}
-                currentStep={currentStep}
-                increaseStep={handleIncreaseStepsForms}
-                paymentMethodSelected={paymentMethodSelected}
-                setPaymentMethodSelected={setPaymentMethodSelected}
-              />
-            )}
-            {currentStep === 3 && <SummarySignUpForm stepsForm={stepsForm.slice(0, 2)} />}
+          </div>
+          <div className="flex items-center">
+            <p>{selectedService && `S/. ${selectedService.price}`}</p>
+            <div>
+              <Link href={SELECT_SERVICE_PATH}>
+                <TiEdit className="mb-1 ml-1" size={25} />
+              </Link>
+            </div>
           </div>
         </div>
-        <div className="flex flex-col items-center basis-1/2">
-          <h1 className="mt-10">Registro de Nuevo Usuario</h1>
-          {selectedService?.name ? (
-            <>
-              <p>Está seleccionando el servicio: </p>
-              <p className="my-5 font-bold">{selectedService?.name}</p>
-              <Link className="underline text-greenQ" href={SELECT_SERVICE_PATH}>
-                Cambiar Servicio
-              </Link>
-            </>
-          ) : (
-            <>
-              <p className="text-red-600">No ha seleccionado un servicio</p>
-              <Link href={SELECT_SERVICE_PATH}>
-                <button className="btn btn-primary">Seleccione un servicio</button>
-              </Link>
-            </>
+        <h1 className="mt-10">Crea tu cuenta</h1>
+        <p className="pb-5">
+          Paso {currentStep + 1} de {stepsForm.length}
+        </p>
+        <div className="text-left">
+          {currentStep === 0 && (
+            <StepAccountInformation
+              currentStep={currentStep}
+              handleStepForm={handleStepsForm}
+              increaseStep={handleIncreaseStepsForms}
+            />
           )}
-          <StepsForm
-            stepsFormsData={stepsForm}
-            stepActive={currentStep}
-            setStep={setCurrentStep}
-          />
-          <div className="py-10">
-            <Image src={LOGO_COLOR} width={300} height={300} alt="logo Color" />
-          </div>
+          {currentStep === 1 && (
+            <StepPickupPlace
+              currentStep={currentStep}
+              handleStepForm={handleStepsForm}
+              increaseStep={handleIncreaseStepsForms}
+            />
+          )}
+          {currentStep === 2 && (
+            <StepPaymentMethod
+              handleStepForm={handleStepsForm}
+              currentStep={currentStep}
+              increaseStep={handleIncreaseStepsForms}
+              paymentMethodSelected={paymentMethodSelected}
+              setPaymentMethodSelected={setPaymentMethodSelected}
+            />
+          )}
+          {currentStep === 3 && (
+            <SummarySignUpForm
+              handleSetStepForm={handleSetStepForm}
+              stepsForm={stepsForm.slice(0, 2)}
+            />
+          )}
         </div>
       </SignUpContextProvider>
     </div>

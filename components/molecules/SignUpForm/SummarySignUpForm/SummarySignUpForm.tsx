@@ -5,7 +5,13 @@ import QosqompostaServicesContext, {
   ServiceContextType,
 } from '@/context/ServicesContext';
 import { BsPencilSquare } from 'react-icons/bs';
-import { NOT_FILLED_FIELD, SUMMARY_SIGNUP_FORM } from '@/constants/authForms.const';
+import {
+  ACCOUNT_FORM_STEP,
+  NOT_FILLED_FIELD,
+  PAYMENT_METHOD_FORM_STEP,
+  PICKUP_FORM_STEP,
+  SUMMARY_SIGNUP_FORM,
+} from '@/constants/authForms.const';
 
 //Styles
 import registerStyles from '../signUp.module.scss';
@@ -18,9 +24,13 @@ import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 import { makeRegisterUserSchema } from '@/utils/auth.utils';
 
 export interface SummarySignUpFormProps {
+  handleSetStepForm: (value: number) => void;
   stepsForm: StepsFormRegister[];
 }
-const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
+const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
+  stepsForm,
+  handleSetStepForm,
+}) => {
   const { formState } = useContext(SignUpContext) as SignUpContextType;
   const { selectedService } = useContext(
     QosqompostaServicesContext,
@@ -40,7 +50,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
   return (
     <div className={`${styles.containerSummary} h-full`}>
       <div>
-        <h2 className="mb-5">Resumen de respuestas</h2>
+        <h2 className="mb-5">Confirmar registro</h2>
         <div className={`flex justify-start gap-24`}>
           <div className={`${styles.headersContainer}`}>
             {SUMMARY_SIGNUP_FORM.map(title => (
@@ -48,14 +58,18 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
             ))}
           </div>
           <div className={`${styles.answersContainer} text-black`}>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.name || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.lastname && formValues.mother_last_name ? (
                   <>
@@ -65,22 +79,31 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.email || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.phoneNumber || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues?.dateBirth?.toLocaleDateString('es-ES', {
                   year: 'numeric',
@@ -90,8 +113,11 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div className="w-52 overflow-hidden whitespace-nowrap">
+            <div className="flex w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.address || ''}
                 className="text-ellipsis overflow-hidden"
@@ -100,37 +126,30 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.location?.reference || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
 
-            <div className="flex items-center">
-              {selectedService?.name ? (
-                <>
-                  <p className="block h-fit">{selectedService?.name}</p>
-                  <Link href={SELECT_SERVICE_PATH}>
-                    <BsPencilSquare title="Cambiar" className="text-greenQ" size={20} />
-                  </Link>
-                </>
-              ) : (
-                <Link href={SELECT_SERVICE_PATH}>
-                  <span className={registerStyles.errorLabel}>
-                    {'Seleccione un servicio Q'}
-                  </span>
-                </Link>
-              )}
-            </div>
-            <div>
+            <div className="flex">
               <p>
                 {formValues.paymentMethod || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
+              <button onClick={() => handleSetStepForm(PAYMENT_METHOD_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
             </div>
           </div>
         </div>

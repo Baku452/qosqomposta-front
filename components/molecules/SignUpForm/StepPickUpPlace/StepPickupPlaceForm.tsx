@@ -69,7 +69,6 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="text-center">
-          <h2>Ingrese sus datos para el recojo</h2>
           <p>Actualmente solo hacemos recojo en la ciudad de Cusco*</p>
         </div>
         <div>

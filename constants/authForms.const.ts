@@ -32,6 +32,11 @@ export const stepsFormsData: StepsFormRegister[] = [
   },
 ];
 
+export const ACCOUNT_FORM_STEP = 0;
+export const PICKUP_FORM_STEP = 1;
+export const PAYMENT_METHOD_FORM_STEP = 2;
+export const SUMMARY_FORM_STEP = 3;
+
 //REGEX
 export const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,}$/i;
 export const PHONE_REGEX_PATTERN_SIGN =
@@ -64,10 +69,6 @@ export const SUMMARY_SIGNUP_FORM = [
   },
   {
     name: 'Referencia de Dirección',
-  },
-
-  {
-    name: 'Servicio Seleccionado',
   },
   {
     name: 'Método de Pago',

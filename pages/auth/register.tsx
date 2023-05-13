@@ -15,7 +15,7 @@ const RegisterPage: NextPage<RegisterPageProps> = ({ data }) => {
     data && setCities(data);
   }, [data, setCities]);
   return (
-    <div className="p-10 m-auto text-center bg-gray-100">
+    <div className="p-10 m-auto text-center">
       <SignUpForm />
     </div>
   );

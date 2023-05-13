@@ -77,8 +77,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   minDate.setFullYear(minDate.getFullYear() - 100);
 
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
+    <form noValidate onSubmit={handleSubmit(onSubmit)} className="text-left">
       <div className="mb-5 h-[80.39px]">
         <label>Nombre *</label>
         <Controller
