@@ -8,6 +8,8 @@ interface Props {
 export interface Districts {
   nombdep?: string;
   capital?: string;
+  value?: string;
+  label?: string;
 }
 
 export interface PlacesContextType {
