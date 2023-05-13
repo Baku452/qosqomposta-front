@@ -3,17 +3,13 @@ import { InputsSignUpForm } from '@/types/mainTypes';
 import { useContext, useState } from 'react';
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-//Styles
-import styles from '../signUp.module.scss';
 import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  EMAIL_REGEX,
-  PASSWORD_REGEX,
-  PHONE_REGEX_PATTERN,
-} from '@/constants/authForms.const';
+import { EMAIL_REGEX, PASSWORD_REGEX } from '@/constants/authForms.const';
 import * as yup from 'yup';
 import PhoneInput from 'react-phone-number-input';
+//Styles
+import 'react-datepicker/dist/react-datepicker.css';
+import styles from '../signUp.module.scss';
 
 export interface StepAccountInformationProps {
   currentStep: number;
@@ -34,11 +30,6 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
       .string()
       .matches(EMAIL_REGEX, 'Correo Inválido')
       .required('Este campo es requerido'),
-
-    // phoneNumber: yup
-    //   .string()
-    //   .matches(PHONE_REGEX_PATTERN, 'Número de teléfono inválido')
-    //   .required('Este campo es requerido'),
     password: yup
       .string()
       .min(6, 'La contraseña debe tener al menos 6 caracteres')
