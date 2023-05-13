@@ -12,7 +12,7 @@ import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 import PlacesContext, { PlacesContextType } from '@/context/PlacesContext';
 
 //Types
-import { FormLocation, InputsSignUpForm } from '@/types/mainTypes';
+import { FormLocation } from '@/types/mainTypes';
 
 export interface StepPickupPlaceProps {
   currentStep: number;
@@ -38,30 +38,27 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
 
   const {
     control,
+    getValues,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm<FormLocation>({
     resolver: yupResolver(validationSchema),
     mode: 'onChange',
+    defaultValues: {
+      ...formAppState.location,
+    },
   });
   const onSubmit = () => {
+    const formValues = getValues();
+    setFormState({
+      ...formAppState,
+      location: {
+        ...formAppState,
+        ...formValues,
+      },
+    });
     handleStepForm(currentStep, isValid);
     increaseStep();
-  };
-
-  const handleLocationChange = (name: string, value: string) => {
-    if (formAppState) {
-      setFormState((prevState: InputsSignUpForm) => {
-        const updatedForm: InputsSignUpForm = {
-          ...prevState,
-          location: {
-            ...prevState.location,
-            [name]: value,
-          },
-        };
-        return updatedForm;
-      });
-    }
   };
 
   return (
@@ -71,31 +68,23 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
         <p>Actualmente solo hacemos recojo en la ciudad de Cusco*</p>
 
         <div className="mb-5 mt-5">
-          <label htmlFor="district">Distrito</label>
+          <label>Distrito</label>
           <Controller
             control={control}
             name="district"
             render={() => (
-              <Select
-                options={cities}
-                onChange={selectedOption =>
-                  handleLocationChange('district', selectedOption?.value ?? '')
-                }
-              />
+              <Select placeholder="Selecciones su distrito" options={cities} />
             )}
           />
         </div>
         <div className="mb-5 mt-5">
-          <label htmlFor="reference">{`Dirección (Incluya si es Jiron, Calle, Avenida)`}</label>
+          <label>{`Dirección (Incluya si es Jiron, Calle, Avenida)`}</label>
           <Controller
             control={control}
             name="address"
             render={({ field }) => (
               <>
-                <input
-                  value={formAppState?.location?.reference}
-                  onChange={event => handleLocationChange(field.name, event.target.value)}
-                />
+                <input {...field} />
                 {errors.reference && (
                   <span className={formStyles.errorLabel}>
                     {errors.reference.message?.toString()}
@@ -106,16 +95,13 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
           />
         </div>
         <div className="mb-5 mt-5">
-          <label htmlFor="reference">Referencia del lugar *</label>
+          <label>Referencia del lugar *</label>
           <Controller
             control={control}
             name="reference"
             render={({ field }) => (
               <>
-                <input
-                  value={formAppState?.location?.reference}
-                  onChange={event => handleLocationChange(field.name, event.target.value)}
-                />
+                <input {...field} />
                 {errors.reference && (
                   <span className={formStyles.errorLabel}>
                     {errors.reference.message?.toString()}

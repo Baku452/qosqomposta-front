@@ -65,9 +65,9 @@ export type RegisterUsertDTO = {
 };
 
 export type FormLocation = {
-  address?: string;
-  district?: string;
-  reference?: string;
+  address: string;
+  district: string;
+  reference: string;
 };
 
 export type StepsFormRegister = {
