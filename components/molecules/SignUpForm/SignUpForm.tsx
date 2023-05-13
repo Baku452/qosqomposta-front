@@ -83,7 +83,7 @@ const SignUpForm: React.FC = () => {
           <h1 className="mt-10">Registro de Nuevo Usuario</h1>
           {selectedService?.name ? (
             <>
-              <p>Está seleccionando el servicio</p>
+              <p>Está seleccionando el servicio: </p>
               <p className="my-5 font-bold">{selectedService?.name}</p>
               <Link className="underline text-greenQ" href={SELECT_SERVICE_PATH}>
                 Cambiar Servicio
