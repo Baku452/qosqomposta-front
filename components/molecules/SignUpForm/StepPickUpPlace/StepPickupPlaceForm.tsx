@@ -1,13 +1,18 @@
+import * as yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import Select from 'react-select';
 
 //Styles
 import formStyles from '../signUp.module.scss';
 import { useContext } from 'react';
+
+//Context
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
-import { FormLocation, InputsSignUpForm } from '@/types/mainTypes';
 import PlacesContext, { PlacesContextType } from '@/context/PlacesContext';
+
+//Types
+import { FormLocation, InputsSignUpForm } from '@/types/mainTypes';
 
 export interface StepPickupPlaceProps {
   currentStep: number;
@@ -27,12 +32,12 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
 
   const validationSchema = yup.object().shape({
     address: yup.string().trim().required('Este campo es requerido'),
+    district: yup.string().trim().required('Este campo es requerido'),
     reference: yup.string().trim().required('Este campo es requerido').nullable(),
   });
 
   const {
     control,
-    register,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm<FormLocation>({
@@ -42,18 +47,16 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
   const onSubmit = () => {
     handleStepForm(currentStep, isValid);
     increaseStep();
-    console.log(cities);
   };
 
-  const handleReferenceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
+  const handleLocationChange = (name: string, value: string) => {
     if (formAppState) {
       setFormState((prevState: InputsSignUpForm) => {
         const updatedForm: InputsSignUpForm = {
           ...prevState,
           location: {
             ...prevState.location,
-            reference: value,
+            [name]: value,
           },
         };
         return updatedForm;
@@ -68,17 +71,50 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
         <p>Actualmente solo hacemos recojo en la ciudad de Cusco*</p>
 
         <div className="mb-5 mt-5">
-          <label>Referencia del lugar *</label>
+          <label htmlFor="district">Distrito</label>
           <Controller
             control={control}
-            name="reference"
+            name="district"
             render={() => (
+              <Select
+                options={cities}
+                onChange={selectedOption =>
+                  handleLocationChange('district', selectedOption?.value ?? '')
+                }
+              />
+            )}
+          />
+        </div>
+        <div className="mb-5 mt-5">
+          <label htmlFor="reference">{`Dirección (Incluya si es Jiron, Calle, Avenida)`}</label>
+          <Controller
+            control={control}
+            name="address"
+            render={({ field }) => (
               <>
                 <input
                   value={formAppState?.location?.reference}
-                  {...register('reference', {
-                    onChange: handleReferenceChange,
-                  })}
+                  onChange={event => handleLocationChange(field.name, event.target.value)}
+                />
+                {errors.reference && (
+                  <span className={formStyles.errorLabel}>
+                    {errors.reference.message?.toString()}
+                  </span>
+                )}
+              </>
+            )}
+          />
+        </div>
+        <div className="mb-5 mt-5">
+          <label htmlFor="reference">Referencia del lugar *</label>
+          <Controller
+            control={control}
+            name="reference"
+            render={({ field }) => (
+              <>
+                <input
+                  value={formAppState?.location?.reference}
+                  onChange={event => handleLocationChange(field.name, event.target.value)}
                 />
                 {errors.reference && (
                   <span className={formStyles.errorLabel}>

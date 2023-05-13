@@ -35,10 +35,9 @@ export interface AsyncActionType {
 }
 
 export interface LocationClient {
+  district: string;
   address: string;
   reference: string;
-  latitude: number;
-  longitude: number;
 }
 
 export type InputsSignUpForm = {
@@ -67,6 +66,7 @@ export type RegisterUsertDTO = {
 
 export type FormLocation = {
   address?: string;
+  district?: string;
   reference?: string;
 };
 

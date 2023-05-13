@@ -5,7 +5,7 @@ export function extractFields(dataset: any) {
     const { fields } = obj;
     const { nombdep, capital } = fields;
 
-    result.push({ nombdep, capital });
+    result.push({ value: capital, label: capital, nombdep });
   }
 
   return result;

@@ -1,4 +1,3 @@
-import { DEFAULT_LATITUDE_MAP, DEFAULT_LONGITUTED_MAP } from '@/main.config';
 import { InputsSignUpForm } from '@/types/mainTypes';
 import React, { Dispatch, SetStateAction, createContext, useState } from 'react';
 
@@ -22,8 +21,7 @@ const defaultState: InputsSignUpForm = {
   email: '',
   location: {
     address: '',
-    latitude: DEFAULT_LATITUDE_MAP,
-    longitude: DEFAULT_LONGITUTED_MAP,
+    district: '',
     reference: '',
   },
   dateBirth: new Date(),
