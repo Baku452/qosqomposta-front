@@ -80,6 +80,17 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                 )}
               </p>
             </div>
+            <div>
+              <p>
+                {formValues?.dateBirth?.toLocaleDateString('es-ES', {
+                  year: 'numeric',
+                  month: '2-digit',
+                  day: '2-digit',
+                }) ?? (
+                  <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
+                )}
+              </p>
+            </div>
             <div className="w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.address || ''}
@@ -97,17 +108,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({ stepsForm }) => {
                 )}
               </p>
             </div>
-            <div>
-              <p>
-                {formValues?.dateBirth?.toLocaleDateString('es-ES', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                }) ?? (
-                  <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
-                )}
-              </p>
-            </div>
+
             <div className="flex items-center">
               {selectedService?.name ? (
                 <>

@@ -57,10 +57,10 @@ export const SUMMARY_SIGNUP_FORM = [
     name: 'Número de teléfono',
   },
   {
-    name: 'Dirección',
+    name: 'Fecha de Nacimiento',
   },
   {
-    name: 'Fecha de Nacimiento',
+    name: 'Dirección',
   },
   {
     name: 'Referencia de Dirección',

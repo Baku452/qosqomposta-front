@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import StepsForm from './StepsForm/StepsForm';
 
 //Styles
@@ -13,6 +13,11 @@ import Image from 'next/image';
 import { LOGO_COLOR } from '@/public/data/homeImages';
 import { stepsFormsData } from '@/constants/authForms.const';
 import { StepsFormRegister } from '@/types/mainTypes';
+import QosqompostaServicesContext, {
+  ServiceContextType,
+} from '@/context/ServicesContext';
+import Link from 'next/link';
+import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 
 const SignUpForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -20,6 +25,10 @@ const SignUpForm: React.FC = () => {
   const [paymentMethodSelected, setPaymentMethodSelected] = useState<
     string | undefined
   >();
+
+  const { selectedService } = useContext(
+    QosqompostaServicesContext,
+  ) as ServiceContextType;
 
   const handleStepsForm = (valueStep: number, isValid: boolean) => {
     const updatedStepForms = stepsForm.map(step => {
@@ -72,6 +81,22 @@ const SignUpForm: React.FC = () => {
         </div>
         <div className="flex flex-col items-center basis-1/2">
           <h1 className="mt-10">Registro de Nuevo Usuario</h1>
+          {selectedService?.name ? (
+            <>
+              <p>Está seleccionando el servicio</p>
+              <p className="my-5 font-bold">{selectedService?.name}</p>
+              <Link className="underline text-greenQ" href={SELECT_SERVICE_PATH}>
+                Cambiar Servicio
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="text-red-600">No ha seleccionado un servicio</p>
+              <Link href={SELECT_SERVICE_PATH}>
+                <button className="btn btn-primary">Seleccione un servicio</button>
+              </Link>
+            </>
+          )}
           <StepsForm
             stepsFormsData={stepsForm}
             stepActive={currentStep}
