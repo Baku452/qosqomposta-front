@@ -74,7 +74,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   };
 
   const minDate = new Date();
-  minDate.setFullYear(minDate.getFullYear() - 80); // 100 years ago
+  minDate.setFullYear(minDate.getFullYear() - 100);
 
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>

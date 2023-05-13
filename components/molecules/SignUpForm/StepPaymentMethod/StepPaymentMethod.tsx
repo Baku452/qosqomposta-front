@@ -76,7 +76,7 @@ const StepPaymentMethod: React.FC<StepPaymentMethodProps> = ({
   return (
     <section className="flex flex-col justify-between">
       <div>
-        <h2 className="mb-10">Seleccione su método de pago</h2>
+        <h2 className="mb-10 text-center">Seleccione su método de pago</h2>
         <div className="flex justify-evenly flex-wrap">
           {PAYMENT_METHODS.map(method => (
             <div

@@ -51,7 +51,7 @@ const SignUpForm: React.FC = () => {
   return (
     <div className="flex">
       <SignUpContextProvider>
-        <div className="justify-between shadow-xl rounded-xl p-10 w-[48rem] h-[719px] m-auto bg-white text-left text-gray-400">
+        <div className="justify-between shadow-xl rounded-xl p-10 basis-1/2 h-[719px] m-auto bg-white text-left text-gray-400">
           <div className={`m-0 px-10 ${styles.formSignUp} h-full`}>
             {currentStep === 0 && (
               <StepAccountInformation
