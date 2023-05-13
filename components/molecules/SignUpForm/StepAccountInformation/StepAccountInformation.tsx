@@ -21,11 +21,11 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
   handleStepForm,
   currentStep,
 }) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
   const validationSchema = yup.object().shape({
     name: yup.string().trim().required('Este campo es requerido').nullable(),
     lastname: yup.string().trim().required('Este campo es requerido'),
     mother_last_name: yup.string().trim().required('Este campo es requerido'),
+    phoneNumber: yup.string().required(),
     email: yup
       .string()
       .matches(EMAIL_REGEX, 'Correo Inválido')
@@ -41,16 +41,20 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
       .required('Este campo es requerido'),
   });
 
+  const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const {
     control,
+    getValues,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm<InputsSignUpForm>({
     resolver: yupResolver(validationSchema),
+    defaultValues: {
+      ...formState,
+    },
     mode: 'onChange',
   });
-  const { formState, setFormState } = useContext(SignUpContext) as SignUpContextType;
-  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleInputChange = (fieldName: string, value: string | number) => {
     setFormState((prevState: InputsSignUpForm) => {
@@ -64,36 +68,22 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
 
   const onSubmit = () => {
     handleStepForm(currentStep, isValid);
+    setFormState(getValues());
     increaseStep();
   };
 
-  const handleChange = (value: string) => {
-    setPhoneNumber(value);
-    setFormState(prevFormData => ({
-      ...prevFormData,
-      phoneNumber: value,
-    }));
-  };
   return (
     <form noValidate onSubmit={handleSubmit(onSubmit)}>
       <h2 className="mb-5 text-center">Cuéntanos sobre ti</h2>
       <div className="mb-5 h-[80.39px]">
+        <label>Nombre *</label>
         <Controller
+          defaultValue={formState?.name}
           control={control}
           name="name"
-          render={({ field }) => (
-            <>
-              <label>Nombre *</label>
-              <input
-                value={formState?.name}
-                onChange={e => handleInputChange(field.name, e.target.value)}
-              />
-              {errors.name && (
-                <span className={styles.errorLabel}>{errors.name.message}</span>
-              )}
-            </>
-          )}
+          render={({ field }) => <input {...field} />}
         />
+        {errors.name && <span className={styles.errorLabel}>{errors.name.message}</span>}
       </div>
       <div className="mb-10 flex gap-10 h-[80.39px]">
         <div className="basis-1/2">
@@ -103,10 +93,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <>
                 <label>Apellido Paterno *</label>
-                <input
-                  value={formState?.lastname}
-                  onChange={e => handleInputChange(field.name, e.target.value)}
-                />
+                <input {...field} />
                 {errors.lastname && (
                   <span className={styles.errorLabel}>{errors.lastname.message}</span>
                 )}
@@ -121,10 +108,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <>
                 <label>Apellido Materno *</label>
-                <input
-                  value={formState?.mother_last_name}
-                  onChange={e => handleInputChange(field.name, e.target.value)}
-                />
+                <input {...field} />
                 {errors.mother_last_name && (
                   <span className={styles.errorLabel}>
                     {errors.mother_last_name.message}
@@ -143,11 +127,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <>
                 <label>Correo Electrónico *</label>
-                <input
-                  type="email"
-                  value={formState?.email}
-                  onChange={e => handleInputChange(field.name, e.target.value)}
-                />
+                <input {...field} type="email" />
                 {errors.email && (
                   <span className={styles.errorLabel}>{errors.email.message}</span>
                 )}
@@ -159,14 +139,13 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           <Controller
             control={control}
             name="phoneNumber"
-            render={() => (
+            render={({ field }) => (
               <>
                 <label>Número de teléfono * </label>
                 <PhoneInput
+                  {...field}
                   defaultCountry="PE"
-                  value={phoneNumber}
                   international={false}
-                  onChange={handleChange}
                   countries={['PE', 'US']}
                 />
                 {errors.phoneNumber && (
@@ -185,11 +164,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
             render={({ field }) => (
               <>
                 <label>Contraseña*</label>
-                <input
-                  type={showPassword ? 'text' : 'password'}
-                  value={formState?.password}
-                  onChange={e => handleInputChange(field.name, e.target.value)}
-                />
+                <input {...field} type={showPassword ? 'text' : 'password'} />
                 <div className="flex justify-start py-2">
                   <input
                     className="inline w-4 mr-1"
