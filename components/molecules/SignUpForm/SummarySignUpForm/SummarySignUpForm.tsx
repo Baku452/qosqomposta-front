@@ -22,6 +22,9 @@ import { registerUser } from '@/actions/user.app.actions';
 import Link from 'next/link';
 import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 import { makeRegisterUserSchema } from '@/utils/auth.utils';
+import { useSelector } from 'react-redux';
+import { State } from '@/reducers/rootReducer';
+import Spinner from '@/components/atoms/Spinner/Spinner';
 
 export interface SummarySignUpFormProps {
   handleSetStepForm: (value: number) => void;
@@ -38,6 +41,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
 
   const { getValues } = useForm({ defaultValues: formState });
 
+  const { isRegistering } = useSelector((state: State) => state.appUser);
   const formValues = getValues();
   const dispatch = useDispatch();
 
@@ -161,6 +165,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
           onClick={handleSubmit}
           className="btn btn-primary mx-auto text-center"
         >
+          {isRegistering && <Spinner />}
           Confirmar Registro
         </button>
       </div>

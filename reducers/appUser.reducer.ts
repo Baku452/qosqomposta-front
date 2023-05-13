@@ -24,17 +24,17 @@ export const appUserReducer = (
     case REGISTER_USER.request:
       return {
         ...action.payload.user,
-        isLoading: true,
+        isRegistering: true,
       };
     case REGISTER_USER.success:
       return {
-        ...action.payload.user,
-        isLoading: false,
+        ...action.payload,
+        isRegistering: false,
       };
     case REGISTER_USER.error:
       return {
         ...action.payload.user,
-        isLoading: false,
+        isRegistering: false,
       };
     default:
       return state;

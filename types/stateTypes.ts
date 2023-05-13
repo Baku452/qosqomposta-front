@@ -13,7 +13,7 @@ export interface AppUser extends Omit<UserInfo, 'toJSON'> {
   isActive?: string;
   roles?: string[];
   compostDetails?: CompostUserDetails;
-  isLoading?: boolean;
+  isRegistering?: boolean;
 }
 
 export interface QosqompostaServices {
