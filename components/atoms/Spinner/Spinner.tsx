@@ -1,15 +1,26 @@
 import React from 'react';
+import styles from './spinner.module.scss';
 
-const Spinner: React.FC = () => {
+const ResponsiveClasses = {
+  lg: 'h-20 w-20',
+  md: 'h-10 w-10',
+  sm: 'h-7 w-7',
+};
+
+export interface SpinnerProps {
+  size?: keyof typeof ResponsiveClasses;
+  color?: string;
+}
+
+const Spinner: React.FC<SpinnerProps> = ({ size = 'md', color = '#fff' }) => {
+  const classNames = size ? ResponsiveClasses[size] : ResponsiveClasses.md;
   return (
-    <div
-      className="mx-2 inline-block h-5 w-5 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-      role="status"
-    >
-      <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-        Loading...
-      </span>
-    </div>
+    <span
+      className={`${styles.loader} ${classNames} `}
+      style={{
+        borderColor: `${color}`,
+      }}
+    ></span>
   );
 };
 

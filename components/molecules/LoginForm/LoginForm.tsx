@@ -80,17 +80,18 @@ const LoginForm: React.FC = () => {
           <input placeholder="Correo Electrónico" type="email" {...register('email')} />
         </div>
         <div className="mb-5 text-right">
-          {errors.password && (
-            <div className="text-left">
-              <span className="text-error">{errors.password.message}</span>
-            </div>
-          )}
           <input
             className="!block !relative"
             placeholder="Contraseña"
             type="password"
             {...register('password')}
           />
+          {errors.password && (
+            <div className="text-left">
+              <span className="text-error">{errors.password.message}</span>
+            </div>
+          )}
+          {errorAuth && <span className="text-error">{errorAuth}</span>}
           <a className="text-yellowQ-500 pt-3 relative block" href={FORGOT_PASSWORD}>
             Olvide mi contraseña
           </a>
@@ -99,7 +100,6 @@ const LoginForm: React.FC = () => {
           Ingresar
         </button>
       </form>
-      {errorAuth && <span className="text-error">{errorAuth}</span>}
       <div className="text-center">
         <p>¿No tiene una cuenta?</p>
         <Link href={SELECT_SERVICE_PATH} className="text-yellowQ-500 font-bold">
