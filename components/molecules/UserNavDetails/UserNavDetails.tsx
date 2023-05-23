@@ -10,7 +10,9 @@ const UserNavDetails: React.FC<UserNavDetailsProps> = ({ user }) => {
     <div className="flex gap-4">
       <div>
         <p>Bienvenido {user.displayName}</p>
-        {user.photoURL && <Image width={50} height={50} src={user.photoURL} />}
+        {user.photoURL && (
+          <Image alt="User profile" width={50} height={50} src={user.photoURL} />
+        )}
       </div>
       <span>|</span>
       <div>
