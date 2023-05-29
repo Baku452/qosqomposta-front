@@ -60,10 +60,15 @@ export type RegisterUsertDTO = {
   name: string;
   last_name: string;
   mother_last_name: string;
+  document_identity: string;
   email: string;
   password: string;
   serviceSelected: string;
   phoneNumber: string;
+  address: string;
+  district: string;
+  reference?: string;
+  paymentMethod: string;
 };
 
 export type FormLocation = {

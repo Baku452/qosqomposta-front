@@ -1,16 +1,12 @@
 import React, { useContext, useState } from 'react';
-import StepsForm from './StepsForm/StepsForm';
 
 //Styles
-import styles from './signUp.module.scss';
 import StepAccountInformation from './StepAccountInformation/StepAccountInformation';
 
 import StepPaymentMethod from './StepPaymentMethod/StepPaymentMethod';
 import StepPickupPlace from './StepPickUpPlace/StepPickupPlaceForm';
 import SummarySignUpForm from './SummarySignUpForm/SummarySignUpForm';
 import { SignUpContextProvider } from '@/context/SignUpContext';
-import Image from 'next/image';
-import { LOGO_COLOR } from '@/public/data/homeImages';
 import { stepsFormsData } from '@/constants/authForms.const';
 import { StepsFormRegister } from '@/types/mainTypes';
 import QosqompostaServicesContext, {

@@ -1,16 +1,21 @@
-import { InputsSignUpForm } from '@/types/mainTypes';
+import { InputsSignUpForm, RegisterUsertDTO } from '@/types/mainTypes';
 
 export const makeRegisterUserSchema = (
-  formValues: InputsSignUpForm,
+  formValuesAccount: InputsSignUpForm,
   serviceSelected?: string,
-) => {
+): RegisterUsertDTO => {
   return {
-    name: formValues.name,
-    last_name: formValues.lastname,
-    mother_last_name: formValues.mother_last_name,
-    email: formValues.email,
-    password: formValues.password,
+    name: formValuesAccount.name,
+    last_name: formValuesAccount.lastname,
+    document_identity: formValuesAccount.document_identity,
+    mother_last_name: formValuesAccount.mother_last_name,
+    email: formValuesAccount.email,
+    password: formValuesAccount.password,
     serviceSelected: serviceSelected ?? '',
-    phoneNumber: formValues.phoneNumber,
+    phoneNumber: formValuesAccount.phoneNumber,
+    address: formValuesAccount.location.address,
+    district: formValuesAccount.location.district,
+    reference: formValuesAccount.location.reference,
+    paymentMethod: formValuesAccount.paymentMethod,
   };
 };

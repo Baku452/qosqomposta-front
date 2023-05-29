@@ -7,13 +7,32 @@
 .headersContainer{
     h5 {
         padding: 1rem 0;
-        min-height: 20px;
+        min-height: 4rem;
+        width: 200px;
     }
 }
 
 .answersContainer{
     > div{
         padding: 1rem 0;
-        min-height: 20px;
+        min-height: 4rem;
+        width: 400px;
+        align-items: start;
+        text-overflow: ellipsis;
     }
+}
+
+.registerButton{
+    transition: width .4s ease-in-out, color .8s ease-in-out;
+    white-space: nowrap;
+    border: none;
+}
+
+.notLoadingButton{
+    width: 300px;
+}
+
+.loadingButton{
+    width: 100px;
+    color: transparent;
 }

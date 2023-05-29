@@ -15,6 +15,7 @@ interface Props {
 const defaultState: InputsSignUpForm = {
   name: '',
   lastname: '',
+  document_identity: '',
   mother_last_name: '',
   password: '',
   email: '',

@@ -53,7 +53,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
     setFormState({
       ...formAppState,
       location: {
-        ...formAppState,
+        ...formAppState.location,
         ...formValues,
       },
     });

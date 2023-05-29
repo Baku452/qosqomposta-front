@@ -16,13 +16,14 @@ import {
 //Styles
 import registerStyles from '../signUp.module.scss';
 import styles from './summaryform.module.scss';
-import { StepsFormRegister } from '@/types/mainTypes';
+import { RegisterUsertDTO, StepsFormRegister } from '@/types/mainTypes';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
 import { makeRegisterUserSchema } from '@/utils/auth.utils';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import Spinner from '@/components/atoms/Spinner/Spinner';
+import { createToast } from '@/components/atoms/Toast/ToastApp';
 
 export interface SummarySignUpFormProps {
   handleSetStepForm: (value: number) => void;
@@ -37,7 +38,11 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
     QosqompostaServicesContext,
   ) as ServiceContextType;
 
-  const { getValues } = useForm({ defaultValues: formState });
+  const { getValues } = useForm({
+    defaultValues: {
+      ...formState,
+    },
+  });
 
   const { isRegistering } = useSelector((state: State) => state.appUser);
   const formValues = getValues();
@@ -45,7 +50,17 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
 
   const handleSubmit = async () => {
     if (formState) {
-      registerUser(makeRegisterUserSchema(formValues, selectedService?._id))(dispatch);
+      const result = await registerUser(
+        makeRegisterUserSchema(formValues, selectedService?._id),
+      )(dispatch);
+
+      if (result) {
+        createToast({
+          toastId: 'Success User Create',
+          message: 'Usuario Registrado con Exito!',
+          toastType: 'success',
+        });
+      }
     }
   };
   const notValidForm = stepsForm.some(step => step.complete === false);
@@ -62,7 +77,11 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
           <div className={`${styles.answersContainer} text-black`}>
             <div className="flex">
               <p>
-                {formValues.name || (
+                {formValues.name && formValues.lastname && formValues.mother_last_name ? (
+                  <>
+                    {formValues.name} {formValues.lastname} {formValues.mother_last_name}
+                  </>
+                ) : (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
@@ -71,20 +90,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
               </button>
             </div>
-            <div className="flex">
-              <p>
-                {formValues.lastname && formValues.mother_last_name ? (
-                  <>
-                    {formValues.lastname} {formValues.mother_last_name}
-                  </>
-                ) : (
-                  <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
-                )}
-              </p>
-              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
-              </button>
-            </div>
+
             <div className="flex">
               <p>
                 {formValues.document_identity ? (
@@ -157,12 +163,16 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
               </button>
             </div>
-            <div className="flex">
-              <p>
+            <div className="flex ">
+              <textarea
+                className="w-60"
+                readOnly
+                title={formValues.location.reference ?? ''}
+              >
                 {formValues.location?.reference || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
-              </p>
+              </textarea>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
                 <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
               </button>
@@ -186,10 +196,11 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
         <button
           disabled={notValidForm}
           onClick={handleSubmit}
-          className="btn btn-primary mx-auto text-center"
+          className={`btn btn-primary mx-auto text-center ${styles.registerButton} ${
+            isRegistering ? styles.loadingButton : styles.notLoadingButton
+          }`}
         >
-          {isRegistering && <Spinner />}
-          Confirmar Registro
+          {isRegistering ? <Spinner size="xs" /> : <>Confirmar Registro</>}
         </button>
       </div>
     </div>

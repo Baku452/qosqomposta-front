@@ -20,7 +20,5 @@ export const registerUser =
       {
         user,
       },
-    ).then(data => {
-      return data;
-    });
+    );
   };
