@@ -56,6 +56,9 @@ export const SUMMARY_SIGNUP_FORM = [
     name: 'Apellidos',
   },
   {
+    name: 'DNI / Pasaporte',
+  },
+  {
     name: 'Correo Electrónico',
   },
   {
@@ -66,6 +69,9 @@ export const SUMMARY_SIGNUP_FORM = [
   },
   {
     name: 'Dirección',
+  },
+  {
+    name: 'Distrito',
   },
   {
     name: 'Referencia de Dirección',

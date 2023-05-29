@@ -18,7 +18,7 @@ export interface PaymentMethods {
 const iconsSize = 100;
 export const PAYMENT_METHODS: PaymentMethods[] = [
   {
-    name: 'Yape / Plin',
+    name: 'Yape / Plin / Luquita',
     image: '/images/YapeIcon.png',
   },
   {

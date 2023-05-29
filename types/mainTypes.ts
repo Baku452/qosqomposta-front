@@ -43,6 +43,7 @@ export interface LocationClient {
 export type InputsSignUpForm = {
   membership: string;
   name: string;
+  document_identity: string;
   lastname: string;
   mother_last_name: string;
   password: string;

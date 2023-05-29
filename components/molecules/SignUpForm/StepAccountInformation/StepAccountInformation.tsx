@@ -24,6 +24,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
 }) => {
   const validationSchema = yup.object().shape({
     name: yup.string().trim().required('Este campo es requerido').nullable(),
+    document_identity: yup.string().required('Este campo es requerido').nullable(),
     lastname: yup.string().trim().required('Este campo es requerido'),
     mother_last_name: yup.string().trim().required('Este campo es requerido'),
     phoneNumber: yup.string().required(),
@@ -120,6 +121,25 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
               </>
             )}
           />
+        </div>
+      </div>
+      <div className="mb-10 flex gap-10 h-[80.39px]">
+        <div className="">
+          <Controller
+            control={control}
+            name="document_identity"
+            render={({ field }) => (
+              <>
+                <label>Documento de Identidad (DNI / Pasaporte) *</label>
+                <input type="number" {...field} />
+                {errors.document_identity && (
+                  <span className={styles.errorLabel}>
+                    {errors.document_identity.message}
+                  </span>
+                )}
+              </>
+            )}
+          ></Controller>
         </div>
       </div>
       <div className="mb-10 flex gap-10 h-[80.39px]">

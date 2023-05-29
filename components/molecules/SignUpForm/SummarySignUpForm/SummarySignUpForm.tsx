@@ -19,8 +19,6 @@ import styles from './summaryform.module.scss';
 import { StepsFormRegister } from '@/types/mainTypes';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
-import Link from 'next/link';
-import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 import { makeRegisterUserSchema } from '@/utils/auth.utils';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
@@ -89,6 +87,18 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
             </div>
             <div className="flex">
               <p>
+                {formValues.document_identity ? (
+                  <>{formValues.document_identity}</>
+                ) : (
+                  <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
+                )}
+              </p>
+              <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
+            </div>
+            <div className="flex">
+              <p>
                 {formValues.email || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
@@ -118,6 +128,19 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
+                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+              </button>
+            </div>
+            <div className="flex w-52 overflow-hidden whitespace-nowrap">
+              <p
+                title={formValues.location?.district || ''}
+                className="text-ellipsis overflow-hidden"
+              >
+                {formValues.location?.district || (
+                  <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
+                )}
+              </p>
+              <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
                 <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
               </button>
             </div>
