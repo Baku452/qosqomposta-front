@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { appStore } from '@/store/appStore';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
-import DashboardLayout from '@/layouts/dashboard.layout';
+import DashboardLayout from '@/layouts/Dashboard';
 
 const MyApp: NextPage<AppProps> = ({ Component, ...rest }) => {
   const isDashboard = Component.name.startsWith('Dashboard');

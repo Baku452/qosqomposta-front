@@ -14,6 +14,7 @@ import {
 } from '@/constants/firebaseAuthErrorConst';
 import { useDispatch } from 'react-redux';
 import { setUserApp } from '@/actions/user.app.actions';
+import Spinner from '@/components/atoms/Spinner/Spinner';
 
 type LoginFormFields = {
   email: string;
@@ -22,6 +23,7 @@ type LoginFormFields = {
 
 const LoginForm: React.FC = () => {
   const [errorAuth, setErrorAuth] = useState<string>('');
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const {
     register,
@@ -51,6 +53,7 @@ const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleLogin = async (data: LoginFormFields) => {
+    setIsLogin(true);
     try {
       const userCredentials = await signInWithEmailAndPassword(
         auth,
@@ -60,12 +63,15 @@ const LoginForm: React.FC = () => {
       const token = await userCredentials.user.getIdToken();
       dispatch(setUserApp(userCredentials.user));
       Cookies.set('user_token', token);
+      setIsLogin(false);
       router.push('/dashboard');
     } catch (error) {
       const firebaseError = firebaseAuthErrorCodes.find(
         errorFirebase => errorFirebase.code == error.code,
       );
       setErrorAuth(firebaseError ? firebaseError.message : DEFAULT_ERROR_MESSAGE);
+    } finally {
+      setIsLogin(false);
     }
   };
   return (
@@ -97,7 +103,7 @@ const LoginForm: React.FC = () => {
           </a>
         </div>
         <button className="btn btn-primary !w-full block" type="submit">
-          Ingresar
+          {isLogin ? <Spinner size="xs" /> : <>Ingresar</>}
         </button>
       </form>
       <div className="text-center">

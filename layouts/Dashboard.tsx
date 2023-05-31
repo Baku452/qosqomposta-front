@@ -1,5 +1,6 @@
 import DashboardAside from '@/components/organism/DashboardAside/DashboardAside';
 import HeaderDashboard from '@/components/organism/HeaderAuth/HeaderAuth';
+import ProtectedRoute from '@/components/organism/ProtectedRoute/ProtectedRoute';
 import SummaryClient from '@/components/organism/SummaryClient/SummaryClient';
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import { ToastContainer } from 'react-toastify';
@@ -10,7 +11,7 @@ export type DashboardLayoutProps = {
 };
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
-    <>
+    <ProtectedRoute>
       <HeaderDashboard />
       <main className="flex">
         <DashboardAside />
@@ -18,7 +19,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       </main>
       <ToastContainer />
       <FooterWeb />
-    </>
+    </ProtectedRoute>
   );
 };
 
