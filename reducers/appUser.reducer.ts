@@ -1,9 +1,10 @@
-import { FETCH_USER_APP, REGISTER_USER } from '@/actions/actionsTypes';
+import { FETCH_USER_APP, REGISTER_USER, SET_USER_ROLES } from '@/actions/actionsTypes';
 import { AppUser } from '@/types/stateTypes';
 import { AnyAction } from 'redux';
 
 export const initialUserState: AppUser = {
   displayName: '',
+  name: '',
   uid: '',
   email: '',
   phoneNumber: '',
@@ -36,6 +37,13 @@ export const appUserReducer = (
         ...action.payload.user,
         isRegistering: false,
       };
+
+    case SET_USER_ROLES: {
+      return {
+        ...state,
+        roles: [action.payload.roles],
+      };
+    }
     default:
       return state;
   }

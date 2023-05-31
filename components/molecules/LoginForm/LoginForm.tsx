@@ -24,6 +24,7 @@ type LoginFormFields = {
 const LoginForm: React.FC = () => {
   const [errorAuth, setErrorAuth] = useState<string>('');
   const [isLogin, setIsLogin] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const {
     register,
@@ -60,9 +61,9 @@ const LoginForm: React.FC = () => {
         data.email,
         data.password,
       );
-      const token = await userCredentials.user.getIdToken();
-      dispatch(setUserApp(userCredentials.user));
-      Cookies.set('user_token', token);
+      const tokenresult = await userCredentials.user.getIdTokenResult();
+      dispatch(setUserApp({ ...tokenresult.claims }));
+      Cookies.set('user_token', tokenresult.token);
       setIsLogin(false);
       router.push('/dashboard');
     } catch (error) {
@@ -89,7 +90,7 @@ const LoginForm: React.FC = () => {
           <input
             className="!block !relative"
             placeholder="Contraseña"
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             {...register('password')}
           />
           {errors.password && (
@@ -97,6 +98,15 @@ const LoginForm: React.FC = () => {
               <span className="text-error">{errors.password.message}</span>
             </div>
           )}
+          <div className="flex justify-start py-2">
+            <input
+              className="inline w-4 mr-1"
+              type="checkbox"
+              defaultChecked={showPassword}
+              onClick={() => setShowPassword(!showPassword)}
+            />
+            <p className="text-sm text-gre">Mostrar contraseña</p>
+          </div>
           {errorAuth && <span className="text-error">{errorAuth}</span>}
           <a className="text-yellowQ-500 pt-3 relative block" href={FORGOT_PASSWORD}>
             Olvide mi contraseña

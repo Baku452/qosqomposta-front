@@ -9,6 +9,7 @@ export interface CompostUserDetails {
   amountTrash?: number;
 }
 export interface AppUser extends Omit<UserInfo, 'toJSON'> {
+  name?: string;
   membership?: string;
   isActive?: string;
   roles?: string[];

@@ -1,5 +1,5 @@
 import { UserInfo } from 'firebase-admin/lib/auth/user-record';
-import { FETCH_USER_APP, REGISTER_USER } from './actionsTypes';
+import { FETCH_USER_APP, REGISTER_USER, SET_USER_ROLES } from './actionsTypes';
 import { AnyAction } from 'redux';
 import { Dispatch } from 'react';
 import { doAsync } from '@/clientApi/clientApi';
@@ -22,3 +22,8 @@ export const registerUser =
       },
     );
   };
+
+export const setUserRoles = (roles: string[]): AnyAction => ({
+  type: SET_USER_ROLES,
+  payload: { roles },
+});
