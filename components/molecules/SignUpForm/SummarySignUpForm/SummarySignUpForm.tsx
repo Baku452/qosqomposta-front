@@ -16,7 +16,7 @@ import {
 //Styles
 import registerStyles from '../signUp.module.scss';
 import styles from './summaryform.module.scss';
-import { RegisterUsertDTO, StepsFormRegister } from '@/types/mainTypes';
+import { StepsFormRegister } from '@/types/mainTypes';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '@/actions/user.app.actions';
 import { makeRegisterUserSchema } from '@/utils/auth.utils';
@@ -24,6 +24,8 @@ import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import Spinner from '@/components/atoms/Spinner/Spinner';
 import { createToast } from '@/components/atoms/Toast/ToastApp';
+import { useRouter } from 'next/router';
+import { LOGIN_PATH } from '@/routes/routes.config';
 
 export interface SummarySignUpFormProps {
   handleSetStepForm: (value: number) => void;
@@ -47,6 +49,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
   const { isRegistering } = useSelector((state: State) => state.appUser);
   const formValues = getValues();
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleSubmit = async () => {
     if (formState) {
@@ -60,6 +63,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
           message: 'Usuario Registrado con Exito!',
           toastType: 'success',
         });
+        router.push(LOGIN_PATH);
       }
     }
   };
