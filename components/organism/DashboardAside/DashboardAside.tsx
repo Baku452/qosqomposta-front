@@ -11,7 +11,9 @@ import { useSelector } from 'react-redux';
 
 const DashboardAside: React.FC = () => {
   const userRoles = useSelector((state: State) => state.appUser.roles);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const userDetails = useSelector((state: State) => state.appUser);
+
   return (
     <section
       className={`h-screen shadow-lg transition-all flex flex-col  items-center  py-5 px-5 ${
@@ -26,7 +28,7 @@ const DashboardAside: React.FC = () => {
           <BiArrowFromRight size={30} />
         </button>
       </div>
-      <div className="text-center">
+      {/* <div className="text-center">
         {isOpen ? (
           <LogoApp width={180} logoType={LogoAppColors.color} hasLink={true} />
         ) : (
@@ -37,6 +39,21 @@ const DashboardAside: React.FC = () => {
             src={ONLY_LOGO_BLACK_LINES}
           />
         )}
+      </div> */}
+      <div className="text-center mb-4">
+        <Image
+          className="m-auto mb-4"
+          alt="User profile"
+          width={100}
+          height={100}
+          src={userDetails.photoURL ?? '/images/defaultAvatar.png'}
+        />
+        {isOpen ? (
+          <div className="text-center">
+            <p className="font-bold">{userDetails.name}</p>
+            <p className="text-gray-600">{userDetails.email}</p>
+          </div>
+        ) : null}
       </div>
       <div className="h-full justify-between">
         <nav>

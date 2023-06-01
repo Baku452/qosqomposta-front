@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
 import { BiLogOut } from 'react-icons/bi';
 
 export interface LogoutButtonProps {
-  isOpenAside: boolean;
+  isOpenAside?: boolean;
 }
 const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpenAside }) => {
   const router = useRouter();
