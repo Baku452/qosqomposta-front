@@ -1,3 +1,15 @@
+import React from 'react';
+import { BiHomeAlt } from 'react-icons/bi';
+import { BsGear } from 'react-icons/bs';
+import { FiUsers } from 'react-icons/fi';
+import { RiPlantLine } from 'react-icons/ri';
+
+export interface Aside {
+  key: string;
+  name: string;
+  path: string;
+  icon?: React.ReactNode;
+}
 export const DASHBOARD_CLIENT_NAV_LINKS = [
   {
     key: 'resume',
@@ -21,26 +33,30 @@ export const DASHBOARD_CLIENT_NAV_LINKS = [
   },
 ];
 
-export const DASHBOARD_ADMIN_NAV_LINKS = [
+export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
   {
     key: 'resume',
     name: 'Resumen',
     path: '/dashboard',
+    icon: <BiHomeAlt size={20} />,
   },
   {
     key: 'users',
     name: 'Usuarios',
     path: '/dashboard/usuarios',
+    icon: <FiUsers size={20} />,
   },
   {
     key: 'compost',
     name: 'Compost',
     path: '/dashboard',
+    icon: <RiPlantLine size={20} />,
   },
   {
     key: 'profile',
-    name: 'Mi cuenta',
+    name: 'Configuracion',
     path: '/dashboard',
+    icon: <BsGear size={20} />,
   },
 ];
 

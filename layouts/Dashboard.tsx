@@ -11,10 +11,10 @@ export type DashboardLayoutProps = {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <ProtectedRoute>
-      <HeaderDashboard />
+      {/* <HeaderDashboard /> */}
       <main className="flex">
         <DashboardAside />
-        {children}
+        <div className="p-5">{children}</div>
       </main>
       <ToastContainer />
       <FooterWeb />

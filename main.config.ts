@@ -71,6 +71,7 @@ export const QOSQOMPOSTA_WHATSAPP_URL = 'wa.link/0pqt7s';
 // Services CTA
 export const RECOLECCION_RESIDUOS_ORGANICOS_CTA = '/';
 
+//LOGOS
 export const LogoAppColors = {
   white:
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677704207/logos%20solo%20condor/logo%20condor%20white%20horizontal.svg',
@@ -79,6 +80,9 @@ export const LogoAppColors = {
   black:
     'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1681703233/logos%20solo%20condor/logo_black_horizontal.svg',
 };
+
+export const ONLY_LOGO_BLACK_LINES =
+  'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677699377/logos%20solo%20condor/logo%20only%20condor%20black%20lines.svg';
 
 export const DEFAULT_WITH_LOGO_NAV = 345;
 export const DEFAULT_HEIGHT_LOGO_NAV = 80;

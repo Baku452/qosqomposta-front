@@ -2,8 +2,12 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/utils/firebase';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import { BiLogOut } from 'react-icons/bi';
 
-const LogoutButton: React.FC = () => {
+export interface LogoutButtonProps {
+  isOpenAside: boolean;
+}
+const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpenAside }) => {
   const router = useRouter();
 
   const handleLogoutButton = async () => {
@@ -17,8 +21,11 @@ const LogoutButton: React.FC = () => {
   };
 
   return (
-    <button className="hover:text-yellow-500" onClick={handleLogoutButton}>
-      Cerrar Sesión
+    <button onClick={handleLogoutButton}>
+      <div className="flex justify-center items-center">
+        <BiLogOut size={30} className="mr-2" />
+        {isOpenAside ? 'Cerrar Sesión' : null}
+      </div>
     </button>
   );
 };
