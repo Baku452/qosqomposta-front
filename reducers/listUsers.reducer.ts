@@ -13,16 +13,17 @@ export const listClientsReducer = (
   switch (action.type) {
     case FETCH_CLIENTS.request:
       return {
-        ...action.payload,
+        ...state,
         isFetching: true,
       };
     case FETCH_CLIENTS.success:
       return {
-        ...action.payload,
+        clients: action.payload,
         isFetching: false,
       };
     case FETCH_CLIENTS.error:
       return {
+        ...state,
         isFetching: false,
       };
 

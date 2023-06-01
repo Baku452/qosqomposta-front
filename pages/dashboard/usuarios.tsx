@@ -12,7 +12,6 @@ const Clients: NextPage<DashboardProps> = () => {
 
   const fetchUsers = async () => {
     const result = await fetchClients()(dispatch);
-    console.log(result);
   };
   useEffect(() => {
     fetchUsers();
