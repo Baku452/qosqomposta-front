@@ -1,3 +1,10 @@
+import {
+  DASHBOARD_ADMIN_NAV_LINKS,
+  DASHBOARD_BLOGGER_NAV_LINKS,
+  DASHBOARD_CLIENT_NAV_LINKS,
+  DASHBOARD_COLLECTOR_NAV_LINKS,
+} from './utils/navUtils';
+
 export const WEB_BANNER_URL =
   'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677945318/Banner/banner%20sin%20texto%20png.png';
 
@@ -78,3 +85,17 @@ export const DEFAULT_HEIGHT_LOGO_NAV = 80;
 
 export const DEFAULT_LATITUDE_MAP = -13.5319533;
 export const DEFAULT_LONGITUTED_MAP = -71.9591915;
+
+export enum ValidRoles {
+  ADMIN = 'admin',
+  CLIENT = 'client',
+  COLLECTOR = 'collector',
+  BLOGGER = 'blogger',
+}
+
+export const RolesAside = {
+  [ValidRoles.ADMIN]: DASHBOARD_ADMIN_NAV_LINKS,
+  [ValidRoles.CLIENT]: DASHBOARD_CLIENT_NAV_LINKS,
+  [ValidRoles.COLLECTOR]: DASHBOARD_COLLECTOR_NAV_LINKS,
+  [ValidRoles.BLOGGER]: DASHBOARD_BLOGGER_NAV_LINKS,
+};

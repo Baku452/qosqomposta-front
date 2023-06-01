@@ -44,6 +44,7 @@ export const appUserReducer = (
         roles: [action.payload.roles],
       };
     }
+
     default:
       return state;
   }

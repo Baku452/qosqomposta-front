@@ -9,3 +9,9 @@ export const REGISTER_USER = {
 };
 
 export const SET_SELECTED_SERVICE = 'SET_SELECTED_SERVICE';
+
+export const FETCH_CLIENTS = {
+  request: 'FETCH_CLIENTS_REQUEST',
+  success: 'FETCH_CLIENTS_SUCCESS',
+  error: 'FETCH_CLIENTS_ERROR',
+};
