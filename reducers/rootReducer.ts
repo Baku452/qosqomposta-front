@@ -15,6 +15,16 @@ export interface State {
   services: QosqompostaServices;
   listClients: ListClients;
 }
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'appUser',
+  storage: storage,
+  // Add any additional configuration options if needed
+};
+
+const persistedAppUserReducer = persistReducer(persistConfig, appUserReducer);
 
 export const initialState: State = {
   appUser: initialUserState,
@@ -22,7 +32,7 @@ export const initialState: State = {
   services: initialStateServices,
 };
 export const rootReducer = combineReducers({
-  appUser: appUserReducer,
+  appUser: persistedAppUserReducer,
   services: servicesReducer,
   listClients: listClientsReducer,
 });
