@@ -16,7 +16,7 @@ const DashboardAside: React.FC = () => {
 
   return (
     <section
-      className={`h-screen shadow-lg transition-all flex flex-col  items-center  py-5 px-5 ${
+      className={`bg-white h-screen shadow-lg transition-all flex flex-col  items-center  py-5 px-5 ${
         isOpen ? 'w-[15rem]' : 'w-[5rem]'
       }`}
     >

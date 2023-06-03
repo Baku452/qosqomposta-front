@@ -4,6 +4,7 @@ import ProtectedRoute from '@/components/organism/ProtectedRoute/ProtectedRoute'
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import styles from './dashboard.module.scss';
 
 export type DashboardLayoutProps = {
   children?: React.ReactNode;
@@ -12,9 +13,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <ProtectedRoute>
       {/* <HeaderDashboard /> */}
-      <main className="flex">
+      <main className={styles.dashboard}>
         <DashboardAside />
-        <div className="p-5">{children}</div>
+        <div className="p-5 w-full">{children}</div>
       </main>
       <ToastContainer />
       <FooterWeb />

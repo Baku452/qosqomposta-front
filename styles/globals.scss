@@ -126,3 +126,21 @@ input {
     display: block;
     height: 300px;
 }
+
+/* Table Styles */
+
+table {
+    @apply bg-white text-gray-500;
+
+    th {
+        @apply font-paragraph text-gray-800;
+        font-weight: 600;
+        padding: 1rem;
+    }
+
+    td{
+        padding: 0.5rem 1rem;
+    }
+
+    overflow-y: scroll;
+}

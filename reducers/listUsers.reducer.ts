@@ -20,6 +20,8 @@ export const listClientsReducer = (
       return {
         clients: action.payload.data,
         isFetching: false,
+        totalClients: action.payload.count,
+        page: action.payload.page,
       };
     case FETCH_CLIENTS.error:
       return {

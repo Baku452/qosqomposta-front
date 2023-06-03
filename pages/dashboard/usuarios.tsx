@@ -1,5 +1,6 @@
 import { fetchClients } from '@/actions/user.app.actions';
 import NoRecords from '@/components/molecules/NoRecords/NoRecords';
+import { LIST_CLIENTS_HEADERS } from '@/constants/dashboard.const';
 import { State } from '@/reducers/rootReducer';
 import axios from 'axios';
 import { NextPage } from 'next';
@@ -23,18 +24,20 @@ const Clients: NextPage<DashboardProps> = () => {
   }, []);
   return (
     <div>
-      <h2>Lista de Usuarios</h2>
+      <div className="bg-white mb-5 p-4">
+        <h2 className="font-paragraph font-bold">
+          Lista de Qomposteros
+          <span className="font-normal font-paragraph ml-2">
+            ({clients?.length ?? 0}) total
+          </span>
+        </h2>
+      </div>
       {clients && (
-        <table>
+        <table className="text-left font-paragraph">
           <thead>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Tipo de Membresia</th>
-            <th>Distrito</th>
-            <th>Dirección</th>
-            <th>Referencia</th>
-            <th>Celular</th>
-            <th>Compost Acumulado</th>
+            {LIST_CLIENTS_HEADERS.map(thead => (
+              <th key={thead.title}>{thead.title}</th>
+            ))}
           </thead>
           <tbody>
             {clients.map(client => (
@@ -43,6 +46,7 @@ const Clients: NextPage<DashboardProps> = () => {
                   {client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
                 </td>
                 <td>{client.email}</td>
+                <td>{client.service.name}</td>
               </tr>
             ))}
           </tbody>

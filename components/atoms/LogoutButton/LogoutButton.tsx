@@ -22,7 +22,7 @@ const LogoutButton: React.FC<LogoutButtonProps> = ({ isOpenAside }) => {
 
   return (
     <button onClick={handleLogoutButton}>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center bg-yellowQ p-2 rounded-lg">
         <BiLogOut size={30} className="mr-2" />
         {isOpenAside ? 'Cerrar Sesión' : null}
       </div>
