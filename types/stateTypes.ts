@@ -20,8 +20,3 @@ export interface AppUser extends Omit<UserInfo, 'toJSON'> {
 export interface QosqompostaServices {
   selectedService?: string;
 }
-
-export interface ListClients {
-  clients?: Record<string, unknown>[];
-  isFetching?: boolean;
-}

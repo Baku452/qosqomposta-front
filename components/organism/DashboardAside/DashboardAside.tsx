@@ -46,7 +46,11 @@ const DashboardAside: React.FC = () => {
           alt="User profile"
           width={100}
           height={100}
-          src={userDetails.photoURL ?? '/images/defaultAvatar.png'}
+          src={
+            userDetails.photoURL !== ''
+              ? userDetails.photoURL
+              : '/images/defaultAvatar.png'
+          }
         />
         {isOpen ? (
           <div className="text-center">

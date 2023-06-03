@@ -1,4 +1,4 @@
-import { AppUser, ListClients, QosqompostaServices } from '@/types/stateTypes';
+import { AppUser, QosqompostaServices } from '@/types/stateTypes';
 import { combineReducers } from 'redux';
 import { appUserReducer, initialUserState } from './appUser.reducer';
 import {
@@ -17,11 +17,11 @@ export interface State {
 }
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { ListClients } from '@/types/clientsTypes';
 
 const persistConfig = {
   key: 'appUser',
   storage: storage,
-  // Add any additional configuration options if needed
 };
 
 const persistedAppUserReducer = persistReducer(persistConfig, appUserReducer);

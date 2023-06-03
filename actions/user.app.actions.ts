@@ -34,5 +34,13 @@ export const setUserRoles = (roles: string[]): AnyAction => ({
 });
 
 export const fetchClients = () => async (dispatch: Dispatch<AnyAction>) => {
-  return doAsync(dispatch, FETCH_CLIENTS, '/user', { method: 'GET' }, undefined);
+  return doAsync(
+    dispatch,
+    FETCH_CLIENTS,
+    '/user?type=DEFAULT&sortCriteria=name:desc&pageLimit=20&pageStart=1',
+    { method: 'GET' },
+    undefined,
+    undefined,
+    true,
+  );
 };

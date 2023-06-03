@@ -8,9 +8,11 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import { PersistGate } from 'redux-persist/integration/react';
 import DashboardLayout from '@/layouts/Dashboard';
+import { useRouter } from 'next/router';
 
 const MyApp: NextPage<AppProps> = ({ Component, ...rest }) => {
-  const isDashboard = Component.name.startsWith('Dashboard');
+  const router = useRouter();
+  const isDashboard = router.pathname.startsWith('/dashboard');
 
   if (isDashboard) {
     return (

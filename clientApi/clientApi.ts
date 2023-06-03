@@ -2,6 +2,7 @@
 import { createToast } from '@/components/atoms/Toast/ToastApp';
 import { AsyncActionType } from '@/types/mainTypes';
 import Axios, { AxiosRequestConfig } from 'axios';
+import Cookies from 'js-cookie';
 
 // Types
 import { Dispatch } from 'react';
@@ -30,6 +31,7 @@ const doAsync = async <
     mapError?: (payload: unknown) => E;
   },
   payload?: T,
+  useToken?: boolean,
 ): Promise<T | void> => {
   const {
     mapRequest = (x?: T) => x,
@@ -37,11 +39,20 @@ const doAsync = async <
     mapError = (e: unknown) => e,
   } = options || {};
   dispatch({ type: action.request, payload: mapRequest(payload) });
+  const userToken = Cookies.get('user_token');
+
+  const headers: { [key: string]: string } = {};
+
+  if (useToken) {
+    headers.Authorization = `Bearer ${userToken}`;
+  }
+
   try {
     const urlFormat = QOSQOMPOSTA_BACKEND_URL + url;
     const { data } = await Axios({
       url: urlFormat,
       ...axiosConfig,
+      headers,
     });
     dispatch({
       type: action.success,

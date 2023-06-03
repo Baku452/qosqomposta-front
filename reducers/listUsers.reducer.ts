@@ -1,5 +1,5 @@
 import { FETCH_CLIENTS } from '@/actions/actionsTypes';
-import { ListClients } from '@/types/stateTypes';
+import { ListClients } from '@/types/clientsTypes';
 import { AnyAction } from 'redux';
 
 export const initialState: ListClients = {
@@ -18,7 +18,7 @@ export const listClientsReducer = (
       };
     case FETCH_CLIENTS.success:
       return {
-        clients: action.payload,
+        clients: action.payload.data,
         isFetching: false,
       };
     case FETCH_CLIENTS.error:
