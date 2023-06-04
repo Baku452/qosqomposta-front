@@ -9,6 +9,7 @@ import { AnyAction } from 'redux';
 import { Dispatch } from 'react';
 import { doAsync } from '@/clientApi/clientApi';
 import { RegisterUsertDTO } from '@/types/mainTypes';
+import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 
 export const setUserApp = (user: UserInfo | unknown): AnyAction => ({
   type: FETCH_USER_APP,
@@ -33,14 +34,17 @@ export const setUserRoles = (roles: string[]): AnyAction => ({
   payload: { roles },
 });
 
-export const fetchClients = () => async (dispatch: Dispatch<AnyAction>) => {
-  return doAsync(
-    dispatch,
-    FETCH_CLIENTS,
-    '/user?type=DEFAULT&sortCriteria=name:desc&pageLimit=20&pageStart=1',
-    { method: 'GET' },
-    undefined,
-    undefined,
-    true,
-  );
-};
+export const fetchClients =
+  (pageStart?: number) => async (dispatch: Dispatch<AnyAction>) => {
+    return doAsync(
+      dispatch,
+      FETCH_CLIENTS,
+      `/user?type=DEFAULT&sortCriteria=name:desc&pageLimit=${PAGE_SIZE}&pageStart=${
+        pageStart ?? DEFAULT_PAGE_START
+      }`,
+      { method: 'GET' },
+      undefined,
+      undefined,
+      true,
+    );
+  };

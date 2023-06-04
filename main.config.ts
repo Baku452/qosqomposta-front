@@ -103,3 +103,6 @@ export const RolesAside = {
   [ValidRoles.COLLECTOR]: DASHBOARD_COLLECTOR_NAV_LINKS,
   [ValidRoles.BLOGGER]: DASHBOARD_BLOGGER_NAV_LINKS,
 };
+
+export const PAGE_SIZE = 20;
+export const DEFAULT_PAGE_START = 1;
