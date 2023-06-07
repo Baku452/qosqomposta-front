@@ -63,7 +63,9 @@ const LoginForm: React.FC = () => {
       );
       const tokenresult = await userCredentials.user.getIdTokenResult();
       dispatch(setUserApp({ ...tokenresult.claims }));
-      Cookies.set('user_token', tokenresult.token);
+      Cookies.set('user_token', tokenresult.token, {
+        expires: new Date(tokenresult.expirationTime),
+      });
       setIsLogin(false);
       router.push('/dashboard');
     } catch (error) {

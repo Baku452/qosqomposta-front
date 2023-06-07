@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 // Components
 import { Toast } from 'react-toastify/dist/components';
 import { ToastProps } from 'react-toastify/dist/types';
+import Spinner from '../Spinner/Spinner';
 
 export type ToastPosition =
   | 'bottom-right'
@@ -24,7 +25,8 @@ const options: Partial<ToastProps> = {
 
 export interface ButtonProps {
   label: string;
-  onClick: () => void;
+  handleClick: () => Promise<void>;
+  loading?: boolean;
 }
 
 export interface ToastContentProps {
@@ -38,19 +40,26 @@ export const ToastContent: React.FC<ToastContentProps> = ({
   secondaryButton,
 }) => {
   return (
-    <>
-      {message}
-      {button && (
-        <button onClick={button.onClick} className="btn btn-primary">
-          {button.label}
-        </button>
-      )}
-      {secondaryButton && (
-        <button onClick={secondaryButton.onClick} className="btn btn-primary">
-          {secondaryButton.label}
-        </button>
-      )}
-    </>
+    <div className="p-2">
+      <div>{message}</div>
+      <div className="flex items-center justify-center gap-2 mt-3">
+        {button && (
+          <button onClick={button.handleClick} className="btn btn-primary !text-sm">
+            {button.loading && <Spinner size="sm" />}
+            {button.label}
+          </button>
+        )}
+        {secondaryButton && (
+          <button
+            onClick={() => secondaryButton.handleClick()}
+            className="btn btn-primary !text-sm"
+          >
+            {secondaryButton.loading && <Spinner size="sm" />}
+            {secondaryButton.label}
+          </button>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -61,17 +70,29 @@ export interface CreateToastProps {
   message: string;
   primaryButton?: ButtonProps;
   secondaryButton?: ButtonProps;
+  autoClose?: false | number;
 }
 export const createToast = ({
   toastId,
   message,
   toastType,
   toastPosition,
+  autoClose = 4000,
+  primaryButton,
+  secondaryButton,
 }: CreateToastProps) => {
-  return toast(<ToastContent message={message} />, {
-    ...options,
-    toastId: toastId,
-    type: toastType,
-    position: toastPosition,
-  });
+  return toast(
+    <ToastContent
+      message={message}
+      button={primaryButton}
+      secondaryButton={secondaryButton}
+    />,
+    {
+      ...options,
+      toastId: toastId,
+      type: toastType,
+      position: toastPosition,
+      autoClose: autoClose ?? 4000,
+    },
+  );
 };

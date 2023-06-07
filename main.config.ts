@@ -106,3 +106,9 @@ export const RolesAside = {
 
 export const PAGE_SIZE = 20;
 export const DEFAULT_PAGE_START = 1;
+
+export const TOKEN_EXPIRE_TRESHOLD = 50;
+
+export const TOKEN_GOING_TO_EXPIRE = 'Actualiza tu token, está a punto de expirar';
+
+export const TOKEN_EXPIRED = 'Su Token ha expirado. Genere un nuevo token';

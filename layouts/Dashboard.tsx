@@ -5,6 +5,7 @@ import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './dashboard.module.scss';
+import RefreshToken from '@/components/atoms/RefreshToken/RefreshToken';
 
 export type DashboardLayoutProps = {
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <div className="p-5 w-full">{children}</div>
       </main>
       <ToastContainer />
+      <RefreshToken />
       <FooterWeb />
     </ProtectedRoute>
   );
