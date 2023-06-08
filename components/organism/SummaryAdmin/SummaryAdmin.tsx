@@ -6,10 +6,13 @@ import { fetchClients } from '@/actions/user.app.actions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
+import Spinner from '@/components/atoms/Spinner/Spinner';
 const SummaryAdmin: React.FC = () => {
   const dispatch = useDispatch();
 
   const clients = useSelector((state: State) => state.listClients.clients);
+  const isFetchingClients = useSelector((state: State) => state.listClients.isFetching);
+
   const fetchUsers = async () => {
     await fetchClients()(dispatch);
   };
@@ -39,7 +42,10 @@ const SummaryAdmin: React.FC = () => {
       <div className={styles.cardSummary}>
         <h3>Número de Clientes</h3>
         <div className="flex justify-between items-end">
-          <p className="font-bold text-2xl">{clients?.length} usuarios</p>
+          {isFetchingClients && <Spinner />}
+          {!isFetchingClients && (
+            <p className="font-bold text-2xl">{clients?.length} usuarios</p>
+          )}
           <Link href={'/'} className="text-greenQ">
             Ver Más
           </Link>
