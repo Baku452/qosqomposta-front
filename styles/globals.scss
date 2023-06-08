@@ -131,11 +131,18 @@ input {
 
 table {
     @apply bg-white text-gray-500;
+    overflow: scroll;
+    width: 100%;
 
     th {
         @apply font-paragraph text-gray-800;
         font-weight: 600;
         padding: 1rem;
+        white-space: nowrap;
+    }
+
+    tr{
+        @apply border-[1px] border-gray-200
     }
 
     td{

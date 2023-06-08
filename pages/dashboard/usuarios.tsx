@@ -9,13 +9,15 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Pagination from '@/components/molecules/Pagination/Pagination';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
+import Spinner from '@/components/atoms/Spinner/Spinner';
+import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 export interface DashboardProps {
   user?: string;
 }
 const Clients: NextPage<DashboardProps> = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_START);
-  const { clients, totalClients, page } = useSelector(
+  const { clients, totalClients, page, isFetching } = useSelector(
     (state: State) => state.listClients,
   );
   const fetchUsers = useCallback(
@@ -53,17 +55,24 @@ const Clients: NextPage<DashboardProps> = () => {
                 <th key={thead.title}>{thead.title}</th>
               ))}
             </thead>
-            <tbody>
-              {clients.map(client => (
-                <tr key={client._id}>
-                  <td>
-                    {client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
-                  </td>
-                  <td>{client.email}</td>
-                  <td>{client.service.name}</td>
-                </tr>
-              ))}
-            </tbody>
+            {!isFetching && (
+              <tbody>
+                {clients.map(client => (
+                  <tr key={client._id}>
+                    <td>
+                      {client.name +
+                        ' ' +
+                        client.last_name +
+                        ' ' +
+                        client.mother_last_name}
+                    </td>
+                    <td>{client.email}</td>
+                    <td>{client.service.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
+            {isFetching && <LoadingRecords />}
           </table>
           <Pagination
             pageSize={PAGE_SIZE}
