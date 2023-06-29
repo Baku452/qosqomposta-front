@@ -94,6 +94,10 @@ export interface FilterParamsClients {
   name?: FilterParam;
   district?: FilterParam;
   compost?: FilterParam;
+  email?: FilterParam;
+  direction?: FilterParam;
+  reference?: FilterParam;
+  phone?: FilterParam;
   sortCriteria?: {
     value: string;
     sortDirection: SortCriteria;
@@ -101,6 +105,6 @@ export interface FilterParamsClients {
 }
 export interface TABLE_HEADERS {
   title: string;
-  name: string;
+  name: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>;
   sortable?: boolean;
 }

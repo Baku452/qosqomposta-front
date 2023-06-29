@@ -10,7 +10,7 @@ import Pagination from '@/components/molecules/Pagination/Pagination';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import FiltersClients from '@/components/organism/FiltersClients/FiltersClients';
-import { FilterParamsClients, SortCriteria } from '@/types/mainTypes';
+import { FilterParam, FilterParamsClients, SortCriteria } from '@/types/mainTypes';
 import { BsSortDown, BsSortUp } from 'react-icons/bs';
 import SortableButton from '@/components/atoms/SortableButton/SortableButton';
 import { toggleSortDirection } from '@/utils/utils';
@@ -37,14 +37,13 @@ const Clients: NextPage<DashboardProps> = () => {
     setCurrentPage(newValue);
   };
 
-  const handleSortDirection = async (value: keyof FilterParamsClients) => {
+  const handleSortDirection = async (
+    value: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>,
+  ) => {
     const currentFilters = { ...filters };
-    const param = currentFilters[value];
 
-    const newSortCriteria = toggleSortDirection(param?.sortCriteria ?? null);
     currentFilters[value] = {
       value: value,
-      sortCriteria: newSortCriteria,
     };
     dispatch(setFiltersClients(currentFilters));
   };
@@ -72,17 +71,11 @@ const Clients: NextPage<DashboardProps> = () => {
           <table className="text-left font-paragraph">
             <thead>
               {LIST_CLIENTS_HEADERS.map(thead => {
-                const param = filters[thead.name as keyof FilterParamsClients];
                 return (
                   <Fragment key={thead.title}>
                     <th key={thead.title}>{thead.title}</th>
                     {thead.sortable && thead.name && (
-                      <SortableButton
-                        action={() =>
-                          handleSortDirection(thead.name as keyof FilterParamsClients)
-                        }
-                        order={param?.sortCriteria ?? null}
-                      />
+                      <SortableButton action={() => handleSortDirection(thead.name)} />
                     )}
                   </Fragment>
                 );

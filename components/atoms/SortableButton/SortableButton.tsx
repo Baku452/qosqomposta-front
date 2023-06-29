@@ -4,10 +4,9 @@ import { BiSortDown, BiSortUp } from 'react-icons/bi';
 import { FaSort } from 'react-icons/fa';
 
 export interface SortableButtonProps {
-  order: SortCriteria;
   action: () => void;
 }
-const SortableButton: React.FC<SortableButtonProps> = ({ order, action }) => {
+const SortableButton: React.FC<SortableButtonProps> = ({ action }) => {
   const [direction, setDirection] = useState<SortCriteria | null>(null);
 
   const toggleSortDirection = (currentDirection: SortCriteria) => {
