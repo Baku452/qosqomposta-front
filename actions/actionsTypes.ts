@@ -8,10 +8,20 @@ export const REGISTER_USER = {
   error: 'REGISTER_USER_ERROR',
 };
 
+export const SET_FETCHED_SERVICES = 'SET_FETCHED_SERVICES';
+
 export const SET_SELECTED_SERVICE = 'SET_SELECTED_SERVICE';
+
+export const SET_FILTER_LIST_CLIENTS = 'SET_FILTER_LIST_CLIENTS';
 
 export const FETCH_CLIENTS = {
   request: 'FETCH_CLIENTS_REQUEST',
   success: 'FETCH_CLIENTS_SUCCESS',
   error: 'FETCH_CLIENTS_ERROR',
+};
+
+export const FETCH_SERVICES = {
+  request: 'FETCH_SERVICES_REQUEST',
+  success: 'FETCH_SERVICES_SUCCESS',
+  error: 'FETCH_SERVICES_ERROR',
 };

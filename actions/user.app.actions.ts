@@ -3,13 +3,20 @@ import {
   FETCH_CLIENTS,
   FETCH_USER_APP,
   REGISTER_USER,
+  SET_FILTER_LIST_CLIENTS,
   SET_USER_ROLES,
 } from './actionsTypes';
 import { AnyAction } from 'redux';
 import { Dispatch } from 'react';
 import { doAsync } from '@/clientApi/clientApi';
-import { RegisterUsertDTO } from '@/types/mainTypes';
+import {
+  FilterParam,
+  FilterParamsClients,
+  RegisterUsertDTO,
+  SortCriteria,
+} from '@/types/mainTypes';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
+import { buildFetchUsersURL } from '@/utils/utils';
 
 export const setUserApp = (user: UserInfo | unknown): AnyAction => ({
   type: FETCH_USER_APP,
@@ -35,16 +42,23 @@ export const setUserRoles = (roles: string[]): AnyAction => ({
 });
 
 export const fetchClients =
-  (pageStart?: number) => async (dispatch: Dispatch<AnyAction>) => {
+  (pageStart?: number, filterSort?: FilterParamsClients) =>
+  async (dispatch: Dispatch<AnyAction>) => {
+    const urlBuild = buildFetchUsersURL(filterSort);
     return doAsync(
       dispatch,
       FETCH_CLIENTS,
-      `/user?type=DEFAULT&sortCriteria=name:desc&pageLimit=${PAGE_SIZE}&pageStart=${
+      `/user?${urlBuild}type=DEFAULT&pageStart=${
         pageStart ?? DEFAULT_PAGE_START
-      }`,
+      }&pageLimit=${PAGE_SIZE}`,
       { method: 'GET' },
       undefined,
       undefined,
       true,
     );
   };
+
+export const setFiltersClients = (filters: FilterParamsClients): AnyAction => ({
+  type: SET_FILTER_LIST_CLIENTS,
+  payload: filters,
+});

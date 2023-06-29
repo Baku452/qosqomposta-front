@@ -84,3 +84,23 @@ export type StepsFormRegister = {
   complete: boolean;
   active: boolean;
 };
+
+export type SortCriteria = 'asc' | 'desc' | null;
+export interface FilterParam {
+  value: string;
+}
+export interface FilterParamsClients {
+  service?: FilterParam;
+  name?: FilterParam;
+  district?: FilterParam;
+  compost?: FilterParam;
+  sortCriteria?: {
+    value: string;
+    sortDirection: SortCriteria;
+  };
+}
+export interface TABLE_HEADERS {
+  title: string;
+  name: string;
+  sortable?: boolean;
+}

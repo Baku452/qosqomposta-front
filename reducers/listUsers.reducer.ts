@@ -1,8 +1,13 @@
-import { FETCH_CLIENTS } from '@/actions/actionsTypes';
+import { FETCH_CLIENTS, SET_FILTER_LIST_CLIENTS } from '@/actions/actionsTypes';
 import { ListClients } from '@/types/clientsTypes';
 import { AnyAction } from 'redux';
 
 export const initialState: ListClients = {
+  filters: {
+    service: {
+      value: '',
+    },
+  },
   isFetching: false,
 };
 
@@ -16,8 +21,19 @@ export const listClientsReducer = (
         ...state,
         isFetching: true,
       };
+
+    case SET_FILTER_LIST_CLIENTS: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          ...action.payload,
+        },
+      };
+    }
     case FETCH_CLIENTS.success:
       return {
+        ...state,
         clients: action.payload.data,
         isFetching: false,
         totalClients: action.payload.count,

@@ -18,3 +18,6 @@ export const LINK_TERMS_CONDITIONS = '/';
 
 //Services Routes
 export const SELECT_SERVICE_PATH = '/servicios/seleccionar';
+
+//Aside Routes
+export const LIST_USERS_PATH = '/dashboard/usuarios';

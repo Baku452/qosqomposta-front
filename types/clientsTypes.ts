@@ -1,3 +1,4 @@
+import { FilterParamsClients } from './mainTypes';
 import { QosqompostaService } from './serviceQosqomposta';
 
 export interface Client {
@@ -11,13 +12,16 @@ export interface Client {
   uid: string;
   district?: string;
   reference?: string;
+  address?: string;
   paymentMethod?: string;
   createdAt: string;
   membership: string;
+  phoneNumber?: string;
   service: Partial<QosqompostaService>;
 }
 
 export interface ListClients {
+  filters: FilterParamsClients;
   clients?: Client[];
   isFetching?: boolean;
   totalClients?: number;

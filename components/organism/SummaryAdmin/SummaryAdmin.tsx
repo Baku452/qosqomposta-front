@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import Spinner from '@/components/atoms/Spinner/Spinner';
+import { LIST_USERS_PATH } from '@/routes/routes.config';
 const SummaryAdmin: React.FC = () => {
   const dispatch = useDispatch();
 
@@ -46,7 +47,7 @@ const SummaryAdmin: React.FC = () => {
           {!isFetchingClients && (
             <p className="font-bold text-2xl">{clients?.length} usuarios</p>
           )}
-          <Link href={'/'} className="text-greenQ">
+          <Link href={LIST_USERS_PATH} className="text-greenQ">
             Ver Más
           </Link>
         </div>

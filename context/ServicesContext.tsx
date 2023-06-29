@@ -1,6 +1,8 @@
+import { setServicesFetched } from '@/actions/services.actions';
 import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
 import { mergeServicesByType } from '@/utils/services.utils';
 import React, { createContext, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export interface ServiceContextType {
   selectedService?: QosqompostaServiceMerged;
@@ -27,6 +29,7 @@ export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }
     QosqompostaServiceMerged | undefined
   >();
 
+  const dispatch = useDispatch();
   const contextValue: ServiceContextType = {
     selectedService: selectedService,
     mergedServicesContext: mergedServices,
@@ -39,7 +42,7 @@ export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }
     if (initialState) {
       const mergedServices = mergeServicesByType(initialState);
       setMergedServices(mergedServices);
-
+      dispatch(setServicesFetched(initialState));
       const defaultService = mergedServices.find(
         service => service._id === '644ca2bd0126870ffc92c56c',
       );
