@@ -85,7 +85,7 @@ const RefreshToken: React.FC = () => {
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [userToken]);
   return null;
 };
 
