@@ -70,16 +70,22 @@ const Clients: NextPage<DashboardProps> = () => {
         <>
           <table className="text-left font-paragraph">
             <thead>
-              {LIST_CLIENTS_HEADERS.map(thead => {
-                return (
-                  <Fragment key={thead.title}>
-                    <th key={thead.title}>{thead.title}</th>
-                    {thead.sortable && thead.name && (
-                      <SortableButton action={() => handleSortDirection(thead.name)} />
-                    )}
-                  </Fragment>
-                );
-              })}
+              <tr>
+                {LIST_CLIENTS_HEADERS.map(thead => {
+                  return (
+                    <Fragment key={thead.title}>
+                      <th key={thead.title}>
+                        {thead.title}
+                        {thead.sortable && thead.name && (
+                          <SortableButton
+                            action={() => handleSortDirection(thead.name)}
+                          />
+                        )}
+                      </th>
+                    </Fragment>
+                  );
+                })}
+              </tr>
             </thead>
             {!isFetching && (
               <tbody>
