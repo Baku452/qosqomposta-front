@@ -131,9 +131,7 @@ input {
 
 table {
     @apply bg-white text-gray-500;
-    overflow: scroll;
-    width: 100%;
-
+    table-layout: fixed;
     th {
         @apply font-paragraph text-gray-800;
         font-weight: 600;

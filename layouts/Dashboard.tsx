@@ -16,7 +16,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       {/* <HeaderDashboard /> */}
       <main className={styles.dashboard}>
         <DashboardAside />
-        <div className="p-5 w-full">{children}</div>
+        <div className={styles.dashboard__body}>{children}</div>
       </main>
       <ToastContainer />
       <RefreshToken />

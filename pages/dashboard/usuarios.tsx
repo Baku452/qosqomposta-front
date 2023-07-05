@@ -10,10 +10,11 @@ import Pagination from '@/components/molecules/Pagination/Pagination';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import FiltersClients from '@/components/organism/FiltersClients/FiltersClients';
-import { FilterParam, FilterParamsClients, SortCriteria } from '@/types/mainTypes';
-import { BsSortDown, BsSortUp } from 'react-icons/bs';
+import { FilterParamsClients } from '@/types/mainTypes';
 import SortableButton from '@/components/atoms/SortableButton/SortableButton';
-import { toggleSortDirection } from '@/utils/utils';
+
+//Styles
+import styles from './usuarios.module.scss';
 export interface DashboardProps {
   user?: string;
 }
@@ -67,56 +68,71 @@ const Clients: NextPage<DashboardProps> = () => {
       </div>
       <FiltersClients />
       {clients && totalClients && (
-        <>
-          <table className="text-left font-paragraph">
-            <thead>
-              <tr>
-                {LIST_CLIENTS_HEADERS.map(thead => {
-                  return (
-                    <Fragment key={thead.title}>
-                      <th key={thead.title}>
-                        {thead.title}
-                        {thead.sortable && thead.name && (
-                          <SortableButton
-                            action={() => handleSortDirection(thead.name)}
-                          />
-                        )}
-                      </th>
-                    </Fragment>
-                  );
-                })}
-              </tr>
-            </thead>
-            {!isFetching && (
-              <tbody>
-                {clients.map(client => (
-                  <tr key={client._id}>
-                    <td>
-                      {client.name +
-                        ' ' +
-                        client.last_name +
-                        ' ' +
-                        client.mother_last_name}
-                    </td>
-                    <td>{client.email}</td>
-                    <td>{client.service.name}</td>
-                    <td>{client.address}</td>
-                    <td>{client.district}</td>
-                    <td>{client.reference}</td>
-                    <td>{client.phoneNumber}</td>
-                  </tr>
-                ))}
-              </tbody>
-            )}
-            {isFetching && <LoadingRecords />}
-          </table>
+        <div>
+          <div className="overflow-x-scroll">
+            <table
+              cellPadding={1}
+              cellSpacing={1}
+              className={`text-left font-paragraph ${styles.tableUsers}`}
+            >
+              <thead>
+                <tr>
+                  {LIST_CLIENTS_HEADERS.map(thead => {
+                    return (
+                      <Fragment key={thead.title}>
+                        <th key={thead.title}>
+                          {thead.title}
+                          {thead.sortable && thead.name && (
+                            <SortableButton
+                              action={() => handleSortDirection(thead.name)}
+                            />
+                          )}
+                        </th>
+                      </Fragment>
+                    );
+                  })}
+                </tr>
+              </thead>
+              {!isFetching && (
+                <tbody>
+                  {clients.map(client => (
+                    <tr key={client._id}>
+                      <td
+                        title={
+                          client.name +
+                          ' ' +
+                          client.last_name +
+                          ' ' +
+                          client.mother_last_name
+                        }
+                      >
+                        {client.name +
+                          ' ' +
+                          client.last_name +
+                          ' ' +
+                          client.mother_last_name}
+                      </td>
+                      <td>{client.email}</td>
+                      <td>{client.service.name}</td>
+                      <td>{client.address}</td>
+                      <td>{client.district}</td>
+                      <td>{client.reference}</td>
+                      <td>{client.phoneNumber}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              )}
+              {isFetching && <LoadingRecords />}
+            </table>
+          </div>
+
           <Pagination
             pageSize={PAGE_SIZE}
             activePage={Number(page) ?? 0}
             totalCount={totalClients}
             handleChangePage={handleChangePage}
           />
-        </>
+        </div>
       )}
       {clients && clients.length === 0 && <NoRecords />}
     </div>

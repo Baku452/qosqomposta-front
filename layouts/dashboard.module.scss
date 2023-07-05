@@ -1,4 +1,12 @@
 .dashboard{
     background-color: #ebebeb;
     display: flex;
+    width: 100%;
+    position: relative;
+
+    .dashboard__body{
+        padding: 1rem;
+        position: relative;
+        width: calc(100vw - 15rem);
+    }
 }
