@@ -29,9 +29,9 @@ const Clients: NextPage<DashboardProps> = () => {
 
   const fetchUsers = useCallback(
     async (page: number) => {
-      await fetchClients(page)(dispatch);
+      await fetchClients(page, filters)(dispatch);
     },
-    [dispatch],
+    [dispatch, filters],
   );
 
   const handleChangePage = (newValue: number) => {
@@ -50,6 +50,7 @@ const Clients: NextPage<DashboardProps> = () => {
   };
   useEffect(() => {
     !clients && fetchUsers(DEFAULT_PAGE_START);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

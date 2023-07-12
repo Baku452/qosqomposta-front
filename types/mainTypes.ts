@@ -1,3 +1,5 @@
+import { QosqompostaService } from './serviceQosqomposta';
+
 export interface AccordionItems {
   title: string;
   content: string;

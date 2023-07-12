@@ -42,9 +42,9 @@ export const setUserRoles = (roles: string[]): AnyAction => ({
 });
 
 export const fetchClients =
-  (pageStart?: number, filterSort?: FilterParamsClients) =>
+  (pageStart?: number, filters?: FilterParamsClients) =>
   async (dispatch: Dispatch<AnyAction>) => {
-    const urlBuild = buildFetchUsersURL(filterSort);
+    const urlBuild = buildFetchUsersURL(filters);
     return doAsync(
       dispatch,
       FETCH_CLIENTS,
