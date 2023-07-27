@@ -1,11 +1,12 @@
 import { FETCH_CLIENTS, SET_FILTER_LIST_CLIENTS } from '@/actions/actionsTypes';
+import { DEFAULT_SERVICE_FILTER } from '@/main.config';
 import { ListClients } from '@/types/clientsTypes';
 import { AnyAction } from 'redux';
 
 export const initialState: ListClients = {
   filters: {
     service: {
-      value: '',
+      value: DEFAULT_SERVICE_FILTER,
     },
   },
   isFetching: false,
