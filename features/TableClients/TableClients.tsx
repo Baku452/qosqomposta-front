@@ -11,20 +11,15 @@ import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords
 import Pagination from '@/components/molecules/Pagination/Pagination';
 import NoRecords from '@/components/molecules/NoRecords/NoRecords';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
-import { useQuery } from '@tanstack/react-query';
 
 const TableClients: React.FC = () => {
-  const { clients, totalClients, page, filters } = useSelector(
+  const { clients, totalClients, page, filters, isFetching } = useSelector(
     (state: State) => state.listClients,
   );
 
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_START);
 
   const dispatch = useDispatch();
-
-  const query = useQuery(['clients'], () => fetchUsers(currentPage), {
-    enabled: clients && clients.length === 0,
-  });
 
   const handleSortDirection = async (
     value: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>,
@@ -49,7 +44,11 @@ const TableClients: React.FC = () => {
   );
 
   useEffect(() => {
-    query.refetch();
+    clients === undefined && fetchUsers(currentPage);
+  }, []);
+
+  useEffect(() => {
+    clients !== undefined && fetchUsers(currentPage);
   }, [filters]);
   return (
     <>
@@ -79,7 +78,7 @@ const TableClients: React.FC = () => {
                   })}
                 </tr>
               </thead>
-              {!query.isFetching && (
+              {!isFetching && (
                 <tbody>
                   {clients.map(client => (
                     <tr key={client._id}>
@@ -108,8 +107,8 @@ const TableClients: React.FC = () => {
                   ))}
                 </tbody>
               )}
-              {query.isFetching && <LoadingRecords />}
             </table>
+            {isFetching && <LoadingRecords />}
           </div>
 
           <Pagination
