@@ -50,6 +50,10 @@ const TableClients: React.FC = () => {
   useEffect(() => {
     clients !== undefined && fetchUsers(currentPage);
   }, [filters]);
+
+  useEffect(() => {
+    clients !== undefined && fetchUsers(currentPage);
+  }, [currentPage]);
   return (
     <>
       {clients && totalClients && (

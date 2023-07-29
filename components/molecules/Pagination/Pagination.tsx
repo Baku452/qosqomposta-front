@@ -4,7 +4,7 @@ export interface PaginationProps {
   activePage: number;
   pageSize: number;
   totalCount: number;
-  handleChangePage?: (value: number) => void;
+  handleChangePage: (value: number) => void;
 }
 
 const Pagination: React.FC<PaginationProps> = ({
@@ -36,7 +36,8 @@ const Pagination: React.FC<PaginationProps> = ({
         <FaAngleLeft className={`${activePage === 1 ? disabledArrow : ''}`} size={30} />
       </button>
       {arrayOfNumbers.map((item, index) => (
-        <div
+        <button
+          onClick={() => handleChangePage(index + 1)}
           key={index + 'page'}
           className={`mx-1 px-4 py-1 rounded-md border-[1px] border-gray-400 ${
             activePage - 1 === index
@@ -45,7 +46,7 @@ const Pagination: React.FC<PaginationProps> = ({
           }`}
         >
           {index + 1}
-        </div>
+        </button>
       ))}
       <button
         disabled={activePage === maxPage}
