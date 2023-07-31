@@ -10,9 +10,6 @@ export const TableRowClient: React.FC<TableRowClientProps> = ({ client }) => {
 
   const handleRowClick = (recordId: string, isEditing: boolean) => {
     dispatch(setEditModeClientRow(recordId, isEditing));
-    const editRow = document.getElementById(`editRowClient` + recordId);
-    console.log(editRow);
-    editRow?.focus();
   };
   return (
     <tr
