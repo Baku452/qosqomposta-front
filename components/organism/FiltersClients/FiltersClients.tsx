@@ -1,17 +1,20 @@
 import { fetchServices } from '@/actions/services.actions';
 import { State } from '@/reducers/rootReducer';
 import { QosqompostaService } from '@/types/serviceQosqomposta';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';
 import styles from './filtersClients.module.scss';
 import { setFiltersClients } from '@/actions/user.app.actions';
 import { DEFAULT_SERVICE_FILTER } from '@/main.config';
+import PlacesContext, { Districts, PlacesContextType } from '@/context/PlacesContext';
 
 const FiltersClients: React.FC = () => {
   const dispatch = useDispatch();
   const services = useSelector((state: State) => state.listServices.services);
+
+  const { cities } = useContext(PlacesContext) as PlacesContextType;
 
   const defaultSelectedService = services?.find(
     service => service._id === DEFAULT_SERVICE_FILTER,
@@ -28,6 +31,9 @@ const FiltersClients: React.FC = () => {
     `${option.name} (${option.modality})`;
   const getOptionValue = (option: QosqompostaService) => option._id;
 
+  const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
+  const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
+
   const { filters } = useSelector((state: State) => state.listClients);
 
   const handleChangeParam = (selectedOption: SingleValue<QosqompostaService>): void => {
@@ -42,6 +48,11 @@ const FiltersClients: React.FC = () => {
         }),
       );
   };
+
+  const handleChangeDistrict = (selectedOption: SingleValue<Districts>): void => {
+    console.log('handle change service');
+  };
+
   useEffect(() => {
     if (!services) {
       handleFetchServices();
@@ -68,11 +79,11 @@ const FiltersClients: React.FC = () => {
           <div>
             <h4 className="mb-3">Distrito</h4>
             <Select
-              className="w-72 text-sm"
-              options={services}
-              getOptionLabel={getOptionLabel}
-              getOptionValue={getOptionValue}
-              placeholder="Seleccionar"
+              placeholder="Selecciones su distrito"
+              options={cities ?? []}
+              onChange={handleChangeDistrict}
+              getOptionLabel={getOptionDistrictsLabel}
+              getOptionValue={getOptionDistrictsValue}
             />
           </div>
         </div>

@@ -114,3 +114,5 @@ export const TOKEN_GOING_TO_EXPIRE = 'Actualiza tu token, está a punto de expir
 export const TOKEN_EXPIRED = 'Su Token ha expirado. Vuelva a iniciar sesion';
 
 export const DEFAULT_SERVICE_FILTER = '644ca2bd0126870ffc92c56c';
+
+export const DEP_LOCATION_DEFAULT = 'CUSCO';

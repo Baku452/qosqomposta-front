@@ -18,6 +18,7 @@ export interface Client {
   membership: string;
   phoneNumber?: string;
   service: Partial<QosqompostaService>;
+  isEditing?: boolean;
 }
 
 export interface ListClients {

@@ -3,6 +3,8 @@ import {
   FETCH_CLIENTS,
   FETCH_USER_APP,
   REGISTER_USER,
+  SET_EDIT_MODE_CLIENT_ROW,
+  SET_EDIT_MODE_ALL_CLIENT_ROWS,
   SET_FILTER_LIST_CLIENTS,
   SET_USER_ROLES,
 } from './actionsTypes';
@@ -61,4 +63,22 @@ export const fetchClients =
 export const setFiltersClients = (filters: FilterParamsClients): AnyAction => ({
   type: SET_FILTER_LIST_CLIENTS,
   payload: filters,
+});
+
+export const setEditModeClientRow = (
+  recordId: string,
+  isEditing: boolean,
+): AnyAction => ({
+  type: SET_EDIT_MODE_CLIENT_ROW,
+  payload: {
+    recordId,
+    isEditing,
+  },
+});
+
+export const setEditModeAllClientRows = (isEditing: boolean): AnyAction => ({
+  type: SET_EDIT_MODE_ALL_CLIENT_ROWS,
+  payload: {
+    isEditing,
+  },
 });

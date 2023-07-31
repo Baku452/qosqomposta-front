@@ -1,25 +1,33 @@
 import styles from './tableClients.module.scss';
 import { LIST_CLIENTS_HEADERS } from '@/constants/dashboard.const';
-import { Fragment, useCallback, useEffect, useState } from 'react';
+import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { FilterParamsClients } from '@/types/mainTypes';
 import { State } from '@/reducers/rootReducer';
 import { useSelector } from 'react-redux';
-import { fetchClients, setFiltersClients } from '@/actions/user.app.actions';
+import {
+  fetchClients,
+  setEditModeAllClientRows,
+  setFiltersClients,
+} from '@/actions/user.app.actions';
 import { useDispatch } from 'react-redux';
 import SortableButton from '@/components/atoms/SortableButton/SortableButton';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import Pagination from '@/components/molecules/Pagination/Pagination';
 import NoRecords from '@/components/molecules/NoRecords/NoRecords';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
+import { TableRowClient } from './TableRowClient/TableRowClient';
+import { TableEditableRowClient } from './TableRowEditableClient/TableRowEditableClient';
+import { useClickOutside } from '@/hooks/useClickOutside';
 
 const TableClients: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const tableClientsRef = useRef<HTMLTableElement>(null);
   const { clients, totalClients, page, filters, isFetching } = useSelector(
     (state: State) => state.listClients,
   );
 
   const [currentPage, setCurrentPage] = useState<number>(DEFAULT_PAGE_START);
-
-  const dispatch = useDispatch();
 
   const handleSortDirection = async (
     value: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>,
@@ -54,12 +62,18 @@ const TableClients: React.FC = () => {
   useEffect(() => {
     clients !== undefined && fetchUsers(currentPage);
   }, [currentPage]);
+
+  const handleClickOutsideTable = () => {
+    dispatch(setEditModeAllClientRows(false));
+  };
+  useClickOutside(tableClientsRef, handleClickOutsideTable);
   return (
     <>
       {clients && totalClients && (
         <div>
           <div className="overflow-x-scroll">
             <table
+              ref={tableClientsRef}
               cellPadding={1}
               cellSpacing={1}
               className={`text-left font-paragraph ${styles.tableUsers}`}
@@ -84,31 +98,13 @@ const TableClients: React.FC = () => {
               </thead>
               {!isFetching && (
                 <tbody>
-                  {clients.map(client => (
-                    <tr key={client._id}>
-                      <td
-                        title={
-                          client.name +
-                          ' ' +
-                          client.last_name +
-                          ' ' +
-                          client.mother_last_name
-                        }
-                      >
-                        {client.name +
-                          ' ' +
-                          client.last_name +
-                          ' ' +
-                          client.mother_last_name}
-                      </td>
-                      <td>{client.email}</td>
-                      <td>{client.service.name}</td>
-                      <td>{client.address}</td>
-                      <td>{client.district}</td>
-                      <td>{client.reference}</td>
-                      <td>{client.phoneNumber}</td>
-                    </tr>
-                  ))}
+                  {clients.map(client =>
+                    !client.isEditing ? (
+                      <TableRowClient key={client._id} client={client} />
+                    ) : (
+                      <TableEditableRowClient key={client._id} client={client} />
+                    ),
+                  )}
                 </tbody>
               )}
             </table>

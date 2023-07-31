@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './dashboard.module.scss';
 import RefreshToken from '@/components/atoms/RefreshToken/RefreshToken';
+import { PlacesContextProvider } from '@/context/PlacesContext';
 
 export type DashboardLayoutProps = {
   children?: React.ReactNode;
@@ -13,14 +14,16 @@ export type DashboardLayoutProps = {
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <ProtectedRoute>
-      {/* <HeaderDashboard /> */}
-      <main className={styles.dashboard}>
-        <DashboardAside />
-        <div className={styles.dashboard__body}>{children}</div>
-      </main>
-      <ToastContainer />
-      <RefreshToken />
-      <FooterWeb />
+      <PlacesContextProvider>
+        {/* <HeaderDashboard /> */}
+        <main className={styles.dashboard}>
+          <DashboardAside />
+          <div className={styles.dashboard__body}>{children}</div>
+        </main>
+        <ToastContainer />
+        <RefreshToken />
+        <FooterWeb />
+      </PlacesContextProvider>
     </ProtectedRoute>
   );
 };
