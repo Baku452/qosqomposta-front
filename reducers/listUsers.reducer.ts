@@ -4,6 +4,7 @@ import {
   SET_EDIT_MODE_CLIENT_ROW,
   SET_FILTER_LIST_CLIENTS,
 } from '@/actions/actionsTypes';
+import { UPDATE_CLIENT_INFORMATION } from '@/actions/user.app.types';
 import { DEFAULT_SERVICE_FILTER } from '@/main.config';
 import { ListClients } from '@/types/clientsTypes';
 import { AnyAction } from 'redux';
@@ -75,6 +76,51 @@ export const listClientsReducer = (
         return { ...client, isEditing: isEditing };
       });
 
+      return {
+        ...state,
+        clients: updatedClients,
+      };
+    }
+
+    case UPDATE_CLIENT_INFORMATION.request: {
+      const { uuidClient } = action.payload;
+      const currentClients = state.clients ? [...state.clients] : [];
+      const updatedClients = currentClients.map(client => {
+        if (client.uid === uuidClient) {
+          return { ...client, isUpdating: true };
+        }
+        return { ...client };
+      });
+      return {
+        ...state,
+        clients: updatedClients,
+      };
+    }
+
+    case UPDATE_CLIENT_INFORMATION.success: {
+      const { uuidClient } = action.request;
+      const currentClients = state.clients ? [...state.clients] : [];
+      const updatedClients = currentClients.map(client => {
+        if (client.uid === uuidClient) {
+          return { ...client, ...action.payload, isUpdating: false };
+        }
+        return { ...client };
+      });
+      return {
+        ...state,
+        clients: updatedClients,
+      };
+    }
+
+    case UPDATE_CLIENT_INFORMATION.error: {
+      const { uuidClient } = action.payload.request;
+      const currentClients = state.clients ? [...state.clients] : [];
+      const updatedClients = currentClients.map(client => {
+        if (client.uid === uuidClient) {
+          return { ...client, isUpdating: false };
+        }
+        return { ...client };
+      });
       return {
         ...state,
         clients: updatedClients,

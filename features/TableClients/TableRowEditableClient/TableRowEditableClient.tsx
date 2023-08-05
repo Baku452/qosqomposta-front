@@ -1,7 +1,7 @@
 import { State } from '@/reducers/rootReducer';
-import { Client } from '@/types/clientsTypes';
+import { Client, UpdateClient } from '@/types/clientsTypes';
 import { QosqompostaService } from '@/types/serviceQosqomposta';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';
 
@@ -9,7 +9,7 @@ import Select, { SingleValue } from 'react-select';
 import PlacesContext, { Districts, PlacesContextType } from '@/context/PlacesContext';
 import { DEP_LOCATION_DEFAULT } from '@/main.config';
 import { useDispatch } from 'react-redux';
-import { setEditModeClientRow } from '@/actions/user.app.actions';
+import { updateClientInformation } from '@/actions/user.app.actions';
 
 export interface TableRowEditableClientProps {
   client: Client;
@@ -17,10 +17,23 @@ export interface TableRowEditableClientProps {
 export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   client,
 }) => {
+  const { uid: userUid, roles: userRoles } = useSelector((state: State) => state.appUser);
+  const [editClient, setEditClient] = useState<Client>(client);
+  const [selectedServices, setSelectedService] = useState<QosqompostaService>(
+    client.service as QosqompostaService,
+  );
+  const [selectedDistrict, setSelectedDistrict] = useState<string | undefined>(
+    client.district,
+  );
+  const [reference, setReference] = useState<string | undefined>(client.reference);
+  const [phoneNumber, setPhoneNumber] = useState<string | undefined>(client.phoneNumber);
+  const [address, setAddress] = useState<string | undefined>(client.address);
+
   const dispatch = useDispatch();
   const services = useSelector((state: State) => state.listServices.services);
   const { cities } = useContext(PlacesContext) as PlacesContextType;
 
+  const rowRef = useRef<HTMLTableRowElement>(null);
   const getOptionLabel = (option: QosqompostaService) =>
     `${option.name} (${option.modality})`;
   const getOptionValue = (option: QosqompostaService) => option._id;
@@ -29,52 +42,92 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
 
   const handleChangeService = (selectedOption: SingleValue<QosqompostaService>): void => {
-    console.log('handle change service');
+    selectedOption && setSelectedService(selectedOption);
   };
 
   const handleChangeDistrict = (selectedOption: SingleValue<Districts>): void => {
-    console.log('handle change service');
+    setSelectedDistrict(selectedOption?.value);
   };
+
+  const handleChangeInput =
+    (setState: React.Dispatch<React.SetStateAction<string | undefined>>) =>
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      setState(event.target.value);
+    };
 
   const clientDistric: Districts = {
     nombdep: DEP_LOCATION_DEFAULT,
-    value: client.district ?? '',
-    label: client.district ?? '',
+    value: editClient.district ?? '',
+    label: editClient.district ?? '',
   };
 
-  const handleClickOutside = () => {
-    dispatch(setEditModeClientRow(client._id, false));
+  const handleBlurRow = async (clientUuid: string) => {
+    if (
+      reference !== client.reference ||
+      selectedDistrict !== client.district ||
+      selectedServices._id !== client.service._id ||
+      phoneNumber !== client.phoneNumber ||
+      address !== client.phoneNumber
+    ) {
+      await updateClientInformation(clientUuid, {
+        reference: reference,
+        district: selectedDistrict,
+        selectedServiceId: selectedServices._id,
+        phoneNumber: phoneNumber,
+        address: address,
+        idUserEditing: userUid,
+        roleUserEditing: userRoles ?? [],
+      })(dispatch);
+    }
   };
 
+  // useClickOutside(rowRef, handleBlurRow);
+  useEffect(() => {
+    const row = document.getElementById(`editRowClient` + editClient._id);
+    row?.focus();
+  }, []);
   return (
-    <tr id={`editRowClient` + client._id} onBlur={handleClickOutside} key={client._id}>
-      <td title={client.name + ' ' + client.last_name + ' ' + client.mother_last_name}>
-        <input
-          type="text"
-          value={client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
-        />
+    <tr
+      ref={rowRef}
+      tabIndex={0}
+      id={`editRowClient` + editClient._id}
+      onBlur={() => handleBlurRow(editClient.uid)}
+      key={editClient._id}
+    >
+      <td
+        title={
+          editClient.name + ' ' + editClient.last_name + ' ' + editClient.mother_last_name
+        }
+      >
+        <p>
+          {editClient.name +
+            ' ' +
+            editClient.last_name +
+            ' ' +
+            editClient.mother_last_name}
+        </p>
       </td>
       <td>
-        <input type="text" value={client.email} />
+        <p>{editClient.email}</p>
       </td>
       <td>
         <Select
           className=" text-sm"
           options={services ?? []}
-          defaultValue={client.service as QosqompostaService}
-          value={client.service as QosqompostaService}
+          defaultValue={selectedServices}
+          value={selectedServices}
           onChange={handleChangeService}
           getOptionLabel={getOptionLabel}
           getOptionValue={getOptionValue}
-          placeholder="Seleccionar"
+          placeholder="Seleccione un servicio"
         />
       </td>
       <td>
-        <input type="text" value={client.address} />
+        <input type="text" onChange={handleChangeInput(setAddress)} value={address} />
       </td>
       <td>
         <Select
-          placeholder="Selecciones su distrito"
+          placeholder="Seleccione su distrito"
           value={clientDistric.value ? clientDistric : undefined}
           options={cities ?? []}
           onChange={handleChangeDistrict}
@@ -83,10 +136,14 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
         />
       </td>
       <td>
-        <input type="text" value={client.reference} />
+        <input type="text" onChange={handleChangeInput(setReference)} value={reference} />
       </td>
       <td>
-        <input type="text" value={client.phoneNumber} />
+        <input
+          type="text"
+          onChange={handleChangeInput(setPhoneNumber)}
+          value={phoneNumber}
+        />
       </td>
     </tr>
   );

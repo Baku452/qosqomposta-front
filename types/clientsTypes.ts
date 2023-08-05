@@ -19,6 +19,7 @@ export interface Client {
   phoneNumber?: string;
   service: Partial<QosqompostaService>;
   isEditing?: boolean;
+  isUpdating?: boolean;
 }
 
 export interface ListClients {
@@ -27,4 +28,10 @@ export interface ListClients {
   isFetching?: boolean;
   totalClients?: number;
   page?: number;
+}
+
+export interface UpdateClient extends Partial<Client> {
+  selectedServiceId?: string;
+  idUserEditing: string;
+  roleUserEditing: string[];
 }

@@ -11,14 +11,11 @@ import {
 import { AnyAction } from 'redux';
 import { Dispatch } from 'react';
 import { doAsync } from '@/clientApi/clientApi';
-import {
-  FilterParam,
-  FilterParamsClients,
-  RegisterUsertDTO,
-  SortCriteria,
-} from '@/types/mainTypes';
+import { FilterParamsClients, RegisterUsertDTO } from '@/types/mainTypes';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 import { buildFetchUsersURL } from '@/utils/utils';
+import { UpdateClient } from '@/types/clientsTypes';
+import { UPDATE_CLIENT_INFORMATION } from './user.app.types';
 
 export const setUserApp = (user: UserInfo | unknown): AnyAction => ({
   type: FETCH_USER_APP,
@@ -82,3 +79,17 @@ export const setEditModeAllClientRows = (isEditing: boolean): AnyAction => ({
     isEditing,
   },
 });
+
+export const updateClientInformation =
+  (uuidClient: string, updatedInfo: UpdateClient) =>
+  async (dispatch: Dispatch<AnyAction>) => {
+    return doAsync(
+      dispatch,
+      UPDATE_CLIENT_INFORMATION,
+      `/user/${uuidClient}`,
+      { method: 'PUT', data: updatedInfo },
+      undefined,
+      { updatedInfo, uuidClient },
+      true,
+    );
+  };
