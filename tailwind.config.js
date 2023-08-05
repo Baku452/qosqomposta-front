@@ -16,14 +16,15 @@ module.exports = {
           '200': '#F8DE86',  
           '300': '#F6D35F',  
           '400': '#F4C939',  
-          '500': '#F2BE12',  
+          '500': '#ddad13e6',  
           '600': '#C1970B',  
           '700': '#8C6D08',  
           '800': '#574405',  
           '900': '#221A02'
         },
         'greenQ': '#4a5d12',
-        'brownQ': '#2d1910'
+        'brownQ': '#2d1910',
+        'error': '#d01f12'
       },
       animation: {
         slideIn: 'slideIn 1.5s ease-in-out',
@@ -44,6 +45,7 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['eveleth', ...defaultTheme.fontFamily.sans],
+        paragraph: ['Isidora', 'sans'],
       },
     }
   },

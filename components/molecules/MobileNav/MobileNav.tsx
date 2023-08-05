@@ -27,7 +27,7 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
           <nav className="text-white h-full z-[150] leading-9 p-2 items-center mr-2 ">
             <ul>
               {items.map(item => (
-                <Link key={item.label} passHref href={item.link}>
+                <Link key={item.label} passHref href={item.link} legacyBehavior>
                   <li>
                     <a>{item.label}</a>
                   </li>

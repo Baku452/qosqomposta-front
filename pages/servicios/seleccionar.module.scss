@@ -1,0 +1,31 @@
+.backgroundPage{
+    background-position-y: 8rem;
+}
+
+.tableServices{
+    margin: auto;
+    background-color: #fff;
+
+    th{
+        text-align: left;
+        padding: 1rem;
+        width: 18rem;
+        height: 5rem;
+
+    }
+
+    tr {
+        border-bottom: 1px solid #dfdfdf;
+    }
+
+    td{
+        padding: 1rem;
+        width: 15rem;
+        height: 5rem;
+        text-align: center;
+
+        svg{
+            margin: auto;
+        }
+    }
+}

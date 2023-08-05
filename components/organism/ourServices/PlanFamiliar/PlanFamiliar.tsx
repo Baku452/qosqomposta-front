@@ -1,38 +1,41 @@
+import Card from '@/components/atoms/Card/Card';
 import { PLAN_FAMILIAR, PLAN_FAMILIAR_IMAGE } from 'main.config';
-import Image from 'next/image';
 import Link from 'next/link';
 import { AiOutlineCheckCircle } from 'react-icons/ai';
 
+export const PlanFamiliarItems: React.FC = () => {
+  return (
+    <div className="flex h-full flex-col justify-between">
+      <div>
+        <h3 className="text-xl mb-7">{PLAN_FAMILIAR.title}</h3>
+        <ul>
+          {PLAN_FAMILIAR.itemsIncludes.map(item => (
+            <li className=" flex text-lg items-center leading-8" key={item.key}>
+              <AiOutlineCheckCircle className="fill-greenQ mr-2" />
+              {item.title}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <button className="btn btn-primary m-auto block mt-5">
+          <Link href={'/servicios/personal'}>Leer Más</Link>
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const PlanFamiliar: React.FC = () => {
-    return (
-        <section className="flex items-center m-auto rounded-3xl bg-gray-100 overflow-auto mb-14">
-            <div className="hidden lg:block">
-                <Image
-                    width={643}
-                    height={425}
-                    src={PLAN_FAMILIAR_IMAGE}
-                    alt={PLAN_FAMILIAR.title}
-                />
-            </div>
-            <div className="p-5 px-16 basis-full lg:basis-1/2">
-                <h3 className="text-xl mb-7">{PLAN_FAMILIAR.title}</h3>
-                <ul>
-                    {PLAN_FAMILIAR.itemsIncludes.map(item => (
-                        <li
-                            className=" flex text-lg items-center leading-8"
-                            key={item.key}
-                        >
-                            <AiOutlineCheckCircle className="fill-greenQ mr-2" />
-                            {item.title}
-                        </li>
-                    ))}
-                </ul>
-                <button className="btn btn-primary m-auto block mt-5">
-                    <Link href={'/servicios/personal'}>Leer Más</Link>
-                </button>
-            </div>
-        </section>
-    );
+  return (
+    <Card
+      content={<PlanFamiliarItems />}
+      altImage={PLAN_FAMILIAR.title}
+      imageHeight={425}
+      imageWidth={643}
+      image={PLAN_FAMILIAR_IMAGE}
+    />
+  );
 };
 
 export default PlanFamiliar;

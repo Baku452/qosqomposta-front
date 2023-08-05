@@ -1,0 +1,57 @@
+.imageSlider {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+}
+
+.sliderContainer {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:hover {
+        cursor: grab;
+    }
+
+    transition: transform 0.2s ease-out;
+}
+
+.sliderContainer img {
+    display: block;
+    min-width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+}
+
+.controls {
+    display: flex;
+    position: absolute;
+    inset: 50% 0 10px;
+    transform: translateY(-50%);
+    width: 100%;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.controls button {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.controls button + button {
+    margin-left: 10px;
+}
+
+.controls button:focus {
+    outline: none;
+}
+

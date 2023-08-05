@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { AuthAction, withAuthUser } from 'next-firebase-auth';
-import { SignInForm } from '@/components/molecules/signInForm';
-import { SignUpForm } from '@/components/molecules/signUpForm';
+import LoginForm from '@/components/molecules/LoginForm/LoginForm';
+import React from 'react';
 
-const SignUp = () => {
-    const [renderAuth, setRenderAuth] = useState(false);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setRenderAuth(true);
-        }
-    }, []);
-
-    return (
-        <>
-            <div>
-                <h1>Login</h1>
-
-                {renderAuth ? <SignUpForm /> : null}
-            </div>
-            <div className="bg-yellowQ w-full h-full">
-                Qosqomposta
-                <button className="btn btn-primary">Test</button>
-            </div>
-        </>
-    );
+const LoginPage = () => {
+  return (
+    <>
+      <div
+        className="max-w-6xl m-auto items-center flex flex-col
+            "
+      >
+        <h1>Bienvenido a Qosqomposta !</h1>
+        <LoginForm />
+      </div>
+    </>
+  );
 };
 
-export default withAuthUser({
-    whenAuthed: AuthAction.REDIRECT_TO_APP,
-})(SignUp);
+export default LoginPage;

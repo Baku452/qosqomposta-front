@@ -1,25 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { AuthAction, withAuthUser } from 'next-firebase-auth';
-import { SignUpForm } from '@/components/molecules/signUpForm';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useContext, useEffect } from 'react';
+import SignUpForm from '@/components/molecules/SignUpForm/SignUpForm';
+import { GetStaticProps, NextPage } from 'next';
+import 'react-phone-number-input/style.css';
+import { extractFields } from '@/utils/utils';
+import PlacesContext, { PlacesContextType } from '@/context/PlacesContext';
 
-const AuthPage = () => {
-    const [renderAuth, setRenderAuth] = useState(false);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            setRenderAuth(true);
-        }
-    }, []);
-
-    return (
-        <>
-            <div className="p-10  m-auto">
-                <h1>Bienvenido al Movimiento Compostero</h1>
-                {renderAuth ? <SignUpForm /> : null}
-            </div>
-        </>
-    );
+export interface RegisterPageProps {
+  data: any;
+}
+const RegisterPage: NextPage<RegisterPageProps> = ({ data }) => {
+  const { setCities } = useContext(PlacesContext) as PlacesContextType;
+  useEffect(() => {
+    data && setCities(data);
+  }, [data, setCities]);
+  return (
+    <div className="p-10 m-auto text-center">
+      <SignUpForm />
+    </div>
+  );
 };
 
-export default withAuthUser({
-    whenAuthed: AuthAction.REDIRECT_TO_APP,
-})(AuthPage);
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_CITIES_API}`);
+  const data = await response.json();
+
+  const formattedData = extractFields(data.records);
+  return {
+    props: {
+      data: formattedData,
+    },
+  };
+};
+
+export default RegisterPage;

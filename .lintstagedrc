@@ -1,0 +1,5 @@
+{
+  "src/**/*.{js,ts,tsx,jsx,scss}": ['prettier --write'],
+  "**/*.scss": ['stylelint'],
+  "**/*.module.scss": ['stylelint']
+}

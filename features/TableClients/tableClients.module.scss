@@ -1,0 +1,43 @@
+.tableUsers {
+    font-size: 14px;
+    border-spacing: 0;
+    border-collapse: collapse;
+    white-space: pre;
+
+    th:nth-child(1), td:nth-child(1) {
+        width: 250px !important;
+        max-width: 250px;
+        text-overflow: ellipsis;
+        white-space: pre;
+        overflow: hidden;
+    }
+    th:nth-child(2) {
+        width: 300px!important;
+        overflow: hidden;
+    }
+
+    th:nth-child(3) {
+        width: 260px!important;
+        overflow: hidden;
+    }
+
+    th:nth-child(4) {
+        width: 240px!important;
+        overflow: hidden;
+    }
+
+    th:nth-child(5) {
+        width: 200px!important;
+        overflow: hidden;
+    }
+
+    th:nth-child(6) {
+        width: 250px!important;
+        overflow: hidden;
+    }
+
+    th:nth-child(7) {
+        width: 250px!important;
+        overflow: hidden;
+    }
+}
