@@ -1,29 +1,31 @@
-import LogoApp from '@/components/atoms/LogoApp/LogoApp';
 import LogoutButton from '@/components/atoms/LogoutButton/LogoutButton';
-import { LogoAppColors, ONLY_LOGO_BLACK_LINES, ValidRoles } from '@/main.config';
+import { ValidRoles } from '@/main.config';
 import { State } from '@/reducers/rootReducer';
 import { DASHBOARD_ADMIN_NAV_LINKS } from '@/utils/navUtils';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { SetStateAction } from 'react';
 import { BiArrowFromRight } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
 
-const DashboardAside: React.FC = () => {
+export interface DashboardAsideProps {
+  openNavbar: boolean;
+  setOpenNavbar: React.Dispatch<SetStateAction<boolean>>;
+}
+const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavbar }) => {
   const userRoles = useSelector((state: State) => state.appUser.roles);
-  const [isOpen, setIsOpen] = useState<boolean>(true);
   const userDetails = useSelector((state: State) => state.appUser);
 
   return (
     <section
-      className={`bg-white h-screen shadow-lg transition-all flex flex-col  items-center  py-5 px-5 ${
-        isOpen ? 'w-[15rem]' : 'w-[5rem]'
+      className={`bg-white h-full shadow-lg transition-all duration-300 flex flex-col fixed items-center  py-5 px-5 ${
+        openNavbar ? 'w-[15rem]' : 'w-[5rem]'
       }`}
     >
-      <div className={`flex mb-5 ${isOpen ? 'self-end' : 'self-center'}`}>
+      <div className={`flex mb-5 ${openNavbar ? 'self-end' : 'self-center'}`}>
         <button
-          className={`transition-transform ${isOpen ? 'rotate-0 ' : 'rotate-180'}`}
-          onClick={() => setIsOpen(value => !value)}
+          className={`transition-transform ${openNavbar ? 'rotate-0 ' : 'rotate-180'}`}
+          onClick={() => setOpenNavbar(value => !value)}
         >
           <BiArrowFromRight size={30} />
         </button>
@@ -52,7 +54,7 @@ const DashboardAside: React.FC = () => {
               : '/images/defaultAvatar.png'
           }
         />
-        {isOpen ? (
+        {openNavbar ? (
           <div className="text-center">
             <p className="font-bold">{userDetails.name}</p>
             <p className="text-gray-600">{userDetails.email}</p>
@@ -63,7 +65,7 @@ const DashboardAside: React.FC = () => {
         <nav>
           <ul
             className={`flex flex-col ${
-              isOpen ? 'px-5 items-start ' : 'px-0 items-center'
+              openNavbar ? 'px-5 items-start ' : 'px-0 items-center'
             }`}
           >
             {userRoles &&
@@ -77,14 +79,14 @@ const DashboardAside: React.FC = () => {
                   passHref
                 >
                   {navlink.icon}
-                  {isOpen ? <span className="ml-3">{navlink.name}</span> : null}
+                  {openNavbar ? <span className="ml-3">{navlink.name}</span> : null}
                 </Link>
               ))}
           </ul>
         </nav>
       </div>
       <div className="justify-self-end">
-        <LogoutButton isOpenAside={isOpen} />
+        <LogoutButton isOpenAside={openNavbar} />
       </div>
     </section>
   );
