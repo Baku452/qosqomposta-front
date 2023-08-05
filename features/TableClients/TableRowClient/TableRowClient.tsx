@@ -1,7 +1,7 @@
 import { setEditModeClientRow } from '@/actions/user.app.actions';
 import { Client } from '@/types/clientsTypes';
 import { useDispatch } from 'react-redux';
-
+import styles from '../tableClients.module.scss';
 export interface TableRowClientProps {
   client: Client;
 }
@@ -13,15 +13,23 @@ export const TableRowClient: React.FC<TableRowClientProps> = ({ client }) => {
   };
   return (
     <tr
-      onClick={() => {
+      onClick={e => {
+        e.preventDefault();
+        e.stopPropagation();
         handleRowClick(client._id, true);
       }}
       key={client._id}
     >
-      <td title={client.name + ' ' + client.last_name + ' ' + client.mother_last_name}>
-        {client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
+      <td
+        className="flex flex-col"
+        title={client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
+      >
+        <h6 className="font-semibold">
+          {client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
+        </h6>
+        <p className={styles.emailField}>{client.email}</p>
       </td>
-      <td>{client.email}</td>
+      {/* <td>{client.email}</td> */}
       <td>{client.service.name}</td>
       <td>{client.address}</td>
       <td>{client.district}</td>

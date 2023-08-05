@@ -10,6 +10,7 @@ import PlacesContext, { Districts, PlacesContextType } from '@/context/PlacesCon
 import { DEP_LOCATION_DEFAULT } from '@/main.config';
 import { useDispatch } from 'react-redux';
 import { updateClientInformation } from '@/actions/user.app.actions';
+import styles from '../tableClients.module.scss';
 
 export interface TableRowEditableClientProps {
   client: Client;
@@ -95,20 +96,13 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
       key={editClient._id}
     >
       <td
-        title={
-          editClient.name + ' ' + editClient.last_name + ' ' + editClient.mother_last_name
-        }
+        className="flex flex-col"
+        title={client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
       >
-        <p>
-          {editClient.name +
-            ' ' +
-            editClient.last_name +
-            ' ' +
-            editClient.mother_last_name}
-        </p>
-      </td>
-      <td>
-        <p>{editClient.email}</p>
+        <h6 className="font-semibold">
+          {client.name + ' ' + client.last_name + ' ' + client.mother_last_name}
+        </h6>
+        <p className={styles.emailField}>{client.email}</p>
       </td>
       <td>
         <Select
@@ -119,7 +113,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
           onChange={handleChangeService}
           getOptionLabel={getOptionLabel}
           getOptionValue={getOptionValue}
-          placeholder="Seleccione un servicio"
+          placeholder="Servicio Q"
         />
       </td>
       <td>
@@ -127,7 +121,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
       </td>
       <td>
         <Select
-          placeholder="Seleccione su distrito"
+          placeholder="Distrito"
           value={clientDistric.value ? clientDistric : undefined}
           options={cities ?? []}
           onChange={handleChangeDistrict}

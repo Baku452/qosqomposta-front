@@ -109,9 +109,9 @@ export const DEFAULT_PAGE_START = 1;
 
 export const TOKEN_EXPIRE_TRESHOLD = 50;
 
-export const TOKEN_GOING_TO_EXPIRE = 'Actualiza tu token, está a punto de expirar';
+export const TOKEN_GOING_TO_EXPIRE = 'Actualiza tu sesion, está a punto de expirar';
 
-export const TOKEN_EXPIRED = 'Su Token ha expirado. Vuelva a iniciar sesion';
+export const TOKEN_EXPIRED = 'Su sesion ha expirado. Vuelva a iniciar sesion';
 
 export const DEFAULT_SERVICE_FILTER = '644ca2bd0126870ffc92c56c';
 

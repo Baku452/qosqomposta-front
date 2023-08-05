@@ -2,14 +2,14 @@ import { TABLE_HEADERS } from '@/types/mainTypes';
 
 export const LIST_CLIENTS_HEADERS: TABLE_HEADERS[] = [
   {
-    title: 'Nombre',
+    title: 'Usuario',
     name: 'name',
     sortable: true,
   },
-  {
-    title: 'Correo',
-    name: 'email',
-  },
+  // {
+  //   title: 'Correo',
+  //   name: 'email',
+  // },
   {
     title: 'Servicio',
     name: 'service',

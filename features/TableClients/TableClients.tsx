@@ -71,7 +71,7 @@ const TableClients: React.FC = () => {
     <>
       {clients && totalClients && (
         <>
-          <div className="overflow-x-scroll">
+          <div className={styles.containerTableUsers}>
             <table
               ref={tableClientsRef}
               cellPadding={1}
