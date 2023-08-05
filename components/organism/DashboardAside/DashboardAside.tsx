@@ -73,6 +73,8 @@ const DashboardAside: React.FC = () => {
                   href={navlink.path}
                   className="my-5 cursor-pointer hover:bg-white text-center flex items-center"
                   key={navlink.key}
+                  onClick={() => console.log('click')}
+                  passHref
                 >
                   {navlink.icon}
                   {isOpen ? <span className="ml-3">{navlink.name}</span> : null}

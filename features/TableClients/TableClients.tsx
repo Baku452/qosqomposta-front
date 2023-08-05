@@ -70,7 +70,7 @@ const TableClients: React.FC = () => {
   return (
     <>
       {clients && totalClients && (
-        <div>
+        <>
           <div className="overflow-x-scroll">
             <table
               ref={tableClientsRef}
@@ -117,7 +117,7 @@ const TableClients: React.FC = () => {
             totalCount={totalClients}
             handleChangePage={handleChangePage}
           />
-        </div>
+        </>
       )}
       {clients && clients.length === 0 && <NoRecords />}
     </>
