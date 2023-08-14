@@ -18,14 +18,18 @@ export interface TableRowEditableClientProps {
 export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   client,
 }) => {
+  const clientDistric: Districts = {
+    nombdep: DEP_LOCATION_DEFAULT,
+    value: client.district ?? '',
+    label: client.district ?? '',
+  };
+
   const { uid: userUid, roles: userRoles } = useSelector((state: State) => state.appUser);
-  const [editClient, setEditClient] = useState<Client>(client);
+  const [editClient] = useState<Client>(client);
   const [selectedServices, setSelectedService] = useState<QosqompostaService>(
     client.service as QosqompostaService,
   );
-  const [selectedDistrict, setSelectedDistrict] = useState<string | undefined>(
-    client.district,
-  );
+  const [selectedDistrict, setSelectedDistrict] = useState<Districts>(clientDistric);
   const [reference, setReference] = useState<string | undefined>(client.reference);
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>(client.phoneNumber);
   const [address, setAddress] = useState<string | undefined>(client.address);
@@ -47,7 +51,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   };
 
   const handleChangeDistrict = (selectedOption: SingleValue<Districts>): void => {
-    setSelectedDistrict(selectedOption?.value);
+    selectedOption && setSelectedDistrict(selectedOption);
   };
 
   const handleChangeInput =
@@ -55,12 +59,6 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
     (event: React.ChangeEvent<HTMLInputElement>) => {
       setState(event.target.value);
     };
-
-  const clientDistric: Districts = {
-    nombdep: DEP_LOCATION_DEFAULT,
-    value: editClient.district ?? '',
-    label: editClient.district ?? '',
-  };
 
   const handleBlurRow = async (clientUuid: string) => {
     if (
@@ -72,7 +70,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
     ) {
       await updateClientInformation(clientUuid, {
         reference: reference,
-        district: selectedDistrict,
+        district: selectedDistrict.value,
         selectedServiceId: selectedServices._id,
         phoneNumber: phoneNumber,
         address: address,
@@ -104,7 +102,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
         </h6>
         <p className={styles.emailField}>{client.email}</p>
       </td>
-      <td>
+      <td onClick={e => e.stopPropagation()}>
         <Select
           className=" text-sm"
           options={services ?? []}
@@ -119,10 +117,11 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
       <td>
         <input type="text" onChange={handleChangeInput(setAddress)} value={address} />
       </td>
-      <td>
+      <td onClick={e => e.stopPropagation()}>
         <Select
           placeholder="Distrito"
-          value={clientDistric.value ? clientDistric : undefined}
+          defaultValue={selectedDistrict}
+          value={selectedDistrict}
           options={cities ?? []}
           onChange={handleChangeDistrict}
           getOptionLabel={getOptionDistrictsLabel}
