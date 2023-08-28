@@ -2,7 +2,7 @@ import { setServicesFetched } from '@/actions/services.actions';
 import {
   WasteManagementService,
   WasteManagementServiceMerged,
-} from '@/types/serviceQosqomposta';
+} from '@/types/wasteManagement';
 import { mergeServicesByType } from '@/utils/services.utils';
 import React, { createContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';

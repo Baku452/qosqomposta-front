@@ -6,20 +6,20 @@
     font-family: Isidora;
     src: url('/fonts/Isidora-Alt-Bold.otf') format('opentype');
     font-weight: bold;
-    font-style: bold;
+    font-style: normal;
 }
 @font-face {
     font-family: Isidora;
-    src: url('/fonts/Isidora-Medium.otf') format('opentype');
+    src: url('../public/fonts/Isidora-Medium.otf') format('opentype');
     font-weight: medium;
-    font-style: medium;
+    font-style: normal;
 }
 
 @font-face {
     font-family: Isidora;
     src: url('/fonts/Isidora-Semi-Bold.otf') format('opentype');
     font-weight: 600;
-    font-style: 600;
+    font-style: normal;
 }
 
 a {
@@ -27,7 +27,7 @@ a {
 }
 @layer base {
     html {
-        font-family: isidora, system-ui, sans-serif;
+        font-family: Isidora, system-ui, sans-serif;
         box-sizing: border-box;
     }
 

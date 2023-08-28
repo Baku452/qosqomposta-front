@@ -5,7 +5,7 @@ import Head from 'next/head';
 import 'normalize.css/normalize.css';
 import TalleresSectionHome from '@/components/organism/TalleresSectionHome/TalleresSectionHome';
 import { GetStaticProps, NextPage } from 'next';
-import { WasteManagementService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/wasteManagement';
 import { useContext, useEffect } from 'react';
 import QosqompostaServicesContext, {
   ServiceContextType,

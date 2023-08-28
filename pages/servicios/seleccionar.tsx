@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from 'react';
 import {
   WasteManagementService,
   WasteManagementServiceMerged,
-} from '@/types/serviceQosqomposta';
+} from '@/types/wasteManagement';
 import { TABLE_HEADERS_SELECT } from '@/constants/services.const';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 

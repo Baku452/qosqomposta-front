@@ -1,7 +1,7 @@
 import {
   WasteManagementServiceMerged,
   WasteManagementService,
-} from '@/types/serviceQosqomposta';
+} from '@/types/wasteManagement';
 
 export const mergeServicesByType = (
   services: WasteManagementService[],

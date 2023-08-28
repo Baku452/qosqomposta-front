@@ -1,6 +1,6 @@
 import { State } from '@/reducers/rootReducer';
 import { Client, UpdateClient } from '@/types/clientsTypes';
-import { WasteManagementService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/wasteManagement';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';

@@ -13,11 +13,11 @@ import { useDispatch } from 'react-redux';
 import SortableButton from '@/components/atoms/SortableButton/SortableButton';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import Pagination from '@/components/molecules/Pagination/Pagination';
-import NoRecords from '@/components/molecules/NoRecords/NoRecords';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 import { TableRowClient } from './TableRowClient/TableRowClient';
 import { TableEditableRowClient } from './TableRowEditableClient/TableRowEditableClient';
 import { useClickOutside } from '@/hooks/useClickOutside';
+import { NoRecords } from '@/components/atoms/NoRecords/NoRecords';
 
 const TableClients: React.FC = () => {
   const dispatch = useDispatch();

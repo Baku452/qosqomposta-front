@@ -1,4 +1,4 @@
-import { WasteManagementService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/wasteManagement';
 import {
   FETCH_SERVICES,
   SET_FETCHED_SERVICES,

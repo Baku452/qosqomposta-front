@@ -1,4 +1,4 @@
-import { WasteManagementServiceMerged } from '@/types/serviceQosqomposta';
+import { WasteManagementServiceMerged } from '@/types/wasteManagement';
 
 export interface HEADERS_SELECT {
   name: string;

@@ -1,6 +1,6 @@
 import { fetchServices } from '@/actions/services.actions';
 import { State } from '@/reducers/rootReducer';
-import { WasteManagementService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/wasteManagement';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
