@@ -1,5 +1,5 @@
 import { UserInfo } from 'firebase-admin/lib/auth/user-record';
-import { QosqompostaService } from './serviceQosqomposta';
+import { WasteManagementService } from './serviceQosqomposta';
 
 export interface AppState {
   user: AppUser;
@@ -18,8 +18,8 @@ export interface AppUser extends Omit<UserInfo, 'toJSON'> {
   isRegistering?: boolean;
 }
 
-export interface QosqompostaServices {
-  services: QosqompostaService[] | null;
+export interface WasteManagementServices {
+  services: WasteManagementService[] | null;
   selectedService?: string;
   isFetchingServices?: boolean;
 }

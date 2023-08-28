@@ -1,8 +1,8 @@
-import { QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
+import { WasteManagementServiceMerged } from '@/types/serviceQosqomposta';
 
 export interface HEADERS_SELECT {
   name: string;
-  key: keyof QosqompostaServiceMerged;
+  key: keyof WasteManagementServiceMerged;
 }
 
 export const TABLE_HEADERS_SELECT: HEADERS_SELECT[] = [

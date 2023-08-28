@@ -1,6 +1,6 @@
 import { State } from '@/reducers/rootReducer';
 import { Client, UpdateClient } from '@/types/clientsTypes';
-import { QosqompostaService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/serviceQosqomposta';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';
@@ -26,8 +26,8 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
 
   const { uid: userUid, roles: userRoles } = useSelector((state: State) => state.appUser);
   const [editClient] = useState<Client>(client);
-  const [selectedServices, setSelectedService] = useState<QosqompostaService>(
-    client.service as QosqompostaService,
+  const [selectedServices, setSelectedService] = useState<WasteManagementService>(
+    client.service as WasteManagementService,
   );
   const [selectedDistrict, setSelectedDistrict] = useState<Districts>(clientDistric);
   const [reference, setReference] = useState<string | undefined>(client.reference);
@@ -39,14 +39,16 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   const { cities } = useContext(PlacesContext) as PlacesContextType;
 
   const rowRef = useRef<HTMLTableRowElement>(null);
-  const getOptionLabel = (option: QosqompostaService) =>
+  const getOptionLabel = (option: WasteManagementService) =>
     `${option.name} (${option.modality})`;
-  const getOptionValue = (option: QosqompostaService) => option._id;
+  const getOptionValue = (option: WasteManagementService) => option._id;
 
   const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
   const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
 
-  const handleChangeService = (selectedOption: SingleValue<QosqompostaService>): void => {
+  const handleChangeService = (
+    selectedOption: SingleValue<WasteManagementService>,
+  ): void => {
     selectedOption && setSelectedService(selectedOption);
   };
 

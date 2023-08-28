@@ -1,32 +1,37 @@
 import { setServicesFetched } from '@/actions/services.actions';
-import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
+import {
+  WasteManagementService,
+  WasteManagementServiceMerged,
+} from '@/types/serviceQosqomposta';
 import { mergeServicesByType } from '@/utils/services.utils';
 import React, { createContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export interface ServiceContextType {
-  selectedService?: QosqompostaServiceMerged;
-  mergedServicesContext?: QosqompostaServiceMerged[];
-  servicesContext: QosqompostaService[] | undefined;
+  selectedService?: WasteManagementServiceMerged;
+  mergedServicesContext?: WasteManagementServiceMerged[];
+  servicesContext: WasteManagementService[] | undefined;
   setServicesContext?: React.Dispatch<
-    React.SetStateAction<QosqompostaService[] | undefined>
+    React.SetStateAction<WasteManagementService[] | undefined>
   >;
   setSelectedService: React.Dispatch<
-    React.SetStateAction<QosqompostaServiceMerged | undefined>
+    React.SetStateAction<WasteManagementServiceMerged | undefined>
   >;
 }
 
-const QosqompostaServicesContext = createContext<ServiceContextType | null>(null);
+const ServicesContext = createContext<ServiceContextType | null>(null);
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }) => {
-  const [initialState, setState] = useState<QosqompostaService[] | undefined>();
-  const [mergedServices, setMergedServices] = useState<QosqompostaServiceMerged[]>([]);
+  const [initialState, setState] = useState<WasteManagementService[] | undefined>();
+  const [mergedServices, setMergedServices] = useState<WasteManagementServiceMerged[]>(
+    [],
+  );
   const [selectedService, setSelectedService] = useState<
-    QosqompostaServiceMerged | undefined
+    WasteManagementServiceMerged | undefined
   >();
 
   const dispatch = useDispatch();
@@ -51,10 +56,8 @@ export const QosqompostaServicesContextProvider: React.FC<Props> = ({ children }
   }, [initialState]);
 
   return (
-    <QosqompostaServicesContext.Provider value={contextValue}>
-      {children}
-    </QosqompostaServicesContext.Provider>
+    <ServicesContext.Provider value={contextValue}>{children}</ServicesContext.Provider>
   );
 };
 
-export default QosqompostaServicesContext;
+export default ServicesContext;

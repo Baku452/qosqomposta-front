@@ -1,9 +1,12 @@
-import { QosqompostaServiceMerged, QosqompostaService } from '@/types/serviceQosqomposta';
+import {
+  WasteManagementServiceMerged,
+  WasteManagementService,
+} from '@/types/serviceQosqomposta';
 
 export const mergeServicesByType = (
-  services: QosqompostaService[],
-): QosqompostaServiceMerged[] => {
-  const mergedServices: { [type: string]: QosqompostaServiceMerged[] } = {};
+  services: WasteManagementService[],
+): WasteManagementServiceMerged[] => {
+  const mergedServices: { [type: string]: WasteManagementServiceMerged[] } = {};
   services.forEach(service => {
     const serviceType = service.type;
     if (!mergedServices[serviceType]) {
@@ -45,7 +48,7 @@ export const mergeServicesByType = (
     }
   });
 
-  const result: QosqompostaServiceMerged[] = [];
+  const result: WasteManagementServiceMerged[] = [];
   for (const type in mergedServices) {
     if (Object.prototype.hasOwnProperty.call(mergedServices, type)) {
       result.push(...mergedServices[type]);

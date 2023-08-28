@@ -1,4 +1,4 @@
-import DashboardAside from '@/components/organism/DashboardAside/DashboardAside';
+import DashboardAside from '@/features/DashboardAside/DashboardAside';
 import ProtectedRoute from '@/components/organism/ProtectedRoute/ProtectedRoute';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

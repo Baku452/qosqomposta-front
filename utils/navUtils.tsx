@@ -1,6 +1,7 @@
 import React from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import { BsGear } from 'react-icons/bs';
+import { FaBoxes } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
 import { RiPlantLine } from 'react-icons/ri';
 
@@ -45,6 +46,12 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
     name: 'Usuarios',
     path: '/dashboard/usuarios',
     icon: <FiUsers size={20} />,
+  },
+  {
+    key: 'services',
+    name: 'Servicios',
+    path: '/dashboard/admin/servicios',
+    icon: <FaBoxes size={20} />,
   },
   {
     key: 'compost',

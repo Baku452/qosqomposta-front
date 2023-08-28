@@ -7,7 +7,10 @@ import QosqompostaServicesContext, {
   ServiceContextType,
 } from '@/context/ServicesContext';
 import { useContext, useEffect, useState } from 'react';
-import { QosqompostaService, QosqompostaServiceMerged } from '@/types/serviceQosqomposta';
+import {
+  WasteManagementService,
+  WasteManagementServiceMerged,
+} from '@/types/serviceQosqomposta';
 import { TABLE_HEADERS_SELECT } from '@/constants/services.const';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 
@@ -18,7 +21,7 @@ import { setSelectedRegisterService } from '@/actions/services.actions';
 import { useRouter } from 'next/router';
 import LoadingOverlay from '@/components/molecules/LoaderOverlay/LoaderOverlay';
 export interface SeleccionarServicioProps {
-  data: QosqompostaService[];
+  data: WasteManagementService[];
 }
 const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
   const {
@@ -29,7 +32,7 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
   } = useContext(QosqompostaServicesContext) as ServiceContextType;
 
   const [activeService, setActiveService] = useState<
-    QosqompostaServiceMerged | undefined
+    WasteManagementServiceMerged | undefined
   >(selectedService);
 
   const [loading, setLoading] = useState<boolean>(false);

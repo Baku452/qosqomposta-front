@@ -1,4 +1,4 @@
-import { AppUser, QosqompostaServices } from '@/types/stateTypes';
+import { AppUser, WasteManagementServices } from '@/types/stateTypes';
 import { combineReducers } from 'redux';
 import { appUserReducer, initialUserState } from './appUser.reducer';
 import { servicesReducer, initialState as initialServiceState } from './services.reducer';
@@ -9,7 +9,7 @@ import {
 } from './listUsers.reducer';
 export interface State {
   appUser: AppUser;
-  listServices: QosqompostaServices;
+  listServices: WasteManagementServices;
   listClients: ListClients;
 }
 import { persistReducer } from 'redux-persist';

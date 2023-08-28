@@ -1,4 +1,4 @@
-export interface QosqompostaService {
+export interface WasteManagementService {
   _id: string;
   name: string;
   description: string;
@@ -18,10 +18,11 @@ export interface QosqompostaService {
   bucket?: boolean;
 }
 
-export interface ModalityService extends QosqompostaService {
+export interface ModalityService extends WasteManagementService {
   price: number;
   id: string;
 }
-export interface QosqompostaServiceMerged extends Omit<QosqompostaService, 'modality'> {
+export interface WasteManagementServiceMerged
+  extends Omit<WasteManagementService, 'modality'> {
   modality: ModalityService[];
 }

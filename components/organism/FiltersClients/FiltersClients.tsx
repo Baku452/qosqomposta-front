@@ -1,6 +1,6 @@
 import { fetchServices } from '@/actions/services.actions';
 import { State } from '@/reducers/rootReducer';
-import { QosqompostaService } from '@/types/serviceQosqomposta';
+import { WasteManagementService } from '@/types/serviceQosqomposta';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -20,23 +20,25 @@ const FiltersClients: React.FC = () => {
     service => service._id === DEFAULT_SERVICE_FILTER,
   );
 
-  const [selectedService, setSelectedService] = useState<QosqompostaService | null>(
+  const [selectedService, setSelectedService] = useState<WasteManagementService | null>(
     defaultSelectedService ? defaultSelectedService : null,
   );
   const handleFetchServices = useCallback(async () => {
     await fetchServices()(dispatch);
   }, [dispatch]);
 
-  const getOptionLabel = (option: QosqompostaService) =>
+  const getOptionLabel = (option: WasteManagementService) =>
     `${option.name} (${option.modality})`;
-  const getOptionValue = (option: QosqompostaService) => option._id;
+  const getOptionValue = (option: WasteManagementService) => option._id;
 
   const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
   const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
 
   const { filters } = useSelector((state: State) => state.listClients);
 
-  const handleChangeParam = (selectedOption: SingleValue<QosqompostaService>): void => {
+  const handleChangeParam = (
+    selectedOption: SingleValue<WasteManagementService>,
+  ): void => {
     setSelectedService(selectedOption);
     selectedOption?._id &&
       dispatch(

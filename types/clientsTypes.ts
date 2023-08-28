@@ -1,5 +1,5 @@
 import { FilterParamsClients } from './mainTypes';
-import { QosqompostaService } from './serviceQosqomposta';
+import { WasteManagementService } from './serviceQosqomposta';
 
 export interface Client {
   _id: string;
@@ -17,7 +17,7 @@ export interface Client {
   createdAt: string;
   membership: string;
   phoneNumber?: string;
-  service: Partial<QosqompostaService>;
+  service: Partial<WasteManagementService>;
   isEditing?: boolean;
   isUpdating?: boolean;
 }
