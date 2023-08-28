@@ -44,7 +44,7 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
   {
     key: 'users',
     name: 'Usuarios',
-    path: '/dashboard/usuarios',
+    path: '/dashboard/admin/usuarios',
     icon: <FiUsers size={20} />,
   },
   {
