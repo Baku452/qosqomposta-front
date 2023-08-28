@@ -22,7 +22,7 @@ export const fetchServices = () => async (dispatch: Dispatch<AnyAction>) => {
   return doAsync(
     dispatch,
     FETCH_SERVICES,
-    '/qosqomposta-service',
+    '/waste-management',
     { method: 'GET' },
     undefined,
   );

@@ -157,9 +157,7 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(
-    `${process.env.QOSQOMPOSTA_BACKEND_URL}/qosqomposta-service`,
-  );
+  const response = await fetch(`${process.env.QOSQOMPOSTA_BACKEND_URL}/waste-management`);
   const data = await response.json();
 
   return {
