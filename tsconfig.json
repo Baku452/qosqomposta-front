@@ -26,6 +26,6 @@
     "noEmitOnError": true,
     "useUnknownInCatchVariables": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/dashboard/admin/servicios"],
   "exclude": ["node_modules"]
 }
