@@ -1,5 +1,5 @@
 import { UserInfo } from 'firebase-admin/lib/auth/user-record';
-import { WasteManagementService } from './wasteManagement';
+import { WasteService } from './wasteManagement';
 
 export interface AppState {
   user: AppUser;
@@ -19,7 +19,7 @@ export interface AppUser extends Omit<UserInfo, 'toJSON'> {
 }
 
 export interface WasteManagementServices {
-  services: WasteManagementService[] | null;
+  services: WasteService[] | null;
   selectedService?: string;
   isFetchingServices?: boolean;
 }

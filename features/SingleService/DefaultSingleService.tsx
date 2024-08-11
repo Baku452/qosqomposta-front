@@ -1,8 +1,8 @@
-import { WasteManagementService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/wasteManagement';
 import { convertPriceToString } from '@/utils/utils';
 
 export interface DefaultSingleServiceProps {
-  service: WasteManagementService;
+  service: WasteService;
   toggleEditMode: (value: boolean) => void;
 }
 export const DefaultSingleService: React.FC<DefaultSingleServiceProps> = ({
@@ -18,7 +18,7 @@ export const DefaultSingleService: React.FC<DefaultSingleServiceProps> = ({
       <p onClick={() => toggleEditMode(true)}>{convertPriceToString(service.price)}</p>
 
       <label>Tipo de Servicio</label>
-      <p className="capitalize" onClick={() => toggleEditMode(true)}>
+      {/* <p className="capitalize" onClick={() => toggleEditMode(true)}>
         {service.type}
       </p>
 
@@ -30,7 +30,7 @@ export const DefaultSingleService: React.FC<DefaultSingleServiceProps> = ({
       <label>Dias de Recojo</label>
       <p className="capitalize" onClick={() => toggleEditMode(true)}>
         {service.pick_up_days}
-      </p>
+      </p> */}
     </div>
   );
 };

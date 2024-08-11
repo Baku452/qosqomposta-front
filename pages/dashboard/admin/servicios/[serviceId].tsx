@@ -1,6 +1,6 @@
 import { SingleService } from '@/features/SingleService/SingleService';
 import { SERVICES_ADMIN } from '@/routes/routes.config';
-import { WasteManagementService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/wasteManagement';
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Link from 'next/link';
 import { FaBoxes } from 'react-icons/fa';
@@ -12,8 +12,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const wasteManagementServices = await response.json();
 
-  const paths = wasteManagementServices.map((service: WasteManagementService) => ({
-    params: { serviceId: service._id },
+  const paths = wasteManagementServices.map((service: WasteService) => ({
+    params: { serviceId: service.waste_service_id },
   }));
 
   return {
@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps<{
-  singleService: WasteManagementService | null;
+  singleService: WasteService | null;
 }> = async ({ params }) => {
   try {
     const response = await fetch(
@@ -34,7 +34,7 @@ export const getStaticProps: GetStaticProps<{
       throw new Error('Failed to fetch data');
     }
 
-    const singleService: WasteManagementService = await response.json();
+    const singleService: WasteService = await response.json();
 
     return { props: { singleService } };
   } catch (error) {

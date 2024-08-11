@@ -1,9 +1,7 @@
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import QosqompostaServicesContext, {
-  ServiceContextType,
-} from '@/context/ServicesContext';
+import { useServicesContext } from '@/context/ServicesContext';
 import { BsPencilSquare } from 'react-icons/bs';
 import {
   ACCOUNT_FORM_STEP,
@@ -36,9 +34,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
   handleSetStepForm,
 }) => {
   const { formState } = useContext(SignUpContext) as SignUpContextType;
-  const { selectedService } = useContext(
-    QosqompostaServicesContext,
-  ) as ServiceContextType;
+  const { selectedService } = useServicesContext();
 
   const { getValues } = useForm({
     defaultValues: {
@@ -54,7 +50,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
   const handleSubmit = async () => {
     if (formState) {
       const result = await registerUser(
-        makeRegisterUserSchema(formValues, selectedService?._id),
+        makeRegisterUserSchema(formValues, selectedService?.pricing_id),
       )(dispatch);
 
       if (result) {

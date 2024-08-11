@@ -3,14 +3,9 @@ import Link from 'next/link';
 
 import { LINK_TERMS_CONDITIONS, REGISTER_PATH } from '@/routes/routes.config';
 import { GetStaticProps, NextPage } from 'next';
-import QosqompostaServicesContext, {
-  ServiceContextType,
-} from '@/context/ServicesContext';
-import { useContext, useEffect, useState } from 'react';
-import {
-  WasteManagementService,
-  WasteManagementServiceMerged,
-} from '@/types/wasteManagement';
+import { useServicesContext } from '@/context/ServicesContext';
+import { useEffect, useState } from 'react';
+
 import { TABLE_HEADERS_SELECT } from '@/constants/services.const';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 
@@ -20,20 +15,18 @@ import { useDispatch } from 'react-redux';
 import { setSelectedRegisterService } from '@/actions/services.actions';
 import { useRouter } from 'next/router';
 import LoadingOverlay from '@/components/molecules/LoaderOverlay/LoaderOverlay';
+import { SelectedService, WasteService } from '@/types/wasteManagement';
+import { WASTE_SERVICES } from '@/routes/apiRoutes';
 export interface SeleccionarServicioProps {
-  data: WasteManagementService[];
+  data: WasteService[];
 }
 const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
-  const {
-    selectedService,
-    mergedServicesContext,
-    setServicesContext,
-    setSelectedService,
-  } = useContext(QosqompostaServicesContext) as ServiceContextType;
+  const { selectedService, services, setServices, setSelectedService } =
+    useServicesContext();
 
-  const [activeService, setActiveService] = useState<
-    WasteManagementServiceMerged | undefined
-  >(selectedService);
+  const [activeService, setActiveService] = useState<SelectedService | null>(
+    selectedService,
+  );
 
   const [loading, setLoading] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -48,10 +41,10 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
     router.push(REGISTER_PATH);
   };
   useEffect(() => {
-    if (data && setServicesContext) {
-      setServicesContext(data);
+    if (data && setServices) {
+      setServices(data);
     }
-  }, [data, setServicesContext]);
+  }, [data, setServices]);
 
   useEffect(() => {
     if (selectedService) {
@@ -69,24 +62,8 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
       <div className={`p-5 ${styles.backgroundPage}`}>
         <h2 className="text-4xl text-center pt-10">Elige tu Plan</h2>
         <p className="text-center py-5">Puedes cancelar en cualquier momento.</p>
-        <div className="flex m-auto w-full justify-center gap-4 py-10">
-          {mergedServicesContext?.map(service => (
-            <button
-              onClick={() => {
-                setActiveService(service);
-                setSelectedService(service);
-              }}
-              className={`${
-                activeService?._id == service._id ? '!bg-yellowQ' : ''
-              } bg-white rounded-lg px-5 py-2 border-2 w-60`}
-              key={service._id}
-            >
-              {service.name}
-            </button>
-          ))}
-        </div>
 
-        {activeService && activeService.modality.length > 1 && (
+        {/* {activeService && activeService.modality.length > 1 && (
           <table className={styles.tableServices}>
             <tr>
               <th>{'Descripcion del Servicio'}</th>
@@ -145,7 +122,7 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
               );
             })}
           </table>
-        )}
+        )} */}
         <section className="m-auto my-12 text-center">
           <Link href={LINK_TERMS_CONDITIONS} className="underline text-greenQ  ">
             Condiciones del Servicio Qosqomposta
@@ -157,7 +134,9 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await fetch(`${process.env.QOSQOMPOSTA_BACKEND_URL}/waste-management`);
+  const response = await fetch(
+    `${process.env.QOSQOMPOSTA_BACKEND_URL}/${WASTE_SERVICES.GET_ALL}`,
+  );
   const data = await response.json();
 
   return {

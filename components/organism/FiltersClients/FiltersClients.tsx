@@ -1,6 +1,6 @@
 import { fetchServices } from '@/actions/services.actions';
 import { State } from '@/reducers/rootReducer';
-import { WasteManagementService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/wasteManagement';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -17,35 +17,33 @@ const FiltersClients: React.FC = () => {
   const { cities } = useContext(PlacesContext) as PlacesContextType;
 
   const defaultSelectedService = services?.find(
-    service => service._id === DEFAULT_SERVICE_FILTER,
+    service => service.waste_service_id === DEFAULT_SERVICE_FILTER,
   );
 
-  const [selectedService, setSelectedService] = useState<WasteManagementService | null>(
+  const [selectedService, setSelectedService] = useState<WasteService | null>(
     defaultSelectedService ? defaultSelectedService : null,
   );
   const handleFetchServices = useCallback(async () => {
     await fetchServices()(dispatch);
   }, [dispatch]);
 
-  const getOptionLabel = (option: WasteManagementService) =>
-    `${option.name} (${option.modality})`;
-  const getOptionValue = (option: WasteManagementService) => option._id;
+  // const getOptionLabel = (option: WasteService) =>
+  //   `${option.name} (${option.modality})`;
+  const getOptionValue = (option: WasteService) => option.waste_service_id;
 
   const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
   const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
 
   const { filters } = useSelector((state: State) => state.listClients);
 
-  const handleChangeParam = (
-    selectedOption: SingleValue<WasteManagementService>,
-  ): void => {
+  const handleChangeParam = (selectedOption: SingleValue<WasteService>): void => {
     setSelectedService(selectedOption);
-    selectedOption?._id &&
+    selectedOption?.waste_service_id &&
       dispatch(
         setFiltersClients({
           ...filters,
           service: {
-            value: selectedOption?._id,
+            value: selectedOption?.waste_service_id,
           },
         }),
       );
@@ -72,7 +70,7 @@ const FiltersClients: React.FC = () => {
               defaultValue={selectedService}
               value={selectedService}
               onChange={handleChangeParam}
-              getOptionLabel={getOptionLabel}
+              // getOptionLabel={getOptionLabel}
               getOptionValue={getOptionValue}
               placeholder="Seleccionar"
             />

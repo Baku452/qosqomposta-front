@@ -43,7 +43,7 @@ const NavigationWeb: React.FC<NavigationWebProps> = ({ items }) => {
           ))}
           <li>
             <button className="btn btn-primary !bg-greenQ !text-white">
-              <Link href={LOGIN_PATH}>Únete Ya</Link>
+              <Link href={LOGIN_PATH}>Ingresar</Link>
             </button>
           </li>
         </ul>

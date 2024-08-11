@@ -1,4 +1,4 @@
-import { WasteManagementService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/wasteManagement';
 import {
   FETCH_SERVICES,
   SET_FETCHED_SERVICES,
@@ -13,7 +13,7 @@ export const setSelectedRegisterService = (serviceId: string): AnyAction => ({
   payload: serviceId,
 });
 
-export const setServicesFetched = (services: WasteManagementService[]): AnyAction => ({
+export const setServicesFetched = (services: WasteService[]): AnyAction => ({
   type: SET_FETCHED_SERVICES,
   payload: services,
 });

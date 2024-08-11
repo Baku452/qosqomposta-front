@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,6 +15,8 @@ import {
 import { useDispatch } from 'react-redux';
 import { setUserApp } from '@/actions/user.app.actions';
 import Spinner from '@/components/atoms/Spinner/Spinner';
+import { FaEye } from 'react-icons/fa';
+import styles from './LoginForm.module.scss';
 
 type LoginFormFields = {
   email: string;
@@ -27,6 +29,7 @@ const LoginForm: React.FC = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors },
@@ -38,10 +41,7 @@ const LoginForm: React.FC = () => {
           .string()
           .required('El correo electrónico es necesario')
           .email('Correo electrónico inválido'),
-        password: yup
-          .string()
-          .required('La contraseña es necesaria')
-          .min(6, 'La contraseña tiene que tener mínimo 6 caracácteres'),
+        password: yup.string().required('La contraseña es necesaria'),
       }),
     ),
     defaultValues: {
@@ -52,6 +52,9 @@ const LoginForm: React.FC = () => {
 
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const passwordValue = watch('password', '');
+  const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleLogin = async (data: LoginFormFields) => {
     setIsLogin(true);
@@ -77,6 +80,14 @@ const LoginForm: React.FC = () => {
       setIsLogin(false);
     }
   };
+
+  const handleShowPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setShowPassword(value => !value);
+    if (passwordInputRef.current) {
+      passwordInputRef.current.focus();
+    }
+  };
   return (
     <div className="p-10 rounded-3xl shadow-xl min-w-[500px] mb-20">
       <form
@@ -85,30 +96,32 @@ const LoginForm: React.FC = () => {
       >
         <h2 className="text-center py-5 font-paragraph text-2xl">Ingrese sus datos</h2>
         <div className="mb-5">
-          {errors.email && <span className="text-error">{errors.email.message}</span>}
           <input placeholder="Correo Electrónico" type="email" {...register('email')} />
+          {errors.email && <span className="text-error">{errors.email.message}</span>}
         </div>
         <div className="mb-5 text-right">
-          <input
-            className="!block !relative"
-            placeholder="Contraseña"
-            type={showPassword ? 'text' : 'password'}
-            {...register('password')}
-          />
+          <div className="flex items-center relative">
+            <input
+              className="!block !relative"
+              placeholder="Contraseña"
+              type={showPassword ? 'text' : 'password'}
+              {...register('password')}
+              ref={passwordInputRef}
+            />
+            <button
+              disabled={!passwordValue}
+              className={styles.showPasswordIcon}
+              onClick={handleShowPassword}
+            >
+              <FaEye />
+            </button>
+          </div>
           {errors.password && (
             <div className="text-left">
               <span className="text-error">{errors.password.message}</span>
             </div>
           )}
-          <div className="flex justify-start py-2">
-            <input
-              className="inline w-4 mr-1"
-              type="checkbox"
-              defaultChecked={showPassword}
-              onClick={() => setShowPassword(!showPassword)}
-            />
-            <p className="text-sm text-gre">Mostrar contraseña</p>
-          </div>
+
           {errorAuth && <span className="text-error">{errorAuth}</span>}
           <a className="text-yellowQ-500 pt-3 relative block" href={FORGOT_PASSWORD}>
             Olvide mi contraseña
