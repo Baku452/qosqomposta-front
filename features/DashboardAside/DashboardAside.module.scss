@@ -1,5 +1,9 @@
 .navlink{
     transition: all .2s;
+    padding:  0.5rem 1rem;
+    border-radius: 0.5rem;
+    width: 200px;
+
     >svg {
         vertical-align: middle;
     }
@@ -11,6 +15,14 @@
     }
 
     &:hover > svg {
+        @apply text-greenQ
+    }
+}
+.navLinkActive{
+    @apply shadow-md shadow-greenQ;
+    @apply text-greenQ;
+
+    > svg {
         @apply text-greenQ
     }
 }

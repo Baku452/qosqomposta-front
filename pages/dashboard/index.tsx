@@ -6,8 +6,8 @@ import PickUpDates from '@/components/organism/PickupDates/PickUpDates';
 import styles from './dashboard.module.scss';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
-import { ValidRoles } from '@/main.config';
 import SummaryAdmin from '@/features/SummaryAdmin/SummaryAdmin';
+import { VALID_ROLES } from '@/main.config';
 export interface DashboardProps {
   user?: string;
 }
@@ -17,8 +17,8 @@ const Dashboard: NextPage<DashboardProps> = () => {
     <div>
       <h1>Dashboard</h1>
       <div className={`w-full ${styles.gridDashboard}`}>
-        {userRoles?.includes(ValidRoles.ADMIN) && <SummaryAdmin />}
-        {userRoles?.includes(ValidRoles.CLIENT) && (
+        {userRoles?.includes(VALID_ROLES.ADMIN) && <SummaryAdmin />}
+        {userRoles?.includes(VALID_ROLES.CLIENT) && (
           <>
             <SummaryClient />
             <PaymentSummary />
