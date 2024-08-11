@@ -1,0 +1,16 @@
+.navlink{
+    transition: all .2s;
+    >svg {
+        vertical-align: middle;
+    }
+    span {
+        line-height: 20px;
+    }
+    :hover{
+        @apply text-greenQ
+    }
+
+    &:hover > svg {
+        @apply text-greenQ
+    }
+}

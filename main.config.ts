@@ -90,19 +90,12 @@ export const DEFAULT_HEIGHT_LOGO_NAV = 80;
 export const DEFAULT_LATITUDE_MAP = -13.5319533;
 export const DEFAULT_LONGITUTED_MAP = -71.9591915;
 
-export enum ValidRoles {
+export enum VALID_ROLES {
   ADMIN = 'admin',
   CLIENT = 'client',
   COLLECTOR = 'collector',
   BLOGGER = 'blogger',
 }
-
-export const RolesAside = {
-  [ValidRoles.ADMIN]: DASHBOARD_ADMIN_NAV_LINKS,
-  [ValidRoles.CLIENT]: DASHBOARD_CLIENT_NAV_LINKS,
-  [ValidRoles.COLLECTOR]: DASHBOARD_COLLECTOR_NAV_LINKS,
-  [ValidRoles.BLOGGER]: DASHBOARD_BLOGGER_NAV_LINKS,
-};
 
 export const PAGE_SIZE = 20;
 export const DEFAULT_PAGE_START = 1;

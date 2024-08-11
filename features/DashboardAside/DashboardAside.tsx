@@ -1,5 +1,4 @@
 import LogoutButton from '@/components/atoms/LogoutButton/LogoutButton';
-import { ValidRoles } from '@/main.config';
 import { State } from '@/reducers/rootReducer';
 import { DASHBOARD_ADMIN_NAV_LINKS } from '@/utils/navUtils';
 import Image from 'next/image';
@@ -7,7 +6,7 @@ import Link from 'next/link';
 import { SetStateAction } from 'react';
 import { BiArrowFromRight } from 'react-icons/bi';
 import { useSelector } from 'react-redux';
-
+import styles from './DashboardAside.module.scss';
 export interface DashboardAsideProps {
   openNavbar: boolean;
   setOpenNavbar: React.Dispatch<SetStateAction<boolean>>;
@@ -46,7 +45,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
           </div>
         ) : null}
       </div>
-      <div className="h-full justify-between">
+      <div className="h-full w-full text-left">
         <nav>
           <ul
             className={`flex flex-col ${
@@ -54,19 +53,23 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
             }`}
           >
             {userRoles &&
-              userRoles?.includes(ValidRoles.ADMIN) &&
-              DASHBOARD_ADMIN_NAV_LINKS.map(navlink => (
-                <Link
-                  href={navlink.path}
-                  className="my-5 cursor-pointer hover:bg-white text-center flex items-center"
-                  key={navlink.key}
-                  onClick={() => console.log('click')}
-                  passHref
-                >
-                  {navlink.icon}
-                  {openNavbar ? <span className="ml-3">{navlink.name}</span> : null}
-                </Link>
-              ))}
+              DASHBOARD_ADMIN_NAV_LINKS.map(
+                navlink =>
+                  userRoles.includes(navlink.userRole) && (
+                    <Link
+                      href={navlink.path}
+                      className={`my-5 cursor-pointer hover:bg-white text-center inline-flex items-center ${styles.navlink}`}
+                      key={navlink.key}
+                      onClick={() => console.log('click')}
+                      passHref
+                    >
+                      {navlink.icon}
+                      {openNavbar ? (
+                        <div className="ml-3 align-middle">{navlink.name}</div>
+                      ) : null}
+                    </Link>
+                  ),
+              )}
           </ul>
         </nav>
       </div>
