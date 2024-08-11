@@ -1,3 +1,5 @@
+$aside-width: 20rem;
+
 .dashboard{
     background-color: #ebebeb;
     display: flex;
@@ -7,11 +9,11 @@
 
 
     .dashboard__body{
-        margin-left: 15rem;
+        margin-left: $aside-width;
         padding: 1rem;
         position: relative;
         transition: .3s all;
-        width: calc(100vw - 15rem);
+        width: calc(100vw - $aside-width);
     }
 
     .dashboard__bodyExpanded{

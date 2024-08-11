@@ -18,8 +18,8 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
 
   return (
     <section
-      className={`bg-white h-full shadow-lg transition-all duration-300 flex flex-col fixed items-center  py-5 px-5 ${
-        openNavbar ? 'w-[15rem]' : 'w-[5rem]'
+      className={`bg-white h-full shadow-lg transition-all duration-300 flex flex-col fixed items-center z-100 py-5 px-5 ${
+        openNavbar ? 'w-[20rem]' : 'w-[5rem]'
       }`}
     >
       <div className={`flex mb-5 ${openNavbar ? 'self-end' : 'self-center'}`}>
@@ -30,28 +30,17 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
           <BiArrowFromRight size={30} />
         </button>
       </div>
-      {/* <div className="text-center">
-        {isOpen ? (
-          <LogoApp width={180} logoType={LogoAppColors.color} hasLink={true} />
-        ) : (
-          <Image
-            width={80}
-            height={80}
-            alt="Logo Qosqomposta"
-            src={ONLY_LOGO_BLACK_LINES}
-          />
-        )}
-      </div> */}
-      <div className="text-center mb-4">
+      <div className="flex text-center mb-4 gap-4 border-b-[1px]">
         <Image
           className="m-auto mb-4"
           alt="User profile"
-          width={100}
-          height={100}
+          width={50}
+          height={50}
           src={userDetails.photoURL ? userDetails.photoURL : '/images/defaultAvatar.png'}
         />
+
         {openNavbar ? (
-          <div className="text-center">
+          <div className="text-left">
             <p className="font-bold">{userDetails.name}</p>
             <p className="text-gray-600">{userDetails.email}</p>
           </div>

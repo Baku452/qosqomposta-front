@@ -53,7 +53,8 @@ const LoginForm: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const passwordValue = watch('password', '');
+  const { ref, ...restPassword } = register('password');
+  const passwordValue = watch('password');
   const passwordInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleLogin = async (data: LoginFormFields) => {
@@ -105,8 +106,11 @@ const LoginForm: React.FC = () => {
               className="!block !relative"
               placeholder="Contraseña"
               type={showPassword ? 'text' : 'password'}
-              {...register('password')}
-              ref={passwordInputRef}
+              {...restPassword}
+              ref={e => {
+                ref(e);
+                passwordInputRef.current = e;
+              }}
             />
             <button
               disabled={!passwordValue}
