@@ -20,12 +20,12 @@ export const ServicesAdmin: React.FC = () => {
   }, [services]);
   return (
     <div className="grid grid-cols-3 gap-5">
-      <AddService />
+      {/* <AddService />
       {services ? (
         services.map(service => <ServiceCard key={service._id} service={service} />)
       ) : (
         <NoRecords />
-      )}
+      )} */}
     </div>
   );
 };

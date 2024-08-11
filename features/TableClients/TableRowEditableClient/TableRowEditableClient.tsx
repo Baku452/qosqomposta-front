@@ -1,6 +1,5 @@
 import { State } from '@/reducers/rootReducer';
 import { Client, UpdateClient } from '@/types/clientsTypes';
-import { WasteManagementService } from '@/types/wasteManagement';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';
@@ -26,9 +25,9 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
 
   const { uid: userUid, roles: userRoles } = useSelector((state: State) => state.appUser);
   const [editClient] = useState<Client>(client);
-  const [selectedServices, setSelectedService] = useState<WasteManagementService>(
-    client.service as WasteManagementService,
-  );
+  // const [selectedServices, setSelectedService] = useState<WasteManagementService>(
+  //   client.service as WasteManagementService,
+  // );
   const [selectedDistrict, setSelectedDistrict] = useState<Districts>(clientDistric);
   const [reference, setReference] = useState<string | undefined>(client.reference);
   const [phoneNumber, setPhoneNumber] = useState<string | undefined>(client.phoneNumber);
@@ -38,19 +37,19 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   const services = useSelector((state: State) => state.listServices.services);
   const { cities } = useContext(PlacesContext) as PlacesContextType;
 
-  const rowRef = useRef<HTMLTableRowElement>(null);
-  const getOptionLabel = (option: WasteManagementService) =>
-    `${option.name} (${option.modality})`;
-  const getOptionValue = (option: WasteManagementService) => option._id;
+  // const rowRef = useRef<HTMLTableRowElement>(null);
+  // const getOptionLabel = (option: WasteManagementService) =>
+  //   `${option.name} (${option.modality})`;
+  // const getOptionValue = (option: WasteManagementService) => option._id;
 
   const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
   const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
 
-  const handleChangeService = (
-    selectedOption: SingleValue<WasteManagementService>,
-  ): void => {
-    selectedOption && setSelectedService(selectedOption);
-  };
+  // const handleChangeService = (
+  //   selectedOption: SingleValue<WasteManagementService>,
+  // ): void => {
+  //   selectedOption && setSelectedService(selectedOption);
+  // };
 
   const handleChangeDistrict = (selectedOption: SingleValue<Districts>): void => {
     selectedOption && setSelectedDistrict(selectedOption);
@@ -66,14 +65,14 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
     if (
       reference !== client.reference ||
       selectedDistrict !== client.district ||
-      selectedServices._id !== client.service._id ||
+      // selectedServices._id !== client.service._id ||
       phoneNumber !== client.phoneNumber ||
       address !== client.phoneNumber
     ) {
       await updateClientInformation(clientUuid, {
         reference: reference,
         district: selectedDistrict.value,
-        selectedServiceId: selectedServices._id,
+        // selectedServiceId: selectedServices._id,
         phoneNumber: phoneNumber,
         address: address,
         idUserEditing: userUid,
@@ -89,7 +88,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
   }, []);
   return (
     <tr
-      ref={rowRef}
+      // ref={rowRef}
       tabIndex={0}
       id={`editRowClient` + editClient._id}
       onBlur={() => handleBlurRow(editClient.uid)}
@@ -108,11 +107,11 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
         <Select
           className=" text-sm"
           options={services ?? []}
-          defaultValue={selectedServices}
-          value={selectedServices}
-          onChange={handleChangeService}
-          getOptionLabel={getOptionLabel}
-          getOptionValue={getOptionValue}
+          // defaultValue={selectedServices}
+          // value={selectedServices}
+          // onChange={handleChangeService}
+          // getOptionLabel={getOptionLabel}
+          // getOptionValue={getOptionValue}
           placeholder="Servicio Q"
         />
       </td>

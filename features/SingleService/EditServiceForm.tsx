@@ -1,8 +1,5 @@
-import { WasteManagementService } from '@/types/wasteManagement';
-import { useRef } from 'react';
-
 export interface EditSingleServiceProps {
-  service: WasteManagementService;
+  service: any;
   toggleEditMode: (value: boolean) => void;
 }
 export const EditSingleService: React.FC<EditSingleServiceProps> = ({

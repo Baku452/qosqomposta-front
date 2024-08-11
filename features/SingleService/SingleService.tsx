@@ -1,4 +1,3 @@
-import { WasteManagementService } from '@/types/wasteManagement';
 import { useCallback, useRef, useState } from 'react';
 import styles from './editSingleService.module.scss';
 import { useClickOutside } from '@/hooks/useClickOutside';
@@ -6,7 +5,7 @@ import { EditSingleService } from './EditServiceForm';
 import { DefaultSingleService } from './DefaultSingleService';
 
 export interface SingleServiceProps {
-  service: WasteManagementService;
+  service: any;
 }
 export const SingleService: React.FC<SingleServiceProps> = ({ service }) => {
   const [editMode, setEditMode] = useState<boolean>(false);
