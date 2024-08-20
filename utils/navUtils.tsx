@@ -2,8 +2,11 @@ import { VALID_ROLES } from '@/main.config';
 import React from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import { BsGear } from 'react-icons/bs';
-import { FaBoxes } from 'react-icons/fa';
+import { FaQuestion } from 'react-icons/fa';
+import { FaBoxes, FaUser, FaWallet } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
+import { GiFlowerPot } from 'react-icons/gi';
+import { MdDirectionsBike } from 'react-icons/md';
 import { RiPlantLine } from 'react-icons/ri';
 
 export interface Aside {
@@ -16,24 +19,46 @@ export interface Aside {
 
 export const DASHBOARD_CLIENT_NAV_LINKS = [
   {
-    key: 'resume',
-    name: 'Resumen',
+    key: 'inicio',
+    name: 'Inicio',
     path: '/dashboard',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <BiHomeAlt size={20} />,
   },
   {
-    key: 'payments',
-    name: 'Membresia',
-    path: '/dashboard',
+    key: 'perfil',
+    name: 'Perfil',
+    path: '/dashboard/perfil',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <FaUser size={20} />,
   },
   {
-    key: 'pickups',
-    name: 'Recojos',
-    path: '/dashboard',
+    key: 'membresia',
+    name: 'Membresía',
+    path: '/dashboard/membresia',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <GiFlowerPot size={20} />,
   },
   {
-    key: 'profile',
-    name: 'Mi cuenta',
-    path: '/dashboard',
+    key: 'facturación',
+    name: 'Facturación',
+    path: '/dashboard/facturacion',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <FaWallet size={20} />,
+  },
+  {
+    key: 'recojo',
+    name: 'Recojo',
+    path: '/dashboard/recojo',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <MdDirectionsBike size={20} />,
+  },
+  {
+    key: 'faqs',
+    name: 'Preguntas Frecuentes',
+    path: '/dashboard/faqs',
+    userRole: VALID_ROLES.CLIENT,
+    icon: <FaQuestion size={20} />,
   },
 ];
 
@@ -62,14 +87,14 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
   {
     key: 'compost',
     name: 'Compost',
-    path: '/dashboard',
+    path: '/dashboard/compost',
     icon: <RiPlantLine size={20} />,
     userRole: VALID_ROLES.ADMIN,
   },
   {
     key: 'profile',
     name: 'Configuracion',
-    path: '/dashboard',
+    path: '/dashboard/admin/config',
     icon: <BsGear size={20} />,
     userRole: VALID_ROLES.ADMIN,
   },
@@ -121,4 +146,7 @@ export const DASHBOARD_BLOGGER_NAV_LINKS = [
   },
 ];
 
-export const DASHBOARD_ASIDE_NAV_LINKS = [{ ...DASHBOARD_ADMIN_NAV_LINKS }];
+export const DASHBOARD_ASIDE_NAV_LINKS = [
+  ...DASHBOARD_ADMIN_NAV_LINKS,
+  ...DASHBOARD_CLIENT_NAV_LINKS,
+];
