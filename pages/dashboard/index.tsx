@@ -14,18 +14,9 @@ export interface DashboardProps {
 const Dashboard: NextPage<DashboardProps> = () => {
   const userRoles = useSelector((state: State) => state.appUser.roles);
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <div className={`w-full ${styles.gridDashboard}`}>
-        {userRoles?.includes(VALID_ROLES.ADMIN) && <SummaryAdmin />}
-        {userRoles?.includes(VALID_ROLES.CLIENT) && (
-          <>
-            <SummaryClient />
-            <PaymentSummary />
-            <PickUpDates />
-          </>
-        )}
-      </div>
+    <div className={`w-full ${styles.gridDashboard}`}>
+      {userRoles?.includes(VALID_ROLES.ADMIN) && <SummaryAdmin />}
+      {userRoles?.includes(VALID_ROLES.CLIENT) && <SummaryClient />}
     </div>
   );
 };

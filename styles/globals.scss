@@ -3,163 +3,163 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: Isidora;
-    src: url('/fonts/Isidora-Alt-Bold.otf') format('opentype');
-    font-weight: bold;
-    font-style: normal;
+  font-family: Isidora;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/Isidora-Alt-Bold.otf') format('opentype');
 }
 @font-face {
-    font-family: Isidora;
-    src: url('../public/fonts/Isidora-Medium.otf') format('opentype');
-    font-weight: medium;
-    font-style: normal;
+  font-family: Isidora;
+  font-style: normal;
+  font-weight: medium;
+  src: url('../public/fonts/Isidora-Medium.otf') format('opentype');
 }
 
 @font-face {
-    font-family: Isidora;
-    src: url('/fonts/Isidora-Semi-Bold.otf') format('opentype');
-    font-weight: 600;
-    font-style: normal;
+  font-family: Isidora;
+  font-style: normal;
+  font-weight: 600;
+  src: url('/fonts/Isidora-Semi-Bold.otf') format('opentype');
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 @layer base {
-    html {
-        font-family: Isidora, system-ui, sans-serif;
-        box-sizing: border-box;
-    }
+  html {
+    box-sizing: border-box;
+    font-family: Isidora, system-ui, sans-serif;
+  }
 
-    h1,
-    h2,
-    h3 {
-        font-family: eveleth, sans-serif;
-    }
-    
-    * {
-        line-height: 1.5;
-    }
+  h1,
+  h2,
+  h3 {
+    font-family: eveleth, sans-serif;
+  }
+
+  * {
+    line-height: 1.5;
+  }
 }
 
 *,
-
 *::before,
-
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 /* Global styles for the site ! */
 
 .link {
-    text-decoration: none;
-    border-bottom: 2px solid;
-    @apply border-transparent;
-    
-    transition: 0.3s ease;
+  border-bottom: 2px solid;
+  text-decoration: none;
+
+  transition: 0.3s ease;
+  @apply border-transparent;
 }
 
 .link:hover {
-    @apply border-yellowQ;
+  @apply border-yellowQ;
 }
 
 .btn {
-    @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
+  @apply w-fit rounded-full py-2 px-5 uppercase text-lg font-bold cursor-pointer tracking-wider box-content;
 
-    &:disabled {
-        @apply cursor-not-allowed bg-gray-300;
-        @apply opacity-50;
-    }
+  &:disabled {
+    @apply cursor-not-allowed bg-gray-300;
+    @apply opacity-50;
+  }
 }
 
 .btn-primary {
-    @apply bg-yellowQ text-black;
-    
-    width: fit-content;
-    font-weight: bolder;
-    border-radius: 10px;
-    border: 1px solid transparent;
-    transition: 0.2s ease;
-    box-sizing: border-box;
+  @apply bg-yellowQ text-black;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-weight: bolder;
+  transition: 0.2s ease;
+
+  width: fit-content;
 }
 
 .btn-primary:not(:disabled):hover {
-    border-color: #000;
+  border-color: #000;
 }
 
 .btn-secondary {
-    @apply bg-black text-white hover:bg-white hover:text-black;
+  @apply bg-black text-white hover:bg-white hover:text-black;
 }
 
 .btn-dark {
-    @apply bg-black text-white hover:bg-white hover:text-black;
+  @apply bg-black text-white hover:bg-white hover:text-black;
 }
 
 .btn-outline-primary {
-    @apply rounded-lg border-yellow-300 hover:border-yellowQ;
-    
-    width: fit-content;
-    border: 1px solid;
-    transition: 0.2s ease;
+  @apply rounded-lg border-yellow-300 hover:border-yellowQ;
+  border: 1px solid;
+  transition: 0.2s ease;
+
+  width: fit-content;
 }
 
 .title {
-    @apply font-bold;
+  @apply font-bold;
 }
 
 .yellowText {
-    @apply text-yellowQ;
+  @apply text-yellowQ;
 }
 
 /* Forms Styles */
 
 input {
-    width: 100%;
-    padding: 0.7rem;
-    border-radius: 0.7rem;
-    border: 1px solid #b2b2b2;
-    @apply outline-yellowQ;
+  border: 1px solid #b2b2b2;
+  border-radius: 0.7rem;
+  padding: 0.7rem;
+  width: 100%;
+  @apply outline-yellowQ;
 }
 
-.map-container{
-    display: block;
-    height: 300px;
+.map-container {
+  display: block;
+  height: 300px;
 }
 
 /* Table Styles */
 
 table {
-    @apply bg-white text-gray-500;
-    table-layout: fixed;
+  @apply bg-white text-gray-500;
 
-    th {
-        @apply font-paragraph text-gray-800;
-        font-weight: 600;
-        padding: 0.7rem;
-        padding-left: 0;
-        white-space: nowrap;
-        button{
-            margin-left: 0.5rem;
-            vertical-align: middle;
-        }
+  overflow-y: scroll;
+  table-layout: fixed;
 
-        &:first-child{
-            padding-left: 0.5rem;
-        }
+  th {
+    @apply font-paragraph text-gray-800;
+    font-weight: 600;
+    padding: 0.7rem;
+    padding-left: 0;
+    white-space: nowrap;
+
+    button {
+      margin-left: 0.5rem;
+      vertical-align: middle;
     }
 
-    tr{
-        @apply border-[1px] border-gray-200
+    &:first-child {
+      padding-left: 0.5rem;
     }
+  }
 
-    td{
-        padding: 0.5rem;
-        padding-left: 0;
-        &:first-child{
-            padding-left: 0.5rem;
-        }
+  tr {
+    @apply border-[1px] border-gray-200;
+  }
+
+  td {
+    padding: 0.5rem;
+    padding-left: 0;
+
+    &:first-child {
+      padding-left: 0.5rem;
     }
-
-    overflow-y: scroll;
+  }
 }

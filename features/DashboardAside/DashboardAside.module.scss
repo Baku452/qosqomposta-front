@@ -1,34 +1,38 @@
-.navlink{
-    transition: all .2s;
-    padding:  0.5rem 1rem;
-    border-radius: 0.5rem;
-    min-width: 200px;
+.navlink {
+  border-radius: 0.5rem;
+  min-width: 200px;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s;
 
-    >svg {
-        vertical-align: middle;
-    }
-    span {
-        line-height: 20px;
-    }
-    :hover{
-        @apply text-greenQ
-    }
+  > svg {
+    vertical-align: middle;
+  }
 
-    &:hover > svg {
-        @apply text-greenQ
-    }
-}
-.navLinkActive{
-    @apply shadow-md shadow-greenQ;
+  span {
+    line-height: 20px;
+  }
+
+  :hover {
     @apply text-greenQ;
+  }
 
-    > svg {
-        @apply text-greenQ
-    }
+  &:hover > svg {
+    @apply text-greenQ;
+  }
 }
+
+.navLinkActive {
+  @apply shadow-md shadow-greenQ;
+  @apply text-greenQ;
+
+  > svg {
+    @apply text-greenQ;
+  }
+}
+
 .collapsedIcon {
-    min-width: 30px;
-    max-width: 20px;
-    height: 30px;
-    padding:  0.25rem;
+  height: 30px;
+  max-width: 20px;
+  min-width: 30px;
+  padding: 0.25rem;
 }

@@ -1,15 +1,15 @@
-.cardSummary{
-    @apply shadow-md text-black bg-white;
-    border-radius: 10px;
-    min-width: 20rem;
-    min-height: 10rem;
-    padding: 1.5rem;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.cardSummary {
+  @apply shadow-md text-black bg-white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  justify-content: space-between;
+  min-height: 10rem;
+  min-width: 20rem;
+  padding: 1.5rem;
 
-    h3{
-        @apply font-paragraph
-    }
+  h3 {
+    @apply font-paragraph;
+  }
 }

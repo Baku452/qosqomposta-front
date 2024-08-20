@@ -1,23 +1,22 @@
 $aside-width: 20rem;
 
-.dashboard{
-    background-color: #ebebeb;
-    display: flex;
-    width: 100%;
+.dashboard {
+  background-color: #ebebeb;
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+
+  .dashboard__body {
+    margin-left: $aside-width;
+    padding: 1rem;
     position: relative;
-    min-height: 100vh;
+    transition: 0.3s all;
+    width: calc(100vw - $aside-width);
+  }
 
-
-    .dashboard__body{
-        margin-left: $aside-width;
-        padding: 1rem;
-        position: relative;
-        transition: .3s all;
-        width: calc(100vw - $aside-width);
-    }
-
-    .dashboard__bodyExpanded{
-        margin-left: 5rem;
-        width: calc(100vw - 5rem);
-    }
+  .dashboard__bodyExpanded {
+    margin-left: 5rem;
+    width: calc(100vw - 5rem);
+  }
 }

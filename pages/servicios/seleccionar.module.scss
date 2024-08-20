@@ -1,31 +1,30 @@
-.backgroundPage{
-    background-position-y: 8rem;
+.backgroundPage {
+  background-position-y: 8rem;
 }
 
-.tableServices{
-    margin: auto;
-    background-color: #fff;
+.tableServices {
+  background-color: #fff;
+  margin: auto;
 
-    th{
-        text-align: left;
-        padding: 1rem;
-        width: 18rem;
-        height: 5rem;
+  th {
+    height: 5rem;
+    padding: 1rem;
+    text-align: left;
+    width: 18rem;
+  }
 
+  tr {
+    border-bottom: 1px solid #dfdfdf;
+  }
+
+  td {
+    height: 5rem;
+    padding: 1rem;
+    text-align: center;
+    width: 15rem;
+
+    svg {
+      margin: auto;
     }
-
-    tr {
-        border-bottom: 1px solid #dfdfdf;
-    }
-
-    td{
-        padding: 1rem;
-        width: 15rem;
-        height: 5rem;
-        text-align: center;
-
-        svg{
-            margin: auto;
-        }
-    }
+  }
 }

@@ -1,12 +1,12 @@
-.cardSummary{
-    @apply shadow-lg bg-greenQ;
-    border-radius: 10px;
-    min-width: 20rem;
-    padding: 1rem;
-    color: #fff;
-    height: fit-content;
+.cardSummary {
+  @apply shadow-lg bg-greenQ;
+  border-radius: 10px;
+  color: #fff;
+  height: fit-content;
+  min-width: 20rem;
+  padding: 1rem;
 
-    h3{
-        @apply font-paragraph
-    }
+  h3 {
+    @apply font-paragraph;
+  }
 }

@@ -16,9 +16,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <ProtectedRoute>
       <PlacesContextProvider>
-        {/* <HeaderDashboard /> */}
         <main className={styles.dashboard}>
-          <span className={`absolute  min-h-[300px] top-0 w-full bg-yellowQ`} />
           <DashboardAside openNavbar={isOpenNavbar} setOpenNavbar={setIsOpenNavBar} />
           <div
             className={`${styles.dashboard__body} ${

@@ -1,38 +1,38 @@
-.containerSummary{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.containerSummary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.headersContainer{
-    h5 {
-        padding: 1rem 0;
-        min-height: 4rem;
-        width: 200px;
-    }
+.headersContainer {
+  h5 {
+    min-height: 4rem;
+    padding: 1rem 0;
+    width: 200px;
+  }
 }
 
-.answersContainer{
-    > div{
-        padding: 1rem 0;
-        min-height: 4rem;
-        width: 400px;
-        align-items: start;
-        text-overflow: ellipsis;
-    }
+.answersContainer {
+  > div {
+    align-items: start;
+    min-height: 4rem;
+    padding: 1rem 0;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
 }
 
-.registerButton{
-    transition: width .4s ease-in-out, color .8s ease-in-out;
-    white-space: nowrap;
-    border: none;
+.registerButton {
+  border: none;
+  transition: width 0.4s ease-in-out, color 0.8s ease-in-out;
+  white-space: nowrap;
 }
 
-.notLoadingButton{
-    width: 300px;
+.notLoadingButton {
+  width: 300px;
 }
 
-.loadingButton{
-    width: 100px;
-    color: transparent;
+.loadingButton {
+  color: transparent;
+  width: 100px;
 }
