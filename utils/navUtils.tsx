@@ -1,6 +1,5 @@
 import { VALID_ROLES } from '@/main.config';
 import React from 'react';
-import { BiHomeAlt } from 'react-icons/bi';
 import { BsGear } from 'react-icons/bs';
 import { FaQuestion } from 'react-icons/fa';
 import { FaBoxes, FaUser, FaWallet } from 'react-icons/fa';
@@ -8,6 +7,7 @@ import { FiUsers } from 'react-icons/fi';
 import { GiFlowerPot } from 'react-icons/gi';
 import { MdDirectionsBike } from 'react-icons/md';
 import { RiPlantLine } from 'react-icons/ri';
+import { FaHouseChimney } from 'react-icons/fa6';
 
 export interface Aside {
   key: string;
@@ -23,7 +23,7 @@ export const DASHBOARD_CLIENT_NAV_LINKS = [
     name: 'Inicio',
     path: '/dashboard',
     userRole: VALID_ROLES.CLIENT,
-    icon: <BiHomeAlt size={20} />,
+    icon: <FaHouseChimney size={20} />,
   },
   {
     key: 'perfil',
@@ -67,7 +67,7 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
     key: 'resume',
     name: 'Resumen',
     path: '/dashboard',
-    icon: <BiHomeAlt size={20} />,
+    icon: <FaHouseChimney size={20} />,
     userRole: VALID_ROLES.ADMIN,
   },
   {

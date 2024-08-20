@@ -1,6 +1,6 @@
 import LogoutButton from '@/components/atoms/LogoutButton/LogoutButton';
 import { State } from '@/reducers/rootReducer';
-import { DASHBOARD_ADMIN_NAV_LINKS, DASHBOARD_ASIDE_NAV_LINKS } from '@/utils/navUtils';
+import { DASHBOARD_ASIDE_NAV_LINKS } from '@/utils/navUtils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SetStateAction } from 'react';
@@ -20,7 +20,6 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
 
   const currentPath = usePathname();
 
-  console.log(userRoles);
   return (
     <section
       className={`bg-white h-full shadow-lg transition-all duration-300 flex flex-col fixed items-center z-100 py-5 px-5 ${
@@ -68,6 +67,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
                         ' my-5 cursor-pointer hover:bg-white inline-flex items-center',
                         styles.navlink,
                         currentPath === navlink.path && styles.navLinkActive,
+                        !openNavbar && styles.collapsedIcon,
                       )}
                       key={navlink.key}
                       onClick={() => console.log('click')}
