@@ -45,7 +45,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
 
         {openNavbar ? (
           <div className="text-left">
-            <p className="font-bold">{userDetails.name}</p>
+            <p className="font-bold">{userDetails.displayName}</p>
             <p className="text-gray-600">{userDetails.email}</p>
           </div>
         ) : null}

@@ -66,7 +66,7 @@ const LoginForm: React.FC = () => {
         data.password,
       );
       const tokenresult = await userCredentials.user.getIdTokenResult();
-      dispatch(setUserApp({ ...tokenresult.claims }));
+      dispatch(setUserApp({ ...tokenresult.claims, ...userCredentials.user }));
       Cookies.set('user_token', tokenresult.token, {
         expires: new Date(tokenresult.expirationTime),
       });
