@@ -13,6 +13,6 @@ jobs:
         with:
          node-version: '20'
       - name: Install Application
-        run: npm install
+        run: npm ci install
       - name: Test app
         run: npm test
