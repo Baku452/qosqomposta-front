@@ -19,4 +19,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Test app
         run: |
-         echo {{inputs.nombre}}
+         echo ${{inputs.nombre}}
+         echo Hola
