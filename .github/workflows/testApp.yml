@@ -2,7 +2,10 @@ name: 'Test Application'
 
 on:
   workflow_dispatch:
-
+    inputs:
+      nombre:
+       description: 'Nombre de la persona'
+       required: true
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,4 +18,5 @@ jobs:
       - name: Install Application
         run: yarn install --frozen-lockfile
       - name: Test app
-        run: yarn test
+        run: |
+         echo {{inputs.nombre}}
