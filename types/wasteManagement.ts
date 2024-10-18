@@ -15,8 +15,16 @@ export interface SelectedService {
 }
 
 export interface ServicePricing {
-  pickupItem_id: number;
+  id: string;
+  price: number;
+  isComposable: boolean;
   name: string;
-  description?: string;
+  frequency: number;
+  isAddon?: boolean;
+  oneTimePrice?: number;
+  pickupItems?: Record<string, unknown>;
+  pickupDays?: Record<string, unknown>;
   deletedAt?: Date;
 }
+
+export type ServicePricingSummary = Omit<ServicePricing, 'pickupDays' | 'pickupItems'>;

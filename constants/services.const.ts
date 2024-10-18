@@ -15,3 +15,8 @@ export const TABLE_HEADERS_SELECT: HEADERS_SELECT[] = [
     key: 'price',
   },
 ];
+
+export enum CLIENT_TYPE {
+  CUSTOMER = 'customer',
+  COMPANY = 'compnay',
+}

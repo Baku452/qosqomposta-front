@@ -13,7 +13,7 @@ const Badge: React.FC<BadgeProps> = ({ icon, header, content }) => {
         <header>
           <h3 className="font-normal font-paragraph">{header}</h3>
         </header>
-        <p className="font-semibold">{content}</p>
+        <p className="font-semibold capitalize">{content}</p>
       </div>
     </section>
   );
