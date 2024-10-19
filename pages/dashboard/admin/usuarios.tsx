@@ -3,8 +3,6 @@ import { NextPage } from 'next';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import FiltersClients from '@/components/organism/FiltersClients/FiltersClients';
-
 //Styles
 import TableClients from '@/features/TableClients/TableClients';
 export interface DashboardProps {
@@ -23,7 +21,6 @@ const Clients: NextPage<DashboardProps> = () => {
           </span>
         </h2>
       </div>
-      <FiltersClients />
       <TableClients />
     </div>
   );

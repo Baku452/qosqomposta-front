@@ -14,8 +14,8 @@ export const DefaultSingleService: React.FC<DefaultSingleServiceProps> = ({
       <label>Nombre</label>
       <p onClick={() => toggleEditMode(true)}>{service.name}</p>
 
-      <label>Precio</label>
-      <p onClick={() => toggleEditMode(true)}>{convertPriceToString(service.price)}</p>
+      {/* <label>Precio</label>
+      <p onClick={() => toggleEditMode(true)}>{convertPriceToString(service.price)}</p> */}
 
       <label>Tipo de Servicio</label>
       {/* <p className="capitalize" onClick={() => toggleEditMode(true)}>
