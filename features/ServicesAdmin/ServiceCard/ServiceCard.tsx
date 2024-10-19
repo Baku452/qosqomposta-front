@@ -14,7 +14,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     day: '2-digit',
   };
   return (
-    <Link href={`${SERVICES_ADMIN}/${service.waste_service_id}`}>
+    <Link href={`${SERVICES_ADMIN}/${service.id}`}>
       <div className="bg-white rounded-2xl shadow-md py-4 px-5 hover:bg-gray-100 transition cursor-pointer">
         <div className="flex justify-between mb-5">
           <h5 className="font-semibold">{service.name}</h5>
