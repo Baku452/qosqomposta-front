@@ -1,11 +1,8 @@
-import { AppUser } from '@/types/stateTypes';
 import Link from 'next/link';
 import React from 'react';
 import { FaUser } from 'react-icons/fa';
-export interface UserNavDetailsProps {
-  user: AppUser;
-}
-const UserNavDetails: React.FC<UserNavDetailsProps> = () => {
+
+const UserNavDetails: React.FC = () => {
   return (
     <div className="flex gap-4 min-w-fit">
       <Link href={'/dashboard'}>

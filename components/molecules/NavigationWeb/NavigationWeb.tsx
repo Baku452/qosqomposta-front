@@ -1,12 +1,8 @@
 import { LOGIN_PATH } from '@/routes/routes.config';
 import Link from 'next/link';
 import { ItemsNav } from 'public/data/itemsNav';
-import React, { useState } from 'react';
+import React from 'react';
 
-import { BsWhatsapp } from 'react-icons/bs';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import { useSelector } from 'react-redux';
-import { State } from '@/reducers/rootReducer';
 import UserNavDetails from '../UserNavDetails/UserNavDetails';
 import Cookies from 'js-cookie';
 
@@ -15,8 +11,6 @@ export interface NavigationWebProps {
 }
 
 const NavigationWeb: React.FC<NavigationWebProps> = ({ items }) => {
-  const userDetails = useSelector((state: State) => state.appUser);
-
   const userToken = Cookies.get('user_token');
 
   return (
@@ -48,7 +42,7 @@ const NavigationWeb: React.FC<NavigationWebProps> = ({ items }) => {
           </li>
         </ul>
       </nav>
-      {userToken && <UserNavDetails user={userDetails} />}
+      {userToken && <UserNavDetails />}
     </>
   );
 };

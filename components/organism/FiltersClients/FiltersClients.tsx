@@ -1,7 +1,7 @@
 import { fetchServices } from '@/actions/services.actions';
 import { State } from '@/reducers/rootReducer';
 import { WasteService } from '@/types/wasteManagement';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import Select, { SingleValue } from 'react-select';
