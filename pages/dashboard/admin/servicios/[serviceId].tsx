@@ -7,13 +7,13 @@ import { FaBoxes } from 'react-icons/fa';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_QOSQOMPOSTA_BACKEND_URL_API}/waste-management`,
+    `${process.env.NEXT_PUBLIC_QOSQOMPOSTA_BACKEND_URL_API}/waste-service`,
   );
 
   const wasteManagementServices = await response.json();
 
   const paths = wasteManagementServices.map((service: WasteService) => ({
-    params: { serviceId: service.waste_service_id },
+    params: { id: service.id },
   }));
 
   return {

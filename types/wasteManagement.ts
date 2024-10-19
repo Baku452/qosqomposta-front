@@ -1,8 +1,7 @@
 export interface WasteService {
-  waste_service_id: string;
+  id: string;
   name: string;
   description: string;
-  price: number;
   icon?: string;
   deletedAt?: Date;
   pricings?: ServicePricing;
