@@ -8,13 +8,10 @@ import Select, { SingleValue } from 'react-select';
 import styles from './filtersClients.module.scss';
 import { setFiltersClients } from '@/actions/user.app.actions';
 import { DEFAULT_SERVICE_FILTER } from '@/main.config';
-import PlacesContext, { Districts, PlacesContextType } from '@/context/PlacesContext';
 
 const FiltersClients: React.FC = () => {
   const dispatch = useDispatch();
   const services = useSelector((state: State) => state.listServices.services);
-
-  const { cities } = useContext(PlacesContext) as PlacesContextType;
 
   const defaultSelectedService = services?.find(
     service => service.waste_service_id === DEFAULT_SERVICE_FILTER,
@@ -31,9 +28,6 @@ const FiltersClients: React.FC = () => {
   //   `${option.name} (${option.modality})`;
   const getOptionValue = (option: WasteService) => option.waste_service_id;
 
-  const getOptionDistrictsLabel = (option: Districts) => `${option.label}`;
-  const getOptionDistrictsValue = (option: Districts) => option.value ?? '';
-
   const { filters } = useSelector((state: State) => state.listClients);
 
   const handleChangeParam = (selectedOption: SingleValue<WasteService>): void => {
@@ -47,10 +41,6 @@ const FiltersClients: React.FC = () => {
           },
         }),
       );
-  };
-
-  const handleChangeDistrict = (selectedOption: SingleValue<Districts>): void => {
-    console.log('handle change service');
   };
 
   useEffect(() => {
@@ -73,17 +63,6 @@ const FiltersClients: React.FC = () => {
               // getOptionLabel={getOptionLabel}
               getOptionValue={getOptionValue}
               placeholder="Seleccionar"
-            />
-          </div>
-
-          <div>
-            <h4 className="mb-3">Distrito</h4>
-            <Select
-              placeholder="Selecciones su distrito"
-              options={cities ?? []}
-              onChange={handleChangeDistrict}
-              getOptionLabel={getOptionDistrictsLabel}
-              getOptionValue={getOptionDistrictsValue}
             />
           </div>
         </div>

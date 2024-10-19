@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<{
 }> = async ({ params }) => {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_QOSQOMPOSTA_BACKEND_URL_API}/waste-management/${params?.serviceId}`,
+      `${process.env.NEXT_PUBLIC_QOSQOMPOSTA_BACKEND_URL_API}/waste-service/${params?.id}`,
     );
 
     if (!response.ok) {

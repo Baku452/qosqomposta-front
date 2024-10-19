@@ -4,7 +4,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './dashboard.module.scss';
 import RefreshToken from '@/components/atoms/RefreshToken/RefreshToken';
-import { PlacesContextProvider } from '@/context/PlacesContext';
 import { useEffect, useState } from 'react';
 import { fetchSubscriptionDetails } from '@/actions/subscription.actions';
 import { useDispatch } from 'react-redux';
@@ -29,20 +28,18 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   }, []);
   return (
     <ProtectedRoute>
-      <PlacesContextProvider>
-        <main className={styles.dashboard}>
-          <DashboardAside openNavbar={isOpenNavbar} setOpenNavbar={setIsOpenNavBar} />
-          <div
-            className={`${styles.dashboard__body} ${
-              !isOpenNavbar && styles.dashboard__bodyExpanded
-            }`}
-          >
-            {children}
-          </div>
-        </main>
-        <ToastContainer />
-        <RefreshToken />
-      </PlacesContextProvider>
+      <main className={styles.dashboard}>
+        <DashboardAside openNavbar={isOpenNavbar} setOpenNavbar={setIsOpenNavBar} />
+        <div
+          className={`${styles.dashboard__body} ${
+            !isOpenNavbar && styles.dashboard__bodyExpanded
+          }`}
+        >
+          {children}
+        </div>
+      </main>
+      <ToastContainer />
+      <RefreshToken />
     </ProtectedRoute>
   );
 };

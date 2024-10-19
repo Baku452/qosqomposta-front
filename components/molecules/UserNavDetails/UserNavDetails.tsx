@@ -5,7 +5,7 @@ import { FaUser } from 'react-icons/fa';
 export interface UserNavDetailsProps {
   user: AppUser;
 }
-const UserNavDetails: React.FC<UserNavDetailsProps> = ({ user }) => {
+const UserNavDetails: React.FC<UserNavDetailsProps> = () => {
   return (
     <div className="flex gap-4 min-w-fit">
       <Link href={'/dashboard'}>

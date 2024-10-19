@@ -1,4 +1,3 @@
-import { PlacesContextProvider } from '@/context/PlacesContext';
 import { WasteServicesContextProvider } from '@/context/ServicesContext';
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import HeaderWeb from '@/organism/HeaderWeb/HeaderWeb';
@@ -12,12 +11,10 @@ const LayoutWeb: React.FC<LayoutWebProps> = ({ children }) => {
   return (
     <>
       <WasteServicesContextProvider>
-        <PlacesContextProvider>
-          <HeaderWeb />
-          <ToastContainer />
-          <main>{children}</main>
-          <FooterWeb />
-        </PlacesContextProvider>
+        <HeaderWeb />
+        <ToastContainer />
+        <main>{children}</main>
+        <FooterWeb />
       </WasteServicesContextProvider>
     </>
   );
