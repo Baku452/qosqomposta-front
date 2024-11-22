@@ -76,6 +76,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['eveleth', ...defaultTheme.fontFamily.sans],
+        titles: ['eveleth', 'sans'],
         paragraph: ['Isidora', 'sans'],
       },
     },

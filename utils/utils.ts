@@ -59,5 +59,12 @@ export const buildFetchUsersURL = (filters?: FilterParamsClients): string => {
 
 export const convertPriceToString = (value: number): string => {
   if (value === 0) return 'Gratis';
-  return `S/. ${value}`;
+  return `S/. ${value.toFixed(2)}`;
+};
+
+export const defaultValue = (value: string | undefined | null): string => {
+  if (value != null) {
+    return value;
+  }
+  return '--';
 };

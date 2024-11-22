@@ -110,3 +110,9 @@ export const LOCALE_DATE_STRING_FORMAT: Intl.DateTimeFormatOptions = {
   month: 'long',
   year: 'numeric',
 };
+
+export const FREQUENCY_SERVICE = new Map<number, string>([
+  [1, 'Recojo Semanal'],
+  [2, 'Recojo Intersemanal'],
+  [4, 'Recojo Individual'],
+]);

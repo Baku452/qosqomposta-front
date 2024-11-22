@@ -11,6 +11,7 @@ export interface SubscriptionSummary {
   totalWasteWeightNet: number | null;
   frequencyService: number | null;
   pricings: ServicePricingSummary[] | null;
+  mainPrice: number | null;
 }
 export interface ClientSummary {
   customerId: string | null;
