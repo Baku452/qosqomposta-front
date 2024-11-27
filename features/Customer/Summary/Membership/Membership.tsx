@@ -3,7 +3,7 @@ import { State } from '@/reducers/rootReducer';
 import { convertPriceToString, defaultValue } from '@/utils/utils';
 import { useSelector } from 'react-redux';
 
-const MembershipSummaryClient: React.FC = () => {
+const MembershipSummary: React.FC = () => {
   const subscriptionSummary = useSelector(
     (state: State) => state.subcriptionSummary.subscription,
   );
@@ -35,4 +35,4 @@ const MembershipSummaryClient: React.FC = () => {
   );
 };
 
-export default MembershipSummaryClient;
+export default MembershipSummary;

@@ -1,6 +1,6 @@
 import { NextPage } from 'next';
 import React from 'react';
-import SummaryClient from '@/features/SummaryClient/SummaryClient';
+import SummaryClient from '@/features/Customer/Summary/SummaryClient/SummaryClient';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import SummaryAdmin from '@/features/SummaryAdmin/SummaryAdmin';

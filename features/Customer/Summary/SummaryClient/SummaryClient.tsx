@@ -1,12 +1,14 @@
 import React from 'react';
 
 import StatusClient from '../StatusClient/StatusClient';
-import MembershipSummaryClient from '../MembershipSummaryClient/MembershipSummaryClient';
+import MembershipSummary from '../Membership/Membership';
+import ServicesData from '../ServicesData/ServicesData';
 const SummaryClient: React.FC = () => {
   return (
     <>
       <StatusClient />
-      <MembershipSummaryClient />
+      <MembershipSummary />
+      <ServicesData />
     </>
   );
 };
