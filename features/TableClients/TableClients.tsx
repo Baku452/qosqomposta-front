@@ -1,5 +1,4 @@
 import styles from './tableClients.module.scss';
-import { LIST_CLIENTS_HEADERS } from '@/constants/dashboard.const';
 import { Fragment, useCallback, useEffect, useRef, useState } from 'react';
 import { FilterParamsClients } from '@/types/mainTypes';
 import { State } from '@/reducers/rootReducer';
@@ -78,24 +77,7 @@ const TableClients: React.FC = () => {
               cellSpacing={1}
               className={`text-left font-paragraph ${styles.tableUsers}`}
             >
-              <thead>
-                <tr>
-                  {LIST_CLIENTS_HEADERS.map(thead => {
-                    return (
-                      <Fragment key={thead.title}>
-                        <th key={thead.title}>
-                          {thead.title}
-                          {thead.sortable && thead.name && (
-                            <SortableButton
-                              action={() => handleSortDirection(thead.name)}
-                            />
-                          )}
-                        </th>
-                      </Fragment>
-                    );
-                  })}
-                </tr>
-              </thead>
+              <thead></thead>
               {!isFetching && (
                 <tbody>
                   {clients.map(client =>

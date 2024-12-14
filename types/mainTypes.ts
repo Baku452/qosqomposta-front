@@ -106,5 +106,6 @@ export interface FilterParamsClients {
 export interface TABLE_HEADERS {
   title: string;
   key: string;
+  name: string;
   sortable?: boolean;
 }
