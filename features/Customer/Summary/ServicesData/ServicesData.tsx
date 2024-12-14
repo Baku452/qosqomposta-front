@@ -2,7 +2,7 @@ import { State } from '@/reducers/rootReducer';
 import { useSelector } from 'react-redux';
 
 const ServicesData: React.FC = () => {
-  const summary = useSelector((state: State) => state.subcriptionSummary.subscription);
+  const summary = useSelector((state: State) => state.customerApp.subscriptionSummary);
   return (
     <section className="flex w-full justify-between mt-5 gap-5">
       <div className="justify-center bg-white p-5 flex items-center flex-col shadow-lg rounded-lg flex-1">

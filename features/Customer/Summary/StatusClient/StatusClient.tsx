@@ -14,7 +14,9 @@ const StatusClient: React.FC = () => {
     size: 30,
   };
 
-  const subscriptionSummary = useSelector((state: State) => state.subcriptionSummary);
+  const subscriptionSummary = useSelector(
+    (state: State) => state.customerApp.subscriptionSummary,
+  );
 
   return (
     <div className="flex w-full justify-between gap-4 items-center">
@@ -22,14 +24,14 @@ const StatusClient: React.FC = () => {
         <Badge
           icon={<FaUserTag {...iconProps} />}
           header={'Categoría'}
-          content={subscriptionSummary?.subscription?.category ?? '--'}
+          content={subscriptionSummary?.category ?? '--'}
         />
         <Badge
           icon={<FaCalendar {...iconProps} />}
           header={'Fecha de Inicio'}
           content={
-            subscriptionSummary?.subscription?.startDate
-              ? new Date(subscriptionSummary?.subscription?.startDate).toLocaleDateString(
+            subscriptionSummary?.startDate
+              ? new Date(subscriptionSummary?.startDate).toLocaleDateString(
                   DEFAULT_TIMEZONE,
                   {
                     ...LOCALE_DATE_STRING_FORMAT,
@@ -41,7 +43,7 @@ const StatusClient: React.FC = () => {
         <Badge
           icon={<FaCircleInfo {...iconProps} />}
           header={'Estado'}
-          content={subscriptionSummary?.subscription?.status ?? '--'}
+          content={subscriptionSummary?.status ?? '--'}
         />
       </section>
       <ButtonCertificate />

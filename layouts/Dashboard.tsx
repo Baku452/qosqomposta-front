@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from './dashboard.module.scss';
 import RefreshToken from '@/components/atoms/RefreshToken/RefreshToken';
 import { useEffect, useState } from 'react';
-import { fetchSubscriptionDetails } from '@/actions/subscription.actions';
+import { fetchSubscriptionDetails } from '@/actions/customer.actions';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';

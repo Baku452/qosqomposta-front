@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const MembershipSummary: React.FC = () => {
   const subscriptionSummary = useSelector(
-    (state: State) => state.subcriptionSummary.subscription,
+    (state: State) => state.customerApp.subscriptionSummary,
   );
   return (
     <section className="flex w-full gap-4 items-center justify-evenly shadow-lg rounded-lg p-5 bg-white mt-4">

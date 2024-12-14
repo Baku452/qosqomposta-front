@@ -105,6 +105,6 @@ export interface FilterParamsClients {
 }
 export interface TABLE_HEADERS {
   title: string;
-  name: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>;
+  key: string;
   sortable?: boolean;
 }

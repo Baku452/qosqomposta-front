@@ -14,13 +14,17 @@ export interface SubscriptionSummary {
   mainPrice: number | null;
 }
 export interface ClientSummary {
-  customerId: string | null;
-  customerName: string | null;
-  customerEmail: string | null;
-  subscription: SubscriptionSummary | null;
+  customerId?: string;
+  customerName?: string;
+  customerEmail?: string;
+  isFetching?: boolean;
 }
 
 export interface FamilySummary extends ClientSummary {
-  familyId: string | null;
-  familyName: string | null;
+  familyId?: string | null;
+  familyName?: string | null;
+}
+
+export interface CompanySummary extends ClientSummary {
+  companyName: string | null;
 }
