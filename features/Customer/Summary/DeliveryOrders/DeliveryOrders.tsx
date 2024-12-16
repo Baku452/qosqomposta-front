@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { fetchDeliveryOrders } from '@/actions/customer.actions';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
-import { LOCALE_PERU } from '@/main.config';
+import { LOCALE_PERU, SUMMARY_LIMIT_ORDERS } from '@/main.config';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 
@@ -19,14 +19,15 @@ const DeliveryOrders: React.FC = () => {
   const dispatch = useDispatch();
 
   const fetchDeliveryOrderData = async (): Promise<void> => {
-    subscriptionId && (await fetchDeliveryOrders(subscriptionId)(dispatch));
+    subscriptionId &&
+      (await fetchDeliveryOrders(subscriptionId, SUMMARY_LIMIT_ORDERS)(dispatch));
   };
   useEffect(() => {
     fetchDeliveryOrderData();
   }, [subscriptionId]);
   return (
     <section className="w-full mt-10 bg-white rounded-xl p-5">
-      <h5 className="text-center pb-5 text-xl">Historial de recojo</h5>
+      <h5 className="text-center pb-5 text-xl">Últimos recojos</h5>
       <table className="w-full border-none rounded-xl">
         <thead className="">
           <tr className="bg-gray-200 text-black font-semibold border-none">
@@ -57,11 +58,7 @@ const DeliveryOrders: React.FC = () => {
                 </td>
                 <td>
                   {order.date_received
-                    ? new Date(order.date_received).toLocaleTimeString(LOCALE_PERU, {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                        hour12: true,
-                      })
+                    ? format(new Date(order.date_received), 'pp')
                     : '--'}
                 </td>
                 <td>{order.waste_weight} kg</td>

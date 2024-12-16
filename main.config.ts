@@ -118,3 +118,4 @@ export const FREQUENCY_SERVICE = new Map<number, string>([
 ]);
 
 export const LOCALE_PERU = 'es-PE';
+export const SUMMARY_LIMIT_ORDERS = 5;
