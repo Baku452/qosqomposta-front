@@ -116,3 +116,5 @@ export const FREQUENCY_SERVICE = new Map<number, string>([
   [2, 'Recojo Intersemanal'],
   [4, 'Recojo Individual'],
 ]);
+
+export const LOCALE_PERU = 'es-PE';
