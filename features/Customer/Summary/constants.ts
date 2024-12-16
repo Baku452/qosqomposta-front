@@ -12,10 +12,12 @@ export const DELIVERY_ORDERS_HEADERS: TABLE_HEADERS[] = [
   {
     title: 'R.O (kg)',
     key: 'residuos orgánicos',
+    tooltipContent: 'Residuos Orgánicos',
   },
   {
     title: 'R.R (kg)',
     key: 'residuos reciclables',
+    tooltipContent: 'Residuos Reciclables',
   },
   {
     title: 'Repartidor',

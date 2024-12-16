@@ -108,4 +108,6 @@ export interface TABLE_HEADERS {
   key: string;
   name?: string;
   sortable?: boolean;
+  tooltipContent?: string;
+  icon?: string;
 }

@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import { fetchDeliveryOrders } from '@/actions/customer.actions';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
-import { LOCALE_PERU, SUMMARY_LIMIT_ORDERS } from '@/main.config';
+import { SUMMARY_LIMIT_ORDERS } from '@/main.config';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import Tooltip from '@/components/Tooltip/Tooltip';
+import { FaInfoCircle } from 'react-icons/fa';
 
 const DeliveryOrders: React.FC = () => {
   const subscriptionId = useSelector(
@@ -35,11 +37,20 @@ const DeliveryOrders: React.FC = () => {
               return (
                 <td
                   key={item.key}
-                  className={`px-4 py-2 ${index === 0 ? 'rounded-tl-lg' : ''} ${
+                  className={`pr-4 py-2 ${index === 0 ? 'rounded-tl-lg' : ''} ${
                     index === DELIVERY_ORDERS_HEADERS.length - 1 ? 'rounded-tr-lg' : ''
                   }`}
                 >
-                  {item.title}
+                  {item.tooltipContent ? (
+                    <Tooltip text={item.tooltipContent}>
+                      <div className="flex items-center gap-1">
+                        <span>{item.title}</span>
+                        <FaInfoCircle />
+                      </div>
+                    </Tooltip>
+                  ) : (
+                    item.title
+                  )}
                 </td>
               );
             })}
