@@ -1,6 +1,7 @@
 import {
   FETCH_CUSTOMER_DELIVERY_ORDERS,
   FETCH_CUSTOMER_FAMILY_SUMMARY,
+  FETCH_CUSTOMER_PROFILE,
 } from '@/actions/customer.actions.types';
 import { CustomerApp } from '@/types/customer.types';
 import { AnyAction } from 'redux';
@@ -80,6 +81,37 @@ export const customerReducer = (
         },
       };
     }
+
+    case FETCH_CUSTOMER_PROFILE.request: {
+      return {
+        ...state,
+        customerProfile: {
+          ...state.customerProfile,
+          isFetching: true,
+        },
+      };
+    }
+
+    case FETCH_CUSTOMER_PROFILE.success: {
+      return {
+        ...state,
+        customerProfile: {
+          ...action.payload,
+          isFetching: false,
+        },
+      };
+    }
+
+    case FETCH_CUSTOMER_PROFILE.error: {
+      return {
+        ...state,
+        customerProfile: {
+          ...action.payload,
+          isFetching: false,
+        },
+      };
+    }
+
     default:
       return state;
   }

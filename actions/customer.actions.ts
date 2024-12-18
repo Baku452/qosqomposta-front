@@ -7,6 +7,7 @@ import {
   FETCH_CUSTOMER_COMPANY_SUMMARY,
   FETCH_CUSTOMER_DELIVERY_ORDERS,
   FETCH_CUSTOMER_FAMILY_SUMMARY,
+  FETCH_CUSTOMER_PROFILE,
 } from './customer.actions.types';
 
 export interface GetSummaryPayload {
@@ -44,6 +45,20 @@ export const fetchDeliveryOrders =
       dispatch,
       FETCH_CUSTOMER_DELIVERY_ORDERS,
       `/delivery-order/subscription/${firebase_uuid}?limit=${limit}`,
+      { method: 'GET' },
+      undefined,
+      {
+        firebase_uuid: firebase_uuid,
+      },
+    );
+  };
+
+export const fetchCustomerProfile =
+  (firebase_uuid: string) => async (dispatch: Dispatch<AnyAction>) => {
+    return doAsync(
+      dispatch,
+      FETCH_CUSTOMER_PROFILE,
+      `/customer/by-firebase-uuid?firebaseUid=${firebase_uuid}`,
       { method: 'GET' },
       undefined,
       {

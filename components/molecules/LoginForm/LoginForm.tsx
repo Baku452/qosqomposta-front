@@ -113,6 +113,7 @@ const LoginForm: React.FC = () => {
               }}
             />
             <button
+              tabIndex={-1}
               disabled={!passwordValue}
               className={styles.showPasswordIcon}
               onClick={handleShowPassword}
