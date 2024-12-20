@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { useFloating, offset, flip, shift, Middleware } from '@floating-ui/react-dom';
+import { useFloating, offset, flip, shift } from '@floating-ui/react-dom';
 
 interface TooltipProps {
   text: string;
@@ -14,18 +14,17 @@ const Tooltip: React.FC<TooltipProps> = ({
   children,
   className = '',
   tooltipClassName = '',
-  duration = 200, // Default animation duration in ms
+  duration = 200,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const { x, y, refs, strategy } = useFloating<HTMLDivElement>({
-    middleware: [offset(8), flip(), shift()] as Middleware[],
+
+  const { x, y, refs, strategy } = useFloating({
+    placement: 'top',
+    middleware: [offset(8), flip(), shift({ padding: 8 })],
   });
 
   return (
-    <div
-      className={`relative inline-block ${className}`}
-      style={{ position: 'relative', display: 'inline-block' }}
-    >
+    <div className={`inline-block ${className}`}>
       <div
         ref={refs.setReference}
         onMouseEnter={() => setIsHovered(true)}
@@ -33,19 +32,22 @@ const Tooltip: React.FC<TooltipProps> = ({
       >
         {children}
       </div>
-      <div
-        ref={refs.setFloating}
-        className={`absolute z-[1000] whitespace-nowrap rounded-[4px] bg-black px-[10px] py-[6px] text-xs text-white transition-all ease-in-out ${isHovered ? 'visible scale-100 opacity-100' : 'invisible scale-95 opacity-0'} ${tooltipClassName} `}
-        style={{
-          position: strategy,
-          top: y ?? 0,
-          left: x ?? 0,
-          transitionDuration: `${duration}ms`,
-          pointerEvents: 'none',
-        }}
-      >
-        {text}
-      </div>
+      {isHovered && (
+        <div
+          ref={refs.setFloating}
+          className={`fixed z-[1000] whitespace-normal break-words rounded-md bg-black px-3 py-2 text-xs text-white shadow-lg transition-transform duration-${duration} ease-out ${tooltipClassName}`}
+          style={{
+            position: strategy,
+            top: y ?? 0,
+            left: x ?? 0,
+            transform: 'translate(0, -8px)',
+            opacity: isHovered ? 1 : 0,
+            pointerEvents: 'none',
+          }}
+        >
+          {text}
+        </div>
+      )}
     </div>
   );
 };

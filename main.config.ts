@@ -119,3 +119,6 @@ export const FREQUENCY_SERVICE = new Map<number, string>([
 
 export const LOCALE_PERU = 'es-PE';
 export const SUMMARY_LIMIT_ORDERS = 5;
+
+export const EDITING_ADDRESS_INFO =
+  ' Si se modifica la dirección, puede modificarse los días y la ruta de recojo. Consultar con el equipo de Qosqomposta';
