@@ -5,5 +5,6 @@ export interface Family {
   reference: string;
   isActive: boolean;
   deletedAt?: Date;
+  district?: string;
   customId: string;
 }

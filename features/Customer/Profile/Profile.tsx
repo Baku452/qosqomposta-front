@@ -7,9 +7,34 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 
 const Profile: React.FC = () => {
-  const { register } = useForm();
-  const appUser = useSelector((state: State) => state.appUser);
   const customerData = useSelector((state: State) => state.customerApp.customerProfile);
+
+  type ProfileFormValues = {
+    name: string;
+    lastName: string;
+    motherLastName: string;
+    dni: number | string;
+    phone: string;
+    address: string;
+    district: string;
+    addressReference: string;
+  };
+
+  const { register, setValue } = useForm<ProfileFormValues>();
+
+  useEffect(() => {
+    if (customerData) {
+      setValue('name', customerData.name ?? '--');
+      setValue('lastName', customerData.last_name ?? '--');
+      setValue('motherLastName', customerData.mother_last_name ?? '--');
+      setValue('dni', customerData.document_identity ?? '--');
+      setValue('phone', customerData.phoneNumber ?? '--');
+      setValue('address', customerData.family?.address ?? '--');
+      setValue('district', customerData.family?.district ?? '--');
+      setValue('addressReference', customerData.family?.reference ?? '--');
+    }
+  }, [customerData, setValue]);
+  const appUser = useSelector((state: State) => state.appUser);
 
   const dispatch = useDispatch();
 
@@ -115,7 +140,7 @@ const Profile: React.FC = () => {
           </div>
         </form>
       </section>
-      <section className="mb-5 justify-between rounded-lg bg-white p-5">
+      <section className="mb-5 mt-5 justify-between rounded-lg bg-white p-5">
         <div className="mb-4 flex gap-4">
           <div className="flex-1">
             <label htmlFor="phone" className="block text-sm font-medium text-gray-600">
@@ -125,7 +150,7 @@ const Profile: React.FC = () => {
               type="text"
               id="address"
               {...register('address', {
-                value: customerData?.phoneNumber ?? '--',
+                value: customerData?.family?.address ?? '--',
               })}
               disabled
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
@@ -138,8 +163,8 @@ const Profile: React.FC = () => {
             <input
               type="text"
               id="district"
-              {...register('address', {
-                value: customerData?.phoneNumber ?? '--',
+              {...register('district', {
+                value: customerData?.family?.district ?? '--',
               })}
               disabled
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
@@ -152,9 +177,9 @@ const Profile: React.FC = () => {
           </label>
           <input
             type="text"
-            id="address_reference"
-            {...register('address_reference', {
-              value: customerData?.phoneNumber ?? '--',
+            id="addressReference"
+            {...register('addressReference', {
+              value: customerData?.family?.reference ?? '--',
             })}
             disabled
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
