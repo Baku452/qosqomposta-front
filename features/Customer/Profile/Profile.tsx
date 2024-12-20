@@ -169,7 +169,7 @@ const Profile: React.FC = () => {
                 <FaPencil className="ml-2" />
               </button>
               <Tooltip text={EDITING_ADDRESS_INFO} tooltipClassName="!w-28 text-center">
-                <FaInfoCircle className="text-greenQ" size={25} />
+                <FaInfoCircle className="cursor-pointer text-greenQ" size={25} />
               </Tooltip>
             </div>
           </div>
