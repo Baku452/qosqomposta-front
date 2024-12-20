@@ -89,7 +89,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
         />
         {errors.name && <span className={styles.errorLabel}>{errors.name.message}</span>}
       </div>
-      <div className="mb-10 flex gap-10 h-[80.39px]">
+      <div className="mb-10 flex h-[80.39px] gap-10">
         <div className="basis-1/2">
           <Controller
             control={control}
@@ -123,7 +123,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           />
         </div>
       </div>
-      <div className="mb-10 flex gap-10 h-[80.39px]">
+      <div className="mb-10 flex h-[80.39px] gap-10">
         <div className="">
           <Controller
             control={control}
@@ -142,7 +142,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           ></Controller>
         </div>
       </div>
-      <div className="mb-10 flex gap-10 h-[80.39px]">
+      <div className="mb-10 flex h-[80.39px] gap-10">
         <div className="basis-1/2">
           <Controller
             control={control}
@@ -179,7 +179,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           />
         </div>
       </div>
-      <div className="mb-10 flex gap-10 h-[164.39px]">
+      <div className="mb-10 flex h-[164.39px] gap-10">
         <div className="basis-1/2">
           <Controller
             control={control}
@@ -190,12 +190,12 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
                 <input {...field} type={showPassword ? 'text' : 'password'} />
                 <div className="flex justify-start py-2">
                   <input
-                    className="inline w-4 mr-1"
+                    className="mr-1 inline w-4"
                     type="checkbox"
                     defaultChecked={showPassword}
                     onClick={() => setShowPassword(!showPassword)}
                   />
-                  <p className="text-sm text-gre">Mostrar contraseña</p>
+                  <p className="text-gre text-sm">Mostrar contraseña</p>
                 </div>
                 {errors.password && (
                   <span className={styles.errorLabel}>{errors.password.message}</span>
@@ -231,7 +231,7 @@ const StepAccountInformation: React.FC<StepAccountInformationProps> = ({
           )}
         </div>
       </div>
-      <button type="submit" className="btn btn-primary m-auto text-center block">
+      <button type="submit" className="btn btn-primary m-auto block text-center">
         Siguiente
       </button>
     </form>

@@ -9,7 +9,7 @@ export interface RegisterPageProps {
 }
 const RegisterPage: NextPage<RegisterPageProps> = () => {
   return (
-    <div className="p-10 m-auto text-center">
+    <div className="m-auto p-10 text-center">
       <SignUpForm />
     </div>
   );

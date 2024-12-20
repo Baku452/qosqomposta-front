@@ -104,7 +104,7 @@ export const TableEditableRowClient: React.FC<TableRowEditableClientProps> = ({
       </td>
       <td onClick={e => e.stopPropagation()}>
         <Select
-          className=" text-sm"
+          className="text-sm"
           options={services ?? []}
           // defaultValue={selectedServices}
           // value={selectedServices}

@@ -18,13 +18,13 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
         className="block lg:hidden"
       />
       {displayMenu && (
-        <div className="fixed w-2/5 h-full bg-black z-[100] top-0 right-0 flex items-end flex-col">
+        <div className="fixed right-0 top-0 z-[100] flex h-full w-2/5 flex-col items-end bg-black">
           <AiOutlineClose
-            className="z-[150] mr-1 mt-5 relative text-white"
+            className="relative z-[150] mr-1 mt-5 text-white"
             size={40}
             onClick={() => setDisplayMenu(!displayMenu)}
           />
-          <nav className="text-white h-full z-[150] leading-9 p-2 items-center mr-2 ">
+          <nav className="z-[150] mr-2 h-full items-center p-2 leading-9 text-white">
             <ul>
               {items.map(item => (
                 <Link key={item.label} passHref href={item.link} legacyBehavior>

@@ -22,19 +22,19 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
 
   return (
     <section
-      className={`bg-white h-full shadow-lg transition-all duration-300 flex flex-col fixed items-center z-100 py-5 px-5 ${
+      className={`fixed z-100 flex h-full flex-col items-center bg-white px-5 py-5 shadow-lg transition-all duration-300 ${
         openNavbar ? 'w-[20rem]' : 'w-[5rem]'
       }`}
     >
-      <div className={`flex mb-5 ${openNavbar ? 'self-end' : 'self-center'}`}>
+      <div className={`mb-5 flex ${openNavbar ? 'self-end' : 'self-center'}`}>
         <button
-          className={`transition-transform ${openNavbar ? 'rotate-0 ' : 'rotate-180'}`}
+          className={`transition-transform ${openNavbar ? 'rotate-0' : 'rotate-180'}`}
           onClick={() => setOpenNavbar(value => !value)}
         >
           <BiArrowFromRight size={30} />
         </button>
       </div>
-      <div className="flex text-center mb-4 gap-4 border-b-[1px]">
+      <div className="mb-4 flex gap-4 border-b-[1px] text-center">
         <Image
           className="m-auto mb-4"
           alt="User profile"
@@ -54,7 +54,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
         <nav>
           <ul
             className={`flex flex-col ${
-              openNavbar ? 'px-5 items-start ' : 'px-0 items-center'
+              openNavbar ? 'items-start px-5' : 'items-center px-0'
             }`}
           >
             {userRoles &&
@@ -64,7 +64,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
                     <Link
                       href={navlink.path}
                       className={classNames(
-                        ' my-5 cursor-pointer hover:bg-white inline-flex items-center',
+                        'my-5 inline-flex cursor-pointer items-center hover:bg-white',
                         styles.navlink,
                         currentPath === navlink.path && styles.navLinkActive,
                         !openNavbar && styles.collapsedIcon,

@@ -77,31 +77,31 @@ const StepPaymentMethod: React.FC<StepPaymentMethodProps> = ({
     <section className="flex flex-col justify-between">
       <div>
         <h2 className="mb-10 text-center">Seleccione su método de pago</h2>
-        <div className="flex justify-evenly flex-wrap">
+        <div className="flex flex-wrap justify-evenly">
           {PAYMENT_METHODS.map(method => (
             <div
               onClick={() => setPaymentMethodSelected(method.name)}
               key={method.name}
               className={`${
                 paymentMethodSelected === method.name ? styles.activeCard : ''
-              } hover:bg-yellowQ hover:text-white cursor-pointer transition-colors rounded-lg flex flex-col justify-between items-center shadow-md mb-8 basis-5/12 p-5`}
+              } mb-8 flex basis-5/12 cursor-pointer flex-col items-center justify-between rounded-lg p-5 shadow-md transition-colors hover:bg-yellowQ hover:text-white`}
             >
               {method.image && (
                 <Image width={100} height={100} alt={method.name} src={method.image} />
               )}
               {method.icon && method.icon}
-              <p className="text-black mt-10">{method.name}</p>
+              <p className="mt-10 text-black">{method.name}</p>
             </div>
           ))}
         </div>
-        <div className="text-center py-4 h-[52px]">
+        <div className="h-[52px] py-4 text-center">
           {noMethodSelected && (
             <p className={registerStyles.errorLabel}>Seleccione un método de Pago</p>
           )}
         </div>
       </div>
 
-      <button onClick={handleClick} className="btn btn-primary m-auto text-center block">
+      <button onClick={handleClick} className="btn btn-primary m-auto block text-center">
         Siguiente
       </button>
     </section>

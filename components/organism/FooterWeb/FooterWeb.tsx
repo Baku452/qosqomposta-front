@@ -17,10 +17,10 @@ import styles from './FooterWeb.module.scss';
 
 const FooterWeb = () => {
   return (
-    <footer className="w-full flex flex-col bg-black text-white pt-5 lg:pt-20 pb-5 px-20">
-      <div className="w-5/6 m-auto">
-        <div className="basis-full flex flex-col lg:flex-row justify-between items-center lg:items-start pb-20">
-          <div className="text-center lg:text-left pb-10">
+    <footer className="flex w-full flex-col bg-black px-20 pb-5 pt-5 text-white lg:pt-20">
+      <div className="m-auto w-5/6">
+        <div className="flex basis-full flex-col items-center justify-between pb-20 lg:flex-row lg:items-start">
+          <div className="pb-10 text-center lg:text-left">
             <Link href="/">
               <Image
                 className="mb-10"
@@ -33,7 +33,7 @@ const FooterWeb = () => {
             </Link>
           </div>
           <div className="mb-10 lg:mb-0">
-            <h5 className="font-bold mb-5 text-center lg:text-left">
+            <h5 className="mb-5 text-center font-bold lg:text-left">
               Acerca de Nosotros
             </h5>
             <ul className="child:mb-5">
@@ -43,22 +43,22 @@ const FooterWeb = () => {
             </ul>
           </div>
           <div>
-            <h5 className="font-bold mb-5 text-center lg:text-left">Contacto</h5>
+            <h5 className="mb-5 text-center font-bold lg:text-left">Contacto</h5>
             <ul className="child:mb-5">
               <li>
                 <a href="tel:+51 902 934 785">
-                  <AiFillPhone className="inline mr-3" /> 51 902 934 785
+                  <AiFillPhone className="mr-3 inline" /> 51 902 934 785
                 </a>
               </li>
               <li>
                 <a href="mailto:qosqomposta@gmail.com">
-                  <FaEnvelope className="inline mr-3" /> qosqomposta@gmail.com
+                  <FaEnvelope className="mr-3 inline" /> qosqomposta@gmail.com
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h5 className="font-bold mb-5 text-center lg:text-left">Redes Sociales</h5>
+            <h5 className="mb-5 text-center font-bold lg:text-left">Redes Sociales</h5>
             <div className={`${styles.socialLinks} flex justify-between`}>
               <a target="_blank" href={QOSQOMPOSTA_FACEBOOK_URL} rel="noreferrer">
                 <AiFillFacebook size={35} />

@@ -21,11 +21,11 @@ const SummaryAdmin: React.FC = () => {
     fetchUsers();
   }, []);
   return (
-    <div className="flex gap-10 w-full justify-evenly p-5">
+    <div className="flex w-full justify-evenly gap-10 p-5">
       <div className={styles.cardSummary}>
         <h3>Compost Acumulado</h3>
-        <div className="flex justify-between items-end">
-          <p className="font-bold text-2xl">245 kg</p>
+        <div className="flex items-end justify-between">
+          <p className="text-2xl font-bold">245 kg</p>
           <Link href={'/'} className="text-greenQ">
             Ver Más
           </Link>
@@ -33,8 +33,8 @@ const SummaryAdmin: React.FC = () => {
       </div>
       <div className={styles.cardSummary}>
         <h3>Residuos Acumulados</h3>
-        <div className="flex justify-between items-end">
-          <p className="font-bold text-2xl">244 kg</p>
+        <div className="flex items-end justify-between">
+          <p className="text-2xl font-bold">244 kg</p>
           <Link href={'/'} className="text-greenQ">
             Ver Más
           </Link>
@@ -42,10 +42,10 @@ const SummaryAdmin: React.FC = () => {
       </div>
       <div className={styles.cardSummary}>
         <h3>Número de Clientes</h3>
-        <div className="flex justify-between items-end">
+        <div className="flex items-end justify-between">
           {isFetchingClients && <Spinner />}
           {!isFetchingClients && (
-            <p className="font-bold text-2xl">{clients?.length} usuarios</p>
+            <p className="text-2xl font-bold">{clients?.length} usuarios</p>
           )}
           <Link href={LIST_USERS_PATH} className="text-greenQ">
             Ver Más

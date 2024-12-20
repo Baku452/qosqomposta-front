@@ -60,8 +60,8 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
       </Head>
       {loading && <LoadingOverlay />}
       <div className={`p-5 ${styles.backgroundPage}`}>
-        <h2 className="text-4xl text-center pt-10">Elige tu Plan</h2>
-        <p className="text-center py-5">Puedes cancelar en cualquier momento.</p>
+        <h2 className="pt-10 text-center text-4xl">Elige tu Plan</h2>
+        <p className="py-5 text-center">Puedes cancelar en cualquier momento.</p>
 
         {/* {activeService && activeService.modality.length > 1 && (
           <table className={styles.tableServices}>
@@ -124,7 +124,7 @@ const SeleccionarServicio: NextPage<SeleccionarServicioProps> = ({ data }) => {
           </table>
         )} */}
         <section className="m-auto my-12 text-center">
-          <Link href={LINK_TERMS_CONDITIONS} className="underline text-greenQ  ">
+          <Link href={LINK_TERMS_CONDITIONS} className="text-greenQ underline">
             Condiciones del Servicio Qosqomposta
           </Link>
         </section>

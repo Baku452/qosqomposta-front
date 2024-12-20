@@ -31,7 +31,7 @@ const Pagination: React.FC<PaginationProps> = ({
     }
   };
   return (
-    <div className="text-gray-500  flex py-4 text-center m-auto justify-center">
+    <div className="m-auto flex justify-center py-4 text-center text-gray-500">
       <button disabled={activePage === 0} onClick={() => handlePrevPage(activePage)}>
         <FaAngleLeft className={`${activePage === 1 ? disabledArrow : ''}`} size={30} />
       </button>
@@ -39,9 +39,9 @@ const Pagination: React.FC<PaginationProps> = ({
         <button
           onClick={() => handleChangePage(index + 1)}
           key={index + 'page'}
-          className={`mx-1 px-4 py-1 rounded-md border-[1px] border-gray-400 ${
+          className={`mx-1 rounded-md border-[1px] border-gray-400 px-4 py-1 ${
             activePage - 1 === index
-              ? 'bg-yellowQ !border-yellowQ text-black'
+              ? '!border-yellowQ bg-yellowQ text-black'
               : 'bg-white'
           }`}
         >

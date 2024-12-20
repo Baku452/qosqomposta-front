@@ -13,10 +13,10 @@ const Clients: NextPage<DashboardProps> = () => {
 
   return (
     <div>
-      <div className="bg-white mb-5 p-4">
+      <div className="mb-5 bg-white p-4">
         <h2 className="font-paragraph font-bold">
           Lista de Qomposteros
-          <span className="font-normal font-paragraph ml-2">
+          <span className="ml-2 font-paragraph font-normal">
             ({clients?.length ?? 0}) total
           </span>
         </h2>

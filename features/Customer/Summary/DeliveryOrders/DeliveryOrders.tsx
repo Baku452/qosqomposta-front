@@ -28,16 +28,16 @@ const DeliveryOrders: React.FC = () => {
     fetchDeliveryOrderData();
   }, [subscriptionId]);
   return (
-    <section className="w-full mt-10 bg-white rounded-xl p-5">
-      <h5 className="text-center pb-5 text-xl">Últimos recojos</h5>
-      <table className="w-full border-none rounded-xl">
+    <section className="mt-10 w-full rounded-xl bg-white p-5">
+      <h5 className="pb-5 text-center text-xl">Últimos recojos</h5>
+      <table className="w-full rounded-xl border-none">
         <thead className="">
-          <tr className="bg-gray-200 text-black font-semibold border-none">
+          <tr className="border-none bg-gray-200 font-semibold text-black">
             {DELIVERY_ORDERS_HEADERS.map((item, index) => {
               return (
                 <td
                   key={item.key}
-                  className={`pr-4 py-2 ${index === 0 ? 'rounded-tl-lg' : ''} ${
+                  className={`py-2 pr-4 ${index === 0 ? 'rounded-tl-lg' : ''} ${
                     index === DELIVERY_ORDERS_HEADERS.length - 1 ? 'rounded-tr-lg' : ''
                   }`}
                 >

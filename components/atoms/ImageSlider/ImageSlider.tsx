@@ -152,7 +152,7 @@ const ImageSlider: React.FC<ImageSilderProps> = ({
   }, [currentIndex]);
 
   return (
-    <div ref={boxContainer} className="m-auto relative">
+    <div ref={boxContainer} className="relative m-auto">
       <div
         ref={sliderRef}
         className={`${styles.imageSlider} ${borderRadius ? 'rounded-3xl' : ''}`}

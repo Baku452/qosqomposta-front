@@ -16,7 +16,7 @@ const Accordion: React.FC<Props> = ({ defaultOpen = false, title, children }) =>
   return (
     <div className={styles.accordion}>
       <button
-        className={`font-medium py-2 px-4 rounded-t transition-all duration-150 ${
+        className={`rounded-t px-4 py-2 font-medium transition-all duration-150 ${
           show ? 'bg-greenQ text-white' : 'bg-white text-greenQ'
         }`}
         onClick={() => setShow(!show)}

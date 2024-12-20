@@ -5,20 +5,20 @@ import { AiOutlineCheckCircle } from 'react-icons/ai';
 
 export const PlanComercialItems: React.FC = () => {
   return (
-    <div className="flex h-full flex-col justify-between min-h">
+    <div className="min-h flex h-full flex-col justify-between">
       <div>
-        <h3 className="text-xl mb-7">{PLAN_COMERCIAL.title}</h3>
+        <h3 className="mb-7 text-xl">{PLAN_COMERCIAL.title}</h3>
         <ul>
           {PLAN_COMERCIAL.itemsIncludes.map(item => (
-            <li className=" flex text-lg items-center leading-8" key={item.key}>
-              <AiOutlineCheckCircle className="fill-greenQ mr-2" />
+            <li className="flex items-center text-lg leading-8" key={item.key}>
+              <AiOutlineCheckCircle className="mr-2 fill-greenQ" />
               {item.title}
             </li>
           ))}
         </ul>
       </div>
       <div>
-        <button className="btn btn-primary m-auto block mt-5">
+        <button className="btn btn-primary m-auto mt-5 block">
           <Link href={'/servicios/personal'}>Leer Más</Link>
         </button>
       </div>

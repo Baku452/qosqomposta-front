@@ -13,11 +13,11 @@ const StepsButton: React.FC<StepsButtonProps> = ({
   decreaseStep,
 }) => {
   return (
-    <div className="w-full text-center flex gap-1 justify-center">
-      <button disabled={steps === 0} className=" m-0" onClick={decreaseStep}>
+    <div className="flex w-full justify-center gap-1 text-center">
+      <button disabled={steps === 0} className="m-0" onClick={decreaseStep}>
         <FaAngleLeft size={30} />
       </button>
-      <button disabled={steps === maxSteps} className=" m-0" onClick={increaseStep}>
+      <button disabled={steps === maxSteps} className="m-0" onClick={increaseStep}>
         <FaAngleRight size={30} />
       </button>
     </div>

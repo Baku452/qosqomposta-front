@@ -4,7 +4,7 @@ import { FaUser } from 'react-icons/fa';
 
 const UserNavDetails: React.FC = () => {
   return (
-    <div className="flex gap-4 min-w-fit">
+    <div className="flex min-w-fit gap-4">
       <Link href={'/dashboard'}>
         <div className="flex items-center">
           <p className="mr-4">Mi cuenta</p>

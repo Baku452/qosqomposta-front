@@ -42,7 +42,7 @@ export const ToastContent: React.FC<ToastContentProps> = ({
   return (
     <div className="p-2">
       <div>{message}</div>
-      <div className="flex items-center justify-center gap-2 mt-3">
+      <div className="mt-3 flex items-center justify-center gap-2">
         {button && (
           <button onClick={button.handleClick} className="btn btn-primary !text-sm">
             {button.loading && <Spinner size="sm" />}

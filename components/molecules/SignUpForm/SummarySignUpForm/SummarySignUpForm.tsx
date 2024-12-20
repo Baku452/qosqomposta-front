@@ -87,7 +87,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
               </p>
 
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
 
@@ -100,7 +100,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -110,7 +110,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -120,7 +120,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -134,36 +134,36 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.district || ''}
-                className="text-ellipsis overflow-hidden"
+                className="overflow-hidden text-ellipsis"
               >
                 {formValues.location?.district || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.address || ''}
-                className="text-ellipsis overflow-hidden"
+                className="overflow-hidden text-ellipsis"
               >
                 {formValues.location?.address || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
-            <div className="flex ">
+            <div className="flex">
               <textarea
                 className="w-60"
                 readOnly
@@ -174,7 +174,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </textarea>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
 
@@ -185,14 +185,14 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PAYMENT_METHOD_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="text-center pt-5">
+      <div className="pt-5 text-center">
         <button
           disabled={notValidForm}
           onClick={handleSubmit}

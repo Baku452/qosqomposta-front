@@ -4,7 +4,7 @@ const ButtonCertificate: React.FC = () => {
   return (
     <button
       disabled
-      className="btn btn-primary !bg-greenQ flex items-center !text-white gap-2 !font-paragraph h-fit"
+      className="btn btn-primary flex h-fit items-center gap-2 !bg-greenQ !font-paragraph !text-white"
     >
       <FaFile />
       Certificado Q

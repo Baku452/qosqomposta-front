@@ -90,20 +90,20 @@ const LoginForm: React.FC = () => {
     }
   };
   return (
-    <div className="p-10 rounded-3xl shadow-xl min-w-[500px] mb-20">
+    <div className="mb-20 min-w-[500px] rounded-3xl p-10 shadow-xl">
       <form
-        className="mb-5 w-3/4 m-auto relative block"
+        className="relative m-auto mb-5 block w-3/4"
         onSubmit={handleSubmit(handleLogin)}
       >
-        <h2 className="text-center py-5 font-paragraph text-2xl">Ingrese sus datos</h2>
+        <h2 className="py-5 text-center font-paragraph text-2xl">Ingrese sus datos</h2>
         <div className="mb-5">
           <input placeholder="Correo Electrónico" type="email" {...register('email')} />
           {errors.email && <span className="text-error">{errors.email.message}</span>}
         </div>
         <div className="mb-5 text-right">
-          <div className="flex items-center relative">
+          <div className="relative flex items-center">
             <input
-              className="!block !relative"
+              className="!relative !block"
               placeholder="Contraseña"
               type={showPassword ? 'text' : 'password'}
               {...restPassword}
@@ -128,17 +128,17 @@ const LoginForm: React.FC = () => {
           )}
 
           {errorAuth && <span className="text-error">{errorAuth}</span>}
-          <a className="text-yellowQ-500 pt-3 relative block" href={FORGOT_PASSWORD}>
+          <a className="relative block pt-3 text-yellowQ-500" href={FORGOT_PASSWORD}>
             Olvide mi contraseña
           </a>
         </div>
-        <button className="btn btn-primary !w-full block" type="submit">
+        <button className="btn btn-primary block !w-full" type="submit">
           {isLogin ? <Spinner size="xs" /> : <>Ingresar</>}
         </button>
       </form>
       <div className="text-center">
         <p>¿No tiene una cuenta?</p>
-        <Link href={SELECT_SERVICE_PATH} className="text-yellowQ-500 font-bold">
+        <Link href={SELECT_SERVICE_PATH} className="font-bold text-yellowQ-500">
           Elija un Servicio Q
         </Link>
       </div>

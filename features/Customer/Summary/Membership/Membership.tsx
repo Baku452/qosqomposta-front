@@ -8,16 +8,16 @@ const MembershipSummary: React.FC = () => {
     (state: State) => state.customerApp.subscriptionSummary,
   );
   return (
-    <section className="flex w-full gap-4 items-center justify-evenly shadow-lg rounded-lg p-5 bg-white mt-4">
+    <section className="mt-4 flex w-full items-center justify-evenly gap-4 rounded-lg bg-white p-5 shadow-lg">
       <div className="text-center">
         <h4 className="text-lg">Tipo de Servicio</h4>
-        <p className="text-3xl font-titles text-greenQ">
+        <p className="font-titles text-3xl text-greenQ">
           {defaultValue(subscriptionSummary?.serviceType)}
         </p>
       </div>
       <div className="text-center">
         <h4 className="text-lg">Modalidad</h4>
-        <p className="text-3xl font-titles text-greenQ">
+        <p className="font-titles text-3xl text-greenQ">
           {subscriptionSummary?.frequencyService != null
             ? FREQUENCY_SERVICE.get(subscriptionSummary?.frequencyService)
             : '--'}
@@ -25,7 +25,7 @@ const MembershipSummary: React.FC = () => {
       </div>
       <div className="text-center">
         <h4 className="text-lg">Costo</h4>
-        <p className="text-3xl font-titles text-greenQ">
+        <p className="font-titles text-3xl text-greenQ">
           {subscriptionSummary?.mainPrice != null
             ? convertPriceToString(subscriptionSummary?.mainPrice)
             : '--'}

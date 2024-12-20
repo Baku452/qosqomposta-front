@@ -35,13 +35,7 @@ const Tooltip: React.FC<TooltipProps> = ({
       </div>
       <div
         ref={refs.setFloating}
-        className={`
-          absolute z-[1000] bg-black text-white py-[6px] px-[10px] 
-          rounded-[4px] text-xs whitespace-nowrap
-          transition-all ease-in-out
-          ${isHovered ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'}
-          ${tooltipClassName}
-        `}
+        className={`absolute z-[1000] whitespace-nowrap rounded-[4px] bg-black px-[10px] py-[6px] text-xs text-white transition-all ease-in-out ${isHovered ? 'visible scale-100 opacity-100' : 'invisible scale-95 opacity-0'} ${tooltipClassName} `}
         style={{
           position: strategy,
           top: y ?? 0,

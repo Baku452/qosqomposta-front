@@ -61,7 +61,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
   return (
     <>
       <form
-        className="flex flex-col justify-between h-full"
+        className="flex h-full flex-col justify-between"
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -119,7 +119,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary m-auto text-center block my-0">
+        <button type="submit" className="btn btn-primary m-auto my-0 block text-center">
           Siguiente
         </button>
       </form>

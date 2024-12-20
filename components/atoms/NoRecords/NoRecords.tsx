@@ -5,7 +5,7 @@ export interface NoRecordsProps {
 }
 export const NoRecords: React.FC<NoRecordsProps> = ({ message }) => {
   return (
-    <div className="text-gray-500 text-center flex flex-col items-center p-5">
+    <div className="flex flex-col items-center p-5 text-center text-gray-500">
       <BiSearch size={30} />
       <h3 className="font-paragraph">
         {message ? message : 'No se han encontrado resultados'}

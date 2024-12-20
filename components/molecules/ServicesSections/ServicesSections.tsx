@@ -45,17 +45,17 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
       className="container m-auto my-12"
     >
       <div
-        className={`flex bg-gray-100 rounded-3xl p-5 py-12 ${
+        className={`flex rounded-3xl bg-gray-100 p-5 py-12 ${
           imgLeft ? 'flex-row' : 'flex-row-reverse'
         }`}
       >
-        <div className="basis-1/3 justify-start p-10 relative max-h">
+        <div className="max-h relative basis-1/3 justify-start p-10">
           <img alt="recoleccion residuos organicos" src={imageSection} />
         </div>
-        <div className="basis-2/3 max-w-3xl mx-auto">
-          <h2 className="text-greenQ text-3xl">{title}</h2>
+        <div className="mx-auto max-w-3xl basis-2/3">
+          <h2 className="text-3xl text-greenQ">{title}</h2>
           {content && <p className="my-5">{content}</p>}
-          <div className="my-2 m-auto px-12">
+          <div className="m-auto my-2 px-12">
             <>
               {accordionItems &&
                 accordionItems.map(item => (
@@ -70,7 +70,7 @@ const ServiceSection: React.FC<ServiceSectionProps> = ({
               <h6 className="mt-5 text-sm">{advertise}</h6>
             </>
           </div>
-          <button className="btn btn-primary block m-auto mt-8">
+          <button className="btn btn-primary m-auto mt-8 block">
             <Link href={buttonCTA?.link || ''}>{buttonCTA?.label}</Link>
           </button>
         </div>

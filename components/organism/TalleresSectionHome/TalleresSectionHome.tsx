@@ -6,24 +6,24 @@ import { TALLERES_PATH } from '@/routes/routes.config';
 
 const TalleresSectionHome: React.FC = () => {
   return (
-    <section className="pt-0 lg:pt-10 relative ">
-      <div className="max-w-6xl m-auto relative block">
-        <h2 className="text-center text-lg lg:text-3xl title mb-5">{TITLE_BLOG_HOME}</h2>
-        <div className="h-1 mx-auto bg-yellowQ w-24 mb-10 mt-4 rounded" />
+    <section className="relative pt-0 lg:pt-10">
+      <div className="relative m-auto block max-w-6xl">
+        <h2 className="title mb-5 text-center text-lg lg:text-3xl">{TITLE_BLOG_HOME}</h2>
+        <div className="mx-auto mb-10 mt-4 h-1 w-24 rounded bg-yellowQ" />
       </div>
       <div className="relative">
-        <div className="absolute w-full h-full flex items-center justify-center">
+        <div className="absolute flex h-full w-full items-center justify-center">
           <button className="shadow-2xl">
             <Link
               href={TALLERES_PATH}
-              className="btn btn-primary shadow-2xl !font-black !p-5 !text-2xl"
+              className="btn btn-primary !p-5 !text-2xl !font-black shadow-2xl"
             >
               Conocer Más
             </Link>
           </button>
         </div>
         <img
-          className="w-full object-contain h-full"
+          className="h-full w-full object-contain"
           alt="TalleresQ"
           src={BANNER_TALLER_HOME}
         />

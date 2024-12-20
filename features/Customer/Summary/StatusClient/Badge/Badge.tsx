@@ -5,13 +5,13 @@ export interface BadgeProps {
 }
 const Badge: React.FC<BadgeProps> = ({ icon, header, content }) => {
   return (
-    <section className="flex gap-3 items-center">
-      <div className="rounded-full bg-greenQ bg-opacity-20 w-14 h-14 flex items-center justify-center">
+    <section className="flex items-center gap-3">
+      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-greenQ bg-opacity-20">
         {icon}
       </div>
       <div>
         <header>
-          <h3 className="font-normal font-paragraph text-lg">{header}</h3>
+          <h3 className="font-paragraph text-lg font-normal">{header}</h3>
         </header>
         <p className="font-semibold capitalize">{content}</p>
       </div>

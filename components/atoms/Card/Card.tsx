@@ -16,7 +16,7 @@ export const Card: React.FC<CardProps> = ({
   imageWidth = 600,
 }) => {
   return (
-    <div className="flex mb-5 bg-white flex-col mx-5 rounded-t-2xl overflow-hidden border-greenQ border-4">
+    <div className="mx-5 mb-5 flex flex-col overflow-hidden rounded-t-2xl border-4 border-greenQ bg-white">
       {image && (
         <Image alt={altImage} src={image} width={imageWidth} height={imageHeight} />
       )}

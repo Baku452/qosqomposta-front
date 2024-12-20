@@ -10,13 +10,13 @@ const OurServices = () => {
       className={styles.serviceQosqomposta}
       style={{ backgroundImage: `url(${BACKGROUND_SERVICES_HOME})` }}
     >
-      <div className={`py-10 max-w-6xl m-auto`}>
-        <div className="container mx-auto ">
+      <div className={`m-auto max-w-6xl py-10`}>
+        <div className="container mx-auto">
           <div className="mb-10 px-10">
-            <h2 className="text-center text-xl text-greenQ lg:text-4xl title mb-5">
+            <h2 className="title mb-5 text-center text-xl text-greenQ lg:text-4xl">
               Sé parte del cambio{' '}
             </h2>
-            <h3 className="font-regular font-paragraph text-center text-xl">
+            <h3 className="font-regular text-center font-paragraph text-xl">
               ¡Descubre nuestros planes de recolección y acopio en Cusco! <br />
               ¡Elige el más adecuado para tu hogar o tu empresa!
             </h3>

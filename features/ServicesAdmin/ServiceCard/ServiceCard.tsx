@@ -15,8 +15,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   };
   return (
     <Link href={`${SERVICES_ADMIN}/${service.id}`}>
-      <div className="bg-white rounded-2xl shadow-md py-4 px-5 hover:bg-gray-100 transition cursor-pointer">
-        <div className="flex justify-between mb-5">
+      <div className="cursor-pointer rounded-2xl bg-white px-5 py-4 shadow-md transition hover:bg-gray-100">
+        <div className="mb-5 flex justify-between">
           <h5 className="font-semibold">{service.name}</h5>
           <FaPencilAlt className="text-greenQ" />
         </div>

@@ -46,9 +46,9 @@ const SignUpForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-lg m-auto">
+    <div className="m-auto flex max-w-lg flex-col">
       <SignUpContextProvider>
-        <div className="rounded-lg flex justify-between bg-greenQ text-white p-3 text-lg">
+        <div className="flex justify-between rounded-lg bg-greenQ p-3 text-lg text-white">
           <div>
             {selectedService?.name ? (
               <>

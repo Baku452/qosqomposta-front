@@ -19,8 +19,8 @@ const StatusClient: React.FC = () => {
   );
 
   return (
-    <div className="flex w-full justify-between gap-4 items-center">
-      <section className="flex grow justify-evenly shadow-lg rounded-lg p-5 bg-white">
+    <div className="flex w-full items-center justify-between gap-4">
+      <section className="flex grow justify-evenly rounded-lg bg-white p-5 shadow-lg">
         <Badge
           icon={<FaUserTag {...iconProps} />}
           header={'Categoría'}

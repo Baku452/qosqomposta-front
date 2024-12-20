@@ -22,7 +22,7 @@ export const SingleService: React.FC<SingleServiceProps> = ({ service }) => {
   return (
     <section
       ref={containerForm}
-      className={`bg-white px-5 rounded-2xl ${styles.formEditService}`}
+      className={`rounded-2xl bg-white px-5 ${styles.formEditService}`}
     >
       <div onClick={e => e.stopPropagation()}>
         {editMode ? (
