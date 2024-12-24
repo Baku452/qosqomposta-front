@@ -71,7 +71,7 @@ a {
   }
 }
 
-.btn-primary {
+.btn-primary , .btn-green{
   @apply bg-yellowQ text-black;
   border: 1px solid transparent;
   border-radius: 10px;
@@ -92,6 +92,15 @@ a {
 
 .btn-dark {
   @apply bg-black text-white hover:bg-white hover:text-black;
+}
+
+.btn-green {
+  @apply bg-greenQ text-white;
+}
+
+.btn-green:disabled {
+  @apply bg-gray-500;
+  cursor: not-allowed;
 }
 
 .btn-outline-primary {
@@ -121,7 +130,7 @@ input {
 }
 
 input:disabled {
-  @apply bg-gray-200 text-gray-600;
+  @apply bg-gray-200 text-gray-400;
   cursor: not-allowed;
 }
 

@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 
 const Profile: React.FC = () => {
   const customerData = useSelector((state: State) => state.customerApp.customerProfile);
+  const appUser = useSelector((state: State) => state.appUser);
 
   type ProfileFormValues = {
     name: string;
@@ -22,6 +23,8 @@ const Profile: React.FC = () => {
     address: string;
     district: string;
     addressReference: string;
+    email: string;
+    password: string;
   };
 
   const { register, setValue } = useForm<ProfileFormValues>();
@@ -36,9 +39,9 @@ const Profile: React.FC = () => {
       setValue('address', customerData.family?.address ?? '--');
       setValue('district', customerData.family?.district ?? '--');
       setValue('addressReference', customerData.family?.reference ?? '--');
+      setValue('email', customerData.email ?? '--');
     }
   }, [customerData, setValue]);
-  const appUser = useSelector((state: State) => state.appUser);
 
   const dispatch = useDispatch();
 
@@ -54,7 +57,7 @@ const Profile: React.FC = () => {
         <section className="rounded-lg bg-white p-5 shadow-lg">
           <div className="mb-5 flex justify-between">
             <h2 className="text-xl text-greenQ">Datos Personales</h2>
-            <button className="btn-primary flex !bg-greenQ p-2 !text-white">
+            <button disabled className="btn-green flex p-2 !text-white">
               Editar
               <FaPencil className="ml-2" />
             </button>
@@ -160,11 +163,11 @@ const Profile: React.FC = () => {
             </div>
           </div>
         </section>
-        <section className="mb-5 mt-5 justify-between rounded-lg bg-white p-5 shadow-lg">
+        <section className="mb-5 mt-5 rounded-lg bg-white p-5 shadow-lg">
           <div className="mb-5 flex justify-between">
             <h2 className="text-xl text-greenQ">Datos De Recojo</h2>
             <div className="flex items-center gap-4">
-              <button className="btn-primary flex !bg-greenQ p-2 !text-white">
+              <button disabled className="btn-green flex p-2 !text-white">
                 Editar
                 <FaPencil className="ml-2" />
               </button>
@@ -216,6 +219,50 @@ const Profile: React.FC = () => {
               disabled
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
             />
+          </div>
+        </section>
+        <section className="mb-5 mt-5 rounded-lg bg-white p-5 shadow-lg">
+          <div className="mb-5 flex justify-between">
+            <h2 className="text-xl text-greenQ">Datos De Recojo</h2>
+            <div className="flex items-center gap-4">
+              <button disabled className="btn-green flex p-2 !text-white">
+                Editar
+                <FaPencil className="ml-2" />
+              </button>
+              <Tooltip text={EDITING_ADDRESS_INFO} tooltipClassName="!w-28 text-center">
+                <FaInfoCircle className="cursor-pointer text-greenQ" size={25} />
+              </Tooltip>
+            </div>
+          </div>
+          <div className="flex justify-between gap-4">
+            <div className="flex-1">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+                Correo Electrónico
+              </label>
+              <input
+                type="text"
+                id="email"
+                {...register('email', {
+                  value: customerData?.email ?? '--',
+                })}
+                disabled
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              />
+            </div>
+            <div className="flex-1">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+                Nueva Contraseña
+              </label>
+              <input
+                type="password"
+                id="password"
+                {...register('password', {
+                  value: '',
+                })}
+                disabled
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"
+              />
+            </div>
           </div>
         </section>
       </form>
