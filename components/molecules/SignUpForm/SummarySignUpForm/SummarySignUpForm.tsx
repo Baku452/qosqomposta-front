@@ -1,9 +1,7 @@
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import QosqompostaServicesContext, {
-  ServiceContextType,
-} from '@/context/ServicesContext';
+import { useServicesContext } from '@/context/ServicesContext';
 import { BsPencilSquare } from 'react-icons/bs';
 import {
   ACCOUNT_FORM_STEP,
@@ -36,9 +34,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
   handleSetStepForm,
 }) => {
   const { formState } = useContext(SignUpContext) as SignUpContextType;
-  const { selectedService } = useContext(
-    QosqompostaServicesContext,
-  ) as ServiceContextType;
+  const { selectedService } = useServicesContext();
 
   const { getValues } = useForm({
     defaultValues: {
@@ -54,7 +50,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
   const handleSubmit = async () => {
     if (formState) {
       const result = await registerUser(
-        makeRegisterUserSchema(formValues, selectedService?._id),
+        makeRegisterUserSchema(formValues, selectedService?.pricing_id),
       )(dispatch);
 
       if (result) {
@@ -91,7 +87,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
               </p>
 
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
 
@@ -104,7 +100,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -114,7 +110,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -124,7 +120,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex">
@@ -138,36 +134,36 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(ACCOUNT_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.district || ''}
-                className="text-ellipsis overflow-hidden"
+                className="overflow-hidden text-ellipsis"
               >
                 {formValues.location?.district || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
             <div className="flex w-52 overflow-hidden whitespace-nowrap">
               <p
                 title={formValues.location?.address || ''}
-                className="text-ellipsis overflow-hidden"
+                className="overflow-hidden text-ellipsis"
               >
                 {formValues.location?.address || (
                   <span className={registerStyles.errorLabel}>{NOT_FILLED_FIELD}</span>
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
-            <div className="flex ">
+            <div className="flex">
               <textarea
                 className="w-60"
                 readOnly
@@ -178,7 +174,7 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </textarea>
               <button onClick={() => handleSetStepForm(PICKUP_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
 
@@ -189,14 +185,14 @@ const SummarySignUpForm: React.FC<SummarySignUpFormProps> = ({
                 )}
               </p>
               <button onClick={() => handleSetStepForm(PAYMENT_METHOD_FORM_STEP)}>
-                <BsPencilSquare title="Cambiar" className="text-greenQ ml-2" size={20} />
+                <BsPencilSquare title="Cambiar" className="ml-2 text-greenQ" size={20} />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="text-center pt-5">
+      <div className="pt-5 text-center">
         <button
           disabled={notValidForm}
           onClick={handleSubmit}

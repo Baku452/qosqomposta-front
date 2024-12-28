@@ -3,17 +3,17 @@ import {
   SET_FETCHED_SERVICES,
   SET_SELECTED_SERVICE,
 } from '@/actions/actionsTypes';
-import { QosqompostaServices } from '@/types/stateTypes';
+import { WasteManagementServices } from '@/types/stateTypes';
 import { AnyAction } from 'redux';
 
-export const initialState: QosqompostaServices = {
+export const initialState: WasteManagementServices = {
   services: null,
 };
 
 export const servicesReducer = (
-  state: QosqompostaServices = initialState,
+  state: WasteManagementServices = initialState,
   action: AnyAction,
-): QosqompostaServices => {
+): WasteManagementServices => {
   switch (action.type) {
     case SET_FETCHED_SERVICES:
       return {

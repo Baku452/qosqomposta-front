@@ -5,13 +5,13 @@ import { IMAGES_SLIDER, LOGO_COLOR } from '@/public/data/homeImages';
 const DescriptionWeb: React.FC = () => {
   return (
     <>
-      <section className="container max-w-sm lg:max-w-6xl mx-auto pt-20 lg:pt-80 px-5 lg:px-0">
-        <h2 className="text-xl lg:text-4xl text-center">
+      <section className="container mx-auto max-w-sm px-5 pt-20 lg:max-w-6xl lg:px-0 lg:pt-80">
+        <h2 className="text-center text-xl lg:text-4xl">
           Junta los residuos orgánicos y nosotros lo{' '}
           <span className="text-yellowQ">qompostamos</span>
         </h2>
 
-        <h2 className="text-lg lg:text-3xl text-center font-paragraph pt-5">
+        <h2 className="pt-5 text-center font-paragraph text-lg lg:text-3xl">
           Esta realidad puede cambiar...
         </h2>
       </section>
@@ -25,12 +25,12 @@ const DescriptionWeb: React.FC = () => {
           borderRadius={true}
         />
       </section>
-      <section className="container max-w-6xl mx-auto pt-20">
-        <h2 className="text-xl lg:text-4xl text-center">
+      <section className="container mx-auto max-w-6xl pt-20">
+        <h2 className="text-center text-xl lg:text-4xl">
           Te damos la bienvenida <br />
           <span className="text-yellowQ">Movimiento Qompostero !</span>
         </h2>
-        <div className="flex flex-col lg:flex-row px-20 justify-center items-center">
+        <div className="flex flex-col items-center justify-center px-20 lg:flex-row">
           <p className="basis-1/2 text-center text-xl">
             El compostaje es un proceso natural que recicla materia orgánica y la
             convierte en abono para enriquecer el suelo y las plantas. Compostar reduce

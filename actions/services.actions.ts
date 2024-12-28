@@ -1,4 +1,4 @@
-import { QosqompostaService } from '@/types/serviceQosqomposta';
+import { WasteService } from '@/types/wasteManagement';
 import {
   FETCH_SERVICES,
   SET_FETCHED_SERVICES,
@@ -13,11 +13,17 @@ export const setSelectedRegisterService = (serviceId: string): AnyAction => ({
   payload: serviceId,
 });
 
-export const setServicesFetched = (services: QosqompostaService[]): AnyAction => ({
+export const setServicesFetched = (services: WasteService[]): AnyAction => ({
   type: SET_FETCHED_SERVICES,
   payload: services,
 });
 
 export const fetchServices = () => async (dispatch: Dispatch<AnyAction>) => {
-  return doAsync(dispatch, FETCH_SERVICES, '/qosqomposta-service', { method: 'GET' }, undefined);
+  return doAsync(
+    dispatch,
+    FETCH_SERVICES,
+    '/waste-management',
+    { method: 'GET' },
+    undefined,
+  );
 };

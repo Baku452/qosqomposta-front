@@ -1,5 +1,3 @@
-import { QosqompostaService } from './serviceQosqomposta';
-
 export interface AccordionItems {
   title: string;
   content: string;
@@ -107,6 +105,9 @@ export interface FilterParamsClients {
 }
 export interface TABLE_HEADERS {
   title: string;
-  name: keyof FilterParamsClients & Exclude<keyof FilterParamsClients, 'sortCriteria'>;
+  key: string;
+  name?: string;
   sortable?: boolean;
+  tooltipContent?: string;
+  icon?: string;
 }

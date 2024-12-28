@@ -70,7 +70,7 @@ const Comercial = () => {
       </Head>
       <div className="flex w-full justify-between">
         <div className="pl-40 pt-5">
-          <h1 className="text-greenQ text-6xl">
+          <h1 className="text-6xl text-greenQ">
             Planes <br />
             Barrio <br />o Comerciales
           </h1>
@@ -82,10 +82,10 @@ const Comercial = () => {
           src={BANNER_PLAN_COMERCIAL}
         />
       </div>
-      <section className="container m-auto py-20 text-3xl max-w-5xl">
+      <section className="container m-auto max-w-5xl py-20 text-3xl">
         <p className="px-5 text-center">
           Gracias por unirte al{' '}
-          <span className="text-yellowQ font-semibold">MOVIMIENTO QOMPOSTERO</span> por un
+          <span className="font-semibold text-yellowQ">MOVIMIENTO QOMPOSTERO</span> por un
           Cusco sostenible. ¡Nuestro equipo convierte lo que antes botabas, en un alimento
           para la tierra! Lee todas las opciones que tenemos para ti y tu familia
         </p>
@@ -118,16 +118,16 @@ const Comercial = () => {
         ref={elementsRefs[1]}
         className="container m-auto my-12"
       >
-        <div className={`flex bg-gray-100 rounded-3xl p-5 py-12 flex-row-reverse`}>
-          <div className="basis-1/3 justify-start p-10 relative">
+        <div className={`flex flex-row-reverse rounded-3xl bg-gray-100 p-5 py-12`}>
+          <div className="relative basis-1/3 justify-start p-10">
             <Image
               layout="fill"
               alt="recoleccion residuos organicos"
               src={COMPOSTAJE_COMERCIAL_SECTION_IMG}
             />
           </div>
-          <div className="basis-2/3 max-w-3xl mx-auto">
-            <h2 className="text-greenQ text-3xl">{COMPOSTAJE_COMERCIAL_SECTION_TITLE}</h2>
+          <div className="mx-auto max-w-3xl basis-2/3">
+            <h2 className="text-3xl text-greenQ">{COMPOSTAJE_COMERCIAL_SECTION_TITLE}</h2>
             <article>
               <p className="my-5">
                 Comienza tu camino a la sostenibilidad y posiciónate como una empresa
@@ -155,15 +155,15 @@ const Comercial = () => {
                 para un paquete personalizado a sus necesidades y volúmenes.
               </p>
             </article>
-            <div className="my-2 m-auto px-12"></div>
-            <button className="btn btn-primary block m-auto mt-8">
+            <div className="m-auto my-2 px-12"></div>
+            <button className="btn btn-primary m-auto mt-8 block">
               <Link href={LINK_CTA_SERVICIO_COMERCIAL}>Más Información</Link>
             </button>
           </div>
         </div>
       </section>
       <section className="m-auto my-12 text-center">
-        <Link href={LINK_TERMS_CONDITIONS} className="underline text-greenQ  ">
+        <Link href={LINK_TERMS_CONDITIONS} className="text-greenQ underline">
           Condiciones del Servicio Qosqomposta
         </Link>
       </section>

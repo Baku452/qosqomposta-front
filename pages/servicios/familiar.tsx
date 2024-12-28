@@ -105,7 +105,7 @@ const Familiar = () => {
       </Head>
       <div className="flex w-full justify-between">
         <div className="pl-40 pt-5">
-          <h1 className="text-greenQ text-6xl">
+          <h1 className="text-6xl text-greenQ">
             Planes <br></br> Familiares
           </h1>
         </div>
@@ -116,10 +116,10 @@ const Familiar = () => {
           src={BANNER_PLAN_FAMILIAR}
         />
       </div>
-      <section className="container m-auto py-20 text-3xl max-w-5xl">
+      <section className="container m-auto max-w-5xl py-20 text-3xl">
         <p className="px-5 text-center">
           Gracias por unirte al{' '}
-          <span className="text-yellowQ font-semibold">MOVIMIENTO QOMPOSTERO</span> por un
+          <span className="font-semibold text-yellowQ">MOVIMIENTO QOMPOSTERO</span> por un
           Cusco sostenible. ¡Nuestro equipo convierte lo que antes botabas, en un alimento
           para la tierra! Lee todas las opciones que tenemos para ti y tu familia
         </p>
@@ -145,7 +145,7 @@ const Familiar = () => {
       })}
       <section
         id="Microqomposteros"
-        className="bg-greenQ mt-40 h-80 overflow-visible rounded-3xl flex max-w-7xl m-auto text-white relative"
+        className="relative m-auto mt-40 flex h-80 max-w-7xl overflow-visible rounded-3xl bg-greenQ text-white"
       >
         <div className="basis-2/3 p-14">
           <h2 className="text-4xl">MicroQomposteros</h2> <br />
@@ -156,7 +156,7 @@ const Familiar = () => {
             aceleran el proceso de descomposición.
           </p>
         </div>
-        <div className="h-[430px] absolute bottom-0 right-0">
+        <div className="absolute bottom-0 right-0 h-[430px]">
           <Image
             alt="microqomposteros"
             width={420}
@@ -166,7 +166,7 @@ const Familiar = () => {
         </div>
       </section>
       <section className="m-auto my-12 text-center">
-        <Link href={LINK_TERMS_CONDITIONS} className="underline text-greenQ  ">
+        <Link href={LINK_TERMS_CONDITIONS} className="text-greenQ underline">
           Condiciones del Servicio Qosqomposta
         </Link>
       </section>

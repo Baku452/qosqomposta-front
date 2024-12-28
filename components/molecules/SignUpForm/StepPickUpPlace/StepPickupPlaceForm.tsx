@@ -9,7 +9,6 @@ import { useContext } from 'react';
 
 //Context
 import SignUpContext, { SignUpContextType } from '@/context/SignUpContext';
-import PlacesContext, { PlacesContextType } from '@/context/PlacesContext';
 
 //Types
 import { FormLocation } from '@/types/mainTypes';
@@ -27,8 +26,6 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
   const { formState: formAppState, setFormState } = useContext(
     SignUpContext,
   ) as SignUpContextType;
-
-  const { cities } = useContext(PlacesContext) as PlacesContextType;
 
   const validationSchema = yup.object().shape({
     address: yup.string().trim().required('Este campo es requerido'),
@@ -64,7 +61,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
   return (
     <>
       <form
-        className="flex flex-col justify-between h-full"
+        className="flex h-full flex-col justify-between"
         noValidate
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -72,7 +69,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
           <p>Actualmente solo hacemos recojo en la ciudad de Cusco*</p>
         </div>
         <div>
-          <div className="mb-5 mt-5">
+          {/* <div className="mb-5 mt-5">
             <label>Distrito</label>
             <Controller
               control={control}
@@ -85,7 +82,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
                 />
               )}
             />
-          </div>
+          </div> */}
           <div className="mb-5 mt-5">
             <label>{`Dirección (Incluya si es Jiron, Calle, Avenida)`}</label>
             <Controller
@@ -122,7 +119,7 @@ const StepPickupPlace: React.FC<StepPickupPlaceProps> = ({
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary m-auto text-center block my-0">
+        <button type="submit" className="btn btn-primary m-auto my-0 block text-center">
           Siguiente
         </button>
       </form>

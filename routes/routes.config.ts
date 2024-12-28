@@ -21,3 +21,6 @@ export const SELECT_SERVICE_PATH = '/servicios/seleccionar';
 
 //Aside Routes
 export const LIST_USERS_PATH = '/dashboard/usuarios';
+
+//Admin routes
+export const SERVICES_ADMIN = '/dashboard/admin/servicios';

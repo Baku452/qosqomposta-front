@@ -3,27 +3,23 @@ import BannerLanding from '@/components/organism/landingBanner/bannerLanding';
 import OurServices from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
 import 'normalize.css/normalize.css';
-import TalleresSectionHome from '@/components/organism/TalleresSectionHome/TalleresSectionHome';
 import { GetStaticProps, NextPage } from 'next';
-import { QosqompostaService } from '@/types/serviceQosqomposta';
-import { useContext, useEffect } from 'react';
-import QosqompostaServicesContext, {
-  ServiceContextType,
-} from '@/context/ServicesContext';
+import { WasteService } from '@/types/wasteManagement';
+import { useEffect } from 'react';
+import { useServicesContext } from '@/context/ServicesContext';
+import { WASTE_SERVICES } from '@/routes/apiRoutes';
 
 export interface Props {
-  data: QosqompostaService[];
+  data: WasteService[];
 }
 const Home: NextPage<Props> = ({ data }) => {
-  const { setServicesContext } = useContext(
-    QosqompostaServicesContext,
-  ) as ServiceContextType;
+  const { services, setServices } = useServicesContext();
 
   useEffect(() => {
-    if (data && setServicesContext) {
-      setServicesContext(data);
+    if (data && services) {
+      setServices(data);
     }
-  }, [data, setServicesContext]);
+  }, [data, services]);
   return (
     <>
       <Head>
@@ -36,14 +32,13 @@ const Home: NextPage<Props> = ({ data }) => {
       <BannerLanding />
       <DescriptionWeb />
       <OurServices />
-      {/* <TalleresSectionHome /> */}
     </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const response = await fetch(
-    `${process.env.QOSQOMPOSTA_BACKEND_URL}/qosqomposta-service`,
+    `${process.env.QOSQOMPOSTA_BACKEND_URL}/${WASTE_SERVICES.GET_ALL}`,
   );
   const data = await response.json();
 

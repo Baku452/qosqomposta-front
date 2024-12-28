@@ -1,0 +1,12 @@
+.cardSummary {
+  @apply bg-greenQ shadow-lg;
+  border-radius: 10px;
+  color: #fff;
+  height: fit-content;
+  min-width: 20rem;
+  padding: 1rem;
+
+  h3 {
+    @apply font-paragraph;
+  }
+}

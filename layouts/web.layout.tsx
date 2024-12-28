@@ -1,5 +1,4 @@
-import { PlacesContextProvider } from '@/context/PlacesContext';
-import { QosqompostaServicesContextProvider } from '@/context/ServicesContext';
+import { WasteServicesContextProvider } from '@/context/ServicesContext';
 import FooterWeb from '@/organism/FooterWeb/FooterWeb';
 import HeaderWeb from '@/organism/HeaderWeb/HeaderWeb';
 import { ToastContainer } from 'react-toastify';
@@ -11,14 +10,12 @@ export type LayoutWebProps = {
 const LayoutWeb: React.FC<LayoutWebProps> = ({ children }) => {
   return (
     <>
-      <QosqompostaServicesContextProvider>
-        <PlacesContextProvider>
-          <HeaderWeb />
-          <ToastContainer />
-          <main>{children}</main>
-          <FooterWeb />
-        </PlacesContextProvider>
-      </QosqompostaServicesContextProvider>
+      <WasteServicesContextProvider>
+        <HeaderWeb />
+        <ToastContainer />
+        <main>{children}</main>
+        <FooterWeb />
+      </WasteServicesContextProvider>
     </>
   );
 };

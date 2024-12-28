@@ -1,0 +1,22 @@
+.showPasswordIcon {
+  border-radius: 50px;
+  box-sizing: border-box;
+  height: 1.5rem;
+  padding: 4px;
+  position: absolute;
+  right: 5px;
+  transition: all 0.2s;
+  width: 1.5rem;
+  z-index: 10;
+  @apply bg-transparent text-gray-600;
+
+  &:hover {
+    @apply bg-gray-200;
+  }
+
+  &:disabled {
+    > svg {
+      display: none;
+    }
+  }
+}

@@ -9,9 +9,7 @@ import SummarySignUpForm from './SummarySignUpForm/SummarySignUpForm';
 import { SignUpContextProvider } from '@/context/SignUpContext';
 import { stepsFormsData } from '@/constants/authForms.const';
 import { StepsFormRegister } from '@/types/mainTypes';
-import QosqompostaServicesContext, {
-  ServiceContextType,
-} from '@/context/ServicesContext';
+import { useServicesContext } from '@/context/ServicesContext';
 import Link from 'next/link';
 import { SELECT_SERVICE_PATH } from '@/routes/routes.config';
 import { TiEdit } from 'react-icons/ti';
@@ -23,9 +21,7 @@ const SignUpForm: React.FC = () => {
     string | undefined
   >();
 
-  const { selectedService } = useContext(
-    QosqompostaServicesContext,
-  ) as ServiceContextType;
+  const { selectedService } = useServicesContext();
 
   const handleStepsForm = (valueStep: number, isValid: boolean) => {
     const updatedStepForms = stepsForm.map(step => {
@@ -50,9 +46,9 @@ const SignUpForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-lg m-auto">
+    <div className="m-auto flex max-w-lg flex-col">
       <SignUpContextProvider>
-        <div className="rounded-lg flex justify-between bg-greenQ text-white p-3 text-lg">
+        <div className="flex justify-between rounded-lg bg-greenQ p-3 text-lg text-white">
           <div>
             {selectedService?.name ? (
               <>

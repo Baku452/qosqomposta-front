@@ -1,10 +1,3 @@
-import {
-  DASHBOARD_ADMIN_NAV_LINKS,
-  DASHBOARD_BLOGGER_NAV_LINKS,
-  DASHBOARD_CLIENT_NAV_LINKS,
-  DASHBOARD_COLLECTOR_NAV_LINKS,
-} from './utils/navUtils';
-
 export const WEB_BANNER_URL =
   'https://res.cloudinary.com/https-qosqomposta-com/image/upload/v1677945318/Banner/banner%20sin%20texto%20png.png';
 
@@ -90,19 +83,12 @@ export const DEFAULT_HEIGHT_LOGO_NAV = 80;
 export const DEFAULT_LATITUDE_MAP = -13.5319533;
 export const DEFAULT_LONGITUTED_MAP = -71.9591915;
 
-export enum ValidRoles {
+export enum VALID_ROLES {
   ADMIN = 'admin',
   CLIENT = 'client',
   COLLECTOR = 'collector',
   BLOGGER = 'blogger',
 }
-
-export const RolesAside = {
-  [ValidRoles.ADMIN]: DASHBOARD_ADMIN_NAV_LINKS,
-  [ValidRoles.CLIENT]: DASHBOARD_CLIENT_NAV_LINKS,
-  [ValidRoles.COLLECTOR]: DASHBOARD_COLLECTOR_NAV_LINKS,
-  [ValidRoles.BLOGGER]: DASHBOARD_BLOGGER_NAV_LINKS,
-};
 
 export const PAGE_SIZE = 20;
 export const DEFAULT_PAGE_START = 1;
@@ -116,3 +102,23 @@ export const TOKEN_EXPIRED = 'Su sesion ha expirado. Vuelva a iniciar sesion';
 export const DEFAULT_SERVICE_FILTER = '644ca2bd0126870ffc92c56c';
 
 export const DEP_LOCATION_DEFAULT = 'CUSCO';
+
+export const DEFAULT_TIMEZONE = 'es-PE';
+export const LOCALE_DATE_STRING_FORMAT: Intl.DateTimeFormatOptions = {
+  timeZone: 'America/Lima',
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+};
+
+export const FREQUENCY_SERVICE = new Map<number, string>([
+  [1, 'Recojo Semanal'],
+  [2, 'Recojo Intersemanal'],
+  [4, 'Recojo Individual'],
+]);
+
+export const LOCALE_PERU = 'es-PE';
+export const SUMMARY_LIMIT_ORDERS = 5;
+
+export const EDITING_ADDRESS_INFO =
+  ' Si se modifica la dirección, puede modificarse los días y la ruta de recojo. Consultar con el equipo de Qosqomposta';

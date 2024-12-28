@@ -9,8 +9,8 @@ import { LogoAppColors } from '@/main.config';
 
 const HeaderWeb: React.FC = () => {
   return (
-    <nav className="bg-yellowQ sticky w-full px-0 md:px-20 top-0 z-50 shadow-md">
-      <div className="flex justify-between w-full md:max-w-7xl m-auto items-center">
+    <nav className="sticky top-0 z-50 w-full bg-yellowQ px-0 shadow-md md:px-20">
+      <div className="m-auto flex w-full items-center justify-between md:max-w-7xl">
         <Link href="/" className="border-none">
           <Image
             width={345}
