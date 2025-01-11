@@ -34,8 +34,8 @@ export const DASHBOARD_CLIENT_NAV_LINKS = [
   },
   {
     key: 'membresia',
-    name: 'Membresía',
-    path: '/dashboard/membresia',
+    name: 'Servicio',
+    path: '/dashboard/servicio',
     userRole: VALID_ROLES.CLIENT,
     icon: <GiFlowerPot size={20} />,
   },

@@ -8,7 +8,10 @@ import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import { DEFAULT_TIMEZONE, LOCALE_DATE_STRING_FORMAT } from '@/main.config';
 
-const StatusClient: React.FC = () => {
+export interface StatusClientProps {
+  showCertificate?: boolean;
+}
+const StatusClient: React.FC<StatusClientProps> = ({ showCertificate }) => {
   const iconProps: IconBaseProps = {
     className: styles.iconBadge,
     size: 30,
@@ -46,7 +49,7 @@ const StatusClient: React.FC = () => {
           content={subscriptionSummary?.status ?? '--'}
         />
       </section>
-      <ButtonCertificate />
+      {showCertificate && <ButtonCertificate />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import { WasteService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/service.pricing';
 import {
   FETCH_SERVICES,
   SET_FETCHED_SERVICES,

@@ -7,7 +7,7 @@ import DeliveryOrders from '../DeliveryOrders/DeliveryOrders';
 const SummaryClient: React.FC = () => {
   return (
     <>
-      <StatusClient />
+      <StatusClient showCertificate={true} />
       <MembershipSummary />
       <ServicesData />
       <DeliveryOrders />

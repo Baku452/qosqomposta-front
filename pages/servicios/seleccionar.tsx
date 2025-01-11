@@ -15,7 +15,7 @@ import { useDispatch } from 'react-redux';
 import { setSelectedRegisterService } from '@/actions/services.actions';
 import { useRouter } from 'next/router';
 import LoadingOverlay from '@/components/molecules/LoaderOverlay/LoaderOverlay';
-import { SelectedService, WasteService } from '@/types/wasteManagement';
+import { SelectedService, WasteService } from '@/types/service.pricing';
 import { WASTE_SERVICES } from '@/routes/apiRoutes';
 export interface SeleccionarServicioProps {
   data: WasteService[];

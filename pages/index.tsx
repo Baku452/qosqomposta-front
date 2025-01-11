@@ -4,7 +4,7 @@ import OurServices from '@/components/organism/ourServices/OurServices';
 import Head from 'next/head';
 import 'normalize.css/normalize.css';
 import { GetStaticProps, NextPage } from 'next';
-import { WasteService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/service.pricing';
 import { useEffect } from 'react';
 import { useServicesContext } from '@/context/ServicesContext';
 import { WASTE_SERVICES } from '@/routes/apiRoutes';

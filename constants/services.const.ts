@@ -1,4 +1,4 @@
-import { WasteService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/service.pricing';
 
 export interface HEADERS_SELECT {
   name: string;
@@ -13,6 +13,6 @@ export const TABLE_HEADERS_SELECT: HEADERS_SELECT[] = [
 ];
 
 export enum CLIENT_TYPE {
-  CUSTOMER = 'customer',
+  FAMILY = 'customer',
   COMPANY = 'company',
 }

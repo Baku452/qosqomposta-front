@@ -3,6 +3,10 @@ import {
   FETCH_CUSTOMER_FAMILY_SUMMARY,
   FETCH_CUSTOMER_PROFILE,
 } from '@/actions/customer.actions.types';
+import {
+  FETCH_COMPANY_SUBSCRIPTION,
+  FETCH_FAMILY_SUBSCRIPTION,
+} from '@/actions/subscriptions.actions.types';
 import { CustomerApp } from '@/types/customer.types';
 import { AnyAction } from 'redux';
 
@@ -14,6 +18,7 @@ export const initialState: CustomerApp = {
   },
   companySummary: undefined,
   familySummary: undefined,
+  subscription: undefined,
 };
 export const customerReducer = (
   state: CustomerApp = initialState,
@@ -112,6 +117,40 @@ export const customerReducer = (
       };
     }
 
+    case FETCH_COMPANY_SUBSCRIPTION.request:
+    case FETCH_FAMILY_SUBSCRIPTION.request: {
+      return {
+        ...state,
+
+        subscription: {
+          ...state.subscription,
+          isFetching: true,
+        },
+      };
+    }
+
+    case FETCH_COMPANY_SUBSCRIPTION.success:
+    case FETCH_FAMILY_SUBSCRIPTION.success: {
+      return {
+        ...state,
+        subscription: {
+          ...state.subscription,
+          isFetching: false,
+          ...action.payload,
+        },
+      };
+    }
+
+    case FETCH_COMPANY_SUBSCRIPTION.error:
+    case FETCH_FAMILY_SUBSCRIPTION.error: {
+      return {
+        ...state,
+        subscription: {
+          ...state.subscription,
+          isFetching: false,
+        },
+      };
+    }
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import { ServicePricingSummary } from './wasteManagement';
+import { ServicePricingSummary } from './service.pricing';
 
 export interface SubscriptionSummary {
   id: string | null;
@@ -26,5 +26,6 @@ export interface FamilySummary extends ClientSummary {
 }
 
 export interface CompanySummary extends ClientSummary {
+  companyId?: string | null;
   companyName: string | null;
 }

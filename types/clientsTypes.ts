@@ -1,5 +1,5 @@
 import { FilterParamsClients } from './mainTypes';
-import { WasteService } from './wasteManagement';
+import { WasteService } from './service.pricing';
 
 export interface Client {
   _id: string;
