@@ -42,9 +42,12 @@ const SubscriptionCard: React.FC<SubscriptionProps> = ({ subscription }) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full justify-center pt-16">
+      <div className="flex w-full justify-center gap-4 pt-16">
         <button className="btn btn-primary flex h-fit items-center gap-2 !bg-greenQ !font-paragraph !text-white shadow-lg">
-          Cambiar mi Subscripción
+          Cambiar mi Servicio
+        </button>
+        <button className="btn btn-primary flex h-fit items-center gap-2 !bg-white !font-paragraph shadow-md shadow-greenQ">
+          Conocer otro servicios
         </button>
       </div>
     </section>
