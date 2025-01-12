@@ -2,7 +2,6 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 // Components
-import { Toast } from 'react-toastify/dist/components';
 import { ToastProps } from 'react-toastify/dist/types';
 import Spinner from '../Spinner/Spinner';
 

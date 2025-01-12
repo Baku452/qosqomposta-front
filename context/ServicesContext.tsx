@@ -1,5 +1,5 @@
 import { setServicesFetched } from '@/actions/services.actions';
-import { SelectedService, WasteService } from '@/types/wasteManagement';
+import { SelectedService, WasteService } from '@/types/service.pricing';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';

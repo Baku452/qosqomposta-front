@@ -1,5 +1,5 @@
 import { SERVICES_ADMIN } from '@/routes/routes.config';
-import { WasteService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/service.pricing';
 import { convertPriceToString } from '@/utils/utils';
 import Link from 'next/link';
 import { FaPencilAlt } from 'react-icons/fa';

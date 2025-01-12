@@ -1,5 +1,5 @@
 import { UserInfo } from 'firebase-admin/lib/auth/user-record';
-import { WasteService } from './wasteManagement';
+import { WasteService } from './service.pricing';
 
 export interface AppState {
   user: AppUser;

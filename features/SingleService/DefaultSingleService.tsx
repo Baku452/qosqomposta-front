@@ -1,4 +1,4 @@
-import { WasteService } from '@/types/wasteManagement';
+import { WasteService } from '@/types/service.pricing';
 import { convertPriceToString } from '@/utils/utils';
 
 export interface DefaultSingleServiceProps {

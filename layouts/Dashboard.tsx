@@ -21,8 +21,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const user = useSelector<State, AppUser>(state => state.appUser);
 
   const handleSubscriptionDetails = async () => {
-    await fetchSubscriptionDetails(user.uid, CLIENT_TYPE.CUSTOMER)(dispatch);
+    await fetchSubscriptionDetails(user.uid, CLIENT_TYPE.FAMILY)(dispatch);
   };
+
   useEffect(() => {
     handleSubscriptionDetails();
   }, []);
