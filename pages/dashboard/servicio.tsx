@@ -1,6 +1,7 @@
 import { fetchSubscriptionByClientType } from '@/actions/subscription.actions';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import StatusClient from '@/features/Customer/Summary/StatusClient/StatusClient';
+import TuRutaCard from '@/features/Customer/TuRutaCard/TuRutaCard';
 import SubscriptionCard from '@/features/SubscriptionCard/SubscriptionCard';
 import { State } from '@/reducers/rootReducer';
 import { NextPage } from 'next';
@@ -36,6 +37,12 @@ const ServicioClientPage: NextPage = () => {
           <p>No se tiene datos de la subscripción</p>
         </div>
       )}
+
+      <TuRutaCard
+        route="Combi"
+        dayOfPickup={subscription?.data?.dayOfPickup ?? '--'}
+        hourAproximate={'--'}
+      />
     </section>
   );
 };

@@ -16,4 +16,5 @@ export interface Subscription {
   mainPrice: number;
   pricings: ServicePricing[];
   deliver_orders: DeliveryOrder[];
+  dayOfPickup: string;
 }
