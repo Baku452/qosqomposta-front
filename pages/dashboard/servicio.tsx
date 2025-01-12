@@ -37,12 +37,15 @@ const ServicioClientPage: NextPage = () => {
           <p>No se tiene datos de la subscripción</p>
         </div>
       )}
-
-      <TuRutaCard
-        route="Combi"
-        dayOfPickup={subscription?.data?.dayOfPickup ?? '--'}
-        hourAproximate={'--'}
-      />
+      {subscription?.isFetching ? (
+        <LoadingRecords />
+      ) : subscription?.data ? (
+        <TuRutaCard
+          route="Combi"
+          dayOfPickup={subscription?.data?.dayOfPickup ?? '--'}
+          hourAproximate={'--'}
+        />
+      ) : null}
     </section>
   );
 };
