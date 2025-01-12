@@ -16,10 +16,22 @@ export const fetchSubscriptionByClientType =
       ? FETCH_FAMILY_SUBSCRIPTION
       : FETCH_COMPANY_SUBSCRIPTION;
     const payloadKey = clientType.includes(CLIENT_TYPE.FAMILY)
-      ? 'family_id'
+      ? 'firebaseUid'
       : 'company_id';
 
-    return doAsync(dispatch, actionType, `${endpoint}`, { method: 'GET' }, undefined, {
-      [payloadKey]: id,
-    });
+    return doAsync(
+      dispatch,
+      actionType,
+      `${endpoint}`,
+      {
+        method: 'POST',
+        data: {
+          [payloadKey]: id,
+        },
+      },
+      undefined,
+      {
+        [payloadKey]: id,
+      },
+    );
   };

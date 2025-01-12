@@ -23,6 +23,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const handleSubscriptionDetails = async () => {
     await fetchSubscriptionDetails(user.uid, CLIENT_TYPE.FAMILY)(dispatch);
   };
+
   useEffect(() => {
     handleSubscriptionDetails();
   }, []);

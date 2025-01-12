@@ -136,7 +136,9 @@ export const customerReducer = (
         subscription: {
           ...state.subscription,
           isFetching: false,
-          ...action.payload,
+          data: {
+            ...action.payload,
+          },
         },
       };
     }

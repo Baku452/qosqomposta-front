@@ -85,7 +85,7 @@ export const DEFAULT_LONGITUTED_MAP = -71.9591915;
 
 export enum VALID_ROLES {
   ADMIN = 'admin',
-  CLIENT = 'client',
+  CLIENT = 'customer',
   COLLECTOR = 'collector',
   BLOGGER = 'blogger',
 }
