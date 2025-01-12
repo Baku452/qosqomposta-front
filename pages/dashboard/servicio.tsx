@@ -2,6 +2,7 @@ import { fetchSubscriptionByClientType } from '@/actions/subscription.actions';
 import LoadingRecords from '@/components/molecules/LoadingRecords/LoadingRecords';
 import StatusClient from '@/features/Customer/Summary/StatusClient/StatusClient';
 import TuRutaCard from '@/features/Customer/TuRutaCard/TuRutaCard';
+import DaysOfPickupBanner from '@/features/DaysOfPickupBanner/DaysOfPickupBanner';
 import SubscriptionCard from '@/features/SubscriptionCard/SubscriptionCard';
 import { State } from '@/reducers/rootReducer';
 import { NextPage } from 'next';
@@ -46,6 +47,8 @@ const ServicioClientPage: NextPage = () => {
           hourAproximate={'--'}
         />
       ) : null}
+
+      {subscription?.isFetching ? <LoadingRecords /> : <DaysOfPickupBanner />}
     </section>
   );
 };

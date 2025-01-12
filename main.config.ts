@@ -122,3 +122,6 @@ export const SUMMARY_LIMIT_ORDERS = 5;
 
 export const EDITING_ADDRESS_INFO =
   ' Si se modifica la dirección, puede modificarse los días y la ruta de recojo. Consultar con el equipo de Qosqomposta';
+
+export const SATURDAY_PICKUP = ['San Sebastián', 'San Jerónimo', 'Wanchaq Sur'];
+export const FRIDAY_PICKUP = ['San Blas', 'Cusco', 'Santiago', 'Wanchaq Norte'];
