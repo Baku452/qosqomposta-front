@@ -10,6 +10,7 @@ export interface Subscription {
   startDate: Date;
   category: string;
   status: string;
+  baldes: number;
   serviceType: string;
   frequencyService: number;
   mainPrice: number;

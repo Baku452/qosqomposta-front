@@ -7,28 +7,45 @@ export interface SubscriptionProps {
 }
 const SubscriptionCard: React.FC<SubscriptionProps> = ({ subscription }) => {
   return (
-    <section className="mt-4 flex w-full items-center justify-evenly gap-4 rounded-lg bg-white p-5 shadow-lg">
-      <div className="text-center">
-        <h4 className="text-lg">Tipo de Servicio</h4>
-        <p className="font-titles text-3xl text-greenQ">
-          {defaultValue(subscription?.serviceType)}
-        </p>
+    <section className="mt-4 w-full rounded-lg bg-white p-10 shadow-lg">
+      <div className="flex items-center justify-evenly">
+        <div className="flex basis-1/2 flex-col gap-8 border-r-[1px] border-r-gray-200">
+          <div className="text-center">
+            <h4 className="text-lg">Tipo de Servicio</h4>
+            <p className="font-titles text-3xl text-greenQ">
+              {defaultValue(subscription?.serviceType)}
+            </p>
+          </div>
+          <div className="text-center">
+            <h4 className="text-lg">Modalidad</h4>
+            <p className="font-titles text-3xl text-greenQ">
+              {subscription?.frequencyService != null
+                ? FREQUENCY_SERVICE.get(subscription?.frequencyService)
+                : '--'}
+            </p>
+          </div>
+        </div>
+        <div className="flex basis-1/2 flex-col gap-8">
+          <div className="text-center">
+            <h4 className="text-lg">Costo</h4>
+            <p className="font-titles text-3xl text-greenQ">
+              {subscription?.mainPrice != null
+                ? convertPriceToString(subscription?.mainPrice)
+                : '--'}
+            </p>
+          </div>
+          <div className="text-center">
+            <h4 className="text-lg">Número de baldes</h4>
+            <p className="font-titles text-3xl text-greenQ">
+              {defaultValue(String(subscription.baldes))}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="text-center">
-        <h4 className="text-lg">Modalidad</h4>
-        <p className="font-titles text-3xl text-greenQ">
-          {subscription?.frequencyService != null
-            ? FREQUENCY_SERVICE.get(subscription?.frequencyService)
-            : '--'}
-        </p>
-      </div>
-      <div className="text-center">
-        <h4 className="text-lg">Costo</h4>
-        <p className="font-titles text-3xl text-greenQ">
-          {subscription?.mainPrice != null
-            ? convertPriceToString(subscription?.mainPrice)
-            : '--'}
-        </p>
+      <div className="flex w-full justify-center pt-16">
+        <button className="btn btn-primary flex h-fit items-center gap-2 !bg-greenQ !font-paragraph !text-white shadow-lg">
+          Cambiar mi Subscripción
+        </button>
       </div>
     </section>
   );

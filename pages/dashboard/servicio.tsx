@@ -32,7 +32,9 @@ const ServicioClientPage: NextPage = () => {
       ) : subscription?.data ? (
         <SubscriptionCard subscription={subscription.data} />
       ) : (
-        <div>No subscription data available</div>
+        <div>
+          <p>No se tiene datos de la subscripción</p>
+        </div>
       )}
     </section>
   );
