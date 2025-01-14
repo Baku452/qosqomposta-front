@@ -9,13 +9,14 @@ import { useSelector } from 'react-redux';
 import styles from './DashboardAside.module.scss';
 import { usePathname } from 'next/navigation';
 import classNames from 'classnames';
+import { VALID_ROLES } from '@/main.config';
 
 export interface DashboardAsideProps {
   openNavbar: boolean;
   setOpenNavbar: React.Dispatch<SetStateAction<boolean>>;
 }
 const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavbar }) => {
-  const userRoles = useSelector((state: State) => state.appUser.roles);
+  const userRoles = useSelector((state: State) => state.appUser.roles as VALID_ROLES[]);
   const userDetails = useSelector((state: State) => state.appUser);
 
   const currentPath = usePathname();
@@ -60,7 +61,7 @@ const DashboardAside: React.FC<DashboardAsideProps> = ({ openNavbar, setOpenNavb
             {userRoles &&
               DASHBOARD_ASIDE_NAV_LINKS.map(
                 navlink =>
-                  userRoles.includes(navlink.userRole) && (
+                  userRoles.some(role => navlink.userRole.includes(role)) && (
                     <Link
                       href={navlink.path}
                       className={classNames(

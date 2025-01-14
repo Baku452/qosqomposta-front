@@ -88,6 +88,7 @@ export enum VALID_ROLES {
   CLIENT = 'customer',
   COLLECTOR = 'collector',
   BLOGGER = 'blogger',
+  COMPANY = 'company',
 }
 
 export const PAGE_SIZE = 20;
