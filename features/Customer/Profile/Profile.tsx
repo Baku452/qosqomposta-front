@@ -6,11 +6,9 @@ import { EDITING_ADDRESS_INFO } from '@/main.config';
 import { State } from '@/reducers/rootReducer';
 import { Customer } from '@/types/customer.types';
 import { auth } from '@/utils/firebase';
-import { sendPasswordResetEmail } from 'firebase/auth';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { BsLockFill } from 'react-icons/bs';
 import { FaInfoCircle } from 'react-icons/fa';
 import { FaPencil } from 'react-icons/fa6';
 import { useDispatch } from 'react-redux';
@@ -180,8 +178,8 @@ const Profile: React.FC = () => {
               <h2 className="text-xl text-greenQ">Autenticación</h2>
             </div>
             <div className="flex h-full flex-col justify-between gap-4">
-              <div>
-                <div className="flex-1">
+              <div className="mx-auto w-full">
+                <div className="flex flex-col">
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium text-gray-600"
@@ -190,10 +188,10 @@ const Profile: React.FC = () => {
                   </label>
                   <p>{customerData?.email}</p>
                 </div>
-                <div className="mx-auto mt-5">
+                <div className="mx-auto mt-5 w-fit">
                   <EmailVerified isVerified={auth.currentUser?.emailVerified ?? false} />
                 </div>
-                <div className="mx-auto mt-6">
+                <div className="mx-auto mt-6 w-fit">
                   {customerData?.email && (
                     <ChangePassword userEmail={customerData?.email} />
                   )}
