@@ -9,6 +9,7 @@ import {
   FETCH_CUSTOMER_FAMILY_SUMMARY,
   FETCH_CUSTOMER_PROFILE,
 } from './customer.actions.types';
+import { DATE_ORDER } from '@/main.config';
 
 export interface GetSummaryPayload {
   firebase_uuid: string;
@@ -40,11 +41,12 @@ export const fetchSubscriptionDetails =
   };
 
 export const fetchDeliveryOrders =
-  (firebase_uuid: string, limit: number) => async (dispatch: Dispatch<AnyAction>) => {
+  (firebase_uuid: string, limit: number, dateOrder: DATE_ORDER) =>
+  async (dispatch: Dispatch<AnyAction>) => {
     return doAsync(
       dispatch,
       FETCH_CUSTOMER_DELIVERY_ORDERS,
-      `/delivery-order/subscription/${firebase_uuid}?limit=${limit}`,
+      `/delivery-order/subscription/${firebase_uuid}?dateOrder=${dateOrder}&limit=${limit}`,
       { method: 'GET' },
       undefined,
       {

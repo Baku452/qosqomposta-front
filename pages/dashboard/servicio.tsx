@@ -7,8 +7,7 @@ import SubscriptionCard from '@/features/SubscriptionCard/SubscriptionCard';
 import { State } from '@/reducers/rootReducer';
 import { NextPage } from 'next';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ServicioClientPage: NextPage = () => {
   const dispatch = useDispatch();
