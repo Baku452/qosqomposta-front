@@ -1,16 +1,11 @@
 import { CustomerDeliveryOrdersState } from './delivery_orders.types';
-import {
-  CompanySummary,
-  FamilySummary,
-  SubscriptionSummary,
-} from './customer.summary.types';
+import { ClientSummaryState, SubscriptionSummary } from './customer.summary.types';
 import { Family } from './family.types';
 import { SubscriptionState } from './subscription.types';
 
 export interface CustomerApp {
   deliveryOrders: CustomerDeliveryOrdersState;
-  familySummary: FamilySummary | undefined;
-  companySummary: CompanySummary | undefined;
+  summary: ClientSummaryState;
   subscriptionSummary?: SubscriptionSummary;
   customerProfile?: CustomerProfile;
   subscription?: SubscriptionState;

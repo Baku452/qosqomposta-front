@@ -10,10 +10,13 @@ export interface DashboardProps {
 }
 const Dashboard: NextPage<DashboardProps> = () => {
   const userRoles = useSelector((state: State) => state.appUser.roles);
+
   return (
     <div className={`w-full`}>
       {userRoles?.includes(VALID_ROLES.ADMIN) && <SummaryAdmin />}
-      {userRoles?.includes(VALID_ROLES.CLIENT) && <SummaryClient />}
+      {userRoles?.some(role =>
+        [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY].includes(role as VALID_ROLES),
+      ) && <SummaryClient />}
     </div>
   );
 };

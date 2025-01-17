@@ -17,7 +17,6 @@ export interface ClientSummary {
   customerId?: string;
   customerName?: string;
   customerEmail?: string;
-  isFetching?: boolean;
 }
 
 export interface FamilySummary extends ClientSummary {
@@ -28,4 +27,9 @@ export interface FamilySummary extends ClientSummary {
 export interface CompanySummary extends ClientSummary {
   companyId?: string | null;
   companyName: string | null;
+}
+
+export interface ClientSummaryState {
+  data: FamilySummary | CompanySummary | null;
+  isFetching: boolean;
 }

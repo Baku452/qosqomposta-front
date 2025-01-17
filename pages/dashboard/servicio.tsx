@@ -17,7 +17,7 @@ const ServicioClientPage: NextPage = () => {
   const subscription = useSelector((state: State) => state.customerApp.subscription);
 
   const fetchSubscription = async () => {
-    const customerId = appUser.uid ?? customerApp.companySummary?.customerId;
+    const customerId = appUser.uid;
 
     customerId &&
       appUser.roles &&

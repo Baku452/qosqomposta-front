@@ -1,4 +1,5 @@
 import {
+  FETCH_CUSTOMER_COMPANY_SUMMARY,
   FETCH_CUSTOMER_DELIVERY_ORDERS,
   FETCH_CUSTOMER_FAMILY_SUMMARY,
   FETCH_CUSTOMER_PROFILE,
@@ -16,8 +17,10 @@ export const initialState: CustomerApp = {
     total_count: undefined,
     isFetching: undefined,
   },
-  companySummary: undefined,
-  familySummary: undefined,
+  summary: {
+    data: null,
+    isFetching: false,
+  },
   subscription: undefined,
 };
 export const customerReducer = (
@@ -28,8 +31,9 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.request: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
+          data: { ...action.payload },
           isFetching: true,
         },
       };
@@ -37,8 +41,8 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.success: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
           isFetching: false,
           ...action.payload.customerSummary,
         },
@@ -49,8 +53,39 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.error: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
+          isFetching: false,
+        },
+      };
+    }
+
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.request: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
+          isFetching: true,
+        },
+      };
+    }
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.success: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
+          isFetching: false,
+          ...action.payload.customerSummary,
+        },
+        subscriptionSummary: action.payload.subscriptionSummary,
+      };
+    }
+
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.error: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
           isFetching: false,
         },
       };
