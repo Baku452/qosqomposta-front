@@ -15,9 +15,7 @@ export const fetchSubscriptionByClientType =
     const actionType = clientType.includes(CLIENT_TYPE.FAMILY)
       ? FETCH_FAMILY_SUBSCRIPTION
       : FETCH_COMPANY_SUBSCRIPTION;
-    const payloadKey = clientType.includes(CLIENT_TYPE.FAMILY)
-      ? 'firebaseUid'
-      : 'company_id';
+    const payloadKey = 'firebaseUid';
 
     return doAsync(
       dispatch,
