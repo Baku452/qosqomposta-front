@@ -1,3 +1,4 @@
+import { FETCH_COMPANY_PROFILE } from '@/actions/company.actions.types';
 import {
   FETCH_CUSTOMER_COMPANY_SUMMARY,
   FETCH_CUSTOMER_DELIVERY_ORDERS,
@@ -18,6 +19,10 @@ export const initialState: CustomerApp = {
     isFetching: undefined,
   },
   summary: {
+    data: null,
+    isFetching: false,
+  },
+  profile: {
     data: null,
     isFetching: false,
   },
@@ -122,31 +127,40 @@ export const customerReducer = (
       };
     }
 
+    case FETCH_COMPANY_PROFILE.request:
     case FETCH_CUSTOMER_PROFILE.request: {
       return {
         ...state,
-        customerProfile: {
-          ...state.customerProfile,
+        profile: {
+          data: {
+            ...state.profile?.data,
+          },
           isFetching: true,
         },
       };
     }
 
+    case FETCH_COMPANY_PROFILE.success:
     case FETCH_CUSTOMER_PROFILE.success: {
       return {
         ...state,
-        customerProfile: {
-          ...action.payload,
+        profile: {
+          data: {
+            ...state.profile?.data,
+            ...action.payload,
+          },
           isFetching: false,
         },
       };
     }
-
+    case FETCH_COMPANY_PROFILE.error:
     case FETCH_CUSTOMER_PROFILE.error: {
       return {
         ...state,
-        customerProfile: {
-          ...action.payload,
+        profile: {
+          data: {
+            ...state.profile?.data,
+          },
           isFetching: false,
         },
       };

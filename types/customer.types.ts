@@ -2,16 +2,17 @@ import { CustomerDeliveryOrdersState } from './delivery_orders.types';
 import { ClientSummaryState, SubscriptionSummary } from './customer.summary.types';
 import { Family } from './family.types';
 import { SubscriptionState } from './subscription.types';
+import { Company } from './company.types';
 
 export interface CustomerApp {
   deliveryOrders: CustomerDeliveryOrdersState;
   summary: ClientSummaryState;
   subscriptionSummary?: SubscriptionSummary;
-  customerProfile?: CustomerProfile;
+  profile?: CustomerProfileState;
   subscription?: SubscriptionState;
 }
 
-export interface CustomerProfile {
+export interface Customer {
   customer_id?: string;
   firebaseUid?: string;
   name?: string;
@@ -23,5 +24,9 @@ export interface CustomerProfile {
   customId?: string;
   deletedAt?: Date;
   family?: Family;
+}
+
+export interface CustomerProfileState {
+  data: Customer | Company | null;
   isFetching?: boolean;
 }
