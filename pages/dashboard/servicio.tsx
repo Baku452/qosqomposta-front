@@ -13,7 +13,6 @@ import { useSelector } from 'react-redux';
 const ServicioClientPage: NextPage = () => {
   const dispatch = useDispatch();
   const appUser = useSelector((state: State) => state.appUser);
-  const customerApp = useSelector((state: State) => state.customerApp);
   const subscription = useSelector((state: State) => state.customerApp.subscription);
 
   const fetchSubscription = async () => {
