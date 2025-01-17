@@ -88,6 +88,7 @@ export enum VALID_ROLES {
   CLIENT = 'customer',
   COLLECTOR = 'collector',
   BLOGGER = 'blogger',
+  COMPANY = 'company',
 }
 
 export const PAGE_SIZE = 20;
@@ -125,3 +126,5 @@ export const EDITING_ADDRESS_INFO =
 
 export const SATURDAY_PICKUP = ['San Sebastián', 'San Jerónimo', 'Wanchaq Sur'];
 export const FRIDAY_PICKUP = ['San Blas', 'Cusco', 'Santiago', 'Wanchaq Norte'];
+
+export type DATE_ORDER = 'ASC' | 'DESC';

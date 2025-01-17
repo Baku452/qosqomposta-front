@@ -1,4 +1,6 @@
+import { FETCH_COMPANY_PROFILE } from '@/actions/company.actions.types';
 import {
+  FETCH_CUSTOMER_COMPANY_SUMMARY,
   FETCH_CUSTOMER_DELIVERY_ORDERS,
   FETCH_CUSTOMER_FAMILY_SUMMARY,
   FETCH_CUSTOMER_PROFILE,
@@ -16,8 +18,14 @@ export const initialState: CustomerApp = {
     total_count: undefined,
     isFetching: undefined,
   },
-  companySummary: undefined,
-  familySummary: undefined,
+  summary: {
+    data: null,
+    isFetching: false,
+  },
+  profile: {
+    data: null,
+    isFetching: false,
+  },
   subscription: undefined,
 };
 export const customerReducer = (
@@ -28,8 +36,9 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.request: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
+          data: { ...action.payload },
           isFetching: true,
         },
       };
@@ -37,8 +46,8 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.success: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
           isFetching: false,
           ...action.payload.customerSummary,
         },
@@ -49,8 +58,39 @@ export const customerReducer = (
     case FETCH_CUSTOMER_FAMILY_SUMMARY.error: {
       return {
         ...state,
-        familySummary: {
-          ...state.familySummary,
+        summary: {
+          ...state.summary,
+          isFetching: false,
+        },
+      };
+    }
+
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.request: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
+          isFetching: true,
+        },
+      };
+    }
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.success: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
+          isFetching: false,
+          ...action.payload.customerSummary,
+        },
+        subscriptionSummary: action.payload.subscriptionSummary,
+      };
+    }
+
+    case FETCH_CUSTOMER_COMPANY_SUMMARY.error: {
+      return {
+        ...state,
+        summary: {
+          ...state.summary,
           isFetching: false,
         },
       };
@@ -87,31 +127,40 @@ export const customerReducer = (
       };
     }
 
+    case FETCH_COMPANY_PROFILE.request:
     case FETCH_CUSTOMER_PROFILE.request: {
       return {
         ...state,
-        customerProfile: {
-          ...state.customerProfile,
+        profile: {
+          data: {
+            ...state.profile?.data,
+          },
           isFetching: true,
         },
       };
     }
 
+    case FETCH_COMPANY_PROFILE.success:
     case FETCH_CUSTOMER_PROFILE.success: {
       return {
         ...state,
-        customerProfile: {
-          ...action.payload,
+        profile: {
+          data: {
+            ...state.profile?.data,
+            ...action.payload,
+          },
           isFetching: false,
         },
       };
     }
-
+    case FETCH_COMPANY_PROFILE.error:
     case FETCH_CUSTOMER_PROFILE.error: {
       return {
         ...state,
-        customerProfile: {
-          ...action.payload,
+        profile: {
+          data: {
+            ...state.profile?.data,
+          },
           isFetching: false,
         },
       };

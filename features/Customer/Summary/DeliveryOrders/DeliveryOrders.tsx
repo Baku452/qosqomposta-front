@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { DELIVERY_ORDERS_HEADERS } from '../constants';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { fetchDeliveryOrders } from '@/actions/customer.actions';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
@@ -20,13 +20,15 @@ const DeliveryOrders: React.FC = () => {
   );
   const dispatch = useDispatch();
 
-  const fetchDeliveryOrderData = async (): Promise<void> => {
-    subscriptionId &&
-      (await fetchDeliveryOrders(subscriptionId, SUMMARY_LIMIT_ORDERS)(dispatch));
-  };
+  const fetchDeliveryOrderData = useCallback(async (): Promise<void> => {
+    if (subscriptionId) {
+      await fetchDeliveryOrders(subscriptionId, SUMMARY_LIMIT_ORDERS, 'DESC')(dispatch);
+    }
+  }, [subscriptionId, dispatch]);
+
   useEffect(() => {
     fetchDeliveryOrderData();
-  }, [subscriptionId]);
+  }, [subscriptionId, fetchDeliveryOrderData]);
   return (
     <section className="mt-10 w-full rounded-xl bg-white p-5">
       <h5 className="pb-5 text-center text-xl">Últimos recojos</h5>

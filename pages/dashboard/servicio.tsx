@@ -7,17 +7,15 @@ import SubscriptionCard from '@/features/SubscriptionCard/SubscriptionCard';
 import { State } from '@/reducers/rootReducer';
 import { NextPage } from 'next';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ServicioClientPage: NextPage = () => {
   const dispatch = useDispatch();
   const appUser = useSelector((state: State) => state.appUser);
-  const customerApp = useSelector((state: State) => state.customerApp);
   const subscription = useSelector((state: State) => state.customerApp.subscription);
 
   const fetchSubscription = async () => {
-    const customerId = appUser.uid ?? customerApp.companySummary?.customerId;
+    const customerId = appUser.uid;
 
     customerId &&
       appUser.roles &&

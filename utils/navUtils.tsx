@@ -14,50 +14,50 @@ export interface Aside {
   name: string;
   path: string;
   icon?: React.ReactNode;
-  userRole: VALID_ROLES;
+  userRole: VALID_ROLES[];
 }
 
-export const DASHBOARD_CLIENT_NAV_LINKS = [
+export const DASHBOARD_CLIENT_NAV_LINKS: Aside[] = [
   {
     key: 'inicio',
     name: 'Inicio',
     path: '/dashboard',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <FaHouseChimney size={20} />,
   },
   {
     key: 'perfil',
     name: 'Perfil',
     path: '/dashboard/perfil',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <FaUser size={20} />,
   },
   {
     key: 'membresia',
     name: 'Servicio',
     path: '/dashboard/servicio',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <GiFlowerPot size={20} />,
   },
   {
     key: 'facturación',
     name: 'Facturación',
     path: '/dashboard/facturacion',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <FaWallet size={20} />,
   },
   {
     key: 'recojo',
     name: 'Recojo',
     path: '/dashboard/recojo',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <MdDirectionsBike size={20} />,
   },
   {
     key: 'faqs',
     name: 'Preguntas Frecuentes',
     path: '/dashboard/faqs',
-    userRole: VALID_ROLES.CLIENT,
+    userRole: [VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
     icon: <FaQuestion size={20} />,
   },
 ];
@@ -68,35 +68,35 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
     name: 'Resumen',
     path: '/dashboard',
     icon: <FaHouseChimney size={20} />,
-    userRole: VALID_ROLES.ADMIN,
+    userRole: [VALID_ROLES.ADMIN],
   },
   {
     key: 'users',
     name: 'Usuarios',
     path: '/dashboard/admin/usuarios',
     icon: <FiUsers size={20} />,
-    userRole: VALID_ROLES.ADMIN,
+    userRole: [VALID_ROLES.ADMIN],
   },
   {
     key: 'services',
     name: 'Servicios',
     path: '/dashboard/admin/servicios',
     icon: <FaBoxes size={20} />,
-    userRole: VALID_ROLES.ADMIN,
+    userRole: [VALID_ROLES.ADMIN],
   },
   {
     key: 'compost',
     name: 'Compost',
     path: '/dashboard/compost',
     icon: <RiPlantLine size={20} />,
-    userRole: VALID_ROLES.ADMIN,
+    userRole: [VALID_ROLES.ADMIN],
   },
   {
     key: 'profile',
     name: 'Configuracion',
     path: '/dashboard/admin/config',
     icon: <BsGear size={20} />,
-    userRole: VALID_ROLES.ADMIN,
+    userRole: [VALID_ROLES.ADMIN],
   },
 ];
 
