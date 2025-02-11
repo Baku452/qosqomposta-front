@@ -107,6 +107,7 @@ export const customerReducer = (
     }
 
     case FETCH_CUSTOMER_DELIVERY_ORDERS.success: {
+      console.log(action.payload);
       return {
         ...state,
         deliveryOrders: {
