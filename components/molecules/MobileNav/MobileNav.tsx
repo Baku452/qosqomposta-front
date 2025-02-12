@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { AiOutlineClose } from 'react-icons/ai';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -8,20 +8,41 @@ import { LOGIN_PATH } from '@/routes/routes.config';
 const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
   const [displayMenu, setDisplayMenu] = useState(false);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (displayMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [displayMenu]);
+
   return (
     <>
       <GiHamburgerMenu
         size={40}
         onClick={() => setDisplayMenu(true)}
-        className="block cursor-pointer lg:hidden"
+        className="relative z-[101] block cursor-pointer lg:hidden"
       />
 
+      {/* Overlay */}
       <div
-        className={`fixed right-0 top-0 z-[100] h-full w-2/5 transform bg-black transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed inset-0 bg-black transition-opacity duration-300 lg:hidden ${
+          displayMenu ? 'z-[99] opacity-50' : '-z-10 opacity-0'
+        }`}
+        onClick={() => setDisplayMenu(false)}
+      />
+
+      {/* Menu */}
+      <div
+        className={`fixed right-0 top-0 z-[200] h-full w-2/5 transform bg-black transition-transform duration-300 ease-out lg:hidden ${
           displayMenu ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="mb-5 flex w-full justify-end">
+        <div className="mb-5 flex justify-end">
           <AiOutlineClose
             className="relative z-[150] mr-1 mt-5 cursor-pointer text-white hover:opacity-80"
             size={30}
