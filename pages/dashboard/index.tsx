@@ -3,14 +3,13 @@ import React from 'react';
 import SummaryClient from '@/features/Customer/Summary/SummaryClient/SummaryClient';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
-import SummaryAdmin from '@/features/SummaryAdmin/SummaryAdmin';
 import { VALID_ROLES } from '@/main.config';
+import SummaryAdmin from '@/features/Admin/Summary/SummaryAdmin';
 export interface DashboardProps {
   user?: string;
 }
 const Dashboard: NextPage<DashboardProps> = () => {
   const userRoles = useSelector((state: State) => state.appUser.roles);
-
   return (
     <div className={`w-full`}>
       {userRoles?.includes(VALID_ROLES.ADMIN) && <SummaryAdmin />}

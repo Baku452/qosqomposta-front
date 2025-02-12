@@ -22,16 +22,15 @@ export interface Client {
   isUpdating?: boolean;
 }
 
-export interface ListClients {
-  filters: FilterParamsClients;
-  clients?: Client[];
-  isFetching?: boolean;
-  totalClients?: number;
-  page?: number;
+export interface UsersSummary {
+  totalUsers: number;
+  totalFamilies: number;
+  totalCompanies: number;
 }
 
-export interface UpdateClient extends Partial<Client> {
-  selectedServiceId?: string;
-  idUserEditing: string;
-  roleUserEditing: string[];
+export interface UsersState {
+  summary: {
+    data: UsersSummary | null;
+    isFetching: boolean;
+  };
 }
