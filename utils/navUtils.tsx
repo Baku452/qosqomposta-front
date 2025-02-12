@@ -8,7 +8,7 @@ import { GiFlowerPot } from 'react-icons/gi';
 import { MdDirectionsBike } from 'react-icons/md';
 import { RiPlantLine } from 'react-icons/ri';
 import { FaHouseChimney } from 'react-icons/fa6';
-
+import { GoGlobe } from 'react-icons/go';
 export interface Aside {
   key: string;
   name: string;
@@ -93,7 +93,7 @@ export const DASHBOARD_ADMIN_NAV_LINKS: Aside[] = [
   },
   {
     key: 'profile',
-    name: 'Configuracion',
+    name: 'Configuración',
     path: '/dashboard/admin/config',
     icon: <BsGear size={20} />,
     userRole: [VALID_ROLES.ADMIN],
@@ -146,7 +146,14 @@ export const DASHBOARD_BLOGGER_NAV_LINKS = [
   },
 ];
 
-export const DASHBOARD_ASIDE_NAV_LINKS = [
+export const DASHBOARD_ASIDE_NAV_LINKS: Aside[] = [
   ...DASHBOARD_ADMIN_NAV_LINKS,
   ...DASHBOARD_CLIENT_NAV_LINKS,
+  {
+    key: 'web',
+    name: 'Ir a la Web',
+    path: '/',
+    userRole: [VALID_ROLES.ADMIN, VALID_ROLES.CLIENT, VALID_ROLES.COMPANY],
+    icon: <GoGlobe size={20} />,
+  },
 ];
