@@ -7,8 +7,8 @@ const UserNavDetails: React.FC = () => {
     <div className="flex min-w-fit gap-4">
       <Link href={'/dashboard'}>
         <div className="flex items-center">
-          <p className="mr-4">Mi cuenta</p>
           <FaUser size={20} />
+          <p className="mr-4">Mi cuenta</p>
         </div>
       </Link>
     </div>
