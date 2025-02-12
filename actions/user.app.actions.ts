@@ -14,8 +14,7 @@ import { doAsync } from '@/clientApi/clientApi';
 import { FilterParamsClients, RegisterUsertDTO } from '@/types/mainTypes';
 import { DEFAULT_PAGE_START, PAGE_SIZE } from '@/main.config';
 import { buildFetchUsersURL } from '@/utils/utils';
-import { UpdateClient } from '@/types/clientsTypes';
-import { UPDATE_CLIENT_INFORMATION } from './user.app.types';
+import { FETCH_USERS_SUMMARY, UPDATE_CLIENT_INFORMATION } from './user.app.types';
 
 export const setUserApp = (user: UserInfo | unknown): AnyAction => ({
   type: FETCH_USER_APP,
@@ -40,7 +39,7 @@ export const setUserRoles = (roles: string[]): AnyAction => ({
   payload: { roles },
 });
 
-export const fetchClients =
+export const fetchUsers =
   (pageStart?: number, filters?: FilterParamsClients) =>
   async (dispatch: Dispatch<AnyAction>) => {
     const urlBuild = buildFetchUsersURL(filters);
@@ -50,6 +49,20 @@ export const fetchClients =
       `/user?${urlBuild}type=DEFAULT&pageStart=${
         pageStart ?? DEFAULT_PAGE_START
       }&pageLimit=${PAGE_SIZE}`,
+      { method: 'GET' },
+      undefined,
+      undefined,
+      true,
+    );
+  };
+
+export const fetchSummaryUsers =
+  (includeNonActive?: boolean, includeDeleted?: boolean) =>
+  async (dispatch: Dispatch<AnyAction>) => {
+    return doAsync(
+      dispatch,
+      FETCH_USERS_SUMMARY,
+      `/users/summary?includeNonActive=${includeNonActive}&includeDeleted=${includeDeleted}`,
       { method: 'GET' },
       undefined,
       undefined,
@@ -79,17 +92,3 @@ export const setEditModeAllClientRows = (isEditing: boolean): AnyAction => ({
     isEditing,
   },
 });
-
-export const updateClientInformation =
-  (uuidClient: string, updatedInfo: UpdateClient) =>
-  async (dispatch: Dispatch<AnyAction>) => {
-    return doAsync(
-      dispatch,
-      UPDATE_CLIENT_INFORMATION,
-      `/user/${uuidClient}`,
-      { method: 'PUT', data: updatedInfo },
-      undefined,
-      { updatedInfo, uuidClient },
-      true,
-    );
-  };

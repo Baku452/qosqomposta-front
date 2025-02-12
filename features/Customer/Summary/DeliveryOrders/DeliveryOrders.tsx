@@ -20,15 +20,17 @@ const DeliveryOrders: React.FC = () => {
   );
   const dispatch = useDispatch();
 
-  const fetchDeliveryOrderData = useCallback(async (): Promise<void> => {
+  const fetchDeliveryOrderLastData = useCallback(async (): Promise<void> => {
     if (subscriptionId) {
       await fetchDeliveryOrders(subscriptionId, SUMMARY_LIMIT_ORDERS, 'DESC')(dispatch);
     }
   }, [subscriptionId, dispatch]);
 
   useEffect(() => {
-    fetchDeliveryOrderData();
-  }, [subscriptionId, fetchDeliveryOrderData]);
+    fetchDeliveryOrderLastData();
+  }, [subscriptionId, fetchDeliveryOrderLastData]);
+
+  console.log(deliveryOrders);
   return (
     <section className="mt-10 w-full rounded-xl bg-white p-5">
       <h5 className="pb-5 text-center text-xl">Últimos recojos</h5>

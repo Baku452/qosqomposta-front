@@ -41,12 +41,12 @@ export const fetchSubscriptionDetails =
   };
 
 export const fetchDeliveryOrders =
-  (firebase_uuid: string, limit: number, dateOrder: DATE_ORDER) =>
+  (firebase_uuid: string, limit: number, dateOrder: DATE_ORDER, year?: number) =>
   async (dispatch: Dispatch<AnyAction>) => {
     return doAsync(
       dispatch,
       FETCH_CUSTOMER_DELIVERY_ORDERS,
-      `/delivery-order/subscription/${firebase_uuid}?dateOrder=${dateOrder}&limit=${limit}`,
+      `/delivery-order/subscription/${firebase_uuid}?dateOrder=${dateOrder}&year=${year}&limit=${limit}`,
       { method: 'GET' },
       undefined,
       {
