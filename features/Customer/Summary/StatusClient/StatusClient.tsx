@@ -22,8 +22,9 @@ const StatusClient: React.FC<StatusClientProps> = ({ showCertificate }) => {
   );
 
   return (
-    <div className="flex w-full items-center justify-between gap-4">
-      <section className="flex grow justify-evenly rounded-lg bg-white p-5 shadow-lg">
+    <div className="mx-5 mt-5 flex w-fit flex-col items-center justify-between gap-4 lg:mx-0 lg:mt-0 lg:w-full lg:flex-row">
+      <h2 className="block self-start px-5 lg:hidden">Resumen de Tu Servicio</h2>
+      <section className="flex w-full grow flex-col justify-evenly gap-5 rounded-lg bg-white p-5 shadow-lg lg:w-auto lg:flex-row lg:gap-0">
         <Badge
           icon={<FaUserTag {...iconProps} />}
           header={'Categoría'}
