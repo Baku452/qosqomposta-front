@@ -8,7 +8,6 @@ import { LOGIN_PATH } from '@/routes/routes.config';
 const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
   const [displayMenu, setDisplayMenu] = useState(false);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (displayMenu) {
       document.body.style.overflow = 'hidden';
@@ -28,7 +27,6 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
         className="relative z-[101] block cursor-pointer lg:hidden"
       />
 
-      {/* Overlay */}
       <div
         className={`fixed inset-0 bg-black transition-opacity duration-300 lg:hidden ${
           displayMenu ? 'z-[99] opacity-50' : '-z-10 opacity-0'
@@ -36,9 +34,8 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
         onClick={() => setDisplayMenu(false)}
       />
 
-      {/* Menu */}
       <div
-        className={`fixed right-0 top-0 z-[200] h-full w-2/5 transform bg-black transition-transform duration-300 ease-out lg:hidden ${
+        className={`fixed right-0 top-0 z-[200] h-full w-3/5 transform bg-black transition-transform duration-300 ease-out lg:hidden ${
           displayMenu ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
