@@ -30,61 +30,62 @@ const DeliveryOrders: React.FC = () => {
     fetchDeliveryOrderLastData();
   }, [subscriptionId, fetchDeliveryOrderLastData]);
 
-  console.log(deliveryOrders);
   return (
-    <section className="mt-10 w-full rounded-xl bg-white p-5">
+    <section className="mx-5 mt-10 min-w-[315px] rounded-xl bg-white p-5 lg:mx-0 lg:w-full">
       <h5 className="pb-5 text-center text-xl">Últimos recojos</h5>
-      <table className="w-full rounded-xl border-none">
-        <thead className="">
-          <tr className="border-none bg-gray-200 font-semibold text-black">
-            {DELIVERY_ORDERS_HEADERS.map((item, index) => {
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[800px] overflow-x-scroll rounded-xl border-none">
+          <thead className="">
+            <tr className="border-none bg-gray-200 font-semibold text-black">
+              {DELIVERY_ORDERS_HEADERS.map((item, index) => {
+                return (
+                  <td
+                    key={item.key}
+                    className={`py-2 pr-4 ${index === 0 ? 'rounded-tl-lg' : ''} ${
+                      index === DELIVERY_ORDERS_HEADERS.length - 1 ? 'rounded-tr-lg' : ''
+                    }`}
+                  >
+                    {item.tooltipContent ? (
+                      <Tooltip text={item.tooltipContent}>
+                        <div className="flex items-center gap-1">
+                          <span>{item.title}</span>
+                          <FaInfoCircle />
+                        </div>
+                      </Tooltip>
+                    ) : (
+                      item.title
+                    )}
+                  </td>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {deliveryOrders?.map(order => {
               return (
-                <td
-                  key={item.key}
-                  className={`py-2 pr-4 ${index === 0 ? 'rounded-tl-lg' : ''} ${
-                    index === DELIVERY_ORDERS_HEADERS.length - 1 ? 'rounded-tr-lg' : ''
-                  }`}
-                >
-                  {item.tooltipContent ? (
-                    <Tooltip text={item.tooltipContent}>
-                      <div className="flex items-center gap-1">
-                        <span>{item.title}</span>
-                        <FaInfoCircle />
-                      </div>
-                    </Tooltip>
-                  ) : (
-                    item.title
-                  )}
-                </td>
+                <tr key={order.id}>
+                  <td className="capitalize">
+                    {order.date_received
+                      ? format(new Date(order.date_received), 'LLL dd, yyyy', {
+                          locale: es,
+                        })
+                      : '--'}
+                  </td>
+                  <td>
+                    {order.date_received
+                      ? format(new Date(order.date_received), 'pp')
+                      : '--'}
+                  </td>
+                  <td>{order.waste_weight} kg</td>
+                  <td>0.00 kg</td>
+                  <td>{order.courier.name}</td>
+                  <td>{order.note ?? '--'}</td>
+                </tr>
               );
             })}
-          </tr>
-        </thead>
-        <tbody>
-          {deliveryOrders?.map(order => {
-            return (
-              <tr key={order.id}>
-                <td className="capitalize">
-                  {order.date_received
-                    ? format(new Date(order.date_received), 'LLL dd, yyyy', {
-                        locale: es,
-                      })
-                    : '--'}
-                </td>
-                <td>
-                  {order.date_received
-                    ? format(new Date(order.date_received), 'pp')
-                    : '--'}
-                </td>
-                <td>{order.waste_weight} kg</td>
-                <td>0.00 kg</td>
-                <td>{order.courier.name}</td>
-                <td>{order.note ?? '--'}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 };
