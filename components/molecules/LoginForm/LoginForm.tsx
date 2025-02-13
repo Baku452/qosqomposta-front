@@ -90,7 +90,7 @@ const LoginForm: React.FC = () => {
     }
   };
   return (
-    <div className="mb-20 min-w-[400px] rounded-3xl p-5 shadow-xl lg:min-w-[500px] lg:p-10">
+    <div className="mx-5 mb-20 w-full rounded-3xl p-5 shadow-none lg:mx-0 lg:min-w-[500px] lg:p-10 lg:shadow-xl">
       <form
         className="relative m-auto mb-5 block w-full px-3 lg:w-3/4 lg:px-0"
         onSubmit={handleSubmit(handleLogin)}
