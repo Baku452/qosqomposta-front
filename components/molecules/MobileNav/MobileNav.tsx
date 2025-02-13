@@ -29,7 +29,9 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
 
       <div
         className={`fixed inset-0 bg-black transition-opacity duration-300 lg:hidden ${
-          displayMenu ? 'z-[99] opacity-50' : '-z-10 opacity-0'
+          displayMenu
+            ? 'pointer-events-auto z-[99] opacity-50'
+            : 'pointer-events-none -z-10 opacity-0'
         }`}
         onClick={() => setDisplayMenu(false)}
       />
@@ -58,6 +60,7 @@ const MobileNav: React.FC<NavigationWebProps> = ({ items }) => {
               <Link
                 href={LOGIN_PATH}
                 className="btn btn-primary inline-block !bg-greenQ !text-white"
+                onClick={() => setDisplayMenu(false)}
               >
                 Ingresar
               </Link>
