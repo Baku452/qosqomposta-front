@@ -18,7 +18,7 @@ const SummaryAdmin: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="flex w-full justify-evenly gap-4 p-5">
+    <div className="flex w-full flex-col justify-evenly gap-4 p-5 lg:flex-row">
       <div className="flex flex-1 items-center justify-evenly rounded-lg bg-white p-5 text-greenQ shadow-md">
         <div>
           {usersSummary.isFetching ? (

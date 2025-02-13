@@ -9,7 +9,10 @@ $aside-width: 20rem;
 
   .dashboard__body {
     margin-left: $aside-width;
-    padding: 1rem 3rem;
+    padding: 0;
+    @media screen and (width > 768px) {
+      padding: 1rem 3rem;
+    }
     position: relative;
     transition: 0.3s all;
     width: calc(100vw - $aside-width);
