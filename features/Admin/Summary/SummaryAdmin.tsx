@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { State } from '@/reducers/rootReducer';
 import Spinner from '@/components/atoms/Spinner/Spinner';
+import { MdFamilyRestroom } from 'react-icons/md';
+import { FaBuilding, FaUsers } from 'react-icons/fa';
 const SummaryAdmin: React.FC = () => {
   const dispatch = useDispatch();
   const usersSummary = useSelector((state: State) => state.users.summary);
@@ -17,35 +19,46 @@ const SummaryAdmin: React.FC = () => {
 
   return (
     <div className="flex w-full justify-evenly gap-4 p-5">
-      <div className="flex flex-1 items-center justify-evenly rounded-lg bg-greenQ p-5 text-white shadow-md">
+      <div className="flex flex-1 items-center justify-evenly rounded-lg bg-white p-5 text-greenQ shadow-md">
         <div>
           {usersSummary.isFetching ? (
             <Spinner color="white" size="sm" />
           ) : (
-            <p className="text-2xl font-bold">{usersSummary.data?.totalUsers}</p>
+            <>
+              <p className="font-titles text-4xl font-bold text-greenQ">
+                {usersSummary.data?.totalUsers}
+              </p>
+            </>
           )}
         </div>
-        <p className="font-bold">Usuarios Activos</p>
+        <p className="basis-1/4 font-bold">Usuarios Totales Activos</p>
+        <FaUsers size={30} />
       </div>
       <div className="flex flex-1 items-center justify-evenly rounded-lg bg-white p-5 shadow-md">
         <div>
           {usersSummary.isFetching ? (
             <Spinner color="gray" size="sm" />
           ) : (
-            <p className="text-2xl font-bold">{usersSummary.data?.totalFamilies}</p>
+            <p className="font-titles text-4xl font-bold text-greenQ">
+              {usersSummary.data?.totalFamilies}
+            </p>
           )}
         </div>
-        <p className="font-bold">Familias Activas</p>
+        <p className="basis-1/4 font-bold">Familias Activas</p>
+        <MdFamilyRestroom size={30} />
       </div>
       <div className="flex flex-1 items-center justify-evenly rounded-lg bg-white p-5 shadow-md">
         <div>
           {usersSummary.isFetching ? (
             <Spinner color="gray" size="sm" />
           ) : (
-            <p className="text-2xl font-bold">{usersSummary.data?.totalCompanies}</p>
+            <p className="font-titles text-4xl font-bold text-greenQ">
+              {usersSummary.data?.totalCompanies}
+            </p>
           )}
         </div>
-        <p className="font-bold">Comercios Activas</p>
+        <p className="basis-1/4 font-bold">Comercios Activas</p>
+        <FaBuilding size={30} />
       </div>
     </div>
   );
