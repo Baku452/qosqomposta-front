@@ -3,12 +3,10 @@ import React from 'react';
 
 const LoginPage = () => {
   return (
-    <>
-      <div className="m-auto flex max-w-6xl flex-col items-center">
-        <h1>Bienvenido a Qosqomposta !</h1>
-        <LoginForm />
-      </div>
-    </>
+    <div className="m-auto flex max-w-6xl flex-col items-center">
+      <h1 className="text-center lg:text-left">Bienvenido a Qosqomposta !</h1>
+      <LoginForm />
+    </div>
   );
 };
 

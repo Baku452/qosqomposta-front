@@ -90,9 +90,9 @@ const LoginForm: React.FC = () => {
     }
   };
   return (
-    <div className="mb-20 min-w-[500px] rounded-3xl p-10 shadow-xl">
+    <div className="mb-20 min-w-[400px] rounded-3xl p-5 shadow-xl lg:min-w-[500px] lg:p-10">
       <form
-        className="relative m-auto mb-5 block w-3/4"
+        className="relative m-auto mb-5 block w-full px-3 lg:w-3/4 lg:px-0"
         onSubmit={handleSubmit(handleLogin)}
       >
         <h2 className="py-5 text-center font-paragraph text-2xl">Ingrese sus datos</h2>
